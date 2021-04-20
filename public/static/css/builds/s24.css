@@ -1,0 +1,81 @@
+.cf {
+  zoom: 1;
+}
+.cf:after,
+.cf:before {
+  content: "";
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
+.gracias-css .footer__suscripcion {
+  display: none;
+}
+.gracias-css .header__cnt__center {
+  background-color: #f4eee9;
+}
+.b24 {
+  background-color: #f4eee9;
+  height: calc(100vh - 200px);
+  min-height: 500px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.b24__text .b3__title {
+  max-width: 100%;
+}
+.b24__text .b3__title p {
+  font-size: 30px;
+}
+.b24__text .general__title h2 {
+  line-height: 0.8;
+}
+.b24__paragraph {
+  padding-top: 25px;
+  text-align: center;
+}
+.b24__paragraph p {
+  font-size: 20px;
+}
+.b24__paragraph span {
+  font-size: calc(30px + (50 - 30) * ((100vw - 320px) / (1920 - 320)));
+  font-family: 'Graphik-Semibold', sans-serif;
+}
+.b24__btn {
+  padding-top: 38px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.b24__btn .general__btn {
+  width: 190px;
+}
+.b24__btn .general__btn:nth-child(2) {
+  margin-left: 20px;
+}

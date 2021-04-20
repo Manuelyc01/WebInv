@@ -1,0 +1,128 @@
+
+.industrial-css
+	.b15
+		background-color #f4eee9
+.b18
+	padding-top 165px
+	padding-bottom 80px
+	overflow hidden
+.b18__cnt
+	display flex
+	justify-content space-between
+.b18__left
+	width: 412px
+	.general__title
+		margin-bottom 25px
+		h2
+			line-height: 1.14
+
+.b18__ul
+	border-top 1px solid rgba(151, 151, 151, 0.2)
+	li
+		border-bottom 1px solid rgba(151, 151, 151, 0.2)
+		min-height 130px
+		display flex
+		align-items center
+		padding 10px 0
+		box-sizing border-box
+	span
+		width: 100px
+		margin 0
+		font-size: calc(55px + (80 - 55) * ((100vw - 320px) / (1920 - 320)))
+		font-family: t-4
+		-webkit-text-stroke: 0.5px #245e3c
+		-webkit-text-fill-color: white;
+		line-height: 1
+	p
+		flex 1
+		padding-left 30px
+		margin 0
+		font-size: 15px
+		line-height: 1.47
+
+.b18__right
+	margin-right -100px
+.b18__figure
+	position relative
+	padding-bottom 100px
+	img
+		opacity: 0.9
+		&:nth-child(2)
+			position absolute
+			right 60%
+			bottom 0px
+			z-index: 2
+	&:before
+		content ''
+		width: 100%
+		height 100%
+		background-image url('../img/masc-2-OK.png')
+		position absolute
+		left 0px
+		top 0px
+		background-size cover
+		z-index: 1
+.b18__btn
+	padding-top 40px
+	
+	// .general__btn
+	// 	width: 
+
+@media screen and (max-width 1180px)
+	.b18__figure
+		max-width 500px
+		img
+			max-width 100%
+			height auto
+			display block
+			&:nth-child(2)
+				max-width: 60%
+@media screen and (max-width 960px)
+	.b18
+		overflow hidden
+	.b18__cnt
+		flex-direction column
+		align-items center
+	.b18__left
+		max-width 600px
+		width 100%
+	.b18__left .general__title h2
+		text-align center
+	.b18__right
+		margin-right -50px
+		padding-top 30px
+@media screen and (max-width 768px)
+	.b18
+		padding-top 60px
+	.b18__ul 
+		li
+			min-height 100px
+		span
+			width: 80px
+		p
+			padding-left 15px
+	.b18__figure img:nth-child(2)
+		right 42%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,213 @@
+
+.bolsa-css
+	.footer
+		background-color #fff
+	.footer__suscripcion
+		display none
+
+
+.b21
+	padding-top 50px
+.b21__top
+	display flex
+	align-items flex-end
+	justify-content space-between
+	.b14__nav
+		margin 0
+		margin-right 0
+		margin-left auto
+	.b20__select
+		margin-bottom 0
+		margin-right 0
+		margin-left 25px
+	.b20__clickSelect
+		width: 266px
+		border-radius 26px
+		border-color transparent
+		background-color #f5f4f4
+	.b20__clickSelect
+		&.active
+			border-radius 26px 26px 0 0
+			box-shadow none
+	.b20__selectList
+		border-color transparent
+		background-color #f5f4f4
+		border-radius 0 0 3px 3px
+		overflow hidden
+.b21__title
+	padding-bottom 6px
+	.general__title
+		margin-bottom 8px
+	p
+		font-size: 15px
+		font-family: t-1
+		margin 0
+.b21__cnt__items
+	display flex
+	flex-flow row wrap
+	padding-top 66px
+.b21__item
+	margin 0
+	position relative
+	height 312px
+	box-shadow 4px 4px 19px 2px rgba(0, 0, 0, 0.05)
+	display flex
+	justify-content center
+	align-items center
+	margin-bottom 32px
+	border-radius 3px
+	@media screen and (min-width 769px) and (max-width 2600px)
+		width: calc(33.33333% - 16px)
+		margin-left 24px
+		&:nth-child(3n + 1)
+			margin-left 0px
+	@media screen and (min-width 481px) and (max-width 768px)
+		width: calc(50% - 12px)
+		margin-left 24px
+		&:nth-child(2n + 1)
+			margin-left 0px
+	@media screen and (min-width 0px) and (max-width 480px)
+		width: 100%
+	@media screen and (min-width 1025px)
+		transition 350ms all
+		&:hover
+			background-color c-1
+			.b21__time
+				color #fff
+			.b21__text
+				h3
+				p
+					color #fff
+			.b21__btn
+				.general__btn
+					border-color #fff
+					span
+						color #fff
+
+.b21-franja
+	border-top 1px solid #979797
+	border-bottom 1px solid #979797
+	padding 32px 0px
+	display: flex
+	align-items: center
+	justify-content space-between
+	margin-top 70px
+.b21-parrafo
+	max-width: 690px
+	width 100%
+	margin 0
+	h1
+		color #4f4f4f
+		line-height normal
+		font-family t-1
+		margin auto
+		margin-bottom 20px
+		font-size calc(16px + (20 - 16) * ((100vw - 320px) / (1920 - 320)))
+.b21-text
+	line-height 1.33
+	font-size calc(13px + (15 - 13) * ((100vw - 320px) / (1920 - 320)))
+	color #787878
+	font-family t-0
+	p
+		margin auto
+.b21__time
+	position absolute
+	right 30px
+	top 24px
+	color #787878
+	display flex
+	align-items center
+	i
+		margin-right 9px
+		font-size: 22px
+	span
+		margin 0
+		font-size: 15px
+		// font-family: t-1
+		line-height: 1.67
+.b21__text
+	max-width 300px
+	width: 100%
+	text-align center
+	padding 0 15px
+	box-sizing border-box
+	padding-top 30px
+	h3
+		font-size: 20px
+		font-family: t-0
+		line-height: 1.25
+		margin-bottom 15px
+		display block
+	p
+		font-size: 20px
+		font-family: t-4
+		line-height: 1.4
+		color c-1
+		margin 0
+.b21__btn
+	display flex
+	justify-content center
+	padding-top 26px
+	.general__btn
+		width: 180px
+@media screen and (max-width 1024px)
+	.b21-franja
+		flex-direction column
+		margin-top 40px
+	.b21-parrafo
+		max-width 100%
+		text-align center
+		margin-bottom 30px
+	.b21__time 
+		i
+			font-size: 18px
+		span
+			font-size: 14px
+	.b21__text 
+		h3
+			font-size: 18px
+		p
+			font-size: 18px
+	.b21__cnt__items
+		padding-top 30px
+@media screen and (max-width 768px)
+	.b21__top
+		flex-direction column
+		align-items center
+		.b14__nav
+			width: 100%
+		.b20__select
+			margin-left 0
+			margin-top 16px
+	.b21__title
+		padding-bottom 16px
+		text-align center
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

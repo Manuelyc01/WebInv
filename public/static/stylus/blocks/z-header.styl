@@ -1,0 +1,439 @@
+.home-css
+	.cnt-wrapper
+		padding-top 0 !important
+	.header 
+		&:not(.scrolling)
+			.header__cnt__top
+				background-color #fff
+.header
+	position fixed
+	width 100%
+	top 0px
+	left 0px
+	z-index 998
+	&.scrolling
+		background-color #fff
+		box-shadow 0px 0px 6px 0px rgba(0, 0, 0, 0.22)
+		.header__cnt__center
+			background-color #f4eee9
+			border-right 0 !important
+			border-left 0 !important
+		.header__cnt__top
+			background-color #f9f9f9
+		.header-logo
+			max-width 225px
+	.header__top
+	.header-ctn
+		display flex
+		justify-content space-between 
+		align-items center
+	.header__top
+		height 30px
+	.header__idioma
+		a
+			display flex
+			align-items center
+		i
+			width: 20px
+			height 20px
+			background-size cover
+			border-radius 100%
+			background-position center center
+			margin-right 9px
+		span
+			font-size: 13px
+			font-family: t-0
+			color c-0
+	.header__links
+		margin 0
+		display flex
+		align-items center
+		a
+			font-size: 13px
+			color c-0
+			padding-left 30px
+			display block
+		
+
+
+
+	.header-ctn
+		padding 10px 0
+
+	.header-logo
+		margin 0
+		max-width 275px
+		width: 100%
+		position relative
+		
+		z-index 1
+		img
+			display block
+			max-width 100%
+			height auto
+			width 100%
+
+	.menu-item
+		&:hover
+			.header__megaMenu__nosotros
+			.header__megaMenu
+				opacity: 1
+				visibility: visible
+				transition 400ms all
+		&:nth-last-child(1)
+		&:nth-last-child(2)
+			display none
+			
+	.header__links
+		li
+			&:nth-last-child(1)
+				a
+					display flex
+					align-items center
+					line-height 1
+				img
+					margin-right 10px
+				
+	.menu-wrap
+		height 100%
+		display flex
+		align-items center
+	.icon-search
+		font-size: 20px
+		color #333333
+		padding  0 10px
+	.menu-list
+		height 100%
+		display flex
+		align-items center
+	.menu-link
+		display flex
+		align-items center
+		padding 20px 20px
+		position relative
+		z-index: 1
+		span
+			color c-0
+			font-family t-1
+			font-size 15px
+			padding-right 20px
+		i
+			font-size: 8px 
+		@media screen and (min-width 1025px)
+			&:hover
+				span
+					color #207443
+		&.active
+			span
+				color c-1
+	.header__click
+		position relative
+	.header__megaMenu__nosotros
+		position absolute
+		left 50%
+		top 100%
+		transform translateX(-50%)
+		background-color #fff
+		width: 106px
+		box-shadow 0 0 10px 0 rgba(0, 0, 0, 0.16)
+		border-radius 3px
+		visibility hidden
+		opacity: 0
+		
+		li
+			width: 100%
+		a
+			height 35px
+			display flex
+			align-items center
+			justify-content flex-start
+			border-radius 3px
+			padding 0 20px
+			box-sizing border-box
+			@media screen and (min-width 1025px)
+				&:hover
+					background-color #207443
+					color #fff
+			&.active
+				background-color #207443
+				color #fff
+	.header__megaMenu
+		position absolute
+		left 0px
+		width: 100%
+		top 100%
+		height calc(100vh - 128px)
+		visibility hidden
+		opacity: 0
+		background-color rgba(0, 0, 0, 0.72)
+		// transition 400ms all
+		pointer-events none
+		&:before
+			content ''
+			width: 100%
+			height 22px
+			position absolute
+			left 0px
+			bottom 100%
+			pointer-events auto
+		&:after
+			content ''
+			width: 100%
+			height 100px
+			background-color #f4eee9
+			position absolute
+			left 0px
+			bottom 100%
+			z-index: -1
+			pointer-events none
+	.header__mega__center
+		pointer-events auto
+		background-color #f4eee9
+		padding 40px 0 40px 0
+	.header__megaMenu__cnt
+		display flex
+		justify-content center
+	.header__megaMenu__item
+		margin 0 
+		&:nth-child(1)
+			padding-right 150px
+			position relative
+			&:before
+				content ''
+				width: 1px
+				height 100%
+				background-color #787878
+				position absolute
+				right -30px
+				top 0px
+				opacity: 0.38
+				transform rotate(10deg)
+				
+		&:nth-child(2)
+			padding-left 150px
+		figcaption
+			text-align center
+			padding-top 20px
+		p
+			font-size: 40px
+			color #bdbdbd
+			margin 0
+			font-family: t-4
+			transition 300ms all
+		@media screen and (min-width 1025px)
+			&:hover
+				p
+					color c-1
+// Menu responsive
+body
+	&.left-in
+		// background-color #000
+		// .menu-responsive
+		.cnt-wrapper
+			overflow hidden
+		.menu-sidebar
+			transform  translateX(-300px)
+			// top 65px
+			&.active
+				transform  translateX(0)
+		// .menu-overlay
+			// top 65px
+		.wrapper,.footer
+			left 0px
+			&.active 
+				left 300px
+		.menu-mobile-close
+			color #000
+			&.active
+				opacity 1
+				visibility visible
+	&.right-in
+		.menu-sidebar
+			transform  translateX(300px)
+			// top 65px
+			right 0px
+			&.active
+				transform  translateX(0px)
+		// .menu-overlay
+		// 	top 65px
+		.wrapper,.footer
+			left 0px
+			&.active 
+				left -300px
+		// .cnt-wrapper
+		// 	overflow hidden
+	&.top-in
+		// .header
+		// 	&.scrolling
+		// 		box-shadow none
+		.menu-overlay
+			display none
+		.menu-sidebar
+			width 100%
+			transform translateY(-105%)
+			&.active
+				transform translateY(0%)
+		.menu-responsive
+			display flex
+			align-items center
+			flex-direction column
+			justify-content center
+			@media screen and (max-height 400px)
+				flex-flow wrap		
+			
+		.menu-responsive .menu-link
+			justify-content center
+		
+			
+		.menu-mobile-close
+			color #000
+.menu-overlay
+	position fixed
+	top 0
+	left 0
+	background-color black
+	z-index 1000
+	width 100%
+	height 100%
+	opacity 0
+	cursor pointer
+	transition all 0.45s ease
+	visibility hidden
+	&.active
+		opacity 0.6
+		visibility visible
+
+.menu-mobile-close, .menu-mobile-open
+	border-radius 7%
+	color c-1
+	cursor pointer
+	font-size 40px
+	height 42px
+	line-height 42px
+	position fixed
+	right 3%
+	text-align center
+	top 10px
+	// transition all 0.45s ease
+	width 42px
+	transform rotate(0deg)
+
+.menu-mobile-open
+	opacity 1
+	visibility hidden
+	z-index 1000
+	&.active
+		visibility hidden
+		opacity 0
+
+.menu-mobile-close
+	visibility hidden
+	opacity 0
+	z-index 1000
+	color c-1
+	&.active
+		visibility visible
+		opacity 1
+		z-index 1012
+		
+.menu-sidebar
+	width 300px
+	height 100%
+	overflow auto
+	position fixed
+	top 0
+	background white
+	z-index 1000
+	transition all 0.45s ease
+	visibility hidden
+	&.active
+		visibility visible
+		.menu-link
+			opacity 1
+			transform translateY(0%)
+.menu-sidebar-cnt
+	height 100%
+.menu-responsive
+	padding-top 50px
+	// height 100%
+	display flex
+	flex-direction column
+	.menu-item
+		font-size 16px
+		width 100%
+		margin 0
+		overflow hidden
+	.menu-link
+		transition all 600ms ease
+		opacity 0
+		transform translateX(20%)
+		color #989898
+		height 60px
+		display flex
+		align-items center
+		justify-content flex-start
+		padding 0 15px
+		position relative
+		span
+			margin 0
+		i
+			position absolute
+			right 10px
+			top 0px
+			height 100%
+			display flex
+			align-items center
+			justify-content center
+			font-size: 8px
+			color c-1
+		// &.active
+		// 	background-color #eaeaea
+		// 	color #000
+	.header__megaMenu__item
+		img
+			display none
+	.header__megaMenu__cnt
+	.header__megaMenu__nosotros
+		display none
+		margin 0
+		padding-left 30px
+		p
+			margin 0
+		a
+			padding 10px 0
+			display block
+	@media screen and (max-height 400px)
+		flex-flow wrap		
+.wrapper,.footer
+	position relative
+	// transition left 0.45s ease
+
+body
+	&.active
+		overflow hidden
+
+@media screen and (max-width:1024px)
+	.wrapper,.footer
+		transition all 0.45s ease
+	.menu-mobile-open
+		visibility visible
+	.header
+		.icon-search
+			margin-right 50px
+		.menu-list
+			display none
+		.header-logo
+			width 160px		
+		.header__links
+		.header__btn
+			display none
+		.header__top
+			justify-content flex-end
+			height 0
+			align-items flex-start
+			padding-right 60px
+			box-sizing border-box
+		.header__idioma
+			margin-top 22px
+		&.scrolling
+			box-shadow 0px 0px 10px 0px rgba(0, 0, 0, 0.2)

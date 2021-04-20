@@ -1,0 +1,200 @@
+.general__btn
+	position:  relative
+	margin 0
+	display flex
+	align-items center
+	color c-2
+	box-sizing border-box
+	height 52px
+	justify-content center
+	border 0
+	padding 0 32px
+	border-radius 2px
+	&:before
+		content ''
+		width: 100%
+		height 100%
+		display block
+		background linear-gradient(to bottom, #2d8953, #245e3c 97%)
+		position absolute
+		left 0px
+		bottom 0px
+		border-radius 2px
+	span
+		position relative
+		font-size: 15px
+		font-family: t-1
+		color #fff
+			
+	// @media screen and (min-width 1025px)
+	// 	transition 250ms all
+	// 	&:hover
+	// 		background-color #144a8a
+	&[data-style*="lineal"]
+		height auto
+		padding 0
+		text-decoration underline
+		&:before
+			display none
+		span
+			color c-1
+	&[data-style*="line"]
+		border 1px solid transparent
+		&:before
+			display none
+	&[data-style*="green"]
+		border-color c-1
+		span
+			color c-1
+		@media screen and (min-width 1025px)
+			transition 300ms all
+			&:hover
+				background-color c-1
+				span
+					color #fff
+	&[data-style*="white"]
+		border-color #fff
+		span
+			color #fff
+		@media screen and (min-width 1025px)
+			transition 300ms all
+			&:hover
+				background-color #fff
+				span
+					color c-1
+.general__title
+	h2
+		font-family: t-4
+		line-height: 1.25
+		color c-1
+		margin 0
+	&[data-style*="130"]
+		h2
+			font-size: calc(40px + (130 - 40) * ((100vw - 320px) / (1920 - 320)))
+	&[data-style*="80"]
+		h2
+			font-size: calc(35px + (80 - 35) * ((100vw - 320px) / (1920 - 320)))
+	&[data-style*="75"]
+		h2
+			font-size: calc(35px + (75 - 35) * ((100vw - 320px) / (1920 - 320)))
+	&[data-style*="70"]
+		h2
+			font-size: calc(35px + (70 - 35) * ((100vw - 320px) / (1920 - 320)))
+	&[data-style*="50"]
+		h2
+			font-size: calc(30px + (50 - 30) * ((100vw - 320px) / (1920 - 320)))
+	&[data-style*="40"]
+		h2
+			font-size: calc(30px + (40 - 30) * ((100vw - 320px) / (1920 - 320)))
+	&[data-style*="35"]
+		h2
+			font-size: calc(25px + (35 - 25) * ((100vw - 320px) / (1920 - 320)))
+	&[data-style*="30"]
+		h2
+			font-size: calc(22px + (30 - 22) * ((100vw - 320px) / (1920 - 320)))		
+	&[data-style*="white"]
+		h2
+			color #fff
+
+
+
+.general__input__row
+	display flex
+	flex-flow row wrap
+	justify-content space-between
+	>div
+		width: calc(50% - 8px)
+.general__input,  .general__textarea, .general__select
+	position relative
+	margin-bottom  10px 
+	placeholder(#848b9e,t-1, 12px)
+
+	display flex
+	flex-direction column-reverse
+	input,select,textarea
+		width: 100%
+		height 52px
+		display flex
+		align-items center
+		justify-content center
+		padding 0 22px
+		padding-top 20px
+		box-sizing border-box
+		border 1px solid #e8e9ed
+		border-radius 3px
+		color #0c2849
+		appearance none
+		font-size: 14px
+		font-family: t-1
+		@media screen and (min-width 1025px)
+			transition 300ms all
+			&:hover
+				border-color c-1
+				// +label
+		&:focus
+			border-color c-1
+			box-shadow 0 3px 9px 0 rgba(30, 32, 42, 0.15)
+			+label
+				color c-2
+				font-size: 11px
+				transform translateY(-8px)
+	label
+		font-size: 15px
+		color #a3a3a3
+		display block
+		// margin-bottom 5px
+		width: 100%
+		position absolute
+		height 100%
+		display flex
+		align-items center
+		padding-left 22px
+		box-sizing border-box
+		&.fijar
+			color c-2
+			font-size: 11px
+			transform translateY(-8px)
+.general__select
+	select
+		cursor pointer
+		background transparent
+	&:before
+		content '\e902'
+		font-family: icomoon
+		position: absolute
+		right 0
+		bottom 0
+		height 50px
+		width: 40px
+		display flex
+		align-items center
+		justify-content center
+		font-size: 8px
+		color #a3a3a3
+		pointer-events none
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

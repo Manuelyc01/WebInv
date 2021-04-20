@@ -1,0 +1,154 @@
+[30-Mar-2020 20:30:13 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'root', 'root', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'root', 'root', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('m in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[30-Mar-2020 20:30:26 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'root', 'root', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'root', 'root', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('m in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[31-Mar-2020 00:19:28 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'root', 'root', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'root', 'root', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('m in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[31-Mar-2020 01:20:23 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'root', 'root', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'root', 'root', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('m in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[04-Jun-2020 00:12:51 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: Please provide a valid cache path. in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/Compilers/Compiler.php:36
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/ViewServiceProvider.php(141): Illuminate\View\Compilers\Compiler->__construct(Object(Illuminate\Filesystem\Filesystem), false)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(764): Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}(Object(Illuminate\Foundation\Application), Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\Container\Container->build(Object(Closure))
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#4 /home/enaco/public_html/enaco.com.pe/vendor/laravel/ in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/Compilers/Compiler.php on line 36
+[04-Jun-2020 00:12:55 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: Please provide a valid cache path. in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/Compilers/Compiler.php:36
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/ViewServiceProvider.php(141): Illuminate\View\Compilers\Compiler->__construct(Object(Illuminate\Filesystem\Filesystem), false)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(764): Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}(Object(Illuminate\Foundation\Application), Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\Container\Container->build(Object(Closure))
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#4 /home/enaco/public_html/enaco.com.pe/vendor/laravel/ in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/Compilers/Compiler.php on line 36
+[04-Jun-2020 00:12:56 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: Please provide a valid cache path. in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/Compilers/Compiler.php:36
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/ViewServiceProvider.php(141): Illuminate\View\Compilers\Compiler->__construct(Object(Illuminate\Filesystem\Filesystem), false)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(764): Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}(Object(Illuminate\Foundation\Application), Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\Container\Container->build(Object(Closure))
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#4 /home/enaco/public_html/enaco.com.pe/vendor/laravel/ in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/Compilers/Compiler.php on line 36
+[04-Jun-2020 00:12:59 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: Please provide a valid cache path. in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/Compilers/Compiler.php:36
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/ViewServiceProvider.php(141): Illuminate\View\Compilers\Compiler->__construct(Object(Illuminate\Filesystem\Filesystem), false)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(764): Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}(Object(Illuminate\Foundation\Application), Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(646): Illuminate\Container\Container->build(Object(Closure))
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Container/Container.php(601): Illuminate\Container\Container->resolve('blade.compiler', Array)
+#4 /home/enaco/public_html/enaco.com.pe/vendor/laravel/ in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/View/Compilers/Compiler.php on line 36
+[08-Jun-2020 20:59:54 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:00:12 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:00:29 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:10:29 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:11:04 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:25:55 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:34:03 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:34:11 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:34:17 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:35:19 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:35:34 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:35:41 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:36:46 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:38:27 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:56:13 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 21:56:16 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[08-Jun-2020 22:06:14 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'enaco_site'@'localhost' to database 'enaco_web' in /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /home/enaco/public_html/enaco.com.pe/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#1 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(65): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#2 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(44): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'enaco_site', '$site2020$', Array)
+#3 /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Databa in /home/enaco/public_html/enaco.com.pe/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664

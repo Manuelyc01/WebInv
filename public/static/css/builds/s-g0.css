@@ -1,0 +1,401 @@
+.cf {
+  zoom: 1;
+}
+.cf:after,
+.cf:before {
+  content: "";
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
+.general__btn {
+  position: relative;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  color: #4f4f4f;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 52px;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  border: 0;
+  padding: 0 32px;
+  border-radius: 2px;
+}
+.general__btn:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: -webkit-linear-gradient(top, #2d8953, #245e3c 97%);
+  background: -moz-linear-gradient(top, #2d8953, #245e3c 97%);
+  background: -o-linear-gradient(top, #2d8953, #245e3c 97%);
+  background: -ms-linear-gradient(top, #2d8953, #245e3c 97%);
+  background: linear-gradient(to bottom, #2d8953, #245e3c 97%);
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  border-radius: 2px;
+}
+.general__btn span {
+  position: relative;
+  font-size: 15px;
+  font-family: 'Graphik-Semibold', sans-serif;
+  color: #fff;
+}
+.general__btn[data-style*="lineal"] {
+  height: auto;
+  padding: 0;
+  text-decoration: underline;
+}
+.general__btn[data-style*="lineal"]:before {
+  display: none;
+}
+.general__btn[data-style*="lineal"] span {
+  color: #245e3c;
+}
+.general__btn[data-style*="line"] {
+  border: 1px solid transparent;
+}
+.general__btn[data-style*="line"]:before {
+  display: none;
+}
+.general__btn[data-style*="green"] {
+  border-color: #245e3c;
+}
+.general__btn[data-style*="green"] span {
+  color: #245e3c;
+}
+@media screen and (min-width: 1025px) {
+  .general__btn[data-style*="green"] {
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -o-transition: 300ms all;
+    -ms-transition: 300ms all;
+    transition: 300ms all;
+  }
+  .general__btn[data-style*="green"]:hover {
+    background-color: #245e3c;
+  }
+  .general__btn[data-style*="green"]:hover span {
+    color: #fff;
+  }
+}
+.general__btn[data-style*="white"] {
+  border-color: #fff;
+}
+.general__btn[data-style*="white"] span {
+  color: #fff;
+}
+@media screen and (min-width: 1025px) {
+  .general__btn[data-style*="white"] {
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -o-transition: 300ms all;
+    -ms-transition: 300ms all;
+    transition: 300ms all;
+  }
+  .general__btn[data-style*="white"]:hover {
+    background-color: #fff;
+  }
+  .general__btn[data-style*="white"]:hover span {
+    color: #245e3c;
+  }
+}
+.general__title h2 {
+  font-family: 'DomaineDispSemibold', sans-serif;
+  line-height: 1.25;
+  color: #245e3c;
+  margin: 0;
+}
+.general__title[data-style*="130"] h2 {
+  font-size: calc(40px + (130 - 40) * ((100vw - 320px) / (1920 - 320)));
+}
+.general__title[data-style*="80"] h2 {
+  font-size: calc(35px + (80 - 35) * ((100vw - 320px) / (1920 - 320)));
+}
+.general__title[data-style*="75"] h2 {
+  font-size: calc(35px + (75 - 35) * ((100vw - 320px) / (1920 - 320)));
+}
+.general__title[data-style*="70"] h2 {
+  font-size: calc(35px + (70 - 35) * ((100vw - 320px) / (1920 - 320)));
+}
+.general__title[data-style*="50"] h2 {
+  font-size: calc(30px + (50 - 30) * ((100vw - 320px) / (1920 - 320)));
+}
+.general__title[data-style*="40"] h2 {
+  font-size: calc(30px + (40 - 30) * ((100vw - 320px) / (1920 - 320)));
+}
+.general__title[data-style*="35"] h2 {
+  font-size: calc(25px + (35 - 25) * ((100vw - 320px) / (1920 - 320)));
+}
+.general__title[data-style*="30"] h2 {
+  font-size: calc(22px + (30 - 22) * ((100vw - 320px) / (1920 - 320)));
+}
+.general__title[data-style*="white"] h2 {
+  color: #fff;
+}
+.general__input__row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -o-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.general__input__row >div {
+  width: calc(50% - 8px);
+}
+.general__input,
+.general__textarea,
+.general__select {
+  position: relative;
+  margin-bottom: 10px;
+/* WebKit */
+/* Firefox 18- */
+/* Firefox 19+ */
+/* IE 10+ */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-direction: reverse;
+  -moz-box-direction: reverse;
+  -o-box-direction: reverse;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+.general__input ::-webkit-input-placeholder,
+.general__textarea ::-webkit-input-placeholder,
+.general__select ::-webkit-input-placeholder {
+  color: #848b9e;
+  font-family: 'Graphik-Semibold', sans-serif;
+}
+.general__input :-moz-placeholder,
+.general__textarea :-moz-placeholder,
+.general__select :-moz-placeholder {
+  color: #848b9e;
+  font-family: 'Graphik-Semibold', sans-serif;
+}
+.general__input ::-moz-placeholder,
+.general__textarea ::-moz-placeholder,
+.general__select ::-moz-placeholder {
+  color: #848b9e;
+  font-family: 'Graphik-Semibold', sans-serif;
+}
+.general__input :-ms-input-placeholder,
+.general__textarea :-ms-input-placeholder,
+.general__select :-ms-input-placeholder {
+  color: #848b9e;
+  font-family: 'Graphik-Semibold', sans-serif;
+}
+.general__input input,
+.general__textarea input,
+.general__select input,
+.general__input select,
+.general__textarea select,
+.general__select select,
+.general__input textarea,
+.general__textarea textarea,
+.general__select textarea {
+  width: 100%;
+  height: 52px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 0 22px;
+  padding-top: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #e8e9ed;
+  border-radius: 3px;
+  color: #0c2849;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 14px;
+  font-family: 'Graphik-Semibold', sans-serif;
+}
+@media screen and (min-width: 1025px) {
+  .general__input input,
+  .general__textarea input,
+  .general__select input,
+  .general__input select,
+  .general__textarea select,
+  .general__select select,
+  .general__input textarea,
+  .general__textarea textarea,
+  .general__select textarea {
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -o-transition: 300ms all;
+    -ms-transition: 300ms all;
+    transition: 300ms all;
+  }
+  .general__input input:hover,
+  .general__textarea input:hover,
+  .general__select input:hover,
+  .general__input select:hover,
+  .general__textarea select:hover,
+  .general__select select:hover,
+  .general__input textarea:hover,
+  .general__textarea textarea:hover,
+  .general__select textarea:hover {
+    border-color: #245e3c;
+  }
+}
+.general__input input:focus,
+.general__textarea input:focus,
+.general__select input:focus,
+.general__input select:focus,
+.general__textarea select:focus,
+.general__select select:focus,
+.general__input textarea:focus,
+.general__textarea textarea:focus,
+.general__select textarea:focus {
+  border-color: #245e3c;
+  -webkit-box-shadow: 0 3px 9px 0 rgba(30,32,42,0.15);
+  box-shadow: 0 3px 9px 0 rgba(30,32,42,0.15);
+}
+.general__input input:focus +label,
+.general__textarea input:focus +label,
+.general__select input:focus +label,
+.general__input select:focus +label,
+.general__textarea select:focus +label,
+.general__select select:focus +label,
+.general__input textarea:focus +label,
+.general__textarea textarea:focus +label,
+.general__select textarea:focus +label {
+  color: #4f4f4f;
+  font-size: 11px;
+  -webkit-transform: translateY(-8px);
+  -moz-transform: translateY(-8px);
+  -o-transform: translateY(-8px);
+  -ms-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+.general__input label,
+.general__textarea label,
+.general__select label {
+  font-size: 15px;
+  color: #a3a3a3;
+  display: block;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding-left: 22px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.general__input label.fijar,
+.general__textarea label.fijar,
+.general__select label.fijar {
+  color: #4f4f4f;
+  font-size: 11px;
+  -webkit-transform: translateY(-8px);
+  -moz-transform: translateY(-8px);
+  -o-transform: translateY(-8px);
+  -ms-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+.general__select select {
+  cursor: pointer;
+  background: transparent;
+}
+.general__select:before {
+  content: '\e902';
+  font-family: 'icomoon';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  width: 40px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  font-size: 8px;
+  color: #a3a3a3;
+  pointer-events: none;
+}
