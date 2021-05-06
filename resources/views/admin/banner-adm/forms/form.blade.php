@@ -12,11 +12,11 @@
         </div>
 
         <div class="form-group {{ $errors->has('titulo') ? 'has-error' : '' }}">
-            {!! Form::stdText('Título', 1, 'titulo', $errors) !!}
+            {!! Form::stdText('Título', 0, 'titulo', $errors) !!}
         </div>
 
         <div class="form-group {{ $errors->has('des') ? 'has-error' : '' }}">
-            {!! Form::stdCKEditor('Descripción', 1, 'des', $errors) !!}
+            {!! Form::stdCKEditor('Descripción', 0, 'des', $errors) !!}
         </div>
 
         <div class="form-group {{ $errors->has('textoBtn') ? 'has-error' : '' }}">
@@ -25,6 +25,18 @@
 
         <div class="form-group {{ $errors->has('enlaceBtn') ? 'has-error' : '' }}">
             {!! Form::stdText('Enlace Botón', 0, 'enlaceBtn', $errors) !!}
+        </div>
+
+        <div class="form-group {{ $errors->has('enlaceFacebook') ? 'has-error' : '' }}">
+            {!! Form::stdText('Enlace Facebook', 0, 'enlaceFacebook', $errors) !!}
+        </div>
+        
+        <div class="form-group {{ $errors->has('enlaceInstagram') ? 'has-error' : '' }}">
+            {!! Form::stdText('Enlace Instagram', 0, 'enlaceInstagram', $errors) !!}
+        </div>
+        
+        <div class="form-group {{ $errors->has('enlaceWhatsapp') ? 'has-error' : '' }}">
+            {!! Form::stdText('Enlace Instagram', 0, 'enlaceWhatsapp', $errors) !!}
         </div>
 
         <div class="form-group {{ $errors->has('fondoDesktop') ? 'has-error' : '' }}">

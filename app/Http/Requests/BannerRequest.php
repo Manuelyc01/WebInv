@@ -24,8 +24,6 @@ class BannerRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required',
-            'des' => 'required',
             'fondoDesktop' => 'required',
             'fondoMobile' => 'required',
             'orden' => 'required'

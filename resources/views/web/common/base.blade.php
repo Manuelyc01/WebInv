@@ -17,7 +17,7 @@
     <!-- end favicon -->
 
     @yield('cssadicional')
-
+    
     <link rel="stylesheet" type="text/css" href="{{ $STATIC_URL }}css/styles.css?v=6"/>
     
     <!--Estilos solo mobile ocultar-->    

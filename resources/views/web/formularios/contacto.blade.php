@@ -68,6 +68,14 @@ contacto-padding
                 </select>
             </div>
 
+            <div class="b20__select__ctn">
+                <select name="solicitud" id="" class="input__fijar">
+                    <option value="0" selected>Trámite Administrativo</option>
+                    <option value="1">Compra de hoja de Coca</option>
+                    <option value="2">Productos derivados</option>
+                </select>
+            </div>
+
             <div class="b20__textarea">
                 <textarea name="mensaje" placeholder="Mensaje  " id="" cols="30" rows="10"></textarea>
             </div>

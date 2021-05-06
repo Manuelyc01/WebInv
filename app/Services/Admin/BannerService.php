@@ -29,6 +29,15 @@ class BannerService
         
         $element->translateOrNew($locale)->enlaceBtn = $request->enlaceBtn;
         $element->translateOrNew($newLocale)->enlaceBtn = $request->enlaceBtn;
+
+        $element->translateOrNew($locale)->enlaceFacebook = $request->enlaceFacebook;
+        $element->translateOrNew($newLocale)->enlaceFacebook = $request->enlaceFacebook;
+
+        $element->translateOrNew($locale)->enlaceInstagram = $request->enlaceInstagram;
+        $element->translateOrNew($newLocale)->enlaceInstagram = $request->enlaceInstagram;
+
+        $element->translateOrNew($locale)->enlaceWhatsapp = $request->enlaceWhatsapp;
+        $element->translateOrNew($newLocale)->enlaceWhatsapp = $request->enlaceWhatsapp;
         
         $element->translateOrNew($locale)->textoBtn = $request->textoBtn;
 		$element->translateOrNew($newLocale)->textoBtn = $request->textoBtn;
@@ -60,6 +69,11 @@ class BannerService
 		$element->translateOrNew($locale)->fondoDesktop = $request->fondoDesktop;
 		$element->translateOrNew($locale)->fondoMobile = $request->fondoMobile;        
         $element->translateOrNew($locale)->enlaceBtn = $request->enlaceBtn;        
+
+        $element->translateOrNew($locale)->enlaceFacebook = $request->enlaceFacebook; 
+        $element->translateOrNew($locale)->enlaceInstagram = $request->enlaceInstagram;   
+        $element->translateOrNew($locale)->enlaceWhatsapp = $request->enlaceWhatsapp; 
+               
         $element->translateOrNew($locale)->textoBtn = $request->textoBtn;
 		$element->translateOrNew($locale)->des = $request->des;
 		$element->translateOrNew($locale)->titulo = $request->titulo;

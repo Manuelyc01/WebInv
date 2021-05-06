@@ -117,10 +117,18 @@ class FormulariosController extends Controller
 
             $correoCliente = array_map('trim', explode(',', $contacto->correo));
                 \Mail::to($correoCliente)->send(new FormContactoGlobalGracias($contacto)); //envía correo al contacto (agradecimiento)
-
-            $correoEnaco = array_map('trim', explode(',', $info->correoFormContactanos));
-                \Mail::to($correoEnaco)->send(new FormContactoGlobal($contacto)); //envía correo a la empresa (nuevo lead)
-
+            
+            switch($request->solicitud){
+                   case 0:
+                        \Mail::to('info@enaco.com.pe')->send(new FormContactoGlobal($contacto)); 
+                        break;
+                    case 1:
+                        \Mail::to('tradicional@enaco.com.pe')->send(new FormContactoGlobal($contacto)); 
+                        break;
+                    case 2:
+                        \Mail::to('ventas@enaco.com.pe')->send(new FormContactoGlobal($contacto));                    
+                        break;
+            }
             return response()->json([
                 'status' => true,
                 'message' => 'Success!',

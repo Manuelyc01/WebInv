@@ -14,6 +14,9 @@ class Banner extends Model
         'des',
         'textoBtn',
         'enlaceBtn',
+        'enlaceFacebook',
+        'enlaceInstagram',
+        'enlaceWhatsapp',
         'fondoDesktop',
         'fondoMobile'
 	];

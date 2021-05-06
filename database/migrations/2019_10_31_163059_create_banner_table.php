@@ -25,6 +25,11 @@ class CreateBannerTable extends Migration
             $table->text('des');
             $table->string('textoBtn');
             $table->text('enlaceBtn');
+            
+            $table->text('enlaceFacebook');
+            $table->text('enlaceInstagram');
+            $table->text('enlaceWhatsapp');
+
             $table->text('fondoDesktop');
             $table->text('fondoMobile');
 

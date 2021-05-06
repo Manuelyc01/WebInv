@@ -538,6 +538,49 @@ br {
     width: 86%;
   }
 }
+/* Iconos banner */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../iconBann/fonts/icomoon.eot?8b73z3');
+  src:  url('../iconBann/fonts/icomoon.eot?8b73z3#iefix') format('embedded-opentype'),
+    url('../iconBann/fonts/icomoon.ttf?8b73z3') format('truetype'),
+    url('../iconBann/fonts/icomoon.woff?8b73z3') format('woff'),
+    url('../iconBann/fonts/icomoon.svg?8b73z3#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-facebook2:before {
+  content: "\ea91";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-whatsapp:before {
+  content: "\ea93";
+}
+
+
+
+
+
+
 body {
   font-size: 15px;
   font-family: 'Graphik-Regular', sans-serif;
@@ -10860,4 +10903,46 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text h3, body.equipo-css se
 body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css section.b11 a[href="#popup-2"] .b11__text p, body.equipo-css section.b11 a[href="#popup-1"] .b11__text p {
     font-size: 14px!important;
 }
+}
+
+
+:root{
+  --facebook:#3b5999;
+  --instagram: #e4405f;
+  --whatsapp: #07bc4c;
+}
+.redes-container{
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+}
+.redes-container ul{
+  padding-top: 10px;
+}
+.redes-container ul li{
+  display: inline-block;
+  margin: 0 5px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+.redes-container ul li a{
+  display: block;
+  padding: 0 10px;
+  background: #3333338c;
+  color: #fff;
+  line-height: 50px;
+  font-size: 30px;
+}
+.redes-container ul li a:hover{
+  transform: translateY(-3px) scale(1.05);
+}
+.redes-container ul li .icon-facebook2:hover{
+  background: var(--facebook);
+}
+.redes-container ul li .icon-instagram:hover{
+  background: var(--instagram);
+}
+.redes-container ul li .icon-whatsapp:hover{
+  background: var(--whatsapp);
 }

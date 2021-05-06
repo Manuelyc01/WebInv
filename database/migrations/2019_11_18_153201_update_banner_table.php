@@ -16,6 +16,10 @@ class UpdateBannerTable extends Migration
         Schema::table('banner_translations',function(Blueprint $table) {
             $table->string('textoBtn')->nullable()->change();
             $table->text('enlaceBtn')->nullable()->change();
+            
+            $table->text('enlaceFacebook')->nullable()->change();
+            $table->text('enlaceInstagram')->nullable()->change();
+            $table->text('enlaceWhatsapp')->nullable()->change();
         });
     }
 

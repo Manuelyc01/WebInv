@@ -44,8 +44,29 @@ home-css
                                 <span>{{$banner->textoBtn}}</span>
                             </a>   
                         </div>
-                    @endif                    
+                    @endif
                 </div>
+                @if ($banner->enlaceFacebook != '' or $banner->enlaceInstagram != '' or $banner->enlaceWhatsapp != '')  
+                <div class="redes-container">
+                            <ul>        
+                                    @if($banner->enlaceFacebook != '')
+                                    <li>
+                                        <a href="{{$banner->enlaceFacebook}}" class="icon-facebook2"></a>
+                                    </li>
+                                    @endif
+                                    @if($banner->enlaceInstagram != '')
+                                    <li>
+                                        <a href="{{$banner->enlaceInstagram}}" class="icon-instagram"></a>
+                                    </li>
+                                    @endif
+                                    @if($banner->enlaceWhatsapp != '')
+                                    <li>
+                                        <a href="{{$banner->enlaceWhatsapp}}" class="icon-whatsapp"></a>
+                                    </li>
+                                    @endif
+                            </ul>
+                </div>
+                @endif
             </div>
         </div>
         @endforeach
