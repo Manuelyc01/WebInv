@@ -575,7 +575,43 @@ br {
 .icon-whatsapp:before {
   content: "\ea93";
 }
+/* Iconos head */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fontsHead/icomoon.eot?s6zzvp');
+  src:  url('../fontsHead/icomoon.eot?s6zzvp#iefix') format('embedded-opentype'),
+    url('../fontsHead/icomoon.ttf?s6zzvp') format('truetype'),
+    url('../fontsHead/icomoon.woff?s6zzvp') format('woff'),
+    url('../fontsHead/icomoon.svg?s6zzvp#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
 
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-facebook2:before {
+  content: "\ea91";
+}
+.icon-youtube:before {
+  content: "\ea9d";
+}
+.icon-linkedin2:before {
+  content: "\eaca";
+}
 
 
 
@@ -10910,6 +10946,8 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
   --facebook:#3b5999;
   --instagram: #e4405f;
   --whatsapp: #07bc4c;
+  --youtube: red;
+  --linkedin2: #0e76a8;
 }
 .redes-container{
   align-items: center;
@@ -10928,7 +10966,6 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
 }
 .redes-container ul li a{
   display: block;
-  padding: 0 10px;
   background: #3333338c;
   color: #fff;
   line-height: 50px;
@@ -10945,4 +10982,41 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
 }
 .redes-container ul li .icon-whatsapp:hover{
   background: var(--whatsapp);
+}
+
+
+.redes-container-head{
+  align-items: center;
+  justify-content: center;
+}
+.redes-container-head ul{
+  padding-top: 0px;
+}
+.redes-container-head ul li{
+  display: inline-block;
+  margin: 0 5px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+.redes-container-head ul li a{
+  display: block;
+  color: #c1c1c1;
+  line-height: 30px;
+  font-size: 25px;
+}
+.redes-container-head ul li a:hover{
+  transform: translateY(-3px) scale(1.05);
+}
+.redes-container-head ul li .icon-facebook2:hover{
+  background: var(--facebook);
+  color: #fff;
+}
+.redes-container-head ul li .icon-youtube:hover{
+  background: var(--youtube);
+  color: #fff;
+}
+.redes-container-head ul li .icon-linkedin2:hover{
+  background: var(--linkedin2);
+  color: #fff;
 }
