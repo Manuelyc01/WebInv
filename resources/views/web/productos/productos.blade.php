@@ -6,7 +6,16 @@
 @section('classbody')
 equipo-css
 @stop
-
+@php
+    $url = URL::current();
+    $idioma = explode("/",$url);
+    $idiom = 'es';
+    foreach ($idioma as $key => $value) {
+        if($value == 'en' || $value == 'es')
+        $idiom = $value;
+    }
+        
+@endphp
 @section('content')
 <section class="b12 scroll-wrap">
     <div class="b3__hoja1">
