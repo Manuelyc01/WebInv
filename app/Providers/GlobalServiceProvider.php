@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Models\{Info,Industrial,Tradicional,Sede, GestionNivel2,CateServicio,Trabajo,Servicio,ProdIndus};
+use App\Models\{Info,Industrial,Tradicional,Sede, GestionNivel2,CateServicio,Trabajo,Servicio,ProdIndus,InsumoIndustrial,ListoConsumir};
 
 class GlobalServiceProvider extends ServiceProvider
 {
@@ -17,6 +17,10 @@ class GlobalServiceProvider extends ServiceProvider
         view()->composer('*' , function($view) {
             $global['industrial'] = Industrial::first();
             $global['tradicional'] = Tradicional::first();
+            
+            $global['insumo_industrial'] = InsumoIndustrial::first();
+            $global['listo_consumir'] = ListoConsumir::first();
+
             $global['STATIC_URL'] = '/static/';
             $global['info'] = Info::first(); 
             $global['sede'] = Sede::first();

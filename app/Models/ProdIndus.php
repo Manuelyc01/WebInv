@@ -16,7 +16,10 @@ class ProdIndus extends Model
         'arrayPresentaciones',
         'fichaPDF',
         'arrayBeneficios',
-        'tituloRelacionados'
+        'tituloRelacionados',
+        'enlaceFacebook',
+        'enlaceInstagram',
+        'enlaceWhatsapp'
 	];
 
     protected $fillable = [        

@@ -23,8 +23,29 @@ industrial-css
             </div>
             <div class="general__title" data-style="80">
                 <h2>{{$data['producto']->nombre}}</h2>
-                
             </div>
+            @if ($data['producto']->enlaceFacebook != '' or $data['producto']->enlaceInstagram != '' or $data['producto']->enlaceWhatsapp != '')  
+                <div class="redes-container-prod">
+                            <h5 style="color: #fff">Siguenos:</h5>
+                            <ul>        
+                                    @if($data['producto']->enlaceFacebook != '')
+                                    <li>
+                                        <a href="{{$data['producto']->enlaceFacebook}}" class="icon-facebook2"></a>
+                                    </li>
+                                    @endif
+                                    @if($data['producto']->enlaceInstagram != '')
+                                    <li>
+                                        <a href="{{$data['producto']->enlaceInstagram}}" class="icon-instagram"></a>
+                                    </li>
+                                    @endif
+                                    @if($data['producto']->enlaceWhatsapp != '')
+                                    <li>
+                                        <a href="{{$data['producto']->enlaceWhatsapp}}" class="icon-whatsapp"></a>
+                                    </li>
+                                    @endif
+                            </ul>
+                </div>
+            @endif
         </div>
         
     </div>

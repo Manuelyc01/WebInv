@@ -82,26 +82,56 @@
                             </ul>
                         </li>
                         <li class="menu-item header__click2">
-                            <a href="{{route('productos')}}" class="menu-link @if('productos' == $ruta[0] || 'producto' == $ruta[0]) ? active : '' @endif"><span>{{ \Helper::dictionary('productos') }}</span><i class="icon-flecha-2"></i></a>
+                        <a href="{{route('productos')}}" class="menu-link @if('productos' == $ruta[0] || 'producto' == $ruta[0]) ? active : '' @endif"><span>{{ \Helper::dictionary('productos') }}</span><i class="icon-flecha-2"></i></a>
                             <div class="header__megaMenu">
                                 <div class="header__mega__center">
-                                    <div class="wancho header__megaMenu__cnt">
-                                        <a href="{{route('industrial', [ 'slug' => 'todos' ] )}}" class="header__megaMenu__item">
+                                    <div class="wancho header__megaMenu__cnt" align="center">
+                                        @php    
+                                        $etiqueta="";
+                                        if($idiom == 'es'){
+                                            $etiqueta='listos-para-consumir';
+                                        }
+                                        else{
+                                            $etiqueta='ready-to-consume';
+                                        }
+                                        @endphp
+                                        <a href="{{route('industrial', [ 'slug' => $etiqueta ] )}}" class="header__megaMenu__item" align="center">
                                                 <figure>
-                                                    <img src="{{$industrial->imagenCaladaListado}}" alt="" width="276" >
+                                                    <img src="{{$listo_consumir->imagenCaladaListado}}" alt="" width="276" height="250">
                                                     <figcaption>
-                                                        <p>{{$industrial->tituloListado}}</p>
+                                                        <p>{{$listo_consumir->tituloListado}}</p>
                                                     </figcaption>
                                                 </figure>
                                         </a>
+                                        @php
+                                        $etiqueta="";
+                                        if($idiom == 'es'){
+                                            $etiqueta='insumos-industriales';
+                                        }
+                                        else{
+                                            $etiqueta='industrial-inputs';
+                                        }
+                                        
+                                        @endphp
+                                        <a href="{{route('industrial', [ 'slug' => $etiqueta ] )}}" class="header__megaMenu__item" align="center">
+                                                <figure>
+                                                    <img src="{{@$insumo_industrial->imagenCaladaListado}}" alt="" width="276" height="250">
+                                                    <figcaption>
+                                                        <p>{{$insumo_industrial->tituloListado}}</p>
+                                                    </figcaption>
+                                                </figure>
+                                        </a>
+
+
                                         <a href="{{route('tradicional')}}" class="header__megaMenu__item">
                                                 <figure>
-                                                    <img src="{{$tradicional->imagenCaladaListado}}" alt="" width="276" >
+                                                    <img src="{{$tradicional->imagenCaladaListado}}" alt="" width="276" height="250" align="center">
                                                     <figcaption>
                                                         <p>{{$tradicional->tituloListado}}</p>
                                                     </figcaption>
                                                 </figure>
                                         </a>
+                                        
                                     </div>
                                     
                                 </div>

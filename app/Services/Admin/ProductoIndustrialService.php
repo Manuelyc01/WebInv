@@ -52,6 +52,16 @@ class ProductoIndustrialService
 			'check_exportacion'
 		));
 
+		$element->translateOrNew($locale)->enlaceFacebook = $request->enlaceFacebook;
+        $element->translateOrNew($newLocale)->enlaceFacebook = $request->enlaceFacebook;
+
+        $element->translateOrNew($locale)->enlaceInstagram = $request->enlaceInstagram;
+        $element->translateOrNew($newLocale)->enlaceInstagram = $request->enlaceInstagram;
+
+        $element->translateOrNew($locale)->enlaceWhatsapp = $request->enlaceWhatsapp;
+        $element->translateOrNew($newLocale)->enlaceWhatsapp = $request->enlaceWhatsapp;
+        
+
 		$element->translateOrNew($locale)->nombre = $request->nombre;
         $element->translateOrNew($newLocale)->nombre = $request->nombre;
 
@@ -124,6 +134,10 @@ class ProductoIndustrialService
 			'check_exportacion'
 		), $id);
 
+		$element->translateOrNew($locale)->enlaceFacebook = $request->enlaceFacebook;
+        $element->translateOrNew($locale)->enlaceInstagram = $request->enlaceInstagram;
+        $element->translateOrNew($locale)->enlaceWhatsapp = $request->enlaceWhatsapp;
+        
 		$element->translateOrNew($locale)->nombre = $request->nombre;
 		$element->translateOrNew($locale)->des = $request->des;        
         $element->translateOrNew($locale)->arrayPresentaciones = $arrayPresentaciones; //arrayPresentaciones        

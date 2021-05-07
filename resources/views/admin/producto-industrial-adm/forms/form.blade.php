@@ -60,6 +60,18 @@
             {!! Form::stdSelect('Exportación', 0, 'check_exportacion', $ddlExportacion, null) !!}
         </div>
 
+        <div class="form-group {{ $errors->has('enlaceFacebook') ? 'has-error' : '' }}">
+            {!! Form::stdText('Enlace Facebook', 0, 'enlaceFacebook', $errors) !!}
+        </div>
+        
+        <div class="form-group {{ $errors->has('enlaceInstagram') ? 'has-error' : '' }}">
+            {!! Form::stdText('Enlace Instagram', 0, 'enlaceInstagram', $errors) !!}
+        </div>
+        
+        <div class="form-group {{ $errors->has('enlaceWhatsapp') ? 'has-error' : '' }}">
+            {!! Form::stdText('Enlace Whatsapp', 0, 'enlaceWhatsapp', $errors) !!}
+        </div>
+
 
         {{-- arrayPresentaciones --}}
         <div class="form-group {{ $errors->has('arrayPresentaciones') ? 'has-error' : '' }}">

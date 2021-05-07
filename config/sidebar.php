@@ -79,8 +79,6 @@ return[
               'url' => 'historia-adm.index'              
              ],
 
-            
- 
              [
               'type' => 'two',
               'text' => 'Equipo',
@@ -111,7 +109,6 @@ return[
                   'url' => 'integrante-adm.index'
                 ],
 
-
               ]
             ],
             
@@ -124,28 +121,24 @@ return[
       'slug' => 'tradicional',
       'ico'  => 'shopping-cart',
       'children' => [
-            
             [
               'type' => 'one',
               'text' => 'Tradicional',
               'ico'  => 'book',
               'url' => 'tradicional-adm.index'              
             ],
-
             [
               'type' => 'one',
               'text' => 'Etiquetas',
               'ico'  => 'book',
               'url' => 'etiqueta-tradicional-adm.index'              
             ],
-
             [
               'type' => 'one',
               'text' => 'Productos',
               'ico'  => 'book',
               'url' => 'producto-tradicional-adm.index'              
             ],
-
          ]
     ],
 
@@ -156,20 +149,34 @@ return[
       'ico'  => 'shopping-cart',
       'children' => [
             
-            [
+            /*[
               'type' => 'one',
               'text' => 'Industrial',
               'ico'  => 'book',
               'url' => 'industrial-adm.index'              
             ],
-
+            */
+            [
+              'type' => 'one',
+              'text' => 'Insumos Industriales',
+              'ico'  => 'book',
+              'url' => 'insumo-industrial-adm.index'              
+            ],
+            [
+              'type' => 'one',
+              'text' => 'Listos para consumir',
+              'ico'  => 'book',
+              'url' => 'listo-consumir-adm.index' 
+                           
+            ],
+            
             [
               'type' => 'one',
               'text' => 'Categorías',
               'ico'  => 'book',
               'url' => 'etiqueta-industrial-adm.index'              
             ],
-
+            	
             [
               'type' => 'one',
               'text' => 'Etiquetas',

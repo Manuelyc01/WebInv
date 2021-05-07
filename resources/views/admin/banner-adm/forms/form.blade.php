@@ -36,7 +36,7 @@
         </div>
         
         <div class="form-group {{ $errors->has('enlaceWhatsapp') ? 'has-error' : '' }}">
-            {!! Form::stdText('Enlace Instagram', 0, 'enlaceWhatsapp', $errors) !!}
+            {!! Form::stdText('Enlace Whatsapp', 0, 'enlaceWhatsapp', $errors) !!}
         </div>
 
         <div class="form-group {{ $errors->has('fondoDesktop') ? 'has-error' : '' }}">

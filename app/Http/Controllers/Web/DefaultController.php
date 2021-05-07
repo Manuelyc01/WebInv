@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{Home,Banner,Industrial,Tradicional, GestionNivel1,GestionNivel2, GestionNivel3, GestionNivel3b, Info};
+use App\Models\{Home,Banner,Industrial,Tradicional, GestionNivel1,GestionNivel2, GestionNivel3, GestionNivel3b, Info,InsumoIndustrial,ListoConsumir};
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
@@ -14,6 +14,9 @@ class DefaultController extends Controller
     {
         $data['industrial'] = Industrial::first();
         $data['tradicional'] = Tradicional::first();
+        $data['insumo_industrial'] = InsumoIndustrial::first();
+        $data['listo_consumir'] = ListoConsumir::first();
+        
         $data['banners'] = Banner::orderBy('orden', 'ASC')->get();
         $data['home'] = Home::first();
 
@@ -21,7 +24,7 @@ class DefaultController extends Controller
         $enlaceBlog = Info::first()->enlaceBlog;
         $result = $client->get($enlaceBlog . '/wp-json/wp/v2/category', []);
         $data['categoria'] = json_decode($result->getBody());
-
+        
         //dd($data['categoria']);
 
         return view("web.default.home", compact('data'));

@@ -15,7 +15,10 @@ class ProdIndusTranslation extends Model
         'arrayPresentaciones',
         'fichaPDF',
         'arrayBeneficios',
-        'tituloRelacionados'
+        'tituloRelacionados',
+        'enlaceFacebook',
+        'enlaceInstagram',
+        'enlaceWhatsapp'
     ];
 
     protected $casts =[

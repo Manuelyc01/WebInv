@@ -22,19 +22,58 @@ equipo-css
         <p>{{$info->subtituloProductos}}</p>
     </div>
     <div class="wancho b3__cnt">
+    <div class="b3__item scroll-item">
+            <span class="b3__line"></span>
+            <div class="b3__figure">
+                <img class="b3__img" src="{{$data['listo_consumir']->imagenCaladaListado}}" width="570" height="412" alt="">  
+                <div class="b3__figure__absolute">
+                    <img src="{{$data['listo_consumir']->imagenFondoListado}}" width="472"  alt="">  
+                </div>
+            </div>
+            
+            <div class="b3__text">
+                <h2>{{$data['listo_consumir']->tituloListado}}</h2>
+                {!!$data['listo_consumir']->desListado!!}
+                <div class="b3__btn">
+                    @php
+                        $etiqueta="";
+                        
+                        if($idiom == 'es'){
+                            $etiqueta='listos-para-consumir';
+                        }
+                        else{
+                            $etiqueta='ready-to-consume';
+                        }
+                    @endphp
+                    <a href="{{route('industrial', [ 'slug' => $etiqueta ] )}}" class="general__btn" data-style="lineal">
+                        <span>{{ \Helper::dictionary('ver-productos') }}</span>
+                    </a>   
+                </div>
+            </div>
+        </div>
+        
         <div class="b3__item scroll-item">
             <span class="b3__line"></span>
             <div class="b3__figure">
-                <img class="b3__img" src="{{$data['industrial']->imagenCaladaListado}}" width="570" height="412" alt="">  
+                <img class="b3__img" src="{{$data['insumo_industrial']->imagenCaladaListado}}" width="570" height="412" alt="">  
                 <div class="b3__figure__absolute">
-                    <img src="{{$data['industrial']->imagenFondoListado}}" width="472"  alt="">  
+                    <img src="{{$data['insumo_industrial']->imagenFondoListado}}" width="472"  alt="">  
                 </div>
             </div>
             <div class="b3__text">
-                <h2>{{$data['industrial']->tituloListado}}</h2>
-                {!!$data['industrial']->desListado!!}
+                <h2>{{$data['insumo_industrial']->tituloListado}}</h2>
+                {!!$data['insumo_industrial']->desListado!!}
                 <div class="b3__btn">
-                    <a href="{{route('industrial', [ 'slug' => 'todos' ] )}}" class="general__btn" data-style="lineal">
+                    @php
+                        $etiqueta="";
+                        if($idiom == 'es'){
+                            $etiqueta='insumos-industriales';
+                        }
+                        else{
+                            $etiqueta='insumos-industriales';
+                        }
+                    @endphp
+                    <a href="{{route('industrial', [ 'slug' => $etiqueta ] )}}" class="general__btn" data-style="lineal">
                         <span>{{ \Helper::dictionary('ver-productos') }}</span>
                     </a>   
                 </div>

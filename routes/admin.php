@@ -23,7 +23,7 @@ Route::get('lang/{lang}', 'Config\LanguageController@setLocale')->name('config.l
 // Route::group(['prefix' => 'web-adm', 'namespace' => 'Config' , 'middleware' => 'auth:admin'] , function() {
 //     Route::resource('dictionary', 'DictionaryController');
 // });
-
+ 
 Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'auth:admin'] , function() {
 	Route::any('/dropzone', '\Ems\AdminEms\controllers\DropzoneController@upload')->name('dropzone');
 
@@ -47,6 +47,8 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::resource('historia-adm', 'HistoriaController');
 	Route::resource('home-adm', 'HomeController');
 	Route::resource('industrial-adm', 'IndustrialController');
+	Route::resource('insumo-industrial-adm', 'InsumoIndustrialController');
+	Route::resource('listo-consumir-adm', 'ListoConsumirController');
 	Route::resource('info-adm', 'InfoController');
 	Route::resource('integrante-adm', 'IntegranteController');
 	Route::resource('producto-industrial-adm', 'ProductoIndustrialController');
