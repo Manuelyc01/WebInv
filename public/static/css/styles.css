@@ -2813,10 +2813,11 @@ a:focus {
 @media screen and (min-width: 1025px) {
   .b16__cnt__tab a:hover {
     background-color: rgba(225,224,224,0.42);
+    color: black;
   }
 }
 .b16__ubica {
-  padding-top: 17px;
+    padding-top: 17px;
     display: -webkit-box;
     display: -moz-box;
     display: -webkit-flex;
@@ -2829,7 +2830,7 @@ a:focus {
     -ms-flex-align: start;
     -webkit-align-items: flex-start;
     align-items: flex-start;
-    color: #0E3920;
+    color: black;
     opacity: 0.6;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
     filter: alpha(opacity=60);
@@ -2839,7 +2840,7 @@ a:focus {
   font-size: 16px;
 }
 .b16__ubica p {
-  font-size: 13px;
+  font-size: 15px;
   -webkit-box-flex: 1.38;
   -moz-box-flex: 1.38;
   -o-box-flex: 1.38;
