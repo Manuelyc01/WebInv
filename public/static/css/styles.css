@@ -620,7 +620,7 @@ br {
 body {
   font-size: 15px;
   font-family: 'Graphik-Regular', sans-serif;
-  color: #787878;
+  color: #011A0B;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
 }
@@ -2805,7 +2805,10 @@ a:focus {
   font-size: 13px;
 }
 .b16__cnt__tab a.active {
-  background-color: #e1e0e0;
+  background-color: #245e3c;
+    color: white;
+    font-family: 'Graphik-Semibold', sans-serif;
+    font-size: 15px;
 }
 @media screen and (min-width: 1025px) {
   .b16__cnt__tab a:hover {
@@ -2814,22 +2817,22 @@ a:focus {
 }
 .b16__ubica {
   padding-top: 17px;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  -o-box-align: start;
-  -ms-flex-align: start;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-  color: #787878;
-  opacity: 0.6;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
-  filter: alpha(opacity=60);
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -o-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    color: #0E3920;
+    opacity: 0.6;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+    filter: alpha(opacity=60);
 }
 .b16__ubica i {
   margin-right: 10px;
@@ -3142,7 +3145,7 @@ a:focus {
   font-size: calc(55px + (80 - 55) * ((100vw - 320px) / (1920 - 320)));
   font-family: 'DomaineDispSemibold', sans-serif;
   -webkit-text-stroke: 0.5px #245e3c;
-  -webkit-text-fill-color: #fff;
+  -webkit-text-fill-color: #0E3920;
   line-height: 1;
 }
 .b18__ul p {
@@ -10384,7 +10387,9 @@ figure
   -webkit-justify-content: center;
   justify-content: center;
 }
-
+.header .header__megaMenu__item {
+  margin: 20px;
+}
 /*
 .header .header__megaMenu__item {
   margin: 0;
