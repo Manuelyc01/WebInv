@@ -97,12 +97,20 @@
                  </figure>
                  <div class="footer__social">
                       <span>{{ \Helper::dictionary('siguenos-en') }}</span>
-                      <ul>
-                          @if ($info->facebookEnaco != '')
-                            <li><a class="icon-facebook-app-logo" href="{{$info->facebookEnaco}}" target="_blank"></a></li>
-                          @endif
-                          
-                      </ul>
+                      <div class="redes-container-head">
+                            <ul>        
+                                    <li>
+                                        <a href="https://www.facebook.com/enaco.oficial/" class="icon-facebook2"></a>
+                                    </li>
+                                                                                                            <li>
+                                        <a href="https://www.youtube.com/channel/UC9RnTxbhrnWCgeiqapUFEXA" class="icon-youtube"></a>
+                                    </li>
+                                    </li>
+                                                                                                            <li>
+                                        <a href="https://www.linkedin.com/company/enaco-s-a/" class="icon-linkedin2"></a>
+                                    </li>
+                            </ul>
+                    </div>
                  </div>
                  {{-- <div class="footer__redes__mail">
                      <a href="mailto:{{$info->correoWeb}}">{{$info->correoWeb}}</a>

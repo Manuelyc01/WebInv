@@ -219,20 +219,7 @@
                         @endif
                         <li class="menu-item"><a href="{{route('contactanos')}}" class="menu-link"><span>{{ \Helper::dictionary('contactanos') }}</span></a></li>
                     </ul>
-                    <div class="redes-container-head">
-                            <ul>        
-                                    <li>
-                                        <a href="https://www.facebook.com/enaco.oficial/" class="icon-facebook2"></a>
-                                    </li>
-                                                                                                            <li>
-                                        <a href="https://www.youtube.com/channel/UC9RnTxbhrnWCgeiqapUFEXA" class="icon-youtube"></a>
-                                    </li>
-                                    </li>
-                                                                                                            <li>
-                                        <a href="https://www.linkedin.com/company/enaco-s-a/" class="icon-linkedin2"></a>
-                                    </li>
-                            </ul>
-                </div>
+                
                 </div>
             </nav>
             <div class="header__btn">

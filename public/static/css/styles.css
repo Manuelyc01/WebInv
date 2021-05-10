@@ -10948,6 +10948,21 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
 }
 }
 
+@media only screen and (max-width: 768px) {
+  .redes-container{
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 150px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .redes-container{
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 650px;
+  }
+}
 
 :root{
   --facebook:#3b5999;
@@ -10956,11 +10971,7 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
   --youtube: red;
   --linkedin2: #0e76a8;
 }
-.redes-container{
-  align-items: center;
-  justify-content: center;
-  padding-top: 80px;
-}
+
 .redes-container ul{
   padding-top: 10px;
 }
@@ -11058,3 +11069,4 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
 .redes-container-prod ul li .icon-whatsapp:hover{
   background: var(--whatsapp);
 }
+
