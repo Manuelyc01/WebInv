@@ -1,6 +1,8 @@
 @extends('web.common.base')
 
 @section('cssadicional')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+<link rel="stylesheet" href="{{ $STATIC_URL }}glider/estilos.css">
 <link rel="stylesheet" href="{{ $STATIC_URL }}js/owl-carousel/owl.carousel.min.css">
 <link rel="stylesheet" href="{{ $STATIC_URL }}css/animate.css" />
 @stop
@@ -197,11 +199,36 @@ home-css
                 </div>
             </div>
         </div>
-    </div>
-    <div class="b3__btn__bottom">
+        <div class="b3__btn__bottom">
         <a href="{{route('productos')}}" class="general__btn" data-style="">
             <span>{{ \Helper::dictionary('ver-productos') }}</span>
         </a>
+        </div>
+        {{-- Nuevo Banner --}}
+        <div class="carousel">
+            <h5 style="text-align:center; margin-top:20px;">Encuentra nuestros productos en:</h5>
+			<div class="carousel__contenedor">
+				<button aria-label="Anterior" class="carousel__anterior">
+					<i class="fas fa-chevron-left"></i>
+				</button>
+
+				<div class="carousel__lista">
+                @foreach ($data['banners_clientes'] as $banners_clientes)
+					<div class="carousel__elemento">
+						<img src="{{ $banners_clientes->fondoDesktop }}">
+						{!!$banners_clientes->des!!}
+					</div>
+                @endforeach
+				</div>
+                
+				<button aria-label="Siguiente" class="carousel__siguiente">
+					<i class="fas fa-chevron-right"></i>
+				</button>
+			</div>
+
+			<div role="tablist" class="carousel__indicadores"></div>
+		</div>
+
     </div>
 </section>
 {{-- BLOQUE CUATRO --}}
@@ -279,6 +306,9 @@ home-css
 @stop
 
 @section('jsfinal')
+<script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+<script src="{{ $STATIC_URL }}glider/app.js"></script>
 <script src="{{ $STATIC_URL }}js/owl-carousel/owl.carousel.js"></script>
 <script src="{{ $STATIC_URL }}js/validationform/jquery.validationEngine.js"></script>
 <script type="text/javascript">

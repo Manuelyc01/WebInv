@@ -10953,7 +10953,7 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
   .redes-container{
     align-items: center;
     justify-content: center;
-    margin-bottom: 150px;
+    padding-bottom: 150px;
   }
 }
 
@@ -10961,7 +10961,7 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
   .redes-container{
     align-items: center;
     justify-content: center;
-    margin-bottom: 650px;
+    padding-bottom: 650px;
   }
 }
 
@@ -10979,15 +10979,15 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
 .redes-container ul li{
   display: inline-block;
   margin: 0 5px;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   text-align: center;
 }
 .redes-container ul li a{
   display: block;
   background: #3333338c;
   color: #fff;
-  line-height: 50px;
+  line-height: 40px;
   font-size: 30px;
 }
 .redes-container ul li a:hover{
@@ -11047,15 +11047,15 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
 .redes-container-prod ul li{
   display: inline-block;
   margin: 0 5px;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   text-align: center;
 }
 .redes-container-prod ul li a{
   display: block;
   background: #3333338c;
   color: #fff;
-  line-height: 50px;
+  line-height: 40px;
   font-size: 30px;
 }
 .redes-container-prod ul li a:hover{

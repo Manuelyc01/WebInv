@@ -48,6 +48,13 @@ return[
         'url'  => 'banner-adm.index',
         'ico'  => 'picture'
     ],
+    [
+      'type' => 'simple',
+      'text' => 'Banners Clientes del Home',
+      'slug' => 'bannercli',
+      'url'  => 'bannercli-adm.index',
+      'ico'  => 'picture'
+  ],
 
     [
       'type' => 'simple',

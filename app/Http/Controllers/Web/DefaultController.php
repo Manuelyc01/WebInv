@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{Home,Banner,Industrial,Tradicional, GestionNivel1,GestionNivel2, GestionNivel3, GestionNivel3b, Info,InsumoIndustrial,ListoConsumir};
+use App\Models\{Home,Banner,Industrial,Tradicional, GestionNivel1,GestionNivel2, GestionNivel3, GestionNivel3b, Info,InsumoIndustrial,ListoConsumir,BannerClientes};
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
@@ -18,6 +18,9 @@ class DefaultController extends Controller
         $data['listo_consumir'] = ListoConsumir::first();
         
         $data['banners'] = Banner::orderBy('orden', 'ASC')->get();
+        
+        $data['banners_clientes'] = BannerClientes::orderBy('orden', 'ASC')->get();
+
         $data['home'] = Home::first();
 
         $client = new Client(); //GuzzleHttp\Client

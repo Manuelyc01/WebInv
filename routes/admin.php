@@ -30,6 +30,9 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::resource('diccionario', 'DiccionarioController');
 	
 	Route::resource('banner-adm', 'BannerController');
+	
+	Route::resource('bannercli-adm', 'BannerClientesController');
+
 	Route::resource('cargo-adm', 'CargoController');
 	Route::resource('categoria-servicio-adm', 'CategoriaServicioController');
 	Route::resource('contacto-denuncia-adm', 'ContactoDenunciaController');
