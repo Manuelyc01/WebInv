@@ -1,8 +1,14 @@
 window.addEventListener('load', function(){
-    new Glider(document.querySelector('.carousel__lista'), {
+	const car = document.querySelector(".carousel");
+    car.style.visibility = "visible";/*hacer visible una vez cargado*/ 
+
+    let slider=new Glider(document.querySelector('.carousel__lista'), {
+		autoplay:2000					,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		dots: '.carousel__indicadores',
+		draggable:true,
+		rewind:true,
 		arrows: {
 			prev: '.carousel__anterior',
 			next: '.carousel__siguiente'
@@ -26,4 +32,25 @@ window.addEventListener('load', function(){
 			}
 		]
 	});
+	
+	let autoplayDelay = 3500;
+
+	let autoplay = setInterval(() => {
+		slider.scrollItem('next')
+	}, autoplayDelay);
+
+	document.querySelector('.carousel__lista').addEventListener('mouseover', (event) => {
+		if (autoplay != null) {
+		clearInterval(autoplay);
+		autoplay = null;
+		}
+	}, 300);
+
+	document.querySelector('.carousel__lista').addEventListener('mouseout', (event) => {
+		if (autoplay == null) {
+		autoplay = setInterval(() => {
+			slider.scrollItem('next')
+		}, autoplayDelay);
+		}
+	}, 300);
 });
