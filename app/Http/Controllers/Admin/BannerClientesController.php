@@ -48,12 +48,12 @@ class BannerClientesController extends Controller
     {
         $this->service->actualizar($request, $id);
         session()->flash('success', '¡Información actualizada con éxito!');
-        return redirect()->route('bannercli-adm.index');
+        return redirect()->route('admin.bannercli-adm.index');
     }
 
     public function destroy($id)
     {
         $this->service->eliminar($id);
-        return redirect()->route('bannercli-adm.index');
+        return redirect()->route('admin.bannercli-adm.index');
     }
 }
