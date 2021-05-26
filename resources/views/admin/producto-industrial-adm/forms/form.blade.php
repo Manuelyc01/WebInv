@@ -67,10 +67,6 @@
         <div class="form-group {{ $errors->has('enlaceInstagram') ? 'has-error' : '' }}">
             {!! Form::stdText('Enlace Instagram', 0, 'enlaceInstagram', $errors) !!}
         </div>
-        
-        <div class="form-group {{ $errors->has('enlaceWhatsapp') ? 'has-error' : '' }}">
-            {!! Form::stdText('Enlace Whatsapp', 0, 'enlaceWhatsapp', $errors) !!}
-        </div>
 
 
         {{-- arrayPresentaciones --}}

@@ -44,11 +44,7 @@ industrial-css
                                         <a href="{{$data['producto']->enlaceInstagram}}" class="icon-instagram"></a>
                                     </li>
                                     @endif
-                                    @if($data['producto']->enlaceWhatsapp != '')
-                                    <li>
-                                        <a href="{{$data['producto']->enlaceWhatsapp}}" class="icon-whatsapp"></a>
-                                    </li>
-                                    @endif
+                            
                             </ul>
                 </div>
             @endif
