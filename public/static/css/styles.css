@@ -10953,7 +10953,8 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
   .redes-container{
     align-items: center;
     justify-content: center;
-    padding-bottom: 150px;
+    margin-bottom: 25%;
+    margin-left: 100%;
   }
 }
 
@@ -10961,7 +10962,7 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
   .redes-container{
     align-items: center;
     justify-content: center;
-    padding-bottom: 650px;
+    margin-bottom: 55%;
   }
 }
 
