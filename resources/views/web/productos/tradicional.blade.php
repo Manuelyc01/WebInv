@@ -1,6 +1,8 @@
 @extends('web.common.base')
 
 @section('cssadicional')
+<!--Icon-Font-->
+<script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
 @stop
 
 @section('classbody')
@@ -8,6 +10,10 @@ categoria-css
 @stop
 
 @section('content')
+<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank">
+	    <i class="fa fa-whatsapp icono"></i>
+</a>
+
 <section class="b2 b2__tradicional">
     <div class="b2__cnt">
         <figure class="b2__figure">

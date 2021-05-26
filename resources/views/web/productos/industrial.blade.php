@@ -1,6 +1,8 @@
 @extends('web.common.base')
 
 @section('cssadicional')
+<!--Icon-Font-->
+<script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
 @stop
 
 @section('classbody')
@@ -14,6 +16,10 @@ categoria-css
 	//dd($dato);
 	//$ruta_completa = explode('/', Request::path());
 @endphp
+<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank">
+	    <i class="fa fa-whatsapp icono"></i>
+</a>
+
 <section class="b13">
 <div class="wancho b13__cnt">
     <div class="b9__text">

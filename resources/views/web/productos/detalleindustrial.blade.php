@@ -1,6 +1,8 @@
 @extends('web.common.base')
 
 @section('cssadicional')
+<!--Icon-Font-->
+<script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
 @stop
 
 @section('classbody')
@@ -8,6 +10,10 @@ industrial-css
 @stop
 
 @section('content')
+<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank">
+	    <i class="fa fa-whatsapp icono"></i>
+</a>
+
 <section class="b16 b16__industrial">
     <figure class="b16__figure g-banner" style="background-image: url('{{$data['producto']->imagenFondo}}');" img-desk="{{$data['producto']->imagenFondo}}" img-mob="{{$data['producto']->imagenFondoMobile}}"></figure>
     <div class="wancho b16__cnt">
