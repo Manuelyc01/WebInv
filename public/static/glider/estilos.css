@@ -69,4 +69,7 @@
 	.contenido-principal > * {
 		width: 100%;
 	}
+	.carousel__siguiente {
+		right: 0px;
+	}
 }
