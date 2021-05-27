@@ -10,9 +10,9 @@ industrial-css
 @stop
 
 @section('content')
-<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank">
+<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank" data-tooltip="¿Necesitas ayuda?">
 	    <i class="fa fa-whatsapp icono"></i>
-</a>
+    </a>
 
 <section class="b16 b16__industrial">
     <figure class="b16__figure g-banner" style="background-image: url('{{$data['producto']->imagenFondo}}');" img-desk="{{$data['producto']->imagenFondo}}" img-mob="{{$data['producto']->imagenFondoMobile}}"></figure>

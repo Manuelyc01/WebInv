@@ -11089,8 +11089,18 @@ body.equipo-css section.b11 a[href="#popup-3"] .b11__text p, body.equipo-css sec
   z-index:100;
   transition: all 300ms ease;
 }
-.btn-wsp:hover{
-  background: #20ba5a;
+.btn-wsp:hover::after{
+  position:absolute;
+  background: #25d366;
+  content: attr(data-tooltip);
+  transform: translateY(-100%) translateX(-72%);
+  top:-.50rem;
+  left: .50rem;
+  width: max-content;
+  padding: .5rem;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius: .3rem;
 }
 @media only screen and (min-width:320px) and (max-width:768px){
   .btn-wsp{

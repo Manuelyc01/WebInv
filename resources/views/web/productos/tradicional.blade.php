@@ -10,9 +10,9 @@ categoria-css
 @stop
 
 @section('content')
-<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank">
+<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank" data-tooltip="¿Necesitas ayuda?">
 	    <i class="fa fa-whatsapp icono"></i>
-</a>
+    </a>
 
 <section class="b2 b2__tradicional">
     <div class="b2__cnt">

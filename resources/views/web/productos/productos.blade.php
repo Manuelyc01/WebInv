@@ -3,6 +3,7 @@
 @section('cssadicional')
 <!--Icon-Font-->
 <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    
 @stop
 
 @section('classbody')
@@ -19,9 +20,11 @@ equipo-css
         
 @endphp
 @section('content')
-<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank">
+    
+   <a href="https://wa.link/f2il39" class="btn-wsp" target="_blank" data-tooltip="¿Necesitas ayuda?">
 	    <i class="fa fa-whatsapp icono"></i>
-</a>
+    </a>    
+
 
 <section class="b12 scroll-wrap">
     <div class="b3__hoja1">

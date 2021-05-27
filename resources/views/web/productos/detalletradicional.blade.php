@@ -10,9 +10,9 @@ trandicional-css
 @stop
 
 @section('content')
-<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank">
+<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank" data-tooltip="¿Necesitas ayuda?">
 	    <i class="fa fa-whatsapp icono"></i>
-</a>
+    </a>
 
 <section class="b16">
     <div class="wancho b16__cnt">

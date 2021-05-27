@@ -16,9 +16,9 @@ categoria-css
 	//dd($dato);
 	//$ruta_completa = explode('/', Request::path());
 @endphp
-<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank">
+<a href="https://wa.link/f2il39" class="btn-wsp" target="_blank" data-tooltip="¿Necesitas ayuda?">
 	    <i class="fa fa-whatsapp icono"></i>
-</a>
+    </a>
 
 <section class="b13">
 <div class="wancho b13__cnt">
