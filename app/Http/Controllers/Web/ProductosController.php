@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{Industrial,Tradicional,ProdIndus,ProdTradi,EtiquetaIndus,InsumoIndustrial,ListoConsumir};
+use App\Models\{Industrial,Tradicional,ProdIndus,ProdTradi,EtiquetaIndus,InsumoIndustrial,ListoConsumir,IndustrialBanner};
 
 class ProductosController extends Controller
 {
@@ -31,7 +31,7 @@ class ProductosController extends Controller
  
             //dd($data['productos']);
         }
-        
+        $data['industrial-banners'] = IndustrialBanner::all();
         $data['etiqueta'] = EtiquetaIndus::all();
         return view("web.productos.industrial",compact('data'));
     }   

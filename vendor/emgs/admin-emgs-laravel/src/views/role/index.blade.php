@@ -25,6 +25,7 @@
 									{{-- @foreach ($collection as $item) --}}
 										<li>Info {{ Form::checkbox('info', 'info', $element->permiso['info'], ['class' => 'form-control marcarPermiso']) }}</li>
 										<li>Banner del Home {{ Form::checkbox('banner', 'banner', $element->permiso['banner'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Banner clientes del Home {{ Form::checkbox('banner_clientes', 'banner_clientes', $element->permiso['banner_clientes'], ['class' => 'form-control marcarPermiso']) }}</li>
 										<li>Home {{ Form::checkbox('home', 'home', $element->permiso['home'], ['class' => 'form-control marcarPermiso']) }}</li>
 										<li>Sede {{ Form::checkbox('sede', 'sede', $element->permiso['sede'], ['class' => 'form-control marcarPermiso']) }}</li>
 										<li>Nosotros {{ Form::checkbox('nosotros', 'nosotros', $element->permiso['nosotros'], ['class' => 'form-control marcarPermiso']) }}</li>

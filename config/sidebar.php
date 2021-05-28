@@ -51,7 +51,7 @@ return[
     [
       'type' => 'simple',
       'text' => 'Banners Clientes del Home',
-      'slug' => 'bannercli',
+      'slug' => 'banner_clientes',
       'url'  => 'bannercli-adm.index',
       'ico'  => 'picture'
   ],
@@ -196,6 +196,12 @@ return[
               'text' => 'Productos',
               'ico'  => 'book',
               'url' => 'producto-industrial-adm.index'              
+            ],
+            [
+              'type' => 'one',
+              'text' => 'Banners Industrial',
+              'ico'  => 'book',
+              'url' => 'industrial-banner-adm.index'              
             ],
 
          ]
