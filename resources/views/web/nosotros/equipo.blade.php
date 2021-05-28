@@ -34,7 +34,6 @@ equipo-css
         <div class="wancho b11__cnt__items">
             @foreach ($data['integrantes'] as $integrante)
                 @if ($integrante->Niveles->slug != '')
-					
                 <a href="#popup-{{$loop->iteration}}" class="b11__item open-boxlight {{$integrante->Niveles->slug}}">
                     @if ($integrante->imagen != '')
                     <figure>
@@ -43,13 +42,9 @@ equipo-css
                     @endif
                     <div class="b11__text">
                         <h3>{{$integrante->Cargo->nombre}}</h3>
-						@if ($integrante->Cargo->nombre == 'Directores')
-							<p>este campos es una prueba</p>
-						@endif
-						
+                        <p>{{$integrante->nombreCompleto}}</p>
                     </div>
                 </a>
-				
                 @endif
             @endforeach
         </div>
@@ -124,7 +119,6 @@ equipo-css
     </div>
 </div>
 
-
 <script src="{{ $STATIC_URL }}js/boxlight/boxlight.js"></script>
 <script src="{{ $STATIC_URL }}js/owl-carousel/owl.carousel.js"></script>
 <script type="text/javascript">
@@ -142,9 +136,9 @@ equipo-css
             // $(".b11__item__presidente.b11__text").attr("style", "max-width: 400px;");
         };
 
-        $(".b11__item__presidente .b11__text").attr("style", "max-width:100%;");
+        $(".b11__item__presidente .b11__text").attr("style", "max-width:400px;");
         $(".b11__item__presidente .b11__text h3").attr("style", "font-size:18px;");
-        $(".b11__item__presidente .b11__text p").attr("style", "font-size:12px;");
+        $(".b11__item__presidente .b11__text p").attr("style", "font-size:22px;");
         $(".b11__item__presidente").attr("style", "height:153px;");
         $(".b11__item__gerente .b11__text").attr("style", "width:70%;");
         // alert("a");

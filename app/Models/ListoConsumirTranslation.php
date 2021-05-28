@@ -12,9 +12,7 @@ class ListoConsumirTranslation extends Model
     public $fillable = [
         'tituloListado',
         'desListado',
-        'slug',
-        'tituloB1',
-        'desB1'
+        'slug'
     ];
     
     public function setTituloListadoAttribute($value)

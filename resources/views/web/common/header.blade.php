@@ -97,9 +97,9 @@
                                         @endphp
                                         <a href="{{route('industrial', [ 'slug' => $etiqueta ] )}}" class="header__megaMenu__item" align="center">
                                                 <figure>
-                                                    <img src="{{$listo_consumir->imagenCaladaListado}}" alt="" width="276" height="250">
+                                                    <img src="{{@$listo_consumir->imagenCaladaListado}}" alt="" width="276" height="250">
                                                     <figcaption>
-                                                        <p>{{$listo_consumir->tituloListado}}</p>
+                                                        <p>{{@$listo_consumir->tituloListado}}</p>
                                                     </figcaption>
                                                 </figure>
                                         </a>
@@ -117,7 +117,7 @@
                                                 <figure>
                                                     <img src="{{@$insumo_industrial->imagenCaladaListado}}" alt="" width="276" height="250">
                                                     <figcaption>
-                                                        <p>{{$insumo_industrial->tituloListado}}</p>
+                                                        <p>{{@$insumo_industrial->tituloListado}}</p>
                                                     </figcaption>
                                                 </figure>
                                         </a>
@@ -125,9 +125,9 @@
 
                                         <a href="{{route('tradicional')}}" class="header__megaMenu__item">
                                                 <figure>
-                                                    <img src="{{$tradicional->imagenCaladaListado}}" alt="" width="276" height="250" align="center">
+                                                    <img src="{{@$tradicional->imagenCaladaListado}}" alt="" width="276" height="250" align="center">
                                                     <figcaption>
-                                                        <p>{{$tradicional->tituloListado}}</p>
+                                                        <p>{{@$tradicional->tituloListado}}</p>
                                                     </figcaption>
                                                 </figure>
                                         </a>

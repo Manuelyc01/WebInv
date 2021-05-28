@@ -13,8 +13,6 @@ class InsumoIndustrialTranslation extends Model
         'tituloListado',
         'desListado',
         'slug',
-        'tituloB1',
-        'desB1'
     ];
     
     public function setTituloListadoAttribute($value)

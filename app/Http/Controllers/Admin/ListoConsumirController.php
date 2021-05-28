@@ -26,7 +26,7 @@ class ListoConsumirController extends Controller
         if($element){
             return view('admin.listo-consumir-adm.edit', compact('element')); 
         }
-        return view('listo-consumir-adm.edit');
+        return view('admin.listo-consumir-adm.edit');
     }
 
     /**

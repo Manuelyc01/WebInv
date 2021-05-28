@@ -7,6 +7,8 @@
 <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
 <script>
         window.addEventListener('load',function(){
+            const car = document.querySelector(".glider");
+            car.style.visibility = "visible";/*hacer visible una vez cargado*/ 
         document.querySelector('.glider').addEventListener('glider-slide-visible', function(event){
             var glider = Glider(this);
             console.log('Slide Visible %s', event.detail.slide)
@@ -199,7 +201,7 @@ categoria-css
 <section class="b13">
 <div class="wancho b13__cnt">
     <div class="glider-contain">
-        <div class="glider">
+        <div class="glider"  style="visibility:hidden;">
             @foreach($data['industrial-banners'] as $banner)
                 @if($banner->locale==$locale)
                     <div><img src="{{$banner->banner}}" ></div>

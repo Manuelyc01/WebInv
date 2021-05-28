@@ -113,11 +113,11 @@ nosotros-css
 {{-- BLOQUE CUATRO - CALIDAD --}}
 <section class="b9">
     <div class="wancho b9__cnt">
-        <div class="b9__text">
+        <div class="b9__text mascara">
             <div class="general__title" data-style="50">
                 <h2>{{$data['historia']->tituloB4}}</h2>
             </div>
-            <div class="b9__paragraph">
+            <div class="b9__paragraph mascara">
                 {!!$data['historia']->desB4!!}
             </div>
             <div class="b9__certif">
@@ -127,7 +127,9 @@ nosotros-css
             </div>
         </div>
         <figure class="b9__figure">
-            <img src="{{$data['historia']->imgB4}}" width="954" height="650" alt="">
+            <div class="b9Mascara" style="background-image:url('{{$STATIC_URL}}img/mascaraNosotros.png')"></div>
+            <div class="b9Fondo" style="background-image:url('{{$data['historia']->imgB4}}')"></div>
+            <!-- <img src="{{$data['historia']->imgB4}}" width="954" height="650" alt=""> -->
         </figure>
     </div>
 </section>

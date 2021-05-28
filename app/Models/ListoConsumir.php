@@ -13,14 +13,11 @@ class ListoConsumir extends Model
     public $translatedAttributes = [
         'tituloListado',
         'desListado',
-        'slug',
-        'tituloB1',
-        'desB1'
+        'slug'
 	];
 
     protected $fillable = [        
         'imagenFondoListado',
-        'imagenCaladaListado',
-        'imagenFondo'
+        'imagenCaladaListado'
     ];
 }

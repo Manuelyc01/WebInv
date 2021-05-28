@@ -14,13 +14,10 @@ class InsumoIndustrial extends Model
         'tituloListado',
         'desListado',
         'slug',
-        'tituloB1',
-        'desB1'
 	];
 
     protected $fillable = [        
         'imagenFondoListado',
-        'imagenCaladaListado',
-        'imagenFondo'
+        'imagenCaladaListado'
     ];
 }

@@ -26,11 +26,8 @@ class InsumoIndustrialRequest extends FormRequest
         return [
             'tituloListado' => 'required',
             'desListado' => 'required',
-            'tituloB1' => 'required',
-            'desB1' => 'required',
             'imagenFondoListado' => 'required',
-            'imagenCaladaListado' => 'required',
-            'imagenFondo' => 'required'
+            'imagenCaladaListado' => 'required'
         ];
     }
 }

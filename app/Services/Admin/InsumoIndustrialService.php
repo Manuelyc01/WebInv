@@ -19,8 +19,7 @@ class InsumoIndustrialService
 
         $element = InsumoIndustrial::create($request->only(			
             'imagenFondoListado',
-            'imagenCaladaListado',
-            'imagenFondo'
+            'imagenCaladaListado'
 		));
 
 		$element->translateOrNew($locale)->tituloListado = $request->tituloListado;
@@ -29,11 +28,6 @@ class InsumoIndustrialService
         $element->translateOrNew($locale)->desListado = $request->desListado;
         $element->translateOrNew($newLocale)->desListado = $request->desListado;
 
-        $element->translateOrNew($locale)->tituloB1 = $request->tituloB1;
-        $element->translateOrNew($newLocale)->tituloB1 = $request->tituloB1;
-
-        $element->translateOrNew($locale)->desB1 = $request->desB1;
-        $element->translateOrNew($newLocale)->desB1 = $request->desB1;    
         
 		$element->save();
     }
@@ -50,14 +44,11 @@ class InsumoIndustrialService
         $element = InsumoIndustrial::find($id);
 		$element->fill($request->only(			
             'imagenFondoListado',
-            'imagenCaladaListado',
-            'imagenFondo'
+            'imagenCaladaListado'
 		), $id);
 
 		$element->translateOrNew($locale)->tituloListado = $request->tituloListado;
         $element->translateOrNew($locale)->desListado = $request->desListado;
-        $element->translateOrNew($locale)->tituloB1 = $request->tituloB1;
-        $element->translateOrNew($locale)->desB1 = $request->desB1;
 
 		$element->save();
 	}

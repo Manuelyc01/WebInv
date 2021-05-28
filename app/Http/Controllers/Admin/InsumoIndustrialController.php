@@ -28,7 +28,7 @@ class InsumoIndustrialController extends Controller
         if($element){
             return view('admin.insumo-industrial-adm.edit', compact('element')); 
         }
-        return view('insumo-industrial-adm.edit');
+        return view('admin.insumo-industrial-adm.edit');
     }
 
     /**
