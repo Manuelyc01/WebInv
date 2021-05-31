@@ -206,7 +206,7 @@ home-css
         </div>
         {{-- Nuevo Banner --}}
         <div class="carousel" style="visibility:hidden;">
-            <h5 style="text-align:center; margin-top:20px;">Encuentra nuestros productos en:</h5>
+            <h5 style="text-align:center; margin-top:20px;">{{ \Helper::dictionary('encuentra-nuestros-productos-en') }}</h5>
 			<div class="carousel__contenedor">
 				<button aria-label="Anterior" class="carousel__anterior">
 					<i class="fas fa-chevron-left"></i>
