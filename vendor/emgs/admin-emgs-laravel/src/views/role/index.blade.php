@@ -23,18 +23,19 @@
 								<td> <a href="{{ route('roles.edit' , ['id' => $element->id]) }}"> {{ $element->name }} </a> </td>
 								<td style="text-align:left;">
 									{{-- @foreach ($collection as $item) --}}
-										<li>Info {{ Form::checkbox('info', 'info', $element->permiso['info'], ['class' => 'form-control marcarPermiso']) }}</li>
-										<li>Banner del Home {{ Form::checkbox('banner', 'banner', $element->permiso['banner'], ['class' => 'form-control marcarPermiso']) }}</li>
-										<li>Banner clientes del Home {{ Form::checkbox('banner_clientes', 'banner_clientes', $element->permiso['banner_clientes'], ['class' => 'form-control marcarPermiso']) }}</li>
-										<li>Home {{ Form::checkbox('home', 'home', $element->permiso['home'], ['class' => 'form-control marcarPermiso']) }}</li>
-										<li>Sede {{ Form::checkbox('sede', 'sede', $element->permiso['sede'], ['class' => 'form-control marcarPermiso']) }}</li>
-										<li>Nosotros {{ Form::checkbox('nosotros', 'nosotros', $element->permiso['nosotros'], ['class' => 'form-control marcarPermiso']) }}</li>
-										<li>Tradicional {{ Form::checkbox('tradicional', 'tradicional', $element->permiso['tradicional'], ['class' => 'form-control marcarPermiso']) }}</li>
-										<li>Industrial {{ Form::checkbox('industrial', 'industrial', $element->permiso['industrial'], ['class' => 'form-control marcarPermiso']) }}</li>
-										<li>Gestion {{ Form::checkbox('gestion', 'gestion', $element->permiso['gestion'], ['class' => 'form-control marcarPermiso']) }}</li>
-										<li>Bolsas {{ Form::checkbox('bolsas', 'bolsas', $element->permiso['bolsas'], ['class' => 'form-control marcarPermiso']) }}</li>
-										<li>Contactos {{ Form::checkbox('contactos', 'contactos', $element->permiso['contactos'], ['class' => 'form-control marcarPermiso']) }}</li>
-										<li>Selectores {{ Form::checkbox('selectores', 'selectores', $element->permiso['selectores'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Info {{ Form::checkbox('info', 'info', @$element->permiso['info'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Banner del Home {{ Form::checkbox('banner', 'banner', @$element->permiso['banner'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Banner clientes del Home {{ Form::checkbox('banner_clientes', 'banner_clientes', @$element->permiso['banner_clientes'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Home {{ Form::checkbox('home', 'home', @$element->permiso['home'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Sede {{ Form::checkbox('sede', 'sede', @$element->permiso['sede'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Nosotros {{ Form::checkbox('nosotros', 'nosotros', @$element->permiso['nosotros'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Tradicional {{ Form::checkbox('tradicional', 'tradicional', @$element->permiso['tradicional'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Industrial {{ Form::checkbox('industrial', 'industrial', @$element->permiso['industrial'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Gestion {{ Form::checkbox('gestion', 'gestion', @$element->permiso['gestion'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Bolsas {{ Form::checkbox('bolsas', 'bolsas', @$element->permiso['bolsas'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Contactos {{ Form::checkbox('contactos', 'contactos', @$element->permiso['contactos'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Selectores {{ Form::checkbox('selectores', 'selectores', @$element->permiso['selectores'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Diccionario {{ Form::checkbox('dictionaries', 'dictionaries', @$element->permiso['dictionaries'], ['class' => 'form-control marcarPermiso']) }}</li>
 									{{-- @endforeach --}}
 								</td>
 								{{-- <td> {{ $element->created_at }} </td> --}}

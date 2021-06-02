@@ -377,11 +377,11 @@ return[
     [
       'type' => 'simple',
       'text' => 'Diccionario',
-      'slug' => 'diccionario',
+      'slug' => 'dictionaries',
       'url'  => 'diccionario.index',
       'ico'  => 'font'
     ]
-
+    
     //======== DOS NIVELES ===============
     // [
     //   'type' => 'tree',

@@ -39,7 +39,7 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //[{"info":1,"banner":1,"home":1,"sede":1,"nosotros":1,"tradicional":1,"industrial":1,"gestion":1,"bolsas":1,"contactos":1,"selectores":1}]
-        $array = ['info' => 0, 'banner' => 0,'banner_clientes' => 0, 'home' => 0, 'sede' => 0, 'nosotros' => 0, 'tradicional' => 0, 'industrial' => 0, 'gestion' => 0, 'bolsas' => 0, 'contactos' => 0, 'selectores' => 0];
+        $array = ['info' => 0, 'banner' => 0,'banner_clientes' => 0, 'home' => 0, 'sede' => 0, 'nosotros' => 0, 'tradicional' => 0, 'industrial' => 0, 'gestion' => 0, 'bolsas' => 0, 'contactos' => 0, 'selectores' => 0, 'dictionaries' => 0];
         //dd($request->all());
         Role::create([
             'name' => $request->name,
