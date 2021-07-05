@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="js_composer_salient">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/public/blog/wp-content/themes/salient/plugins/js_composer_salient.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

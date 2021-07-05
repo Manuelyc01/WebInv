@@ -4,7 +4,7 @@
 
 <div class="panel panel-white">
 	<div class="panel-heading">
-		BIENVENIDOS A SU ADMINISTRADOR DE CONTENIDOS
+		BIENVENIDOS A SU ADMINISTRADOR DE INVENTARIO
 	</div>
 
 	<div class="panel-body">

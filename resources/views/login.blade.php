@@ -3,7 +3,7 @@
     <title> Login </title>
     <style type="text/css">
         .show-error {
-            color: red;
+            color: white;
             font-weight: bold;
             font-size: 13px;
         }
@@ -16,7 +16,7 @@
         <div class="principal">
 
             <div class="logo">
-                <div>STAFF<span>CREATIVA</span></div>
+                <div>INVENTARIO <span>ENACO</span></div>
             </div>
             {{-- {{ dump($errors) }} --}}
             <div class="form">

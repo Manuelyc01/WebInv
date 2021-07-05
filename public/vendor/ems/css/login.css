@@ -41,7 +41,7 @@ body{
 .logo{
     position: absolute;
     top: calc(50% - 35px);
-    left: calc(50% - 400px);
+    left: calc(50% - 460px);
     z-index: 2;
 }
 
