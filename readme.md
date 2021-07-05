@@ -2,7 +2,7 @@ Base PHP - Framework Laravel v5.5
 
 ```shell
 Instalación de un proyecto:
-
+#prueba1
 # Actualizar la base del administrador
 composer update
 composer install
