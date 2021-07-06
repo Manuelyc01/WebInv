@@ -29,7 +29,14 @@ return[
 
 	'menu' => [
 
-    $menu_array,        
+    $menu_array,    
+    [
+      'type' => 'simple',
+      'text' => 'Oficina',
+      'slug' => 'oficina',
+      'url'  => 'oficina-adm.index',
+      'ico'  => 'home'
+    ]    
 
 	]
 ]
