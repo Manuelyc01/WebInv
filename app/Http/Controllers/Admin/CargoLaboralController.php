@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\OficinaRequest;
+use App\Http\Requests\CargoLaboralRequest;
 use App\Http\Controllers\Controller;
-use App\Services\OficinaService; 
+use App\Services\CargoLaboralService; 
 
-class OficinaController extends Controller
+class CargoLaboralController extends Controller
 {
+    //
     private $service;
 
-    public function __construct(OficinaService $service)
+    public function __construct(CargoLaboralService $service)
     {
         $this->service = $service;
     }
@@ -18,19 +19,19 @@ class OficinaController extends Controller
     public function index()
     {
         $elements = $this->service->listar();
-        return view('admin.oficina-adm.index', compact('elements'));
+        return view('admin.cargoLaboral-adm.index', compact('elements'));
     }
 
     public function create()
     {
-        return view('admin.oficina-adm.edit');
+        return view('admin.cargoLaboral-adm.edit');
     }
 
-    public function store(OficinaRequest $request)
+    public function store(CargoLaboralRequest $request)
     {
         $this->service->registrar($request);
         session()->flash('success', '¡Información registrada con éxito!');
-        return redirect()->route('oficina-adm.index');
+        return redirect()->route('cargoLaboral-adm.index');
     }
 
     public function show($id)
@@ -41,19 +42,19 @@ class OficinaController extends Controller
     public function edit($id_oficina)
     {
         $element = $this->service->editar($id_oficina);
-        return view('admin.oficina-adm.edit', compact('element'));
+        return view('admin.cargoLaboral-adm.edit', compact('element'));
     }
 
-    public function update(OficinaRequest $request, $id_oficina)
+    public function update(CargoLaboralRequest $request, $id_oficina)
     {
         $this->service->actualizar($request, $id_oficina);
         session()->flash('success', '¡Información actualizada con éxito!');
-        return redirect()->route('oficina-adm.index');
+        return redirect()->route('cargoLaboral-adm.index');
     }
 
     public function destroy($id)
     {
         $this->service->eliminar($id);
-        return redirect()->route('oficina-adm.index');
+        return redirect()->route('cargoLaboral-adm.index');
     }
 }

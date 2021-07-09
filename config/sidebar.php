@@ -36,7 +36,14 @@ return[
       'slug' => 'oficina',
       'url'  => 'oficina-adm.index',
       'ico'  => 'home'
-    ]    
+    ],
+    [
+      'type' => 'simple',
+      'text' => 'Cargo Laboral',
+      'slug' => 'cargo-laboral',
+      'url'  => 'cargoLaboral-adm.index',
+      'ico'  => 'briefcase'
+    ]      
 
 	]
 ]

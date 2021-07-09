@@ -18,6 +18,7 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::any('/dropzone', '\Ems\AdminEms\controllers\DropzoneController@upload')->name('dropzone');
 
 	Route::resource('oficina-adm', 'OficinaController');
+	Route::resource('cargoLaboral-adm', 'CargoLaboralController');
 });
 
 
