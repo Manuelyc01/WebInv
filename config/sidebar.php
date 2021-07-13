@@ -43,7 +43,15 @@ return[
       'slug' => 'cargo-laboral',
       'url'  => 'cargoLaboral-adm.index',
       'ico'  => 'briefcase'
-    ]      
+    ],
+
+    [
+      'type' => 'simple',
+      'text' => 'Sedes',
+      'slug' => 'sede',
+      'url'  => 'sede-adm.index',
+      'ico'  => 'globe'
+    ]       
 
 	]
 ]

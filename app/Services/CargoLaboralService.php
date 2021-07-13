@@ -19,8 +19,7 @@ class CargoLaboralService
         $element->co_cargo_laboral=$request->get('co_cargo_laboral');
         $element->no_cargo_laboral=$request->get('no_cargo_laboral');
         $element->de_cargo_laboral=$request->get('de_cargo_laboral');
-        
-          
+             
         $element->save();
     }
     
