@@ -1,12 +1,3 @@
-@extends('web.common.base')
-
-@section('cssadicional')
-@stop
-
-@section('classbody')  @stop
-
-@section('content')
-
 <section class="b20">
 	<div class="b20-cnt cnt-error">
 		<figure>
@@ -19,8 +10,3 @@
 		</a>
 	</div>
 </section>
-
-@stop
-
-@section('jsfinal')
-@stop

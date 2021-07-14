@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\OficinaRequest;
 use App\Http\Controllers\Controller;
 use App\Services\OficinaService; 
+use App\Models\Sede;
 
 class OficinaController extends Controller
 {
@@ -23,12 +24,14 @@ class OficinaController extends Controller
 
     public function create()
     {
-        return view('admin.oficina-adm.edit');
+        $sede= Sede::orderBy('no_sede',"ASC")->pluck('no_sede','id_sede');    
+        return view('admin.oficina-adm.edit', compact('sede'));
     }
 
     public function store(OficinaRequest $request)
     {
         $this->service->registrar($request);
+        
         session()->flash('success', '¡Información registrada con éxito!');
         return redirect()->route('oficina-adm.index');
     }
@@ -41,7 +44,8 @@ class OficinaController extends Controller
     public function edit($id_oficina)
     {
         $element = $this->service->editar($id_oficina);
-        return view('admin.oficina-adm.edit', compact('element'));
+        $sede= Sede::orderBy('no_sede',"ASC")->pluck('no_sede','id_sede');  
+        return view('admin.oficina-adm.edit', compact('element','sede'));
     }
 
     public function update(OficinaRequest $request, $id_oficina)
