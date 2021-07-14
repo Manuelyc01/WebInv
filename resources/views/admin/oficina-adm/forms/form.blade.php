@@ -7,9 +7,10 @@
     </div>
     <div class="panel-body form-horizontal">
 
-        <div class="form-group {{ $errors->has('id_sede') ? 'has-error' : '' }}">
-            {!! Form::stdNumber('Id Sede', 1, 'id_sede', $errors) !!}
-        </div>
+        
+        <div class="form-group">
+			{!! Form::stdSelect('Sede', 1 , 'id_sede', $sede, null) !!}
+		</div>
 
         <div class="form-group {{ $errors->has('co_oficina') ? 'has-error' : '' }}">
             {!! Form::stdText('Código', 0, 'co_oficina', $errors) !!}
@@ -22,7 +23,7 @@
         <div class="form-group {{ $errors->has('de_oficina') ? 'has-error' : '' }}">
             {!! Form::stdText('Descripcion', 0, 'de_oficina', $errors) !!}
         </div>
-        
+            
 
     </div>
 
