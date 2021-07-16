@@ -51,7 +51,15 @@ return[
       'slug' => 'sede',
       'url'  => 'sede-adm.index',
       'ico'  => 'globe'
-    ]       
+    ]  ,
+
+    [
+      'type' => 'simple',
+      'text' => 'Equipos',
+      'slug' => 'equipo',
+      'url'  => 'equipo-adm.index',
+      'ico'  => 'list'
+    ]     
 
 	]
 ]
