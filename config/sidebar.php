@@ -59,7 +59,14 @@ return[
       'slug' => 'equipo',
       'url'  => 'equipo-adm.index',
       'ico'  => 'list'
-    ]     
+    ]  ,
+    [
+      'type' => 'simple',
+      'text' => 'Categoria Equipo',
+      'slug' => 'categoria-equipo',
+      'url'  => 'categoriaEquipo-adm.index',
+      'ico'  => 'briefcase'
+    ]
 
 	]
 ]

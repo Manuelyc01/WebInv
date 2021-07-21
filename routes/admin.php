@@ -21,7 +21,7 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::resource('cargoLaboral-adm', 'CargoLaboralController');
 	Route::resource('sede-adm', 'SedeController');
 	Route::resource('equipo-adm', 'EquipoController');
-
+  Route::resource('categoriaEquipo-adm', 'CategoriaEquipoController');
 });
 
 
