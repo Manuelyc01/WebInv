@@ -51,7 +51,14 @@ return[
       'slug' => 'sede',
       'url'  => 'sede-adm.index',
       'ico'  => 'globe'
-    ]       
+    ],
+    [
+      'type' => 'simple',
+      'text' => 'Categoria Equipo',
+      'slug' => 'categoria-equipo',
+      'url'  => 'categoriaEquipo-adm.index',
+      'ico'  => 'briefcase'
+    ],  
 
 	]
 ]
