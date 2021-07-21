@@ -39,6 +39,7 @@
         <!-- Theme Styles -->
         <link rel="stylesheet" href="{{ asset('vendor/ems/css/modern.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/ems/css/loader.css') }}">
+        @yield('cssAdicional')
 
         @php
                $color = config('main.theme_color');
@@ -155,6 +156,7 @@
 
         <div class="cd-overlay"></div>
         <!-- Javascripts -->
+        @yield('jsAdicional')
         <script
           src="https://code.jquery.com/jquery-3.2.1.min.js"
           integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

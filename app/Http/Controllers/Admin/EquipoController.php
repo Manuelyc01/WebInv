@@ -5,14 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\EquipoRequest;
 use App\Http\Controllers\Controller;
 use App\Services\EquipoService; 
+use App\Services\ImagenService; 
 
 class EquipoController extends Controller
 {
     private $service;
+    private $servImg;
 
-    public function __construct(EquipoService $service)
+    public function __construct(EquipoService $service,ImagenService $servImg)
     {
         $this->service = $service;
+        $this->servImg = $servImg;
     }
 
     public function index()
@@ -35,7 +38,15 @@ class EquipoController extends Controller
 
     public function show($id)
     {
-        //
+        $element = $this->service->show($id); 
+        //obtener imagenes
+        $imagenes= $this->servImg->getByEquipo($id); 
+            if($imagenes!=null){
+                return view('admin.equipo-adm.show',compact('element','imagenes'));
+            }else{
+                return view('admin.equipo-adm.show',compact('element'));        
+            }
+        
     }
 
     public function edit($id_oficina)

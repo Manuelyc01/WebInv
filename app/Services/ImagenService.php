@@ -9,6 +9,11 @@ class ImagenService
     public function listar()
 	{
 	}
+    public function getByEquipo($id)
+	{
+        $imagenes=Imagen::where('id_equipo','=',$id)->orderBy('id', 'ASC')->get();
+        return $imagenes;
+    }
 
 	public function registrar($imagenes,$id_equipo)
 	{

@@ -32,13 +32,18 @@ class EquipoService
         $element->id_cat_equipos=$request->get('id_cat_equipos');
         
         $element->save();
-        
+        //guardar imagenes si existen
         if($request->hasfile('imagenes')){
             $imagenes = $request->file('imagenes');
             $this->servImg->registrar($imagenes,$element->id_equipo);
          }
     }
-    
+    public function show($id_equipo)
+    {
+        $element = Equipo::find($id_equipo);
+        return $element;
+    }
+
     public function editar($id_equipo)
     {
         $element = Equipo::find($id_equipo);
