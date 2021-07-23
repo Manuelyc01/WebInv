@@ -58,7 +58,14 @@ return[
       'slug' => 'categoria-equipo',
       'url'  => 'categoriaEquipo-adm.index',
       'ico'  => 'briefcase'
-    ],  
+    ],
+    [
+      'type' => 'simple',
+      'text' => 'Oficina Trabajador',
+      'slug' => 'oficina-trabajador',
+      'url'  => 'oficinaTrabajador-adm.index',
+      'ico'  => 'briefcase'
+    ],    
 
 	]
 ]
