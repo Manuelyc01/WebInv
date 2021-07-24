@@ -66,7 +66,15 @@ return[
       'slug' => 'categoria-equipo',
       'url'  => 'categoriaEquipo-adm.index',
       'ico'  => 'briefcase'
-    ]
+    ] ,
+
+    [
+      'type' => 'simple',
+      'text' => 'Colaboradores',
+      'slug' => 'usuario',
+      'url'  => 'colaborador-adm.index',
+      'ico'  => 'user'
+    ] 
 
 	]
 ]
