@@ -40,11 +40,11 @@ class EquipoController extends Controller
     {
         $element = $this->service->show($id); 
         //obtener imagenes
-        $imagenes= $this->servImg->getByEquipo($id); 
+        $imagenes= $this->$element->foto; 
             if($imagenes!=null){
-                return view('admin.equipo-adm.show',compact('element','imagenes'));
+                return view('admin.colaborador-adm.show',compact('element','foto'));
             }else{
-                return view('admin.equipo-adm.show',compact('element'));        
+                return view('admin.colaborador-adm.show',compact('element'));        
             }
         
     }
