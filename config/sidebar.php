@@ -51,7 +51,15 @@ return[
       'slug' => 'sede',
       'url'  => 'sede-adm.index',
       'ico'  => 'globe'
-    ],
+    ]  ,
+
+    [
+      'type' => 'simple',
+      'text' => 'Equipos',
+      'slug' => 'equipo',
+      'url'  => 'equipo-adm.index',
+      'ico'  => 'list'
+    ]  ,
     [
       'type' => 'simple',
       'text' => 'Categoria Equipo',
@@ -65,8 +73,14 @@ return[
       'slug' => 'oficina-trabajador',
       'url'  => 'oficinaTrabajador-adm.index',
       'ico'  => 'briefcase'
-    ],    
-
+    ], 
+    [
+      'type' => 'simple',
+      'text' => 'Colaboradores',
+      'slug' => 'usuario',
+      'url'  => 'colaborador-adm.index',
+      'ico'  => 'user'
+    ] 
 	]
 ]
 ?>
