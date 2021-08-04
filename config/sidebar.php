@@ -76,6 +76,16 @@ return[
       'ico'  => 'user'
     ] 
 
+    ,
+
+    [
+      'type' => 'simple',
+      'text' => 'Solicitudes',
+      'slug' => 'Solicitudes',
+      'url'  => 'solicitudes-adm.index',
+      'ico'  => 'book'
+    ] 
+
 	]
 ]
 ?>
