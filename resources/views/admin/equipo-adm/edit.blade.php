@@ -6,7 +6,6 @@
     @else
         {!! Form::open(['route' => 'equipo-adm.store', 'method' => 'POST' , 'id' => 'admin-form','enctype'=>'multipart/form-data']) !!}
     @endif
-
     @include('admin.equipo-adm.forms.form')
     {!! Form::close() !!}
 

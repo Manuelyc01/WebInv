@@ -24,6 +24,8 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::resource('equipo-adm', 'EquipoController');
     Route::resource('categoriaEquipo-adm', 'CategoriaEquipoController');
 	Route::resource('colaborador-adm', 'ColaboradorController');
+	Route::get('/equipo-img/{id}', 'EquipoController@img');
+	Route::resource('imagen-adm', 'ImagenController');
 });
 
 
