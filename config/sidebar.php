@@ -19,7 +19,7 @@ if ($users_active) {
                     [
                       'type' => 'one',
                       'text' => 'Usuarios',
-                      'url' => 'usuarios.index',
+                      'url' => 'colaborador-adm.index',
                     ]
                 ]
         ];
