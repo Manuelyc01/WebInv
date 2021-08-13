@@ -24,11 +24,10 @@ class OficinaTrabajadorRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_oficina' => 'required',
-            'id_oficina' => 'required',
-            'id_cargo_laboral' => 'required',
-            'id_colaborador' => 'required',
-            'est_trabajador' => 'required' 
+            'co_oficina' => 'required',
+            'co_cargo_laboral' => 'required',
+            'co_colaborador' => 'required',
+            'co_sede' => 'required'
         ];
     }
 }

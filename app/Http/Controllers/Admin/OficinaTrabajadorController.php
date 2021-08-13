@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\OficinaTrabajadorService; 
+use App\Services\ColaboradorService;
+use App\Services\SedeService;
+use App\Services\OficinaService;
+use App\Services\CargoLaboralService;
+use App\Services\OficinaTrabajadorService;  
 use App\Http\Requests\OficinaTrabajadorRequest;
+use App\Models\OficinaTrabajador;
 class OficinaTrabajadorController extends Controller
 {
     /**
@@ -13,9 +18,13 @@ class OficinaTrabajadorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(OficinaTrabajadorService $service)
+    public function __construct(OficinaTrabajadorService $service,ColaboradorService $service1,SedeService $service2,OficinaService $service3,CargoLaboralService $service4)
     {
         $this->service = $service;
+        $this->service1 = $service1;
+        $this->service2 = $service2;
+        $this->service3 = $service3;
+        $this->service4 = $service4;
     }
     public function index()
     {
@@ -33,8 +42,13 @@ class OficinaTrabajadorController extends Controller
     public function create()
     {
         //
+        $elements_colaboradores = $this->service1->listar();
         
-        return view('admin.oficina-adm.edit',compact('elements'));
+        $elements_sede = $this->service2->listar();
+        $elements_oficina = $this->service3->listar();
+        $elements_cargoLaboral = $this->service4->listar();
+
+        return view('admin.oficinaTrabajador-adm.edit',compact('elements_colaboradores','elements_sede','elements_oficina','elements_cargoLaboral'));
     }
 
     /**
@@ -43,9 +57,13 @@ class OficinaTrabajadorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OficinaTrabajadorRequest $request)
     {
         //
+    
+        $this->service->registrar($request);
+        session()->flash('success', '¡Información registrada con éxito!');
+        return redirect()->route('oficinaTrabajador-adm.index');
     }
 
     /**
@@ -65,9 +83,16 @@ class OficinaTrabajadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_oficina_trabajador)
     {
         //
+        $element = $this->service->editar($id_oficina_trabajador);
+
+        $elements_colaboradores = $this->service1->listar();
+        $elements_sede = $this->service2->listar();
+        $elements_cargoLaboral = $this->service4->listar();
+
+        return view('admin.oficinaTrabajador-adm.edit', compact('element','elements_colaboradores','elements_sede','elements_cargoLaboral'));
     }
 
     /**
@@ -77,9 +102,13 @@ class OficinaTrabajadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OficinaTrabajadorRequest $request, $id_oficina_trabajador)
     {
         //
+        
+        $this->service->actualizar($request, $id_oficina_trabajador);
+        session()->flash('success', '¡Información actualizada con éxito!');
+        return redirect()->route('oficinaTrabajador-adm.index');
     }
 
     /**
@@ -91,5 +120,7 @@ class OficinaTrabajadorController extends Controller
     public function destroy($id)
     {
         //
+        $this->service->eliminar($id);
+        return redirect()->route('oficinaTrabajador-adm.index');
     }
 }
