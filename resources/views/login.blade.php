@@ -21,9 +21,9 @@
             {{-- {{ dump($errors) }} --}}
             <div class="form">
                 {!! Form::open(['route' => 'admin.login.submit' , 'method' => 'POST']) !!}
-                    {!! Form::text('name' , null , ['placeholder' => 'Usuario', 'autofocus' => true]) !!}
+                    {!! Form::text('usuario' , null , ['placeholder' => 'Usuario', 'autofocus' => true]) !!}
                     @if ($errors->has('name'))
-                         <br><span class="show-error">{{ $errors->first('name') }}</span>
+                         <br><span class="show-error">{{ $errors->first('usuario') }}</span>
                     @endif
 
                     {!! Form::password('password', ['placeholder' => 'Contraseña']) !!}

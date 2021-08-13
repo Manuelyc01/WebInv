@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
-class Colaborador extends Model
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class Colaborador extends Authenticatable
 {
+    use Notifiable;
     protected $table = 'tm_colaborador';
     protected $primaryKey = 'id_colaborador';
     public $timestamps = false;

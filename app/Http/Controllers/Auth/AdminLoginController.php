@@ -22,25 +22,25 @@ class AdminLoginController extends Controller
     {
     	// Validate the form data
         $rules = [
-            'name' => [
+            'usuario' => [
             'required',
-            Rule::exists('admins')->where(function($query) {
-                $query->where('name', request('name'));
+            Rule::exists('tm_colaborador')->where(function($query) {
+                $query->where('usuario', request('usuario'));
              }),
             ],
             'password' => 'required'
         ];
 
         $messages = [
-            'name.required' => 'El nombre de usuario es obligatorio',
-            'name.exists' => 'El nombre nombre usuario ingresado es incorrecto',
+            'usuario.required' => 'El nombre de usuario es obligatorio',
+            'usuario.exists' => 'El nombre nombre usuario ingresado es incorrecto',
             'password.required' => 'La contraseña es obligatoria'
         ];
 
     	$this->validate(request() , $rules, $messages);
 
     	$credentials = [
-    		'name' => request('name'),
+    		'usuario' => request('usuario'),
     		'password' => request('password')
     	];
 
