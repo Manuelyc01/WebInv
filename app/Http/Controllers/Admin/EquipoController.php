@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\EquipoRequest;
 use App\Http\Controllers\Controller;
+use App\Models\CategoriaEquipo;
 use App\Services\EquipoService;
 use App\Services\CategoriaEquipoService; 
 use App\Services\ImagenService; 
@@ -44,7 +45,7 @@ class EquipoController extends Controller
         $element = $this->service->show($id); 
         //obtener imagenes
         $imagenes= $this->servImg->getByEquipo($id); 
-        $catEqui= $this->catEquiServ->listar()->pluck('des_cate_equipo','id_cat_equipos');   
+        $catEqui= $this->catEquiServ->editar($element->id_cat_equipos);
         return view('admin.equipo-adm.show',compact('element','imagenes','catEqui'));
     }
     public function edit($id_oficina)
