@@ -24,9 +24,8 @@ class ColaboradorRequest extends FormRequest
     public function rules()
     {
         return [
-            'co_colaborador' => 'required',
-            'email' => 'required|email|unique:admins',
-            'password' => 'required|min:4'
+            
+            
             
         ];
     }

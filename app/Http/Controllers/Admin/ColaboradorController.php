@@ -32,11 +32,13 @@ class ColaboradorController extends Controller
 
     public function store(ColaboradorRequest $request)
     {
-        /*$this->validate(request(), [
-            //'name' => 'required|min:3|max:15',
-            'email' => 'required|email|unique:admins',
+        $this->validate(request(), [
+            'co_colaborador' => 'required|unique:tm_colaborador',
+            'nu_documento' => 'required|numeric|unique:tm_colaborador',
+            'usuario' => 'required|unique:tm_colaborador',
+            'email' => 'required|email|unique:tm_colaborador',
             'password' => 'required|min:4'
-        ]);*/
+        ]);
 
         $this->service->registrar($request);
         session()->flash('success', '¡Información registrada con éxito!');
@@ -56,7 +58,17 @@ class ColaboradorController extends Controller
 
     public function update(ColaboradorRequest $request, $id_colaborador)
     {
-        //dd(333);
+            
+        //dd($a);
+
+        $this->validate(request(), [
+            'co_colaborador' => 'required',
+            'nu_documento' => 'required|numeric',
+            'usuario' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:4'
+        ]);
+
         $this->service->actualizar($request, $id_colaborador);
         session()->flash('success', '¡Información actualizada con éxito!');
         return redirect()->route('colaborador-adm.index');

@@ -21,6 +21,7 @@ class Colaborador extends Model
         'password',
         'email',
         'foto',
-        'tipo_usuario'
+        'tipo_usuario',
+        'estado_usuario'
     ];    
 }

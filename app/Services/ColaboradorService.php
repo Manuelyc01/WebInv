@@ -12,7 +12,10 @@ class ColaboradorService
 {
     public function listar()
 	{
-        $element = Colaborador::orderBy('id_colaborador', 'ASC')->get();
+        //$element = Colaborador::orderBy('id_colaborador', 'ASC')->get();
+		//return $element;
+
+        $element = Colaborador::where('estado_usuario','=',1)->orderBy('id_colaborador', 'ASC')->get();
 		return $element;
 	}
 
@@ -31,6 +34,7 @@ class ColaboradorService
         $element->password=Hash::make($request->get('password'));
         $element->email=$request->get('email');
         $element->tipo_usuario=$request->get('tipo_usuario');
+        $element->estado_usuario= 1;
        
         if($request->hasfile('foto')){
             
@@ -70,7 +74,6 @@ class ColaboradorService
 
 	public function actualizar($request, $id_colaborador)
 	{
-        
         $element = Colaborador::find($id_colaborador);
 
         $element->co_colaborador=$request->get('co_colaborador');
@@ -109,7 +112,11 @@ class ColaboradorService
 
 	public function eliminar($id)
 	{
-		Colaborador::destroy($id);
+		//Colaborador::destroy($id);
+
+        $element = Colaborador::find($id);
+        $element->estado_usuario= 0;
+        $element->save();
 	}
 
 	
