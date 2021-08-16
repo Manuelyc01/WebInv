@@ -19,28 +19,78 @@
             </div>
         </div>
         <div class="panel-body form-horizontal">
-            <div class="form-group {{ $errors->has('co_colaborador') ? 'has-error' : '' }}">
-                {!! Form::stdText('Código', 1, 'co_colaborador', $errors) !!}
+        
+            <div class="form-group">
+
+                <label class="col-sm-2 control-label"><strong>Codigo<span class="required"> * </span></strong></label>
+                <div class="col-sm-8">
+                <input class="form-control" placeholder ="" data-toggle="tooltip"  data-placement ='right' data-trigger='focus' title = "No puede modificar este campo" readonly='true' value={{$codigo}}>
+                    
+                <span class="help-block"><strong></strong></span>
+                </div>
             </div>
+                
+                
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
             <div class="form-group {{ $errors->has('no_colaborador') ? 'has-error' : '' }}">
-                {!! Form::stdText('Nombre', 1, 'no_colaborador', $errors) !!}
+                {!! Form::stdText('Nombre', 0, 'no_colaborador', $errors) !!}
             </div>
     
             <div class="form-group {{ $errors->has('ap_paterno_colaborador') ? 'has-error' : '' }}">
-                {!! Form::stdText('Ap. Paterno', 1, 'ap_paterno_colaborador', $errors) !!}
+                {!! Form::stdText('Ap. Paterno', 0, 'ap_paterno_colaborador', $errors) !!}
             </div>
     
             <div class="form-group {{ $errors->has('ap_materno_colaborador') ? 'has-error' : '' }}">
-                {!! Form::stdText('Ap. Materno', 1, 'ap_materno_colaborador', $errors) !!}
+                {!! Form::stdText('Ap. Materno', 0, 'ap_materno_colaborador', $errors) !!}
             </div>
+
+            <div class="form-group {{ $errors->has('ti_documento') ? 'has-error' : '' }}">
+                <!-- {!! Form::stdText('Tipo Documento', 0, 'ti_documento', $errors) !!}-->
+                <?php
+                $ddlTipoDocumento=["2"=>"DNI","1"=>"RUC","0"=>"Pasaporte"];
+                ?>
+                {!! Form::stdSelect('Tipo Documento', 0, 'ti_documento', $ddlTipoDocumento, null) !!}
+            </div>
+
+
+
+
+
+
+
+
     
             <div class="form-group {{ $errors->has('nu_documento') ? 'has-error' : '' }}">
-                {!! Form::stdText('Num. Documento', 0, 'nu_documento', $errors) !!}
-            </div>
-    
-            <div class="form-group {{ $errors->has('ti_documento') ? 'has-error' : '' }}">
-                {!! Form::stdText('Tipo Documento', 0, 'ti_documento', $errors) !!}
+                {!! Form::stdText('Num. Documento', 1, 'nu_documento', $errors) !!}
             </div>
     
             <div class="form-group {{ $errors->has('usuario') ? 'has-error' : '' }}">
@@ -70,8 +120,11 @@
             </div>  
     
             <div class="form-group {{ $errors->has('tipo_usuario') ? 'has-error' : '' }}">
-                {!! Form::stdText('Tipo', 0, 'tipo_usuario', $errors) !!}
-        
+                <!-- {!! Form::stdText('Tipo', 0, 'tipo_usuario', $errors) !!}-->
+                <?php
+                $ddlTipo=["1"=>"ADMINISTRADOR","2"=>"USUARIO"];
+                ?>
+                {!! Form::stdSelect('Tipo', 0, 'tipo_usuario', $ddlTipo, null) !!}
             </div>
     
         </div>

@@ -7,19 +7,30 @@ use App\Services\ImagenService;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\BD;
+use Illuminate\Support\Facades\DB;
 
 class ColaboradorService
 {
     public function listar()
 	{
-        $element = Colaborador::orderBy('id_colaborador', 'ASC')->get();
+        //$element = Colaborador::orderBy('id_colaborador', 'ASC')->get();
+		//return $element;
+
+        $element = Colaborador::where('estado_usuario','=',1)->orderBy('id_colaborador', 'ASC')->get();
 		return $element;
 	}
 
 	public function registrar($request)
 	{   
         $element= new Colaborador();
-        $element->co_colaborador=$request->get('co_colaborador');
+        
+        $query= DB::select('SELECT id_colaborador FROM tm_colaborador ORDER BY id_colaborador DESC LIMIT 1');
+        
+        //dd(($query[0]->id_colaborador)+1);
+
+        $element->co_colaborador="USER".(($query[0]->id_colaborador)+1);
         $element->no_colaborador=$request->get('no_colaborador');
         $element->ap_paterno_colaborador=$request->get('ap_paterno_colaborador');
         $element->ap_materno_colaborador=$request->get('ap_materno_colaborador');
@@ -31,6 +42,7 @@ class ColaboradorService
         $element->password=Hash::make($request->get('password'));
         $element->email=$request->get('email');
         $element->tipo_usuario=$request->get('tipo_usuario');
+        $element->estado_usuario= 1;
        
         if($request->hasfile('foto')){
             
@@ -70,7 +82,6 @@ class ColaboradorService
 
 	public function actualizar($request, $id_colaborador)
 	{
-        
         $element = Colaborador::find($id_colaborador);
 
         $element->co_colaborador=$request->get('co_colaborador');
@@ -109,7 +120,11 @@ class ColaboradorService
 
 	public function eliminar($id)
 	{
-		Colaborador::destroy($id);
+		//Colaborador::destroy($id);
+
+        $element = Colaborador::find($id);
+        $element->estado_usuario= 0;
+        $element->save();
 	}
 
 	

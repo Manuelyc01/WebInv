@@ -80,7 +80,14 @@ return[
       'slug' => 'usuario',
       'url'  => 'colaborador-adm.index',
       'ico'  => 'user'
-    ] 
+    ],
+    [
+      'type' => 'simple',
+      'text' => 'Solicitudes',
+      'slug' => 'Solicitudes',
+      'url'  => 'solicitudes-adm.index',
+      'ico'  => 'book'
+    ]
 	]
 ]
 ?>
