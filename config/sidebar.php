@@ -19,7 +19,7 @@ if ($users_active) {
                     [
                       'type' => 'one',
                       'text' => 'Usuarios',
-                      'url' => 'usuarios.index',
+                      'url' => 'colaborador-adm.index',
                     ]
                 ]
         ];
@@ -66,26 +66,28 @@ return[
       'slug' => 'categoria-equipo',
       'url'  => 'categoriaEquipo-adm.index',
       'ico'  => 'briefcase'
-    ] ,
-
+    ],
+    [
+      'type' => 'simple',
+      'text' => 'Oficina Trabajador',
+      'slug' => 'oficina-trabajador',
+      'url'  => 'oficinaTrabajador-adm.index',
+      'ico'  => 'briefcase'
+    ], 
     [
       'type' => 'simple',
       'text' => 'Colaboradores',
       'slug' => 'usuario',
       'url'  => 'colaborador-adm.index',
       'ico'  => 'user'
-    ] 
-
-    ,
-
+    ],
     [
       'type' => 'simple',
       'text' => 'Solicitudes',
       'slug' => 'Solicitudes',
       'url'  => 'solicitudes-adm.index',
       'ico'  => 'book'
-    ] 
-
+    ]
 	]
 ]
 ?>

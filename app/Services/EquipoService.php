@@ -20,10 +20,8 @@ class EquipoService
 	}
 
 	public function registrar($request)
-	{
+	{   
         $element= new Equipo();
-
-        
         $element->serie_equipo=$request->get('serie_equipo');
         $element->cod_opatrimonial=$request->get('cod_opatrimonial');
         $element->des_equipo=$request->get('des_equipo');
@@ -54,7 +52,6 @@ class EquipoService
 	{
         
         $element = Equipo::find($id_equipo);
-
         $element->serie_equipo=$request->get('serie_equipo');
         $element->cod_opatrimonial=$request->get('cod_opatrimonial');
         $element->des_equipo=$request->get('des_equipo');

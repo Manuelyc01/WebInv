@@ -45,7 +45,7 @@
         <div class="form-group ">
         <label class="col-sm-2 control-label"><strong> Categoría</strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" name="id_cat_equipos" type="number" value="{{$element->id_cat_equipos}}" readonly>
+                <input class="form-control" placeholder="" type="text" value="{{$catEqui->des_cate_equipo}}" readonly>
             </div>
         </div>
         <div>

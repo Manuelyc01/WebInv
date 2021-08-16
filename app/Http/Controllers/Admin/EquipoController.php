@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\EquipoRequest;
 use App\Http\Controllers\Controller;
-use App\Services\EquipoService; 
+use App\Models\CategoriaEquipo;
+use App\Services\EquipoService;
+use App\Services\CategoriaEquipoService; 
 use App\Services\ImagenService; 
 
 class EquipoController extends Controller
@@ -12,10 +14,11 @@ class EquipoController extends Controller
     private $service;
     private $servImg;
 
-    public function __construct(EquipoService $service,ImagenService $servImg)
+    public function __construct(EquipoService $service,ImagenService $servImg,CategoriaEquipoService $catEquiServ)
     {
         $this->service = $service;
         $this->servImg = $servImg;
+        $this->catEquiServ = $catEquiServ;
     }
 
     public function index()
@@ -26,7 +29,8 @@ class EquipoController extends Controller
 
     public function create()
     { 
-        return view('admin.equipo-adm.edit');
+        $catEqui= $this->catEquiServ->listar()->pluck('des_cate_equipo','id_cat_equipos');
+        return view('admin.equipo-adm.edit',compact('catEqui'));
     }
 
     public function store(EquipoRequest $request)
@@ -40,19 +44,17 @@ class EquipoController extends Controller
     {
         $element = $this->service->show($id); 
         //obtener imagenes
-        $imagenes= $this->$element->foto; 
-            if($imagenes!=null){
-                return view('admin.colaborador-adm.show',compact('element','foto'));
-            }else{
-                return view('admin.colaborador-adm.show',compact('element'));        
-            }
-        
+        $imagenes= $this->servImg->getByEquipo($id); 
+        $catEqui= $this->catEquiServ->editar($element->id_cat_equipos);
+        return view('admin.equipo-adm.show',compact('element','imagenes','catEqui'));
     }
-
     public function edit($id_oficina)
     {
         $element = $this->service->editar($id_oficina); 
-        return view('admin.equipo-adm.edit',compact('element'));
+        //obtener imagenes
+        $imagenes=$this->servImg->getByEquipo($id_oficina);
+        $catEqui= $this->catEquiServ->listar()->pluck('des_cate_equipo','id_cat_equipos');   
+        return view('admin.equipo-adm.edit',compact('element','imagenes','catEqui'));
     }
 
     public function update(EquipoRequest $request, $id_equipo)
@@ -66,5 +68,10 @@ class EquipoController extends Controller
     {
         $this->service->eliminar($id);
         return redirect()->route('equipo-adm.index');
+    }
+    public function img($id){
+        $imagenes= $this->servImg->getByEquipo($id);
+        $element=$this->service->show($id);
+        return view('admin.equipo-adm.imgs',compact('imagenes','element'));
     }
 }
