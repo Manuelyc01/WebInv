@@ -53,6 +53,8 @@ class ImagenController extends Controller
     public function destroy($id)
     {
         $this->service->eliminar($id);
-        return back()->withInput();
+        $element=$this->service->getById($id);
+        $imgs=$this->service->getByEquipo($element->id_equipo);
+        return response()->json($imgs);
     }
 }

@@ -6,6 +6,9 @@
 |--------------------------------------------------------------------------
 |
 */
+
+use App\Http\Controllers\Admin\ImagenController;
+
 Auth::routes();
 
 Route::prefix('')->group(function() {
@@ -32,6 +35,7 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
   
 	Route::get('/equipo-img/{id}', 'EquipoController@img');
 	Route::resource('imagen-adm', 'ImagenController');
+	Route::get('/deleteImagen/{id}','ImagenController@destroy');
   
 	Route::resource('solicitudes-adm', 'SolicitudesController');
 
