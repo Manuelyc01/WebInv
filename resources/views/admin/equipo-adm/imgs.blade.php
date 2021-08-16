@@ -19,18 +19,21 @@
                         <label >Imagenes</label>
                     </div>
                 </div>
-                <div class="row galeria">
+                <div class="row galeria" id="gal">
                 @foreach ($imagenes as $imagen)
                     <div class="col s12 m4 l3">
                         <div class="material-placeholder">
                             <img src="{{ $imagen->url }}" alt="" class="responsive-img materialboxed">
                         </div>
                         <div class="card-footer">
-                            <form action="{{ route('imagen-adm.destroy' , ['id' => $imagen->id]) }}" class="d-inline" method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </form>
+                        <div class="col-md-6">
+                            <button id="btnDelete{{ $imagen->id }}" onclick="deleteImg('{{ $imagen->id }}')">Eliminar</button>
+                            <label id="labDelete{{ $imagen->id }}" style="color:red" hidden>Eliminar Registro?</label>
+                        </div>
+                        <div class="col-md-6" id="formDelete{{ $imagen->id }}" hidden>
+                            <button onclick="eliminarImagen('{{ $imagen->id }}')"class="btnConfirm">Si</button>
+                            <button onclick="dontDelete('{{ $imagen->id }}')" class="btnConfirm">No</button>
+                        </div>
                         </div>
                     </div>
                 @endforeach
@@ -56,4 +59,49 @@
 @section('jsAdicional')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ asset('vendor/ems/js/main.js') }}"></script>
+    <script >
+        function deleteImg(id){
+            document.getElementById('labDelete'+id).hidden = false;
+            document.getElementById('btnDelete'+id).hidden = true;
+            document.getElementById('formDelete'+id).hidden = false;
+        }
+        function dontDelete(id){
+            document.getElementById('labDelete'+id).hidden = true;
+            document.getElementById('btnDelete'+id).hidden = false;
+            document.getElementById('formDelete'+id).hidden = true;
+        }
+        function eliminarImagen(id){
+            $(".btnConfirm").prop('disabled', true);
+            $.ajax({
+                type: 'GET', 
+                url: '/web-adm/deleteImagen/'+id,
+                success: function (data) {
+                    const galeria = document.querySelector('#gal');
+                    galeria.innerHTML=``;
+                    for(let i=0;i<data.length;i++){
+                        galeria.innerHTML+=`
+                    <div class="col s12 m4 l3">
+                        <div class="material-placeholder">
+                            <img src="${data[i].url}" alt="" class="responsive-img materialboxed">
+                        </div>
+                        <div class="card-footer">
+                        <div class="col-md-6">
+                            <button id="btnDelete${data[i].id}" onclick="deleteImg('${data[i].id}')">Eliminar</button>
+                            <label id="labDelete${data[i].id}" style="color:red" hidden>Eliminar Registro?</label>
+                        </div>
+                        <div class="col-md-6" id="formDelete${data[i].id}" hidden>
+                            <button onclick="eliminarImagen(${data[i].id})" class="btnConfirm">Si</button>
+                            <button onclick="dontDelete(${data[i].id})" class="btnConfirm">No</button>
+                        </div>
+                        </div>
+                    </div>
+                    `;
+                    }
+                },
+                error: function() { 
+                console.log("No se pudo eliminar");
+                }
+            });
+        }
+    </script>
 @stop
