@@ -7,7 +7,7 @@
     </div>
     <div class="panel-body form-horizontal">
         <div class="form-group {{ $errors->has('co_colaborador') ? 'has-error' : '' }}">
-            {!! Form::stdText('Código', 1, 'co_colaborador', $errors) !!}
+            {!! Form::stdTextRead('Código', 1, 'co_colaborador', $errors, 'Usted no puede modificar este campo') !!}
         </div>
 
         <div class="form-group {{ $errors->has('no_colaborador') ? 'has-error' : '' }}">

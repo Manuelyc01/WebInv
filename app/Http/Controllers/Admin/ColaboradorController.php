@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\ColaboradorRequest;
 use App\Http\Controllers\Controller;
 use App\Services\ColaboradorService;
+use Illuminate\Support\Facades\DB;
 
 use App\Admin;
 use App\Role;
@@ -27,13 +28,17 @@ class ColaboradorController extends Controller
     public function create()
     {
         //return view('admin.colaborador-adm.edit');
-        return view('admin.colaborador-adm.create');
+        $query= DB::select('SELECT id_colaborador FROM tm_colaborador ORDER BY id_colaborador DESC LIMIT 1');
+        //dd( "USER".(($query[0]->id_colaborador)+1)   );
+        $Codigo="USER".(($query[0]->id_colaborador)+1);
+        
+        return view('admin.colaborador-adm.create')->with('codigo',$Codigo);
     }
 
     public function store(ColaboradorRequest $request)
     {
         $this->validate(request(), [
-            'co_colaborador' => 'required|unique:tm_colaborador',
+            
             'nu_documento' => 'required|numeric|unique:tm_colaborador',
             'usuario' => 'required|unique:tm_colaborador',
             'email' => 'required|email|unique:tm_colaborador',
