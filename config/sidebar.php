@@ -80,7 +80,21 @@ return[
       'slug' => 'usuario',
       'url'  => 'colaborador-adm.index',
       'ico'  => 'user'
-    ] 
+    ],
+    [
+      'type' => 'simple',
+      'text' => 'Categoria Componetes',
+      'slug' => 'categoria-componete',
+      'url'  => 'categoriaComponente-adm.index',
+      'ico'  => 'book'
+    ],
+    [
+      'type' => 'simple',
+      'text' => 'Componetes',
+      'slug' => 'componetes',
+      'url'  => 'componente-adm.index',
+      'ico'  => 'book'
+    ]
 	]
 ]
 ?>

@@ -20,6 +20,10 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::resource('oficina-adm', 'OficinaController');
 	Route::resource('cargoLaboral-adm', 'CargoLaboralController');
 	Route::resource('sede-adm', 'SedeController');
+	
+	Route::resource('componente-adm', 'ComponenteController');
+    Route::resource('categoriaComponente-adm', 'CategoriaComponenteController');
+
 	Route::resource('oficinaTrabajador-adm', 'OficinaTrabajadorController');
 	Route::get('/oficinaTrabajador-adm-oficina/{sede}', 'OfinicaTrabajadorAjaxController@GetOficinaAjax');
 	Route::get('/oficinaTrabajador-adm-oficina/{colaborador}/{sede}/{oficina}/{cargo_laboral}', 'OfinicaTrabajadorAjaxController@VerificarTrabajador');
