@@ -108,7 +108,7 @@
             $(".btnConfirm").prop('disabled', true);
             $.ajax({
                 type: 'GET', 
-                url: '/web-adm/equipo-doc/'+id,
+                url: '/web-adm/equipo-doc/'+id+'/0',
                 success: function (data) {
                     const documentos = document.querySelector('#docs');
                     documentos.innerHTML=``;

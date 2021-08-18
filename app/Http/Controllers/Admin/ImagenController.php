@@ -31,8 +31,20 @@ class ImagenController extends Controller
     {
         if($request->hasfile('imagenes')){
             $imgs = $request->file('imagenes');
-            $this->service->registrar($imgs,$request->id_equipo);
-            return back()->withInput();
+            
+            switch($request->type){
+                case 0://Imagenes equipo
+                    $this->service->registrar($imgs,$request->id_equipo);
+                    return back()->withInput();
+                    break;
+                case 1://Imagenes ofiTrabaEqui
+                    $this->service->registrarOfiTraEqui($imgs,$request->id_ofi_traba_equipo);
+                    return back()->withInput();
+                    break;
+                case 2://Imagenes componentes
+                    break;
+            }
+            
          }
         return back()->withInput();
     }
@@ -50,11 +62,23 @@ class ImagenController extends Controller
     {
     }
 
-    public function destroy($id)
+    public function destroy($id,$type)
     {
         $this->service->eliminar($id);
-        $element=$this->service->getById($id);
-        $imgs=$this->service->getByEquipo($element->id_equipo);
-        return response()->json($imgs);
+        switch($type){
+            case 0://Imagenes equipo
+                $element=$this->service->getById($id);
+                $imgs=$this->service->getByEquipo($element->id_equipo);
+                return response()->json($imgs);
+                break;
+            case 1://Imagenes ofiTrabaEqui
+                $element=$this->service->getById($id);
+                $imgs=$this->service->getByOfiTrabaEqui($element->id_ofi_traba_equipo);
+                return response()->json($imgs);
+                break;
+            case 2://Imagenes componentes
+                break;
+        }
+        
     }
 }

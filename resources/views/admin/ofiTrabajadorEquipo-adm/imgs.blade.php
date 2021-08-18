@@ -6,7 +6,7 @@
  @section('content')
     <div class="panel panel-white ui-sortable-handle" style="opacity: 1;">
     <div class="panel-heading">
-        <h3 class="panel-title form-title"> EQUIPO </h3>
+        <h3 class="panel-title form-title"> Equipo Asignado </h3>
         <div class="panel-control">
             <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" class="panel-collapse" data-original-title="Expand/Collapse"><i class="icon-arrow-down"></i></a>
         </div>
@@ -44,7 +44,7 @@
                 {{ csrf_field() }}
                 {{ method_field('POST') }}
                 <input type="hidden" name="type" value="{{ $type }}">
-                <input type="hidden" value="{{ $element->id_equipo }}" name="id_equipo">
+                <input type="hidden" value="{{ $element->id_ofi_traba_equipo }}" name="id_ofi_traba_equipo">
                 <label class="col-sm-2 control-label"><strong> Subir Imagenes</strong></label>
                 <input type="file" class="form-control-file" name="imagenes[]" id="imagenes[]" multiple accept="image/*">
             </div>
@@ -75,7 +75,7 @@
             $(".btnConfirm").prop('disabled', true);
             $.ajax({
                 type: 'GET', 
-                url: '/web-adm/deleteImagen/'+id+'/0',
+                url: '/web-adm/deleteImagen/'+id+'/1',
                 success: function (data) {
                     const galeria = document.querySelector('#gal');
                     galeria.innerHTML=``;
