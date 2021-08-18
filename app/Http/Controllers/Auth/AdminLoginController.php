@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 class AdminLoginController extends Controller
 {
 	public function __construct()
-    {
+    { 
 		$this->middleware('guest:admin');
 	}
 
