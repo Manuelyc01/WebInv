@@ -59,18 +59,17 @@ class OfiTrabajadorEquipoController extends Controller
     {
         $element = $this->service->show($id); 
         //obtener imagenes
-        $imagenes= $this->servImg->getByEquipo($id); 
-        $documentos=$this->servDoc->getByEquipo($id);
-
-        $catEqui= $this->catEquiServ->editar($element->id_cat_equipos);
-        return view('admin.equipo-adm.show',compact('element','imagenes','documentos','catEqui'));
+        $imagenes= $this->servImg->getByOfiTrabaEqui($id); 
+        $documentos=$this->servDoc->getByOfiTrabaEqui($id);
+        return view('admin.ofiTrabajadorEquipo-adm.show',compact('element','imagenes','documentos'));
     }
     public function edit($id_oficina)
     {
         $element = $this->service->editar($id_oficina); 
-        $documentos=$this->servDoc->getByEquipo($id_oficina);
-        $catEqui= $this->catEquiServ->listar()->pluck('des_cate_equipo','id_cat_equipos');   
-        return view('admin.equipo-adm.edit',compact('element','documentos','catEqui'));
+        $documentos=$this->servDoc->getByOfiTrabaEqui($id_oficina);
+        $equipos=$this->servEquipo->listar();
+        $trabajadores=$this->servOfiTra->listar();
+        return view('admin.ofiTrabajadorEquipo-adm.edit',compact('element','documentos','equipos','trabajadores'));
     }
 
     public function update(OfiTrabajadorEquipo $request, $id_equipo)
@@ -86,7 +85,7 @@ class OfiTrabajadorEquipoController extends Controller
         return redirect()->route('equipo-adm.index');
     }
     public function img($id){
-        $imagenes= $this->servImg->getByEquipo($id);
+        $imagenes= $this->servImg->getByOfiTrabaEqui($id);
         $element=$this->service->show($id);
         return view('admin.equipo-adm.imgs',compact('imagenes','element'));
     }

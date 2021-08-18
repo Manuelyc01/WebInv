@@ -40,7 +40,7 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 
 	Route::resource('ofiTrabajadorEquipo-adm','OfiTrabajadorEquipoController');
 	Route::get('/ofiTrabajadorEquipoAjax-adm/{id}', 'OfiTrabajadorEquipoAjax@VerificarEquipo');
-
+	Route::get('/ofiTrabEqui-img/{id}','OfiTrabajadorEquipoController@img');
   
 	Route::resource('solicitudes-adm', 'SolicitudesController');
 
