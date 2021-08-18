@@ -35,8 +35,44 @@
         <div class="form-group">
             <label class="col-sm-2 control-label"><strong> Subir Imagenes</strong></label>
             <input type="file" class="form-control-file" name="imagenes[]" id="imagenes[]" multiple accept="image/*">
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"><strong> Subir Documentos</strong></label>
+            <input type="file" class="form-control-file" name="documentos[]" id="documentos[]" multiple accept=".pdf,.doc,.docx,.xlsx">
         </div> 
         @else
+        <div class="container">
+            <div class="row">
+                    <div class="col s12 center-align">
+                        <label >Documentos</label>
+                    </div>
+            </div>
+            <div class="row" id="docs">
+                @foreach ($documentos as $doc)
+                <div class="row">
+                    <div class="col-md-6">
+                    <a href="{{ $doc->url }}" target="_blank">{{ $doc->nom_documento }}</a> 
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" id="btnDelete{{ $doc->id_documento }}" onclick="deleteDoc('{{ $doc->id_documento }}')">Eliminar</button>
+                        <label id="labDelete{{ $doc->id_documento }}" style="color:red" hidden>Eliminar Documento?</label>
+                    </div>
+                    <div class="col-md-3" id="formDelete{{ $doc->id_documento }}"  hidden>
+                        <button type="button" onclick="eliminarDoc('{{ $doc->id_documento }}')"class="btnConfirm">Si</button>
+                        <button type="button" onclick="dontDelete('{{ $doc->id_documento }}')" class="btnConfirm">No</button>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <div class="row">   
+                <div class="form-group">
+                <label class="col-sm-2 control-label"><strong> Subir Documentos</strong></label>
+                <input type="file" class="form-control-file" name="documentos[]" id="documentos[]" multiple accept=
+                            "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                            text/plain, application/pdf,">
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col s12 center-align"><a href="/web-adm/equipo-img/{{ $element->id_equipo }}"target="_blank" class="btn btn-secondary"> Ver imagenes del equipo</a></div>
         </div>  
@@ -51,5 +87,47 @@
 @section('jsAdicional')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ asset('vendor/ems/js/main.js') }}"></script>
-    
+    <script >
+        function deleteDoc(id){
+            document.getElementById('labDelete'+id).hidden = false;
+            document.getElementById('btnDelete'+id).hidden = true;
+            document.getElementById('formDelete'+id).hidden = false;
+        }
+        function dontDelete(id){
+            document.getElementById('labDelete'+id).hidden = true;
+            document.getElementById('btnDelete'+id).hidden = false;
+            document.getElementById('formDelete'+id).hidden = true;
+        }
+        function eliminarDoc(id){
+            $(".btnConfirm").prop('disabled', true);
+            $.ajax({
+                type: 'GET', 
+                url: '/web-adm/equipo-doc/'+id,
+                success: function (data) {
+                    const documentos = document.querySelector('#docs');
+                    documentos.innerHTML=``;
+                    for(let i=0;i<data.length;i++){
+                        documentos.innerHTML+=`
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="${data[i].url}" target="_blank">${data[i].nom_documento}</a> 
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" id="btnDelete${data[i].id_documento}" onclick="deleteDoc(${data[i].id_documento})">Eliminar</button>
+                                <label id="labDelete${data[i].id_documento}" style="color:red" hidden>Eliminar Documento?</label>
+                            </div>
+                            <div class="col-md-3" id="formDelete${data[i].id_documento}"  hidden>
+                                <button type="button" onclick="eliminarDoc(${data[i].id_documento})"class="btnConfirm">Si</button>
+                                <button type="button" onclick="dontDelete(${data[i].id_documento})" class="btnConfirm">No</button>
+                            </div>
+                        </div>
+                        `;
+                    }
+                },
+                error: function() { 
+                alert("No se pudo eliminar registro");
+                }
+            });
+        }
+    </script>
 @stop

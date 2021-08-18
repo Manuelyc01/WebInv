@@ -87,6 +87,13 @@ return[
       'slug' => 'Solicitudes',
       'url'  => 'solicitudes-adm.index',
       'ico'  => 'book'
+    ],
+    [
+      'type' => 'simple',
+      'text' => 'Oficina Trabajador Equipo',
+      'slug' => 'OfiTrabajadorEquipo',
+      'url'  => 'ofiTrabajadorEquipo-adm.index',
+      'ico'  => 'book'
     ]
 	]
 ]

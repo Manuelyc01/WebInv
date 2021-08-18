@@ -18,6 +18,11 @@ class ImagenService
         $imagenes=Imagen::where('id_equipo','=',$id)->where('esta_imagen','=',1)->orderBy('id', 'ASC')->get();
         return $imagenes;
     }
+    public function getByOfiTrabaEqui($id)
+	{
+        $imagenes=Imagen::where('id_ofi_traba_equipo','=',$id)->where('esta_imagen','=',1)->orderBy('id', 'ASC')->get();
+        return $imagenes;
+    }
 
 	public function registrar($imagenes,$id_equipo)
 	{
@@ -27,9 +32,24 @@ class ImagenService
             $imagen->move($ruta,$name);
             
             $element = new Imagen();
-            $element->nombre=$name;
+            $element->nombre=$imagen->getClientOriginalName();
             $element->url='/uploads/equipos'.'/'.$name;
             $element->id_equipo=$id_equipo;
+            $element->esta_imagen=1;
+            $element->save();
+        }
+    }
+    public function registrarOfiTraEqui($imagenes,$id_ofi_traba_equipo)
+	{
+        foreach($imagenes as $imagen){
+            $name = time().'_'.$imagen->getClientOriginalName();
+            $ruta=public_path().'/uploads/ofiTrabaEqui';
+            $imagen->move($ruta,$name);
+            
+            $element = new Imagen();
+            $element->nombre=$imagen->getClientOriginalName();
+            $element->url='/uploads/ofiTrabaEqui'.'/'.$name;
+            $element->id_ofi_traba_equipo=$id_ofi_traba_equipo;
             $element->esta_imagen=1;
             $element->save();
         }

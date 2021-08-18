@@ -13,6 +13,7 @@ class Imagen extends Model
     protected $fillable = [        
         'nombre',
         'url',
-        'id_equipo'
+        'id_equipo',
+        'id_ofi_traba_equipo'
     ];    
 }

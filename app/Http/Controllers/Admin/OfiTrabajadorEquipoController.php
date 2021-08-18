@@ -2,44 +2,57 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\EquipoRequest;
+use App\Http\Requests\OfiTrabajadorEquipo;
 use App\Http\Controllers\Controller;
-use App\Services\EquipoService;
-use App\Services\CategoriaEquipoService; 
+use App\Services\OfiTrabajadorEquipoService;
 use App\Services\ImagenService; 
 use App\Services\DocumentoService; 
+use App\Services\EquipoService; 
+use App\Services\OficinaTrabajadorService; 
 
-class EquipoController extends Controller
+class OfiTrabajadorEquipoController extends Controller
 {
     private $service;
     private $servImg;
-    private $servDoc;
+    private $servDoc; 
+    private $servEquipo;
+    private $servOfiTra;
 
-    public function __construct(EquipoService $service,ImagenService $servImg,CategoriaEquipoService $catEquiServ, DocumentoService $servDoc)
+    public function __construct(OfiTrabajadorEquipoService $service,OficinaTrabajadorService $servOfiTra ,EquipoService $servEquipo,ImagenService $servImg, DocumentoService $servDoc)
     {
         $this->service = $service;
+        $this->servEquipo=$servEquipo;
         $this->servImg = $servImg;
-        $this->catEquiServ = $catEquiServ;
         $this->servDoc=$servDoc;
+        $this->servOfiTra=$servOfiTra;
     }
 
     public function index()
     {
         $elements = $this->service->listar();
-        return view('admin.equipo-adm.index', compact('elements'));
+        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
     }
 
     public function create()
     { 
-        $catEqui= $this->catEquiServ->listar()->pluck('des_cate_equipo','id_cat_equipos');
-        return view('admin.equipo-adm.edit',compact('catEqui'));
+        $equipos=$this->servEquipo->listar();
+        $trabajadores=$this->servOfiTra->listar();
+        return view('admin.ofiTrabajadorEquipo-adm.edit',compact('equipos','trabajadores'));
     }
 
-    public function store(EquipoRequest $request)
+    public function store(OfiTrabajadorEquipo $request)
     {
-        $this->service->registrar($request);
-        session()->flash('success', '¡Información registrada con éxito!');
-        return redirect()->route('equipo-adm.index');
+        $stp=$this->service->registrar($request);
+        
+        if(isset($stp[0]->FALSE)){
+            session()->flash('unsuccess', 'Fallo en registro!');//como enviar alerta
+            return back()->withInput();    
+        }
+        else{
+            session()->flash('success', '¡Información registrada con éxito!');
+            return redirect()->route('ofiTrabajadorEquipo-adm.index');
+        }
+        
     }
 
     public function show($id)
@@ -60,7 +73,7 @@ class EquipoController extends Controller
         return view('admin.equipo-adm.edit',compact('element','documentos','catEqui'));
     }
 
-    public function update(EquipoRequest $request, $id_equipo)
+    public function update(OfiTrabajadorEquipo $request, $id_equipo)
     {
         $this->service->actualizar($request, $id_equipo);
         session()->flash('success', '¡Información actualizada con éxito!');

@@ -28,7 +28,7 @@
                         <div class="card-footer">
                         <div class="col-md-6">
                             <button id="btnDelete{{ $imagen->id }}" onclick="deleteImg('{{ $imagen->id }}')">Eliminar</button>
-                            <label id="labDelete{{ $imagen->id }}" style="color:red" hidden>Eliminar Registro?</label>
+                            <label id="labDelete{{ $imagen->id }}" style="color:red" hidden>Eliminar Imagen?</label>
                         </div>
                         <div class="col-md-6" id="formDelete{{ $imagen->id }}" hidden>
                             <button onclick="eliminarImagen('{{ $imagen->id }}')"class="btnConfirm">Si</button>

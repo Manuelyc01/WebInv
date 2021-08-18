@@ -31,6 +31,7 @@
 										<li>Oficina Trabajador {{ Form::checkbox('oficina-trabajador', 'oficina-trabajador', @$element->permiso['oficina-trabajador'], ['class' => 'form-control marcarPermiso']) }}</li>
 										<li>Colaboradores{{ Form::checkbox('usuario', 'usuario', @$element->permiso['usuario'], ['class' => 'form-control marcarPermiso']) }}</li>
 										<li>Solicitudes{{ Form::checkbox('Solicitudes', 'Solicitudes', @$element->permiso['Solicitudes'], ['class' => 'form-control marcarPermiso']) }}</li>
+										<li>Oficina Trabajador Equipo{{ Form::checkbox('OfiTrabajadorEquipo', 'OfiTrabajadorEquipo', @$element->permiso['OfiTrabajadorEquipo'], ['class' => 'form-control marcarPermiso']) }}</li>
 									{{-- @endforeach --}}
 								</td>
 								{{-- <td> {{ $element->created_at }} </td> --}}
