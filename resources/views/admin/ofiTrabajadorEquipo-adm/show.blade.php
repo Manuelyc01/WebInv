@@ -7,7 +7,7 @@
 @section('content')
     <div class="panel panel-white ui-sortable-handle" style="opacity: 1;">
     <div class="panel-heading">
-        <h3 class="panel-title form-title"> EQUIPO </h3>
+        <h3 class="panel-title form-title"> Asifnación de Equipo </h3>
         <div class="panel-control">
             <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" class="panel-collapse" data-original-title="Expand/Collapse"><i class="icon-arrow-down"></i></a>
         </div>
@@ -16,36 +16,42 @@
 
         
         <div class="form-group">
-			<label class="col-sm-2 control-label"><strong> Serie</strong></label>
+			<label class="col-sm-2 control-label"><strong> HostName</strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="serie_equipo" type="text" value="{{$element->serie_equipo}}"readonly>
+                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="no_equipo" type="text" value="{{$element->no_equipo}}"readonly>
             </div>
 		</div>
 
         <div class="form-group ">
-            <label class="col-sm-2 control-label"><strong> Código Patrimonial</strong></label>
+            <label class="col-sm-2 control-label"><strong> Sistema Operativo</strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="cod_opatrimonial" type="text" value="{{$element->cod_opatrimonial}}" readonly>
+                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="sis_operativo" type="text" value="{{$element->sis_operativo}}" readonly>
             </div>
         </div>
 
         <div class="form-group ">
-            <label class="col-sm-2 control-label"><strong> Descripcion</strong></label>
+            <label class="col-sm-2 control-label"><strong> Observaciones del equipo</strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="des_equipo" type="text" value="{{$element->des_equipo}}"readonly>
+                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="estado_equipo" type="text" value="{{$element->estado_equipo}}"readonly>
             </div>
         </div>
 
         <div class="form-group ">
-            <label class="col-sm-2 control-label"><strong> Tipo Bien</strong></label>
+            <label class="col-sm-2 control-label"><strong> Estado </strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="tipoBien" type="text" value="{{$element->tipoBien}}" readonly>
+                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="esta_ofi_traba_equipo" type="text" value="{{$element->esta_ofi_traba_equipo}}" readonly>
             </div>
         </div>
         <div class="form-group ">
-        <label class="col-sm-2 control-label"><strong> Categoría</strong></label>
+        <label class="col-sm-2 control-label"><strong> Equipo </strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" type="text" value="{{$catEqui->des_cate_equipo}}" readonly>
+                <input class="form-control" placeholder="" type="text" value="{{$element->id_equipo}}" readonly>
+            </div>
+        </div>
+        <div class="form-group ">
+        <label class="col-sm-2 control-label"><strong> Colaborador </strong></label>
+            <div class="col-sm-8">
+                <input class="form-control" placeholder="" type="text" value="{{$element->id_ofi_trabajador}}" readonly>
             </div>
         </div>
         <div>
