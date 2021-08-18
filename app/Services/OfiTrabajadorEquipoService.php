@@ -31,11 +31,11 @@ class OfiTrabajadorEquipoService{
             //guardar imagen o documentos si existen
             if($request->hasfile('imagenes')){
                 $imagenes = $request->file('imagenes');
-                $this->servImg->registrarOfiTraEqui($imagenes,$request->id_ofi_trabajador);
+                $this->servImg->registrarOfiTraEqui($imagenes,$stp[0]->id);
              }
             if($request->hasfile('documentos')){
                 $documentos=$request->file('documentos');
-                $this->servDoc->registrarOfiTraEqui($documentos,$request->id_ofi_trabajador);
+                $this->servDoc->registrarOfiTraEqui($documentos,$stp[0]->id);
             }
             return $stp;
         }
@@ -45,20 +45,22 @@ class OfiTrabajadorEquipoService{
     
     public function editar($id)
     {
-        $element = OfiTrabajadorEquipo::join('tm_equipo','tm_equipo.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+        $element = OfiTrabajadorEquipo::join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
                 ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
-                ->select('tm_ofi_traba_equipo.*','tm_equipo.*','tm_ofi_trabajador.*')
-                ->where('tm_ofi_traba_equipo.id_ofi_trabajador',$$id)
+                ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*')
+                ->where('tm_ofi_traba_equipo.id_ofi_traba_equipo',$id)
                 ->first();
         return $element;
     }
 
     public function show($id)
     {
-        $element = OfiTrabajadorEquipo::join('tm_equipo','tm_equipo.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+        $element = OfiTrabajadorEquipo::join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
                 ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
-                ->select('tm_ofi_traba_equipo.*','tm_equipo.*','tm_ofi_trabajador.*')
-                ->where('tm_ofi_traba_equipo.id_ofi_trabajador',$$id)
+                ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*')
+                ->where('tm_ofi_traba_equipo.id_ofi_traba_equipo',$id)
                 ->first();
         return $element;
     }

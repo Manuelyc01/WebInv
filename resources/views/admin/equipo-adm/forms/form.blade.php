@@ -42,27 +42,33 @@
         </div> 
         @else
         <div class="container">
-            <div class="row">
-                    <div class="col s12 center-align">
-                        <label >Documentos</label>
-                    </div>
-            </div>
             <div class="row" id="docs">
-                @foreach ($documentos as $doc)
-                <div class="row">
-                    <div class="col-md-6">
-                    <a href="{{ $doc->url }}" target="_blank">{{ $doc->nom_documento }}</a> 
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" id="btnDelete{{ $doc->id_documento }}" onclick="deleteDoc('{{ $doc->id_documento }}')">Eliminar</button>
-                        <label id="labDelete{{ $doc->id_documento }}" style="color:red" hidden>Eliminar Documento?</label>
-                    </div>
-                    <div class="col-md-3" id="formDelete{{ $doc->id_documento }}"  hidden>
-                        <button type="button" onclick="eliminarDoc('{{ $doc->id_documento }}')"class="btnConfirm">Si</button>
-                        <button type="button" onclick="dontDelete('{{ $doc->id_documento }}')" class="btnConfirm">No</button>
-                    </div>
-                </div>
-                @endforeach
+                <table>
+                    <thead>
+						<th>Documentos</th>
+						<th></th>
+                    </thead>
+                    <tbody>
+                    @foreach ($documentos as $doc)
+                    <tr>
+                        <td>
+                            <span class="menu-icon glyphicon glyphicon-book" style="float:left; margin-bottom:4px"></span>
+                            <a href="{{ $doc->url }}" target="_blank">{{ $doc->nom_documento }}</a> 
+                        </td>
+                        <td>
+                            <div class="col-md-3">
+                                <button type="button" id="btnDelete{{ $doc->id_documento }}" onclick="deleteDoc('{{ $doc->id_documento }}')">Eliminar</button>
+                                <label id="labDelete{{ $doc->id_documento }}" style="color:red" hidden>Eliminar Documento?</label>
+                            </div>
+                            <div class="col-md-3" id="formDelete{{ $doc->id_documento }}"  hidden>
+                                <button type="button" onclick="eliminarDoc('{{ $doc->id_documento }}')"class="btnConfirm">Si</button>
+                                <button type="button" onclick="dontDelete('{{ $doc->id_documento }}')" class="btnConfirm">No</button>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
             <div class="row">   
                 <div class="form-group">

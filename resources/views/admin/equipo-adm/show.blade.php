@@ -68,16 +68,20 @@
 		</div>
         <div class="container">
             <div class="row">
-                    <div class="col s12 center-align">
-                        <label >Documentos</label>
-                    </div>
-            </div>
-            <div class="row">
-            @foreach ($documentos as $documento)
-                <div class="col-md-6">
-                    <a href="{{ $documento->url }}" target="_blank">{{ $documento->nom_documento }}</a> 
-                </div>
-            @endforeach
+                <table>
+                    <thead><th>Documentos</th>
+						<th></th></thead>
+                    <tbody>             
+                        @foreach ($documentos as $documento)
+                        <tr>
+                            <td>
+                            <span class="menu-icon glyphicon glyphicon-book" style="float:left; margin-bottom:4px"></span>
+                            <a href="{{ $documento->url }}" target="_blank">{{ $documento->nom_documento }}</a> 
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

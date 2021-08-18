@@ -38,20 +38,27 @@
 
         <div class="form-group ">
             <label class="col-sm-2 control-label"><strong> Estado </strong></label>
-            <div class="col-sm-8">
-                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="esta_ofi_traba_equipo" type="text" value="{{$element->esta_ofi_traba_equipo}}" readonly>
+            <div class="col-sm-3">
+            @if($element->esta_ofi_traba_equipo==0)
+			<input style="background-color: red;color:white;" class="form-control" placeholder="" type="text" value="BAJA" readonly>
+            @elseif($element->esta_ofi_traba_equipo==1)
+			<input style="background-color: yellow;color:white;" class="form-control" placeholder="" type="text" value="MANTENIMIENTO" readonly>
+            @else
+            <input style="background-color: green;color:white;" class="form-control" placeholder="" type="text" value="ACTIVO" readonly>
+            @endif
             </div>
+            
         </div>
         <div class="form-group ">
         <label class="col-sm-2 control-label"><strong> Equipo </strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" type="text" value="{{$element->id_equipo}}" readonly>
+                <input class="form-control" placeholder="" type="text" value="{{$element->tipoBien}}" readonly>
             </div>
         </div>
         <div class="form-group ">
         <label class="col-sm-2 control-label"><strong> Colaborador </strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" type="text" value="{{$element->id_ofi_trabajador}}" readonly>
+                <input class="form-control" placeholder="" type="text" value="{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }} " readonly>
             </div>
         </div>
         <div>
@@ -74,16 +81,20 @@
 		</div>
         <div class="container">
             <div class="row">
-                    <div class="col s12 center-align">
-                        <label >Documentos</label>
-                    </div>
-            </div>
-            <div class="row">
-            @foreach ($documentos as $documento)
-                <div class="col-md-6">
-                    <a href="{{ $documento->url }}" target="_blank">{{ $documento->nom_documento }}</a> 
-                </div>
-            @endforeach
+                <table>
+                    <thead><th>Documentos</th>
+						<th></th></thead>
+                    <tbody>             
+                        @foreach ($documentos as $documento)
+                        <tr>
+                            <td>
+                            <span class="menu-icon glyphicon glyphicon-book" style="float:left; margin-bottom:4px"></span>
+                            <a href="{{ $documento->url }}" target="_blank">{{ $documento->nom_documento }}</a> 
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
