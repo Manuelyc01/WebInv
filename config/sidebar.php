@@ -94,6 +94,20 @@ return[
       'slug' => 'OfiTrabajadorEquipo',
       'url'  => 'ofiTrabajadorEquipo-adm.index',
       'ico'  => 'book'
+    ],
+    [
+      'type' => 'simple',
+      'text' => 'Categoria Componetes',
+      'slug' => 'categoria-componete',
+      'url'  => 'categoriaComponente-adm.index',
+      'ico'  => 'book'
+    ],
+    [
+      'type' => 'simple',
+      'text' => 'Componetes',
+      'slug' => 'componetes',
+      'url'  => 'componente-adm.index',
+      'ico'  => 'book'
     ]
 	]
 ]
