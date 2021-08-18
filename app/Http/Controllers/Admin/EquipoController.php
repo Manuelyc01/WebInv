@@ -75,6 +75,7 @@ class EquipoController extends Controller
     public function img($id){
         $imagenes= $this->servImg->getByEquipo($id);
         $element=$this->service->show($id);
-        return view('admin.equipo-adm.imgs',compact('imagenes','element'));
+        $type=0;
+        return view('admin.equipo-adm.imgs',compact('imagenes','element','type'));
     }
 }

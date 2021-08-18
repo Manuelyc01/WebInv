@@ -14,11 +14,23 @@ class DocumentoController extends Controller
         $this->service = $service;
     }
     //
-    public function destroy($id)
+    public function destroy($id,$type)
     {   
         $this->service->eliminar($id);
-        $element=$this->service->getById($id);
-        $docs=$this->service->getByEquipo($element->id_equipo);
-        return response()->json($docs);
+        switch($type){
+            case 0://Imagenes equipo
+                $element=$this->service->getById($id);
+                $docs=$this->service->getByEquipo($element->id_equipo);
+                return response()->json($docs);
+                break;
+            case 1://Imagenes ofiTrabaEqui
+                $element=$this->service->getById($id);
+                $imgs=$this->service->getByOfiTrabaEqui($element->id_ofi_traba_equipo);
+                return response()->json($imgs);
+                break;
+            case 2://Imagenes componentes
+                break;
+        }
+        
     }
 }

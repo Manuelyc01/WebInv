@@ -38,8 +38,8 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
   
 	Route::get('/equipo-img/{id}', 'EquipoController@img');
 	Route::resource('imagen-adm', 'ImagenController');
-	Route::get('/deleteImagen/{id}','ImagenController@destroy');		
-	Route::get('/equipo-doc/{id}', 'DocumentoController@destroy');
+	Route::get('/deleteImagen/{id}/{type}','ImagenController@destroy');		
+	Route::get('/equipo-doc/{id}/{type}', 'DocumentoController@destroy');
 
 	Route::resource('ofiTrabajadorEquipo-adm','OfiTrabajadorEquipoController');
 	Route::get('/ofiTrabajadorEquipoAjax-adm/{id}', 'OfiTrabajadorEquipoAjax@VerificarEquipo');

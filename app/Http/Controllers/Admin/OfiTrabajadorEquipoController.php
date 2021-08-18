@@ -87,6 +87,7 @@ class OfiTrabajadorEquipoController extends Controller
     public function img($id){
         $imagenes= $this->servImg->getByOfiTrabaEqui($id);
         $element=$this->service->show($id);
-        return view('admin.equipo-adm.imgs',compact('imagenes','element'));
+        $type=1;
+        return view('admin.ofiTrabajadorEquipo-adm.imgs',compact('imagenes','element','type'));
     }
 }
