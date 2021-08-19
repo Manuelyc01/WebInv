@@ -18,7 +18,9 @@ class EquipoService
 
     public function listar()
 	{
-        $element = Equipo::where('esta_equipo','=',1)->orderBy('id_equipo', 'ASC')->get();
+        $element = Equipo::join('tm_categoria_equipos','tm_categoria_equipos.id_cat_equipos','=','tm_equipos.id_cat_equipos')
+            ->select('tm_equipos.*','tm_categoria_equipos.*')    
+            ->where('esta_equipo','=',1)->orderBy('id_equipo', 'ASC')->get();
 		return $element;
 	}
 

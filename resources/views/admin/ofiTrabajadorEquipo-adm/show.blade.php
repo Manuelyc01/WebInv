@@ -40,11 +40,9 @@
             <label class="col-sm-2 control-label"><strong> Estado </strong></label>
             <div class="col-sm-3">
             @if($element->esta_ofi_traba_equipo==0)
-			<input style="background-color: red;color:white;" class="form-control" placeholder="" type="text" value="BAJA" readonly>
-            @elseif($element->esta_ofi_traba_equipo==1)
-			<input style="background-color: yellow;color:white;" class="form-control" placeholder="" type="text" value="MANTENIMIENTO" readonly>
+			<input style="background-color: red;color:white;" class="form-control" placeholder="" type="text" value="NO ASIGNADO" readonly>
             @else
-            <input style="background-color: green;color:white;" class="form-control" placeholder="" type="text" value="ACTIVO" readonly>
+			<input style="background-color: green;color:white;" class="form-control" placeholder="" type="text" value="ASIGNADO" readonly>
             @endif
             </div>
             

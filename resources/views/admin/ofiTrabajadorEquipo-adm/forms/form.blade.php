@@ -10,25 +10,26 @@
         </div>
     </div>
     <div class="panel-body form-horizontal">
+        @if(!isset($element) || $element->esta_ofi_traba_equipo==1)
+            <div class="form-group">
+            {!! Form::stdText('HostName', 0, 'no_equipo', $errors) !!}
+            </div>
 
-        
-        <div class="form-group">
-        {!! Form::stdText('HostName', 0, 'no_equipo', $errors) !!}
-		</div>
+            <div class="form-group {{ $errors->has('sis_operativo') ? 'has-error' : '' }}">
+                {!! Form::stdText('Sistema Operativo', 0, 'sis_operativo', $errors) !!}
+            </div>
 
-        <div class="form-group {{ $errors->has('sis_operativo') ? 'has-error' : '' }}">
-            {!! Form::stdText('Sistema Operativo', 0, 'sis_operativo', $errors) !!}
-        </div>
-
-        <div class="form-group {{ $errors->has('estado_equipo') ? 'has-error' : '' }}">
-            {!! Form::stdText('Observaciones del equipo', 0, 'estado_equipo', $errors) !!}
-        </div>
-        <div class="form-group {{ $errors->has('esta_ofi_traba_equipo') ? 'has-error' : '' }}">
-            <?php
-            $list=["2"=>"Activo","1"=>"Mantenimiento","0"=>"Baja"];
-            ?>
-            {!! Form::stdSelect('Estado', 1, 'esta_ofi_traba_equipo', $list, null) !!}
-        </div>
+            <div class="form-group {{ $errors->has('estado_equipo') ? 'has-error' : '' }}">
+                {!! Form::stdText('Observaciones del equipo', 0, 'estado_equipo', $errors) !!}
+            </div>
+            <div class="form-group {{ $errors->has('esta_ofi_traba_equipo') ? 'has-error' : '' }}">
+                <?php
+                $list=["1"=>"Asignado","0"=>"No Asignado"];
+                ?>
+                {!! Form::stdSelect('Estado', 1, 'esta_ofi_traba_equipo', $list, null) !!}
+            </div>
+        @endif
+        @if(!isset($element))
         <div class="form-group {{ $errors->has('id_equipo') ? 'has-error' : '' }}">
             <label class="col-sm-2 control-label"><strong>Equipo<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
@@ -51,7 +52,6 @@
                 </datalist>
             </div>
         </div>
-        @if(!isset($element))
         <div class="form-group">
             <label class="col-sm-2 control-label"><strong> Subir Imagenes</strong></label>
             <input type="file" class="form-control-file" name="imagenes[]" id="imagenes[]" multiple accept="image/*">
@@ -61,17 +61,60 @@
             <input type="file" class="form-control-file" name="documentos[]" id="documentos[]" multiple accept=".pdf,.doc,.docx,.xlsx">
         </div> 
         @else
+            @if($element->esta_ofi_traba_equipo==-1 || $element->esta_ofi_traba_equipo==0 )
+            <div class="form-group">
+			<label class="col-sm-2 control-label"><strong> HostName</strong></label>
+            <div class="col-sm-8">
+                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="no_equipo" type="text" value="{{$element->no_equipo}}"disabled>
+            </div>
+		    </div>
+
+            <div class="form-group ">
+                <label class="col-sm-2 control-label"><strong> Sistema Operativo</strong></label>
+                <div class="col-sm-8">
+                    <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="sis_operativo" type="text" value="{{$element->sis_operativo}}" disabled>
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label class="col-sm-2 control-label"><strong> Observaciones del equipo</strong></label>
+                <div class="col-sm-8">
+                    <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="estado_equipo" type="text" value="{{$element->estado_equipo}}"disabled>
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label class="col-sm-2 control-label"><strong> Estado </strong></label>
+                <div class="col-sm-3">
+                <input style="background-color: red;color:white;" class="form-control" placeholder="" type="text" value="NO ASIGNADO" disabled>
+                </div>
+                
+            </div>
+            @endif
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+			    <label><strong> Equipo</strong></label>
+                <input class="form-control" data-toggle="tooltip" data-placement="right" data-trigger="focus" type="text" value="{{$element->tipoBien}}"disabled>
+            </div>
+            <div class="col-sm-4">
+                <label><strong> Colaborador</strong></label>
+                <input class="form-control" data-toggle="tooltip" data-placement="right" data-trigger="focus" type="text" value="{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}"disabled>
+            </div>
+        </div>
         <div class="container">
-            <div class="row" id="docs">
+            <div class="row" >
                 <table  class="display table table-hover dataTable">
                     <thead>
 						<th>Documentos</th>
 						<th></th>
                     </thead>
-                    <tbody>
+                    <tbody id="docs">
                     @foreach ($documentos as $doc)
                         <tr>
-                            <td><span class="menu-icon glyphicon glyphicon-book" style="float:left; margin-bottom:4px"></span>{{ $doc->nom_documento }}</td>
+                            <td><span class="menu-icon glyphicon glyphicon-book" style="float:left; margin-bottom:4px"></span>
+                            <a href="{{ $doc->url }}" target="_blank">{{ $doc->nom_documento }}</a> 
+                            </td>
                             <td>
                             <div class="col-md-3">
                                 <button type="button" id="btnDelete{{ $doc->id_documento }}" onclick="deleteDoc('{{ $doc->id_documento }}')">Eliminar</button>
@@ -162,10 +205,12 @@
                     documentos.innerHTML=``;
                     for(let i=0;i<data.length;i++){
                         documentos.innerHTML+=`
-                        <div class="row">
-                            <div class="col-md-6">
+                        <tr>
+                            <td>
+                            <span class="menu-icon glyphicon glyphicon-book" style="float:left; margin-bottom:4px"></span>
                                 <a href="${data[i].url}" target="_blank">${data[i].nom_documento}</a> 
-                            </div>
+                            </td>
+                            <td>
                             <div class="col-md-3">
                                 <button type="button" id="btnDelete${data[i].id_documento}" onclick="deleteDoc(${data[i].id_documento})">Eliminar</button>
                                 <label id="labDelete${data[i].id_documento}" style="color:red" hidden>Eliminar Documento?</label>
@@ -174,7 +219,8 @@
                                 <button type="button" onclick="eliminarDoc(${data[i].id_documento})"class="btnConfirm">Si</button>
                                 <button type="button" onclick="dontDelete(${data[i].id_documento})" class="btnConfirm">No</button>
                             </div>
-                        </div>
+                            </td>
+                        </tr>
                         `;
                     }
                 },
