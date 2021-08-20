@@ -34,7 +34,7 @@
 									<td style="background-color: green;color:white;"> <strong> ASIGNADO </strong> </td>
 								@endif
 								<td> <strong> {{ $element->tipoBien }} </strong> </td>
-								<td> <strong>{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}</strong> </td>
+								<td> <strong>{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}&nbsp;(SEDE: {{ $element->no_sede }})</strong> </td>
 								<td class="tbl-action-col">
 									<a href="{{ route('ofiTrabajadorEquipo-adm.edit' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 									<a href="{{ route('ofiTrabajadorEquipo-adm.show' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-success"> <i class="fa fa-eye"></i> </a>

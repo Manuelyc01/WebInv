@@ -45,9 +45,9 @@
             <label class="col-sm-2 control-label"><strong>Colaborador<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
             <input class="form-control" list="datalistOptionsColaborador" name="id_ofi_trabajador" id="id_ofi_trabajador" placeholder="Buscar Colaborador" value="{{@$element->id_ofi_trabajador}}" autocomplete="off">
-                <datalist id="datalistOptionsColaborador">
+                <datalist id="datalistOptionsColaborador" >
                     @foreach($trabajadores as $trabajador)
-                        <option value="{{@$trabajador->id_ofi_trabajador}}">{{@$trabajador->no_colaborador}}&nbsp;{{@$trabajador->ap_paterno_colaborador}}&nbsp;{{@$trabajador->ap_materno_colaborador}}</option>
+                        <option value="{{@$trabajador->id_ofi_trabajador}}">{{@$trabajador->no_colaborador}}&nbsp;{{@$trabajador->ap_paterno_colaborador}}&nbsp;(UBI.{{@$trabajador->no_sede}}--{{@$trabajador->no_oficina}})</option>
                     @endforeach
                 </datalist>
             </div>
@@ -93,13 +93,13 @@
             @endif
         <div class="form-group">
             <div class="col-sm-2"></div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
 			    <label><strong> Equipo</strong></label>
                 <input class="form-control" data-toggle="tooltip" data-placement="right" data-trigger="focus" type="text" value="{{$element->tipoBien}}"disabled>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-5">
                 <label><strong> Colaborador</strong></label>
-                <input class="form-control" data-toggle="tooltip" data-placement="right" data-trigger="focus" type="text" value="{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}"disabled>
+                <input class="form-control" data-toggle="tooltip" data-placement="right" data-trigger="focus" type="text" value="{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;(UBI.{{ $element->no_sede }}--{{ $element->no_oficina }})"disabled>
             </div>
         </div>
         <div class="container">

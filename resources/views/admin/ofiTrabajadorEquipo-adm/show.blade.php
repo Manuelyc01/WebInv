@@ -56,7 +56,7 @@
         <div class="form-group ">
         <label class="col-sm-2 control-label"><strong> Colaborador </strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" type="text" value="{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }} " readonly>
+                <input class="form-control" placeholder="" type="text" value="{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }} &nbsp;(Ubicación:{{ $element->no_sede }},{{ $element->no_oficina }} ) " readonly>
             </div>
         </div>
         <div>
