@@ -42,13 +42,13 @@
         </div> 
         @else
         <div class="container">
-            <div class="row" id="docs">
-                <table>
+            <div class="row" >
+                <table class="display table table-hover dataTable">
                     <thead>
 						<th>Documentos</th>
 						<th></th>
                     </thead>
-                    <tbody>
+                    <tbody id="docs">
                     @foreach ($documentos as $doc)
                     <tr>
                         <td>
@@ -114,10 +114,12 @@
                     documentos.innerHTML=``;
                     for(let i=0;i<data.length;i++){
                         documentos.innerHTML+=`
-                        <div class="row">
-                            <div class="col-md-6">
+                        <tr>
+                            <td>
+                            <span class="menu-icon glyphicon glyphicon-book" style="float:left; margin-bottom:4px"></span>
                                 <a href="${data[i].url}" target="_blank">${data[i].nom_documento}</a> 
-                            </div>
+                            </td>
+                            <td>
                             <div class="col-md-3">
                                 <button type="button" id="btnDelete${data[i].id_documento}" onclick="deleteDoc(${data[i].id_documento})">Eliminar</button>
                                 <label id="labDelete${data[i].id_documento}" style="color:red" hidden>Eliminar Documento?</label>
@@ -126,7 +128,8 @@
                                 <button type="button" onclick="eliminarDoc(${data[i].id_documento})"class="btnConfirm">Si</button>
                                 <button type="button" onclick="dontDelete(${data[i].id_documento})" class="btnConfirm">No</button>
                             </div>
-                        </div>
+                            </td>
+                        </tr>
                         `;
                     }
                 },

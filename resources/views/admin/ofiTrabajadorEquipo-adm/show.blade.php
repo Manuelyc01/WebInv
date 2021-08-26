@@ -40,11 +40,9 @@
             <label class="col-sm-2 control-label"><strong> Estado </strong></label>
             <div class="col-sm-3">
             @if($element->esta_ofi_traba_equipo==0)
-			<input style="background-color: red;color:white;" class="form-control" placeholder="" type="text" value="BAJA" readonly>
-            @elseif($element->esta_ofi_traba_equipo==1)
-			<input style="background-color: yellow;color:white;" class="form-control" placeholder="" type="text" value="MANTENIMIENTO" readonly>
+			<input style="background-color: red;color:white;" class="form-control" placeholder="" type="text" value="NO ASIGNADO" readonly>
             @else
-            <input style="background-color: green;color:white;" class="form-control" placeholder="" type="text" value="ACTIVO" readonly>
+			<input style="background-color: green;color:white;" class="form-control" placeholder="" type="text" value="ASIGNADO" readonly>
             @endif
             </div>
             
@@ -58,7 +56,7 @@
         <div class="form-group ">
         <label class="col-sm-2 control-label"><strong> Colaborador </strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" type="text" value="{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }} " readonly>
+                <input class="form-control" placeholder="" type="text" value="{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }} &nbsp;(Ubicación:{{ $element->no_sede }},{{ $element->no_oficina }} ) " readonly>
             </div>
         </div>
         <div>

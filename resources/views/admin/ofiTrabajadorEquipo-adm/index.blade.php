@@ -28,9 +28,13 @@
 								<td> <strong> {{ $element->no_equipo }} </strong></td>
 								<td> <strong> {{ $element->sis_operativo }} </strong> </td>
 								<td> <strong> {{ $element->estado_equipo }} </strong> </td>
-								<td> <strong> {{ $element->esta_ofi_traba_equipo }} </strong> </td>
-								<td> <strong> {{ $element->id_equipo }} </strong> </td>
-								<td> <strong> {{ $element->id_ofi_trabajador }} </strong> </td>
+									@if($element->esta_ofi_traba_equipo==0)
+									<td style="background-color: red;color:white";> <strong> SIN ASIGNAR </strong> </td>
+								@else
+									<td style="background-color: green;color:white;"> <strong> ASIGNADO </strong> </td>
+								@endif
+								<td> <strong> {{ $element->tipoBien }} </strong> </td>
+								<td> <strong>{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}&nbsp;(SEDE: {{ $element->no_sede }})</strong> </td>
 								<td class="tbl-action-col">
 									<a href="{{ route('ofiTrabajadorEquipo-adm.edit' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 									<a href="{{ route('ofiTrabajadorEquipo-adm.show' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-success"> <i class="fa fa-eye"></i> </a>

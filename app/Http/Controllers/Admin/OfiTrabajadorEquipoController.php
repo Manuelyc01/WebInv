@@ -76,13 +76,13 @@ class OfiTrabajadorEquipoController extends Controller
     {
         $this->service->actualizar($request, $id_equipo);
         session()->flash('success', '¡Información actualizada con éxito!');
-        return redirect()->route('equipo-adm.index');
+        return redirect()->route('ofiTrabajadorEquipo-adm.index');
     }
 
     public function destroy($id)
     {
         $this->service->eliminar($id);
-        return redirect()->route('equipo-adm.index');
+        return redirect()->route('ofiTrabajadorEquipo-adm.index');
     }
     public function img($id){
         $imagenes= $this->servImg->getByOfiTrabaEqui($id);

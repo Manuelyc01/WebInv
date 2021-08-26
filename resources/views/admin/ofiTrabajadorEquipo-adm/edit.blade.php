@@ -16,8 +16,10 @@
     @endisset
 
     <div class="col-md-12">
+        
         <button id="submit-btn" class="btn btn-success btn-addon m-b-sm"><i class="glyphicon glyphicon-floppy-disk"></i>
         <b>Guardar cambios</b> </button>
+      
         @isset($element)
             <button id="delete-btn" class="btn btn-danger btn-addon m-b-sm" data-toggle="modal" data-target="#delete-modal">
                 <i class="glyphicon glyphicon-trash"></i> Eliminar </button>
