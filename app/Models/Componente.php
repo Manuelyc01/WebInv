@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Componente extends Model
 {
     protected $table = 'tm_componentes';
-    protected $primaryKey = 'id_componete';
+    protected $primaryKey = 'id_componente';
 
     protected $fillable = [        
-        'serie_componete',
-        'des_componete',
-        'esta_componete',
-        'fotos_componete',
+        'serie_componente',
+        'des_componente',
+        'esta_componente',
+        'fotos_componente',
         'id_cat_componentes'
     ];    
 }

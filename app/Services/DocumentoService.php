@@ -23,6 +23,16 @@ class DocumentoService
         $docs=Documento::where('id_ofi_traba_equipo','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();
         return $docs;
     }
+    public function getByComponente($id)
+	{
+        $docs=Documento::where('id_componente','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();
+        return $docs;
+    }
+    public function getByOfiTrabaEquiCompo($id)
+	{
+        $docs=Documento::where('id_ofi_traba_equi_compo','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();
+        return $docs;
+    }
 
 	public function registrar($docs,$id_equipo)
 	{
@@ -52,6 +62,37 @@ class DocumentoService
             $element->url='/uploads/docsOfiTrabaEqui'.'/'.$name;
             $element->id_equipo=null;
             $element->id_ofi_traba_equipo=$id_ofi_traba_equipo;
+            $element->est_documento=1;
+            $element->save();
+        }
+    }
+    public function registrarCompoEquiTrabajador($docs,$id_ofi_traba_equi_compo)
+	{
+        foreach($docs as $doc){
+            $name = time().'_'.$doc->getClientOriginalName();
+            $ruta=public_path().'/uploads/docsComponenteEquipoTrabajador';
+            $doc->move($ruta,$name);
+            
+            $element = new Documento();
+            $element->nom_documento=$doc->getClientOriginalName();
+            $element->url='/uploads/docsComponenteEquipoTrabajador'.'/'.$name;
+            $element->id_equipo=null;
+            $element->id_ofi_traba_equi_compo=$id_ofi_traba_equi_compo;
+            $element->est_documento=1;
+            $element->save();
+        }
+    }
+    public function registrarComponente($docs,$id_componente)
+	{
+        foreach($docs as $doc){
+            $name = time().'_'.$doc->getClientOriginalName();
+            $ruta=public_path().'/uploads/Componentes';
+            $doc->move($ruta,$name);
+            
+            $element = new Documento();
+            $element->nom_documento=$doc->getClientOriginalName();
+            $element->url='/uploads/Componentes'.'/'.$name;
+            $element->id_componente=$id_componente;
             $element->est_documento=1;
             $element->save();
         }

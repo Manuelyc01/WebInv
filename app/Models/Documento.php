@@ -14,6 +14,8 @@ class Documento extends Model
         'nom_documento',
         'est_documento',       
         'id_equipo',
+        'id_componente',
         'url',
+        'id_ofi_traba_equi_compo',
     ];    
 }

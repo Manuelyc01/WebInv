@@ -14,6 +14,8 @@ class Imagen extends Model
         'nombre',
         'url',
         'id_equipo',
-        'id_ofi_traba_equipo'
+        'id_ofi_traba_equipo',
+        'id_ofi_traba_equi_compo',
+        'id_componente',
     ];    
 }

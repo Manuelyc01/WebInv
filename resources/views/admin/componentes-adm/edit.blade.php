@@ -2,15 +2,14 @@
 
 @section('content')
     @if(isset($element))
-        {!! Form::model($element, [ 'route' => ['equipo-adm.update', $element->id_equipo], 'method' => 'PUT', 'id' => 'admin-form' ]) !!}
+        {!! Form::model($element, [ 'route' => ['componente-adm.update', $element->id_componente], 'method' => 'PUT', 'id' => 'admin-form','enctype'=>'multipart/form-data']) !!}
     @else
-        {!! Form::open(['route' => 'equipo-adm.store', 'method' => 'POST' , 'id' => 'admin-form','enctype'=>'multipart/form-data']) !!}
+        {!! Form::open(['route' => 'componente-adm.store', 'method' => 'POST' , 'id' => 'admin-form','enctype'=>'multipart/form-data']) !!}
     @endif
-    @include('admin.equipo-adm.forms.form')
+    @include('admin.componentes-adm.forms.form')
     {!! Form::close() !!}
-
     @isset($element)
-        {{ Form::open(['route' => ['equipo-adm.destroy' , $element->id_equipo] , 'method' => 'DELETE', 'id' => 'form-delete-detail']) }}
+        {{ Form::open(['route' => ['componente-adm.destroy' , $element->id_componente] , 'method' => 'DELETE', 'id' => 'form-delete-detail']) }}
         {{ Form::close() }}
     @endisset
 
@@ -21,7 +20,7 @@
             <button id="delete-btn" class="btn btn-danger btn-addon m-b-sm" data-toggle="modal" data-target="#delete-modal">
                 <i class="glyphicon glyphicon-trash"></i> Eliminar </button>
         @endisset
-        <a class="btn btn-info btn-addon m-b-sm" href="{{ route('equipo-adm.index') }}">
+        <a class="btn btn-info btn-addon m-b-sm" href="{{ route('componente-adm.index') }}">
         <i class="glyphicon glyphicon-circle-arrow-left"></i> <b>Volver al listado</b> </a>
     </div>
 @stop

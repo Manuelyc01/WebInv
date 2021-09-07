@@ -2,68 +2,80 @@
 
 namespace App\Services;
 
-use App\Models\Equipo;
+use App\Models\Componente;
 use App\Services\ImagenService; 
-
+use App\Services\DocumentoService; 
 class ComponenteService
 {
     private $servImg;
-    public function __construct(ImagenService $servImg)
+    private $servDoc;
+    public function __construct(ImagenService $servImg,DocumentoService $servDoc)
     {
         $this->servImg = $servImg;
+        $this->servDoc = $servDoc;
     }
-
     public function listar()
 	{
-        $element = Equipo::where('esta_equipo','=',1)->orderBy('id_equipo', 'ASC')->get();
+        $element = Componente::join('tm_categoria_componentes','tm_categoria_componentes.id_cat_componentes','=','tm_componentes.id_cat_componentes')
+                ->select('tm_componentes.*','tm_categoria_componentes.des_cate_componentes')->get();
 		return $element;
 	}
 
 	public function registrar($request)
 	{   
-        $element= new Equipo();
-        $element->serie_equipo=$request->get('serie_equipo');
-        $element->cod_opatrimonial=$request->get('cod_opatrimonial');
-        $element->des_equipo=$request->get('des_equipo');
-        $element->tipoBien=$request->get('tipoBien');
-        $element->esta_equipo= 1;
-        $element->id_cat_equipos=$request->get('id_cat_equipos');
-        
+        $element= new Componente();
+        $element->serie_componente=$request->get('serie_componente');
+        $element->des_componente=$request->get('des_componente');
+        $element->esta_componente= $request->get('esta_componente');
+        $element->id_cat_componentes=$request->get('id_cat_componentes');
         $element->save();
+
         //guardar imagenes si existen
         if($request->hasfile('imagenes')){
             $imagenes = $request->file('imagenes');
-            $this->servImg->registrar($imagenes,$element->id_equipo);
-         }
+            $this->servDoc->registrarComponente($imagenes,$element->id_componente);
+        }
+        if($request->hasfile('documentos')){
+            $imagenes = $request->file('documentos');
+            $this->servImg->registrarComponente($imagenes,$element->id_componente);
+        }
     }
-    public function show($id_equipo)
+    public function show($id_componente)
     {
-        $element = Equipo::find($id_equipo);
+        $element = Componente::find($id_componente);
         return $element;
     }
 
-    public function editar($id_equipo)
+    public function editar($id_componente)
     {
-        $element = Equipo::find($id_equipo);
+        $element = Componente::find($id_componente);
         return $element;
     }
 
-	public function actualizar($request, $id_equipo)
+	public function actualizar($request, $id_componente)
 	{
         
-        $element = Equipo::find($id_equipo);
-        $element->serie_equipo=$request->get('serie_equipo');
-        $element->cod_opatrimonial=$request->get('cod_opatrimonial');
-        $element->des_equipo=$request->get('des_equipo');
-        $element->tipoBien=$request->get('tipoBien');
-        $element->id_cat_equipos=$request->get('id_cat_equipos');
+        $element = Componente::find($id_componente);
 
+        $element->serie_componente=$request->get('serie_componente');
+        $element->des_componente=$request->get('des_componente');
+        $element->esta_componente= $request->get('esta_componente');
+        $element->id_cat_componentes=$request->get('id_cat_componentes');
+
+        if($request->hasfile('documentos')){
+            $documentos = $request->file('documentos');
+            $this->servDoc->registrarComponente($documentos,$id_componente);
+        }
+        if($request->hasfile('imagenes')){
+            $imagenes = $request->file('imagenes');
+            $this->servImg->registrarComponente($imagenes,$id_componente);
+        }
         $element->save();
 	}
 
 	public function eliminar($id)
 	{
-        $element = Equipo::find($id);
+        $element = Componente::find($id);
         $element->esta_equipo= 0;
         $element->save();
 	}

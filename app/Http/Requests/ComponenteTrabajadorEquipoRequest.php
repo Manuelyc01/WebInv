@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ComponenteRequest extends FormRequest
+class ComponenteTrabajadorEquipoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class ComponenteRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_cat_componentes' => 'required'
+            'id_ofi_traba_equipo' => 'required',
+            'id_componente'=>'required'
         ];
     }
 }

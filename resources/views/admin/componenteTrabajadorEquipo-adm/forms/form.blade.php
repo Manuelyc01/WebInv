@@ -5,27 +5,33 @@
 
 <div class="panel panel-white ui-sortable-handle" style="opacity: 1;">
     <div class="panel-heading">
-        <h3 class="panel-title form-title"> Crear & Editar - COMPONENTES </h3>
+        <h3 class="panel-title form-title"> Crear & Editar - COMPONENTE-EQUIPO-TRABAJADOR </h3>
         <div class="panel-control">
             <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" class="panel-collapse" data-original-title="Expand/Collapse"><i class="icon-arrow-down"></i></a>
         </div>
     </div>
     <div class="panel-body form-horizontal">
-
         
-        <div class="form-group">
-			{!! Form::stdText('Serie', 0 , 'serie_componente', $errors) !!}
-		</div>
-        <div class="form-group {{ $errors->has('des_equipo') ? 'has-error' : '' }}">
-            {!! Form::stdText('Descripcion', 0, 'des_componente', $errors) !!}
+        <div class="form-group {{ $errors->has('id_componente') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label"><strong>Componentes<span class="required"> * </span></strong></label>
+            <div class="col-sm-8">
+            <input class="form-control" list="datalistOptionsComponente"  name="id_componente" placeholder="Busca Componente" autocomplete="off" value="{{@$elementsCoEquiTraba->id_componente}}">
+                <datalist id="datalistOptionsComponente">
+                    @foreach($elements as $element)
+                        <option  value="{{@$element->id_componente}}">{{@$element->serie_componete}}&nbsp;{{@$element->des_componete}}</option>
+                    @endforeach
+                </datalist>
+                
+            </div>
         </div>
-
-        <div class="form-group {{ $errors->has('esta_componente') ? 'has-error' : '' }}">
-            <?php $estado=["1"=>"ACTIVO","0"=>"DESACTIVADO","2"=>"ASIGNADO"] ?>
-            {!! Form::stdSelect('estado', 0, 'esta_componente', $estado,NULL) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::stdSelect('Categoria', 1, 'id_cat_componentes',$catCompo, null) !!}
+        <div class="form-group {{ $errors->has('esta_ofi_traba_equi_compo') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label"><strong>Estado Componente Asignado<span class="required"> * </span></strong></label>
+            <div class="col-sm-8">
+            <select id="esta_ofi_traba_equi_compo" name="esta_ofi_traba_equi_compo" class="form-control" autocomplete="off">
+                    <option value="0" <?php if(@$elementsCoEquiTraba->esta_ofi_traba_equi_compo==0){ print_r('selected');} ?>>DESACTIVADO</option>
+                    <option value="1" <?php if(isset($elementsCoEquiTraba->esta_ofi_traba_equi_compo)==false){print_r('selected');}else {if(@$elementsCoEquiTraba->esta_ofi_traba_equi_compo==1){ print_r('selected');}} ?> >ACTIVO</option>
+            </select> 
+            </div>
         </div>
         @if(isset($imagenes))
             <div class="form-group">
@@ -97,8 +103,15 @@
                     <input type="file" class="form-control-file" name="documentos[]" id="documentos[]" multiple accept="image/*">
                 </div>
             </div>
-        @endif          
+        @endif
         
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label"><strong></strong></label>
+            <div class="col-sm-8">
+                <input type="text" name="id_ofi_traba_equipo" id="id_ofi_traba_equipo" value="{{@$id_ofi_equi_trabajador}}" style="display: none;">
+            </div>
+        </div>  
     </div>
 
     <div class="panel-footer text-right">

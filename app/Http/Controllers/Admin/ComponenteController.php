@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\ComponenteEquipoService;
+use App\Services\ComponenteService;
+use App\Services\DocumentoService;
+use App\Services\ImagenService;
 use App\Http\Requests\ComponenteRequest; 
-
-
+use App\Services\CategoriaComponenteService; 
 
 class ComponenteController extends Controller
 {
@@ -16,13 +17,21 @@ class ComponenteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(ComponenteService $service)
+    private $servImg;
+    private $servDoc;
+    public function __construct(ComponenteService $service,CategoriaComponenteService $catCompoServ,ImagenService $servImg,DocumentoService $servDoc)
     {
         $this->service = $service;
+        $this->catCompoServ = $catCompoServ;
+        $this->servImg = $servImg;
+        $this->servDoc=$servDoc;
     }
     public function index()
     {
         //
+        $elements = $this->service->listar();
+        return view('admin.componentes-adm.index', compact('elements'));
+
     }
 
     /**
@@ -33,6 +42,9 @@ class ComponenteController extends Controller
     public function create()
     {
         //
+        $catCompo= $this->catCompoServ->listar()->pluck('des_cate_componentes','id_cat_componentes');
+        return view('admin.componentes-adm.edit',compact('catCompo'));
+        
     }
 
     /**
@@ -41,9 +53,11 @@ class ComponenteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComponenteRequest $request)
     {
-        //
+        $this->service->registrar($request);
+        session()->flash('success', '¡Información registrada con éxito!');
+        return redirect()->route('componente-adm.index');
     }
 
     /**
@@ -63,9 +77,15 @@ class ComponenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_componente)
     {
         //
+        $element = $this->service->editar($id_componente); 
+        $documentos=$this->servDoc->getByComponente($id_componente);
+        $imagenes=$this->servImg->getByComponente($id_componente);
+        $catCompo= $this->catCompoServ->listar()->pluck('des_cate_componentes','id_cat_componentes');   
+        return view('admin.componentes-adm.edit',compact('element','documentos','imagenes','catCompo'));
+
     }
 
     /**
@@ -75,9 +95,12 @@ class ComponenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ComponenteRequest $request, $id_componente)
     {
         //
+        $this->service->actualizar($request, $id_componente);
+        session()->flash('success', '¡Información actualizada con éxito!');
+        return redirect()->route('componente-adm.index');
     }
 
     /**
