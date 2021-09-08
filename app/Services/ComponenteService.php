@@ -17,7 +17,7 @@ class ComponenteService
     public function listar()
 	{
         $element = Componente::join('tm_categoria_componentes','tm_categoria_componentes.id_cat_componentes','=','tm_componentes.id_cat_componentes')
-                ->select('tm_componentes.*','tm_categoria_componentes.des_cate_componentes')->get();
+                ->select('tm_componentes.*','tm_categoria_componentes.des_cate_componentes')->where('tm_componentes.esta_componente','!=',-1)->get();
 		return $element;
 	}
 
@@ -76,8 +76,9 @@ class ComponenteService
 	public function eliminar($id)
 	{
         $element = Componente::find($id);
-        $element->esta_equipo= 0;
+        $element->esta_componente= -1;
         $element->save();
+        
 	}
 
 	

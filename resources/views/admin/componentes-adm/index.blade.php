@@ -35,7 +35,6 @@
 								<td> <strong> {{ $element->des_cate_componentes }} </strong> </td>
 								<td class="tbl-action-col">
 									<a href="{{ route('componente-adm.edit' , ['id_componente' => $element->id_componente]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
-									<a href="{{ route('componente-adm.show' , ['id_componente' => $element->id_componente]) }}" class="btn btn-success"> <i class="fa fa-eye"></i> </a>
 								</td>
 							</tr>
 						@endforeach

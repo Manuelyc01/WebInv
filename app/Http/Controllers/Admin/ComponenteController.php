@@ -112,5 +112,7 @@ class ComponenteController extends Controller
     public function destroy($id)
     {
         //
+        $this->service->eliminar($id);
+        return redirect()->route('componente-adm.index');
     }
 }

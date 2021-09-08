@@ -42,6 +42,7 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::post('componenteTrabajadorEquipo-adm/store', 'CompoTrabaEquipoAdicionalController@StoreEquiCompoEqTrab')->name('componenteTrabajadorEquipo-adm.store');
 	Route::put('componenteTrabajadorEquipo-adm/update/{id_ofi_traba_equi_compo}', 'CompoTrabaEquipoAdicionalController@UpdateEquiCompoEqTrab')->name('componenteTrabajadorEquipo-adm.update');
 	Route::delete('componenteTrabajadorEquipo-adm/destroy/{id_ofi_traba_equi_compo}', 'CompoTrabaEquipoAdicionalController@DestroyEquiCompoEqTrab')->name('componenteTrabajadorEquipo-adm.destroy');
+
   
 	Route::get('/equipo-img/{id}', 'EquipoController@img');
 	Route::resource('imagen-adm', 'ImagenController');

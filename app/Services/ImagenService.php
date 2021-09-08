@@ -108,6 +108,4 @@ class ImagenService
         $element->esta_imagen=0;
         $element->save();
 	}
-
-	
 }

@@ -40,7 +40,9 @@
                 @foreach($imagenes as $imagenen)
                 <div class="col-sm-2" style="margin-top: 30px;margin-bottom: 30px;">
                     <embed type="text/mp4" src="{{$imagenen->url}}"  width="300" height="200">
-                    <input type="button" class="btn btn-warning" value="Eliminar" style="background:red;">
+                    <button id="delete-btn" class="btn btn-danger btn-addon m-b-sm" data-toggle="modal" data-target="#delete-modal">
+                    <i class="glyphicon glyphicon-trash"></i> Eliminar </button>
+
                 </div>
                 <?php
                     if($cont==10){
@@ -77,7 +79,11 @@
                 @foreach($documentos as $documento)
                 <div class="col-sm-2" style="margin-top: 30px;margin-bottom: 30px;">
                     <embed type="text/mp4" src="{{@$documento->url}}"  width="300" height="200">
-                    <input type="button" class="btn btn-warning" value="Eliminar" style="background:red;">
+
+                    <button id="delete-btn" class="btn btn-danger btn-addon m-b-sm" data-toggle="modal" data-target="#delete-modal">
+                    <i class="glyphicon glyphicon-trash"></i> Eliminar </button>
+
+                    
                 </div>
                 <?php
                     if($cont==10){

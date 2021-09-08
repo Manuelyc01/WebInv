@@ -23,6 +23,7 @@ class ComponenteTrabajadorEquipoService{
         $element = ComponenteTrabajadorEquipo::join('tm_componentes','tm_componentes.id_componente','=','tm_ofi_traba_equi_compo.id_componente')
                     ->select('tm_ofi_traba_equi_compo.*','tm_componentes.serie_componente','tm_componentes.des_componente')
                     ->where('tm_ofi_traba_equi_compo.id_ofi_traba_equipo',$id_ofi_equi_trabajador)
+                    ->where('tm_ofi_traba_equi_compo.esta_ofi_traba_equi_compo','!=',-1)
                     ->get();
 		return $element;
 	}
@@ -81,9 +82,10 @@ class ComponenteTrabajadorEquipoService{
 
 	public function eliminar($id)
 	{
-        $element=OfiTrabajadorEquipo::find($id);
-        $element->esta_ofi_traba_equipo=-1;
+        $element = ComponenteTrabajadorEquipo::find($id);
+        $element->esta_ofi_traba_equi_compo= -1;
         $element->save();
+
 	}
 
     public function verificarEquipo($id)

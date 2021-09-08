@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\ComponenteTrabajadorEquipoService;
 use App\Http\Requests\ComponenteTrabajadorEquipoRequest;
+use App\Models\ComponenteTrabajadorEquipo;
 use App\Models\Componente;
 use DB;
 use App\Services\ImagenService; 
@@ -54,7 +55,11 @@ class CompoTrabaEquipoAdicionalController extends Controller
         session()->flash('success', '¡Información actualizada con éxito!');
         return redirect()->route('componenteTrabajadorEquipo-adm.index',$id_ofi_equi_trabajador);
     }
-    public function DestroyEquiCompoEqTrab(ComponenteTrabajadorEquipoRequest $request,$id_ofi_traba_equi_compo)
+    public function DestroyEquiCompoEqTrab($id_ofi_traba_equi_compo)
     {
+        $this->service->eliminar($id_ofi_traba_equi_compo);
+        $id_ofi_equi_trabajador=ComponenteTrabajadorEquipo::find($id_ofi_traba_equi_compo)->id_ofi_traba_equipo;
+        
+        return redirect()->route('componenteTrabajadorEquipo-adm.index',$id_ofi_equi_trabajador);
     }
 }
