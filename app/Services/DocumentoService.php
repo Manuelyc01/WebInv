@@ -97,6 +97,21 @@ class DocumentoService
             $element->save();
         }
     }
+    public function registrarMantenimiento($docs,$id_mantenimiento)
+	{
+        foreach($docs as $doc){
+            $name = time().'_'.$doc->getClientOriginalName();
+            $ruta=public_path().'/uploads/Componentes';
+            $doc->move($ruta,$name);
+            
+            $element = new Documento();
+            $element->nom_documento=$doc->getClientOriginalName();
+            $element->url='/uploads/Componentes'.'/'.$name;
+            $element->id_mantenimiento=$id_mantenimiento;
+            $element->est_documento=1;
+            $element->save();
+        }
+    }
     
     public function editar($id_equipo)
     {

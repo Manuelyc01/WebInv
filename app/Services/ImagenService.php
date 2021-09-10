@@ -94,6 +94,21 @@ class ImagenService
             $element->save();
         }
     }
+    public function registrarMantenimiento($imagenes,$id_mantenimiento)
+	{
+        foreach($imagenes as $imagen){
+            $name = time().'_'.$imagen->getClientOriginalName();
+            $ruta=public_path().'/uploads/Componentes';
+            $imagen->move($ruta,$name);
+            
+            $element = new Imagen();
+            $element->nombre=$imagen->getClientOriginalName();
+            $element->url='/uploads/Componentes'.'/'.$name;
+            $element->id_mantenimiento=$id_mantenimiento;
+            $element->esta_imagen=1;
+            $element->save();
+        }
+    }
     public function editar($id_equipo)
     {
     }

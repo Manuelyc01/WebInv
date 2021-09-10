@@ -108,6 +108,13 @@ return[
       'slug' => 'componetes',
       'url'  => 'componente-adm.index',
       'ico'  => 'book'
+    ],
+    [
+      'type' => 'simple',
+      'text' => 'Mantenimientos',
+      'slug' => 'mantenimiento',
+      'url'  => 'mantenimiento-adm.index',
+      'ico'  => 'book'
     ]
 	]
 ]
