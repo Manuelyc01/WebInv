@@ -41,7 +41,9 @@ class ImagenController extends Controller
                     $this->service->registrarOfiTraEqui($imgs,$request->id_ofi_traba_equipo);
                     return back()->withInput();
                     break;
-                case 2://Imagenes componentes
+                case 2://Imagenes solOficinaequipotra
+                    $this->service->registrarFotoSolicitud($imgs,$request->id_soli_ofi_equi_tra);
+                    return back()->withInput();
                     break;
             }
             
@@ -76,7 +78,12 @@ class ImagenController extends Controller
                 $imgs=$this->service->getByOfiTrabaEqui($element->id_ofi_traba_equipo);
                 return response()->json($imgs);
                 break;
-            case 2://Imagenes componentes
+            case 2://Imagenes solicitud trabajador equipo
+                $element=$this->service->getById($id);
+                $imgs=$this->service->getBySolOfiTrabaEqui($element->id_soli_ofi_equi_tra);
+                return response()->json($imgs);
+                break;
+            case 3://Imagenes componentes
                 break;
         }
         

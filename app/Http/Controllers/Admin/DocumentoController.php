@@ -28,7 +28,10 @@ class DocumentoController extends Controller
                 $imgs=$this->service->getByOfiTrabaEqui($element->id_ofi_traba_equipo);
                 return response()->json($imgs);
                 break;
-            case 2://Imagenes componentes
+            case 2://Documentos Solicitudes
+                $element=$this->service->getById($id);
+                $imgs=$this->service->getBySolOfiTrabaEqui($element->id_soli_ofi_equi_tra);
+                return response()->json($imgs);
                 break;
         }
         
