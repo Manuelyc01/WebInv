@@ -39,6 +39,9 @@
 									<a href="{{ route('ofiTrabajadorEquipo-adm.edit' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 									<a href="{{ route('ofiTrabajadorEquipo-adm.show' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-success"> <i class="fa fa-eye"></i> </a>
 									<a href="{{ route('componenteTrabajadorEquipo-adm.index' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-success"> <i class="fa fa-briefcase"></i> </a>
+									@if($element->esta_ofi_traba_equipo==1)
+									<a class="btn btn-primary" href="/web-adm/ofiTrabEqui-transf/{{ $element->id_ofi_traba_equipo }}"> Transferir</a>
+									@endif
 								</td>
 							</tr>
 						@endforeach
