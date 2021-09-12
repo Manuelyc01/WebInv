@@ -1,7 +1,3 @@
-@section('cssAdicional')
-    <link rel="stylesheet" href="{{ asset('vendor/ems/css/estilos.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"><!--imagenes-->
- @stop
 <div class="panel panel-white ui-sortable-handle" style="opacity: 1;">
     <div class="panel-heading">
         <h3 class="panel-title form-title"> Asignación de Equipos </h3>
@@ -140,7 +136,9 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col s12 center-align"><a href="/web-adm/ofiTrabEqui-img/{{ $element->id_ofi_traba_equipo }}"target="_blank" class="btn btn-secondary"> Imagenes de Equipo Asignado</a></div>
+            <br>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4"><a class="btn btn-success btn-addon m-b-sm" href="/web-adm/ofiTrabEqui-img/{{ $element->id_ofi_traba_equipo }}"target="_blank" class="btn btn-secondary"> Imagenes de Equipo Asignado</a></div>
         </div>  
         @endif
     </div>

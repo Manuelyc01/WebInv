@@ -41,6 +41,7 @@
 								<td> <strong> {{ $element->ti_documento }} </strong> </td>
 								<td class="tbl-action-col">
 									<a href="{{ route('oficinaTrabajador-adm.edit' , ['id_ofi_trabajador' => $element->id_ofi_trabajador]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
+									<a class="btn btn-primary" href="/web-adm/trabEquipos/{{ $element->id_ofi_trabajador }}"> Equipos Asignados</a>
 								</td>
 							</tr>
 						@endforeach

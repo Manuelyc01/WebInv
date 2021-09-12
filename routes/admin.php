@@ -53,6 +53,9 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::resource('ofiTrabajadorEquipo-adm','OfiTrabajadorEquipoController');
 	Route::get('/ofiTrabajadorEquipoAjax-adm/{id}', 'OfiTrabajadorEquipoAjax@VerificarEquipo');
 	Route::get('/ofiTrabEqui-img/{id}','OfiTrabajadorEquipoController@img');
+	Route::get('/ofiTrabEqui-transf/{id}','OfiTrabajadorEquipoController@transferir');
+	Route::get('/trabEquipos/{id}','OfiTrabajadorEquipoController@equiposTrab');
+	Route::post('/ofiTrabajadorEquipo-adm/transf/{id}','OfiTrabajadorEquipoController@transferirRegister');
   
 	Route::resource('solicitudes-adm', 'SolicitudesController');
 	Route::resource('SolOficinaEquipoTrab-adm', 'SolOficinaEquipoTraController');

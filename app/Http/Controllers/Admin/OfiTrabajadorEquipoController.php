@@ -32,6 +32,11 @@ class OfiTrabajadorEquipoController extends Controller
         $elements = $this->service->listar();
         return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
     }
+    public function equiposTrab($id)
+    {
+        $elements = $this->service->listarByTrabajador($id);
+        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+    }
 
     public function create()
     { 
@@ -65,11 +70,11 @@ class OfiTrabajadorEquipoController extends Controller
     }
     public function edit($id_oficina)
     {
-        $element = $this->service->editar($id_oficina); 
-        $documentos=$this->servDoc->getByOfiTrabaEqui($id_oficina);
-        $equipos=$this->servEquipo->listar();
-        $trabajadores=$this->servOfiTra->listar();
-        return view('admin.ofiTrabajadorEquipo-adm.edit',compact('element','documentos','equipos','trabajadores'));
+            $element = $this->service->editar($id_oficina); 
+            $documentos=$this->servDoc->getByOfiTrabaEqui($id_oficina);
+            $equipos=$this->servEquipo->listar();
+            $trabajadores=$this->servOfiTra->listar();
+            return view('admin.ofiTrabajadorEquipo-adm.edit',compact('element','documentos','equipos','trabajadores'));   
     }
 
     public function update(OfiTrabajadorEquipo $request, $id_equipo)
@@ -84,10 +89,37 @@ class OfiTrabajadorEquipoController extends Controller
         $this->service->eliminar($id);
         return redirect()->route('ofiTrabajadorEquipo-adm.index');
     }
+    public function transferir($id){
+        $element = $this->service->editar($id); 
+        $trabajadores=$this->servOfiTra->listar();
+        return view('admin.ofiTrabajadorEquipo-adm.transf',compact('element','trabajadores'));
+    }
+    public function transferirRegister(OfiTrabajadorEquipo $request, $id){
+        $e1 = $this->service->show($id); 
+        if($request->id_ofi_trabajador==$e1->id_ofi_trabajador){//mismo colaborador
+            return back()->withInput();  
+        }
+                $element= new OfiTrabajadorEquipo();
+                $element->no_equipo=    $e1->no_equipo;
+                $element->sis_operativo=    $e1->sis_operativo;
+                $element->esta_ofi_traba_equipo=    1;
+                $element->id_equipo=    $e1->id_equipo;
+
+        $stp=$this->service->transferirEquipo($element,$request,$id);
+        if(isset($stp[0]->FALSE)){
+            session()->flash('unsuccess', 'Fallo en registro!');//como enviar alerta
+            return back()->withInput();    
+        }
+        else{
+            session()->flash('success', '¡Información registrada con éxito!');
+            return redirect()->route('ofiTrabajadorEquipo-adm.index');
+        }
+    }
     public function img($id){
         $imagenes= $this->servImg->getByOfiTrabaEqui($id);
         $element=$this->service->show($id);
         $type=1;
         return view('admin.ofiTrabajadorEquipo-adm.imgs',compact('imagenes','element','type'));
     }
+    
 }
