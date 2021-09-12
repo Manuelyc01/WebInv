@@ -37,10 +37,10 @@ class SolOficinaEquipoTrabService
         
 
         $element->descripcion_solicitud=$request->get('descripcion_solicitud');
-        $element->esta_soli_soli_ofi_equi_traba=1;
+        $element->esta_soli_soli_ofi_equi_traba=$request->get('esta_soli_soli_ofi_equi_traba');
 
         $element->id_solicitud=$request->get('id_solicitud');
-        $element->id_ofi_traba_equipo=1;
+        $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
         $element->esta_solicitud=1;
         $element->save();
         if($request->hasfile('imagenes')){

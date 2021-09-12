@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\OfiTrabajadorEquipoService;
 use App\Services\SolOficinaEquipoTrabService;
 use App\Services\SolicitudesService;
 use App\Services\ImagenService;
@@ -13,19 +14,20 @@ class SolOficinaEquipoTraController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function __construct(SolOficinaEquipoTrabService $service,SolicitudesService $service2,ImagenService $servImg, DocumentoService $servDoc)
+    public function __construct(SolOficinaEquipoTrabService $service,SolicitudesService $service2,ImagenService $servImg, DocumentoService $servDoc, OfiTrabajadorEquipoService $ofiTrabajador)
     {
         $this->service = $service;
         $this->service2 = $service2;
         $this->servImg = $servImg;
         $this->servDoc = $servDoc;
+        $this->servOficina = $ofiTrabajador;
     }
     public function index()
     {
-        //
+    
         $elements = $this->service->listar();
         return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
         
@@ -39,7 +41,8 @@ class SolOficinaEquipoTraController extends Controller
     public function create()
     {
         $elements_solicitud = $this->service2->listar();
-        return view('admin.SolOficinaEquipoTrab-adm.edit',compact('elements_solicitud'));
+        $elements_Colaborador = $this->servOficina->recuperar();
+        return view('admin.SolOficinaEquipoTrab-adm.edit',compact('elements_solicitud','elements_Colaborador'));
     }
 
     /**
@@ -85,7 +88,8 @@ class SolOficinaEquipoTraController extends Controller
         //dd($element);
         $elements_solicitud = $this->service2->listar();
         $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
-        return view('admin.SolOficinaEquipoTrab-adm.edit', compact('element', 'elements_solicitud','documentos'));
+        $elements_Colaborador = $this->servOficina->recuperar();
+        return view('admin.SolOficinaEquipoTrab-adm.edit', compact('element', 'elements_solicitud','documentos','elements_Colaborador'));
     }
 
     /**

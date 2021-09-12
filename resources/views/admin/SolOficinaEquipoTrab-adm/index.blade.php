@@ -22,7 +22,13 @@
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_ofi_traba_equipo }}">
 								<td> <strong> {{ $element->descripcion_solicitud }} </strong></td>
-								<td> <strong> {{ $element->esta_soli_soli_ofi_equi_traba }} </strong></td>
+								@if($element->esta_soli_soli_ofi_equi_traba==0)
+									<td style="background-color: red;color:white";> <strong> FINALIZADO </strong> </td>
+								@elseif($element->esta_soli_soli_ofi_equi_traba==1)
+									<td style="background-color: blue;color:white;"> <strong> EN PROCESO </strong> </td>
+								@else
+									<td style="background-color: green;color:white;"> <strong> RECIBIDO </strong> </td>
+								@endif
 								
 								<td class="tbl-action-col">
 									<a href="{{ route('SolOficinaEquipoTrab-adm.edit' , ['id_soli_ofi_equi_tra' => $element->id_soli_ofi_equi_tra]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>

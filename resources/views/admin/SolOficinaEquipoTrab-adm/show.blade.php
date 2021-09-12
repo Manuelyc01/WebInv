@@ -42,16 +42,9 @@
             </div>
             
         </div>
-        
-        <div class="form-group ">
-            <label class="col-sm-2 control-label"><strong> Oficina Trabajador</strong></label>
-            <div class="col-sm-8">
-                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name=">id_ofi_traba_equipo" type="text" value="{{$element->id_ofi_traba_equipo}}" readonly>
-            </div>
-        </div>
 
         <div class="form-group ">
-        <label class="col-sm-2 control-label"><strong> Oficina Trabajador A </strong></label>
+        <label class="col-sm-2 control-label"><strong> Trabajador </strong></label>
             <div class="col-sm-8">
                 <input class="form-control" placeholder="" type="text" value="{{ $element->id_ofi_traba_equipo }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }} " readonly>
             </div>

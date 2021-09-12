@@ -37,9 +37,16 @@
         </div>
 
         <div class="form-group {{ $errors->has('id_ofi_traba_equipo') ? 'has-error' : '' }}">
-            {!! Form::stdText('oficina trabajador', 0, 'id_ofi_traba_equipo', $errors) !!}
+            <label class="col-sm-2 control-label"><strong>Trabajador<span class="required"> * </span></strong></label>
+            <div class="col-sm-8">
+            <input class="form-control" list="datalistOptionCol" name="id_ofi_traba_equipo" id="id_ofi_traba_equipo" placeholder="Busca trabajador" value="{{@$element->id_ofi_traba_equipo}}" autocomplete="off">
+                <datalist id="datalistOptionCol">
+                    @foreach($elements_Colaborador as $elements_Colaboradors)
+                        <option value="{{@$elements_Colaboradors->id_ofi_traba_equipo}}">{{@$elements_Colaboradors->co_colaborador}}&nbsp;{{@$elements_Colaboradors->no_colaborador}}&nbsp;{{ $elements_Colaboradors->ap_paterno_colaborador }}&nbsp;{{ $elements_Colaboradors->ap_materno_colaborador }}</option>
+                    @endforeach
+                </datalist>
+            </div>
         </div>
-
 
        
         @if(!isset($element))
