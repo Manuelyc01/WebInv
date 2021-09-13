@@ -4,20 +4,20 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\OfiTrabajadorEquipoService;
-use App\Services\SolOficinaEquipoTrabService;
+use App\Services\SolOficinaEquipoTrabUserService;
 use App\Services\SolicitudesService;
 use App\Services\ImagenService;
 use App\Services\DocumentoService;
-use App\Http\Requests\SolOficinaEquipoTrabRequest; 
+use App\Http\Requests\SolOficinaEquipoTrabUserRequest; 
 
-class SolOficinaEquipoTraController extends Controller
+class SolOficinaEquipoTraUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      * 
      * @return \Illuminate\Http\Response
      */
-    public function __construct(SolOficinaEquipoTrabService $service,SolicitudesService $service2,ImagenService $servImg, DocumentoService $servDoc, OfiTrabajadorEquipoService $ofiTrabajador)
+    public function __construct(SolOficinaEquipoTrabUserService $service,SolicitudesService $service2,ImagenService $servImg, DocumentoService $servDoc, OfiTrabajadorEquipoService $ofiTrabajador)
     {
         $this->service = $service;
         $this->service2 = $service2;
@@ -28,8 +28,13 @@ class SolOficinaEquipoTraController extends Controller
     public function index()
     {
     
-        $elements = $this->service->listar();
-        return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
+        //$elements = $this->service->listar();
+        
+        $User=auth()->user()->id_colaborador;
+        //dd($User);
+        $elements= $this->service->recuperarUser($User);
+        
+        return view('admin.SolOficinaEquipoTrabUser-adm.index', compact('elements'));
         
     }
 
@@ -42,7 +47,7 @@ class SolOficinaEquipoTraController extends Controller
     {
         $elements_solicitud = $this->service2->listar();
         $elements_Colaborador = $this->servOficina->recuperar();
-        return view('admin.SolOficinaEquipoTrab-adm.edit',compact('elements_solicitud','elements_Colaborador'));
+        return view('admin.SolOficinaEquipoTrabUser-adm.edit',compact('elements_solicitud','elements_Colaborador'));
     }
 
     /**
@@ -51,14 +56,14 @@ class SolOficinaEquipoTraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SolOficinaEquipoTrabRequest $request)
+    public function store(SolOficinaEquipoTrabUserRequest $request)
     {
         //
         //dd("entra"); 
         $this->service->registrar($request);
         
         session()->flash('success', '¡Información registrada con éxito!');
-        return redirect()->route('SolOficinaEquipoTrab-adm.index');
+        return redirect()->route('SolOficinaEquipoTrabUser-adm.index');
     }
 
     /**
@@ -73,7 +78,7 @@ class SolOficinaEquipoTraController extends Controller
         //obtener imagenes
         $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
         $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
-        return view('admin.SolOficinaEquipoTrab-adm.show',compact('element','imagenes','documentos'));
+        return view('admin.SolOficinaEquipoTrabUser-adm.show',compact('element','imagenes','documentos'));
     }
 
     /**
@@ -89,7 +94,7 @@ class SolOficinaEquipoTraController extends Controller
         $elements_solicitud = $this->service2->listar();
         $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
         $elements_Colaborador = $this->servOficina->recuperar();
-        return view('admin.SolOficinaEquipoTrab-adm.edit', compact('element', 'elements_solicitud','documentos','elements_Colaborador'));
+        return view('admin.SolOficinaEquipoTrabUser-adm.edit', compact('element', 'elements_solicitud','documentos','elements_Colaborador'));
     }
 
     /**
@@ -99,14 +104,14 @@ class SolOficinaEquipoTraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SolOficinaEquipoTrabRequest $request, $id_soli_ofi_equi_tra)
+    public function update(SolOficinaEquipoTrabUserRequest $request, $id_soli_ofi_equi_tra)
     {
         
         //dd("actualizar");
         $this->service->actualizar($request, $id_soli_ofi_equi_tra);
         session()->flash('success', '¡Información actualizada con éxito!');
        
-        return redirect()->route('SolOficinaEquipoTrab-adm.index');
+        return redirect()->route('SolOficinaEquipoTrabUser-adm.index');
     }
 
     /**
@@ -119,7 +124,7 @@ class SolOficinaEquipoTraController extends Controller
     {
         //
         $this->service->eliminar($id);
-        return redirect()->route('SolOficinaEquipoTrab-adm.index');
+        return redirect()->route('SolOficinaEquipoTrabUser-adm.index');
     }
 
     public function img($id)
@@ -128,6 +133,6 @@ class SolOficinaEquipoTraController extends Controller
         $element=$this->service->show($id);
         //dd($element);
         $type=2;
-        return view('admin.solOficinaEquipoTrab-adm.imgs',compact('imagenes','element','type'));
+        return view('admin.solOficinaEquipoTrabUser-adm.imgs',compact('imagenes','element','type'));
     }
 }

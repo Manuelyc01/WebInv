@@ -111,6 +111,13 @@ return[
     ],
     [
       'type' => 'simple',
+      'text' => 'Solicitud OficinaEquipoUser Trabajador',
+      'slug' => 'cargo-laboral',
+      'url'  => 'SolOficinaEquipoTrabUser-adm.index',
+      'ico'  => 'book'
+    ],
+    [
+      'type' => 'simple',
       'text' => 'Componetes',
       'slug' => 'componetes',
       'url'  => 'componente-adm.index',

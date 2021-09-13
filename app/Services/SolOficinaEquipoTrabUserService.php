@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Models\SolOficinaEquipoTrab;
+use App\Models\SolOficinaEquipoTrabUser;
 use App\Services\ImagenService;
 use App\Services\DocumentoService; 
 use Illuminate\Support\Facades\DB;
 
-class SolOficinaEquipoTrabService
+class SolOficinaEquipoTrabUserService
 {
     private $servImg;
     private $servDoc;
@@ -19,13 +19,13 @@ class SolOficinaEquipoTrabService
     }
     public function listar()
 	{
-        $element = SolOficinaEquipoTrab::where('esta_solicitud','=',1)->orderBy('updated_at', 'DESC')->get();
+        $element = SolOficinaEquipoTrabUser::where('esta_solicitud','=',1)->orderBy('updated_at', 'DESC')->get();
 		return $element;
 	}
     
 	public function registrar($request)
 	{
-        $element= new SolOficinaEquipoTrab();
+        $element= new SolOficinaEquipoTrabUser();
 
 
         //$query= DB::select('SELECT id_solicitud FROM tm_solicitudes ORDER BY id_solicitud DESC LIMIT 1');
@@ -37,10 +37,20 @@ class SolOficinaEquipoTrabService
         
 
         $element->descripcion_solicitud=$request->get('descripcion_solicitud');
-        $element->esta_soli_soli_ofi_equi_traba=$request->get('esta_soli_soli_ofi_equi_traba');
+        $element->esta_soli_soli_ofi_equi_traba=2;
 
         $element->id_solicitud=$request->get('id_solicitud');
-        $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
+
+        $User=auth()->user()->id_colaborador;
+        $var = SolOficinaEquipoTrabUser::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')
+                                        ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+                                        ->select('tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*')
+                                        ->where('tm_ofi_trabajador.id_colaborador',$User)
+                                        ->first();
+
+                                        //dd($var->id_ofi_traba_equipo);
+
+        $element->id_ofi_traba_equipo=$var->id_ofi_traba_equipo;
         $element->esta_solicitud=1;
         $element->save();
         if($request->hasfile('imagenes')){
@@ -61,7 +71,7 @@ class SolOficinaEquipoTrabService
     public function editar($id)
     {
         
-        $element = SolOficinaEquipoTrab::find($id);
+        $element = SolOficinaEquipoTrabUser::find($id);
         return $element;
     }
 
@@ -69,12 +79,12 @@ class SolOficinaEquipoTrabService
 	{
         
         //$element= new SolOficinaEquipoTrab();
-        $element = SolOficinaEquipoTrab::find($id);
+        $element = SolOficinaEquipoTrabUser::find($id);
 
         $element->descripcion_solicitud=$request->get('descripcion_solicitud');
-        $element->esta_soli_soli_ofi_equi_traba=$request->get('esta_soli_soli_ofi_equi_traba');
+        //$element->esta_soli_soli_ofi_equi_traba=$request->get('esta_soli_soli_ofi_equi_traba');
         $element->id_solicitud=$request->get('id_solicitud');
-        $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
+        //$element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
         $element->save();
         
         if($request->hasfile('documentos')){
@@ -88,14 +98,14 @@ class SolOficinaEquipoTrabService
 
     public function show($id)
     {
-        $element = SolOficinaEquipoTrab::find($id);
+        $element = SolOficinaEquipoTrabUser::find($id);
                 
         return $element;
     }
 
     public function mostrar($id)
     {  
-        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+        $element = SolOficinaEquipoTrabUser::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
                                         ->select('tm_soli_ofi_equi_traba.*','tm_solicitudes.*')
                                         ->where('tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra',$id)
                                         ->first();
@@ -103,9 +113,20 @@ class SolOficinaEquipoTrabService
         return $element;
     }
 
+    public function recuperarUser($id)
+    {  
+        $element = SolOficinaEquipoTrabUser::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')
+                                        ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+                                        ->select('tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*')
+                                        ->where('tm_ofi_trabajador.id_colaborador',$id)
+                                        ->orderBy('tm_ofi_trabajador.id_colaborador', 'ASC')->get();
+
+        return $element;
+    }
+
 	public function eliminar($id)
 	{
-        $element = SolOficinaEquipoTrab::find($id);
+        $element = SolOficinaEquipoTrabUser::find($id);
         $element->esta_solicitud= 0;
         $element->save();
 	}

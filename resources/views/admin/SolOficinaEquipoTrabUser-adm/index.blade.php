@@ -7,7 +7,7 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Solicitudes Equipo Trabajador </h2>
-				<a href="{{ route('SolOficinaEquipoTrab-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir equipo </a>
+				<a href="{{ route('SolOficinaEquipoTrabUser-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir equipo </a>
 			</div>
 
 			<div class="panel-body">
@@ -31,8 +31,7 @@
 								@endif
 								
 								<td class="tbl-action-col">
-									<a href="{{ route('SolOficinaEquipoTrab-adm.edit' , ['id_soli_ofi_equi_tra' => $element->id_soli_ofi_equi_tra]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
-									<a href="{{ route('SolOficinaEquipoTrab-adm.show' , ['id_soli_ofi_equi_tra' => $element->id_soli_ofi_equi_tra]) }}" class="btn btn-success"> <i class="fa fa-eye"></i> </a>
+									<a href="{{ route('SolOficinaEquipoTrabUser-adm.show' , ['id_soli_ofi_equi_tra' => $element->id_soli_ofi_equi_tra]) }}" class="btn btn-success"> <i class="fa fa-eye"></i> </a>
 								</td>
 							</tr>
 						@endforeach

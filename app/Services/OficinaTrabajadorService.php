@@ -64,6 +64,7 @@ class OficinaTrabajadorService
                 
                 $element->save();
 	}
+        
 
 	public function eliminar($id)
 	{

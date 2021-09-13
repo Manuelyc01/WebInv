@@ -28,27 +28,6 @@
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('esta_soli_soli_ofi_equi_traba') ? 'has-error' : '' }}">
-            <!-- {!! Form::stdText('Estado de la solicitud', 0, 'esta_soli_soli_ofi_equi_traba', $errors) !!}-->
-            <?php
-            $ddlEstado=["2"=>"RECIBIDO","1"=>"EN PROCESO","0"=>"FINALIZADO"];
-            ?>
-            {!! Form::stdSelect('Estado de la solicitud', 0, 'esta_soli_soli_ofi_equi_traba', $ddlEstado, null) !!}
-        </div>
-
-        <div class="form-group {{ $errors->has('id_ofi_traba_equipo') ? 'has-error' : '' }}">
-            <label class="col-sm-2 control-label"><strong>Trabajador<span class="required"> * </span></strong></label>
-            <div class="col-sm-8">
-            <input class="form-control" list="datalistOptionCol" name="id_ofi_traba_equipo" id="id_ofi_traba_equipo" placeholder="Busca trabajador" value="{{@$element->id_ofi_traba_equipo}}" autocomplete="off">
-                <datalist id="datalistOptionCol">
-                    @foreach($elements_Colaborador as $elements_Colaboradors)
-                        <option value="{{@$elements_Colaboradors->id_ofi_traba_equipo}}">{{@$elements_Colaboradors->co_colaborador}}&nbsp;{{@$elements_Colaboradors->no_colaborador}}&nbsp;{{ $elements_Colaboradors->ap_paterno_colaborador }}&nbsp;{{ $elements_Colaboradors->ap_materno_colaborador }}</option>
-                    @endforeach
-                </datalist>
-            </div>
-        </div>
-
-       
         @if(!isset($element))
         <div class="form-group">
             <label class="col-sm-2 control-label"><strong> Subir Imagenes</strong></label>
@@ -97,7 +76,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col s12 center-align"><a href="/web-adm/solOfiTrabEqui-img/{{ $element->id_soli_ofi_equi_tra }}"target="_blank" class="btn btn-secondary"> Imagenes de Equipo Asignado</a></div>
+            <div class="col s12 center-align"><a href="/web-adm/solOfiTrabEquiUser-img/{{ $element->id_soli_ofi_equi_tra }}"target="_blank" class="btn btn-secondary"> Imagenes de Equipo Asignado</a></div>
         </div>  
         @endif
     </div>
