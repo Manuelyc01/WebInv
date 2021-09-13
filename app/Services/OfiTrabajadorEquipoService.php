@@ -60,6 +60,19 @@ class OfiTrabajadorEquipoService{
                     ->orderBy('id_ofi_traba_equipo', 'DESC')->get();
 		return $element;
 	}
+    public function listarMantenimiento()
+	{
+        $element = OfiTrabajadorEquipo::join('tm_mantenimiento','tm_mantenimiento.id_ofi_traba_equipo','=','tm_ofi_traba_equipo.id_ofi_traba_equipo')
+                    ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                    ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+                    ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                    ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
+                    ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*')
+                    ->where('tm_mantenimiento.estado','=',0)
+                    ->orWhere('tm_mantenimiento.estado','=',1)
+                    ->orderBy('id_ofi_traba_equipo', 'DESC')->get();
+		return $element;
+	}
 
 	public function registrar($request)
 	{   

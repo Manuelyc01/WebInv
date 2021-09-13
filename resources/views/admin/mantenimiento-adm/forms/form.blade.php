@@ -6,13 +6,22 @@
         </div>
     </div>
     <div class="panel-body form-horizontal">
+        @if(!isset($element))
         <input id="id_ofi_traba_equipo" name="id_ofi_traba_equipo" type="hidden" value="{{$equipoAsignado->id_ofi_traba_equipo}}">
         <div class="form-group ">
-        <label class="col-sm-2 control-label"><strong> Equipo </strong></label>
+        <label class="col-sm-2 control-label"><strong> Equipo / Colaborador</strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" type="text" value="{{$equipoAsignado->tipoBien}}---({{$equipoAsignado->no_colaborador}}  {{$equipoAsignado->ap_paterno_colaborador}})" disabled>
+                <input class="form-control" placeholder="" type="text" value="{{$equipoAsignado->tipoBien}}  /  {{$equipoAsignado->no_colaborador}}{{$equipoAsignado->ap_paterno_colaborador}}" disabled>
             </div>
         </div>
+        @else
+        <div class="form-group ">
+        <label class="col-sm-2 control-label"><strong> Equipo / Colaborador</strong></label>
+            <div class="col-sm-8">
+                <input class="form-control" placeholder="" type="text" value="{{$element->tipoBien}}  /  {{$element->no_colaborador}}{{$element->ap_paterno_colaborador}}" disabled>
+            </div>
+        </div>
+        @endif
         <div class="form-group {{ $errors->has('co_oficina') ? 'has-error' : '' }}">
             {!! Form::stdText('Descripcion', 0, 'descripcion', $errors) !!}
         </div>
@@ -73,7 +82,7 @@
         <div class="form-group">
             <br>
             <div class="col-sm-2"></div>
-            <div class="col-sm-4"><a class="btn btn-success btn-addon m-b-sm" href="/web-adm/ofiTrabEqui-img/{{ $element->id_ofi_traba_equipo }}"target="_blank" class="btn btn-secondary"> Imagenes de Equipo Asignado</a></div>
+            <div class="col-sm-4"><a class="btn btn-success btn-addon m-b-sm" href="/web-adm/mantenimiento-img/{{ $element->id_mantenimiento }}"target="_blank" class="btn btn-secondary"> Imagenes de Equipo Asignado</a></div>
         </div> 
         @endif
     </div>

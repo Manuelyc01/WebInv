@@ -41,7 +41,9 @@ class ImagenController extends Controller
                     $this->service->registrarOfiTraEqui($imgs,$request->id_ofi_traba_equipo);
                     return back()->withInput();
                     break;
-                case 2://Imagenes componentes
+                case 2://Imagenes Mantenimiento
+                    $this->service->registrarMantenimiento($imgs,$request->id_mantenimiento);
+                    return back()->withInput();
                     break;
             }
             

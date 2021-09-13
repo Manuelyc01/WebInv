@@ -47,6 +47,11 @@ class OfiTrabajadorEquipoController extends Controller
         $elements = $this->service->listarNoAsignados();
         return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
     }
+    public function equiposMantenmimiento()
+    {   
+        $elements = $this->service->listarMantenimiento();
+        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+    }
 
     public function create()
     { 

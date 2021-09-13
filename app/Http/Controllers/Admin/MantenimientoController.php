@@ -6,15 +6,21 @@ use App\Http\Requests\MantenimientoRequest;
 use App\Http\Controllers\Controller;
 use App\Services\MantenimientoService;
 use App\Services\OfiTrabajadorEquipoService;
+use App\Services\ImagenService; 
+use App\Services\DocumentoService; 
 
 class MantenimientoController extends Controller
 {
     private $service;
+    private $servImg;
+    private $servDoc; 
 
-    public function __construct(MantenimientoService $service,OfiTrabajadorEquipoService $ofiTrabaEquiService)
+    public function __construct(MantenimientoService $service,OfiTrabajadorEquipoService $ofiTrabaEquiService, ImagenService $servImg, DocumentoService $servDoc)
     {
         $this->service = $service;
         $this->ofiTrabaEquiService = $ofiTrabaEquiService;
+        $this->servImg = $servImg;
+        $this->servDoc=$servDoc;
         
     }
 
@@ -53,11 +59,11 @@ class MantenimientoController extends Controller
         //
     }
 
-    public function edit($id_oficina)
+    public function edit($id_mantenimiento)
     {
-        $element = $this->service->editar($id_oficina);
-        $sede= $this->sedeServ->listar()->pluck('no_sede','id_sede');
-        return view('admin.mantenimiento-adm.edit', compact('element','sede'));
+        $element = $this->service->editar($id_mantenimiento);
+        $documentos=$this->servDoc->getByMantenimiento($id_mantenimiento);
+        return view('admin.mantenimiento-adm.edit', compact('element','documentos'));
     }
 
     public function update(MantenimientoRequest $request, $id_oficina)
@@ -71,5 +77,11 @@ class MantenimientoController extends Controller
     {
         $this->service->eliminar($id);
         return redirect()->route('mantenimiento-adm.index');
+    }
+    public function img($id){
+        $imagenes= $this->servImg->getByMantenimiento($id);
+        $element=$this->service->editar($id);
+        $type=2;
+        return view('admin.mantenimiento-adm.imgs',compact('imagenes','element','type'));
     }
 }

@@ -28,7 +28,7 @@
 								<span><a href="/web-adm/ofiTrabajadorEquipo-adm" class="ulLi">Todos</a></span> / 
 								<span><a href="/web-adm/equiposAsignados" class="ulLi">Asignados</a></span> / 
 								<span><a href="/web-adm/equiposNoAsignados" class="ulLi">No asignados</a></span> / 
-								<span><a href="" class="ulLi">En Mantenimiento</a></span>
+								<span><a href="/web-adm/equiposEnMantenimiento" class="ulLi">En Mantenimiento</a></span>
 						</div>	
 					</div>
 					<div class="col-md-4"></div>

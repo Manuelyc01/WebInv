@@ -33,6 +33,11 @@ class DocumentoService
         $docs=Documento::where('id_ofi_traba_equi_compo','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();
         return $docs;
     }
+    public function getByMantenimiento($id)
+	{
+        $docs=Documento::where('id_mantenimiento','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();
+        return $docs;
+    }
 
 	public function registrar($docs,$id_equipo)
 	{
