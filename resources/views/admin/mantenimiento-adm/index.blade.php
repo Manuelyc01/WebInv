@@ -7,10 +7,11 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Mantenimientos de Equipo</h2>
+				@if(isset($id))
+				<a class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md" href="/web-adm/mantenimiento-adm/crear/{{ $id}}/1"> Nuevo Resgistro</a>
+				@endif
 			</div>
-			@if(isset($id))
-			<a class="btn btn-primary" href="/web-adm/mantenimiento-adm/crear/{{ $id}}/1"> Nuevo</a>
-			@endif
+			
 			<div class="panel-body">
 				<table id="table" class="display table table-hover dataTable">
 					<thead>

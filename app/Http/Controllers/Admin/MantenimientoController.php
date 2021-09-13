@@ -51,7 +51,7 @@ class MantenimientoController extends Controller
         $this->service->registrar($request);
         
         session()->flash('success', '¡Información registrada con éxito!');
-        return redirect()->route('mantenimiento-adm.index');
+        return redirect('/web-adm/mantenimientos/'.$request->id_ofi_traba_equipo);
     }
 
     public function show($id)
@@ -68,15 +68,15 @@ class MantenimientoController extends Controller
 
     public function update(MantenimientoRequest $request, $id_oficina)
     {
-        $this->service->actualizar($request, $id_oficina);
+        $idx=$this->service->actualizar($request, $id_oficina);
         session()->flash('success', '¡Información actualizada con éxito!');
-        return redirect()->route('mantenimiento-adm.index');
+        return redirect('/web-adm/mantenimientos/'.$idx->id_ofi_traba_equipo);
     }
 
     public function destroy($id)
     {
-        $this->service->eliminar($id);
-        return redirect()->route('mantenimiento-adm.index');
+        $idx=$this->service->eliminar($id);
+        return redirect('/web-adm/mantenimientos/'.$idx->id_ofi_traba_equipo);
     }
     public function img($id){
         $imagenes= $this->servImg->getByMantenimiento($id);

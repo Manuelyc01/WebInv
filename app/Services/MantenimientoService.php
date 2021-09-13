@@ -24,7 +24,7 @@ class MantenimientoService
             //->join('tm_soli_ofi_equi_traba','tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra','=','tm_mantenmiento.id_soli_ofi_equi_tra')
             ->select('tm_mantenimiento.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*')
             ->where('tm_mantenimiento.estado','>',-1)    
-            ->orderBy('id_mantenimiento', 'ASC')->get();
+            ->orderBy('id_mantenimiento', 'DESC')->get();
 		return $element;
 	}
     public function listarByEquiTrabaEqui($id)
@@ -94,6 +94,7 @@ class MantenimientoService
             $documentos=$request->file('documentos');
             $this->servDoc->registrarMantenimiento($documentos,$id_mantenimiento);
         } 
+        return $element;
 	}
 
 	public function eliminar($id)
@@ -103,6 +104,7 @@ class MantenimientoService
         $element->estado=-1;
 
         $element->save();
+        return $element;
 	}
 
 	
