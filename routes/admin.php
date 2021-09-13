@@ -59,7 +59,9 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
   
 	Route::resource('solicitudes-adm', 'SolicitudesController');
 	Route::resource('SolOficinaEquipoTrab-adm', 'SolOficinaEquipoTraController');
+	Route::resource('SolOficinaEquipoTrabUser-adm', 'SolOficinaEquipoTraUserController');
 	Route::get('/solOfiTrabEqui-img/{id}','SolOficinaEquipoTraController@img');
+	Route::get('/solOfiTrabEquiUser-img/{id}','SolOficinaEquipoTraUserController@img');
 
 });
 
