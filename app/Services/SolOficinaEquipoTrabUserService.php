@@ -40,7 +40,17 @@ class SolOficinaEquipoTrabUserService
         $element->esta_soli_soli_ofi_equi_traba=2;
 
         $element->id_solicitud=$request->get('id_solicitud');
-        $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
+
+        $User=auth()->user()->id_colaborador;
+        $var = SolOficinaEquipoTrabUser::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')
+                                        ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+                                        ->select('tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*')
+                                        ->where('tm_ofi_trabajador.id_colaborador',$User)
+                                        ->first();
+
+                                        //dd($var->id_ofi_traba_equipo);
+
+        $element->id_ofi_traba_equipo=$var->id_ofi_traba_equipo;
         $element->esta_solicitud=1;
         $element->save();
         if($request->hasfile('imagenes')){
@@ -72,9 +82,9 @@ class SolOficinaEquipoTrabUserService
         $element = SolOficinaEquipoTrabUser::find($id);
 
         $element->descripcion_solicitud=$request->get('descripcion_solicitud');
-        $element->esta_soli_soli_ofi_equi_traba=$request->get('esta_soli_soli_ofi_equi_traba');
+        //$element->esta_soli_soli_ofi_equi_traba=$request->get('esta_soli_soli_ofi_equi_traba');
         $element->id_solicitud=$request->get('id_solicitud');
-        $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
+        //$element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
         $element->save();
         
         if($request->hasfile('documentos')){
