@@ -46,8 +46,25 @@ class SolOficinaEquipoTraUserController extends Controller
     public function create()
     {
         $elements_solicitud = $this->service2->listar();
+
+
         $elements_Colaborador = $this->servOficina->recuperar();
-        return view('admin.SolOficinaEquipoTrabUser-adm.edit',compact('elements_solicitud','elements_Colaborador'));
+        
+        $User=auth()->user()->id_colaborador;
+
+        $validacion = $this->servOficina->validarOfiTrabajadorEquipo($User);
+        $Usuario=$this->servOficina->recuperarOfiTrabajadorEquipo($User);
+
+        
+        if($validacion==null)
+        {
+        
+            return view('admin.SolOficinaEquipoTrabUser-adm.edit',compact('elements_solicitud','elements_Colaborador'));
+        }
+        else
+        {
+            return view('admin.SolOficinaEquipoTrabUser-adm.edit',compact('elements_solicitud','Usuario'));
+        }
     }
 
     /**

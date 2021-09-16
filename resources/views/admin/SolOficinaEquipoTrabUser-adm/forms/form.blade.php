@@ -28,6 +28,31 @@
             </div>
         </div>
 
+        @if(isset($elements_Colaborador))
+        <div class="form-group {{ $errors->has('id_ofi_traba_equipo') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label"><strong>Equipo Trabajador<span class="required"> * </span></strong></label>
+            <div class="col-sm-8">
+            <input class="form-control" list="datalistOptionCol" name="id_ofi_traba_equipo" id="id_ofi_traba_equipo" placeholder="Busca trabajador" value="{{@$element->id_ofi_traba_equipo}}" autocomplete="off">
+                <datalist id="datalistOptionCol">
+                </datalist>
+            </div>
+        </div>
+        @endif
+
+        @if(isset($Usuario))
+        <div class="form-group {{ $errors->has('id_ofi_traba_equipo') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label"><strong>Solo Trabajador<span class="required"> * </span></strong></label>
+            <div class="col-sm-8">
+            <input class="form-control" list="datalistOptionCol" name="id_ofi_traba_equipo" id="id_ofi_traba_equipo" placeholder="Busca trabajador" value="{{@$element->id_ofi_traba_equipo}}" autocomplete="off">
+                <datalist id="datalistOptionCol">
+                    @foreach($elements_Colaborador as $elements_Colaboradors)
+                        <option value="{{@$elements_Colaboradors->id_ofi_traba_equipo}}">{{@$elements_Colaboradors->co_colaborador}}&nbsp;{{@$elements_Colaboradors->no_colaborador}}&nbsp;{{ $elements_Colaboradors->ap_paterno_colaborador }}&nbsp;{{ $elements_Colaboradors->ap_materno_colaborador }}</option>
+                    @endforeach
+                </datalist>
+            </div>
+        </div>
+        @endif
+
         @if(!isset($element))
         <div class="form-group">
             <label class="col-sm-2 control-label"><strong> Subir Imagenes</strong></label>
