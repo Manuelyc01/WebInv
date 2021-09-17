@@ -19,6 +19,7 @@ class SolOficinaEquipoTrab extends Model
         'esta_soli_soli_ofi_equi_traba',
         'id_solicitud',
         'id_ofi_traba_equipo',
+        'id_ofi_trabajador',
         'esta_solicitud'
     ];  
 }

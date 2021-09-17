@@ -8,6 +8,7 @@ use App\Services\SolOficinaEquipoTrabUserService;
 use App\Services\SolicitudesService;
 use App\Services\ImagenService;
 use App\Services\DocumentoService;
+use App\Services\OficinaTrabajadorService;
 use App\Http\Requests\SolOficinaEquipoTrabUserRequest; 
 
 class SolOficinaEquipoTraUserController extends Controller
@@ -17,13 +18,14 @@ class SolOficinaEquipoTraUserController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function __construct(SolOficinaEquipoTrabUserService $service,SolicitudesService $service2,ImagenService $servImg, DocumentoService $servDoc, OfiTrabajadorEquipoService $ofiTrabajador)
+    public function __construct(SolOficinaEquipoTrabUserService $service,SolicitudesService $service2,ImagenService $servImg, DocumentoService $servDoc, OfiTrabajadorEquipoService $ofiTrabajador, OficinaTrabajadorService $Trabajador)
     {
         $this->service = $service;
         $this->service2 = $service2;
         $this->servImg = $servImg;
         $this->servDoc = $servDoc;
         $this->servOficina = $ofiTrabajador;
+        $this->servTrabajador = $Trabajador;
     }
     public function index()
     {
@@ -46,24 +48,23 @@ class SolOficinaEquipoTraUserController extends Controller
     public function create()
     {
         $elements_solicitud = $this->service2->listar();
-
-
-        $elements_Colaborador = $this->servOficina->recuperar();
-        
+      
         $User=auth()->user()->id_colaborador;
 
         $validacion = $this->servOficina->validarOfiTrabajadorEquipo($User);
-        $Usuario=$this->servOficina->recuperarOfiTrabajadorEquipo($User);
-
-        
+        $Usuario=$this->servOficina->recuperarOfiTrabajadorEquipo($User);//id_ofi_trab_equipo
+        //dd($validacion);
+        //dd($Usuario->id_ofi_trab_equipo);
+        $Trabajador=$this->servTrabajador->recuperarOfiTrabajador($User);//id_ofi_trabajador
+        //dd($Trabajador);
         if($validacion==null)
         {
         
-            return view('admin.SolOficinaEquipoTrabUser-adm.edit',compact('elements_solicitud','elements_Colaborador'));
+            return view('admin.SolOficinaEquipoTrabUser-adm.edit',compact('elements_solicitud','Trabajador'));
         }
         else
         {
-            return view('admin.SolOficinaEquipoTrabUser-adm.edit',compact('elements_solicitud','Usuario'));
+            return view('admin.SolOficinaEquipoTrabUser-adm.edit',compact('elements_solicitud','validacion','Usuario'));
         }
     }
 

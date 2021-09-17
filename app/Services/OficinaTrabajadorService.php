@@ -71,5 +71,19 @@ class OficinaTrabajadorService
                 OficinaTrabajador::destroy($id);
 	}
 
+        public function recuperarOfiTrabajador($id)
+    {
+        $element = OficinaTrabajador::join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                                        ->select('tm_ofi_trabajador.*','tm_colaborador.*')
+                                        ->where('tm_ofi_trabajador.id_colaborador',$id)
+                                        ->first();
+                                        //->orderBy('tm_ofi_trabajador.id_colaborador', 'ASC')->get();
+                                                                      
+
+        return $element;
+        
+        
+    }
+
 	
 }

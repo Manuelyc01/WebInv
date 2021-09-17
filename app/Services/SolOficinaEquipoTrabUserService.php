@@ -26,14 +26,6 @@ class SolOficinaEquipoTrabUserService
 	public function registrar($request)
 	{
         $element= new SolOficinaEquipoTrabUser();
-
-
-        //$query= DB::select('SELECT id_solicitud FROM tm_solicitudes ORDER BY id_solicitud DESC LIMIT 1');
-        
-
-        
-        //$id_solicitud=DB::table('tm_solicitudes')->where('cod_solicitud',$request->get('cod_solicitud'))->first()->id_solicitud;
-        //$id_sede=DB::table('tm_sede')->where('co_sede',$request->get('co_sede'))->first()->id_sede;
         
 
         $element->descripcion_solicitud=$request->get('descripcion_solicitud');
@@ -41,13 +33,12 @@ class SolOficinaEquipoTrabUserService
 
         $element->id_solicitud=$request->get('id_solicitud');
 
-        $User=auth()->user()->id_colaborador;
-        
+        $element->id_ofi_trabajador=$request->get('id_ofi_trabajador');
 
-                                        
+        $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
 
-        $element->id_ofi_traba_equipo=1;
         $element->esta_solicitud=1;
+        
         $element->save();
         if($request->hasfile('imagenes')){
             //dd($element->id_solicitud);

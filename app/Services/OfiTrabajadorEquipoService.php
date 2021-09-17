@@ -168,7 +168,8 @@ class OfiTrabajadorEquipoService{
     {  
          $element = OfiTrabajadorEquipo::join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                                         ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
-                                        ->select('tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*')
+                                        ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                                        ->select('tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*')
                                         ->where('tm_ofi_traba_equipo.esta_ofi_traba_equipo','=',1)
                                         ->where('tm_ofi_trabajador.id_colaborador',$id)
                                         ->first();                              
@@ -180,7 +181,8 @@ class OfiTrabajadorEquipoService{
     {  
          $element = OfiTrabajadorEquipo::join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                                         ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
-                                        ->select('tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*')
+                                        ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                                        ->select('tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*')
                                         ->where('tm_ofi_traba_equipo.esta_ofi_traba_equipo','=',1)
                                         ->where('tm_ofi_trabajador.id_colaborador',$id)
                                         ->orderBy('tm_ofi_trabajador.id_colaborador', 'ASC')->get();
