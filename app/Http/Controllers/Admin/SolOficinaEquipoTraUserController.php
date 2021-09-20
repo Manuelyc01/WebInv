@@ -29,14 +29,37 @@ class SolOficinaEquipoTraUserController extends Controller
     }
     public function index()
     {
-    
-        //$elements = $this->service->listar();
+        $User=auth()->user()->id_colaborador;
+        
+        $validacion = $this->servOficina->validarOfiTrabajadorEquipo($User);
+        if($validacion==null)
+        {
+            $elements= $this->service->recuperarUserT($User);
+            return view('admin.SolOficinaEquipoTrabUser-adm.index', compact('elements'));
+        }
+        else
+        {
+            $elements= $this->service->recuperarUser($User);   
+            return view('admin.SolOficinaEquipoTrabUser-adm.index', compact('elements'));
+        }
+    }
+
+    public function ConOfiTraEquipoUser()
+    {
         
         $User=auth()->user()->id_colaborador;
-        //dd($User);
-        //$elements= $this->service->recuperarUser($User);
-        $elements= $this->service->recuperarUserT($User);
-        //DD($elements);
+
+        $elements= $this->service->recuperarUser($User);
+        
+        return view('admin.SolOficinaEquipoTrabUser-adm.index', compact('elements'));
+        
+    }
+
+    public function SinOfiTraEquipoUser()
+    {
+        
+        $User=auth()->user()->id_colaborador;
+        $elements= $this->service->recuperarUserT($User); 
         return view('admin.SolOficinaEquipoTrabUser-adm.index', compact('elements'));
         
     }

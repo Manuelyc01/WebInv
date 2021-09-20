@@ -62,6 +62,9 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::resource('SolOficinaEquipoTrabUser-adm', 'SolOficinaEquipoTraUserController');
 	Route::get('/solOfiTrabEqui-img/{id}','SolOficinaEquipoTraController@img');
 	Route::get('/solOfiTrabEquiUser-img/{id}','SolOficinaEquipoTraUserController@img');
+	Route::get('/ConOfiTraEquipoUser','SolOficinaEquipoTraUserController@ConOfiTraEquipoUser');
+	Route::get('/SinOfiTraEquipoUser','SolOficinaEquipoTraUserController@SinOfiTraEquipoUser');
+	
 
 });
 
