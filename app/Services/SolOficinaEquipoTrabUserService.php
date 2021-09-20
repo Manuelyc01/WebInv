@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\SolOficinaEquipoTrabUser;
+use App\Services\OfiTrabajadorEquipoService;
+use App\Services\OficinaTrabajadorService;
 use App\Services\ImagenService;
 use App\Services\DocumentoService; 
 use Illuminate\Support\Facades\DB;
@@ -11,11 +13,15 @@ class SolOficinaEquipoTrabUserService
 {
     private $servImg;
     private $servDoc;
+    private $servOficina;
+    private $servTrabajador;
 
-    public function __construct(ImagenService $servImg, DocumentoService $servDoc)
+    public function __construct(ImagenService $servImg, DocumentoService $servDoc, OfiTrabajadorEquipoService $servOficina, OficinaTrabajadorService $servTrabajador)
     {
         $this->servImg = $servImg;
         $this->servDoc = $servDoc;
+        $this->servOficina = $servOficina;
+        $this->servTrabajador = $servTrabajador;
     }
     public function listar()
 	{
@@ -27,16 +33,27 @@ class SolOficinaEquipoTrabUserService
 	{
         $element= new SolOficinaEquipoTrabUser();
         
+        
+        $User=auth()->user()->id_colaborador;
+        $validacion = $this->servOficina->validarOfiTrabajadorEquipo($User);
+        $Trabajador=$this->servTrabajador->recuperarOfiTrabajador($User);//id_ofi_trabajador
 
         $element->descripcion_solicitud=$request->get('descripcion_solicitud');
         $element->esta_soli_soli_ofi_equi_traba=2;
 
-        $element->id_solicitud=$request->get('id_solicitud');
-
-        $element->id_ofi_trabajador=$request->get('id_ofi_trabajador');
-
-        $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
-
+        if($validacion==null)
+        {
+            $element->id_solicitud=16;
+            $element->id_ofi_trabajador=$Trabajador->id_ofi_trabajador;
+            $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
+        }
+        else
+        {
+            $element->id_solicitud=$request->get('id_solicitud');
+            $element->id_ofi_trabajador=$request->get('id_ofi_trabajador');
+            $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
+        }
+        
         $element->esta_solicitud=1;
         
         $element->save();
@@ -105,6 +122,16 @@ class SolOficinaEquipoTrabUserService
         $element = SolOficinaEquipoTrabUser::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')
                                         ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                                         ->select('tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*')
+                                        ->where('tm_ofi_trabajador.id_colaborador',$id)
+                                        ->orderBy('tm_ofi_trabajador.id_colaborador', 'ASC')->get();
+
+        return $element;
+    }
+
+    public function recuperarUserT($id)
+    {  
+        $element = SolOficinaEquipoTrabUser::join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
+                                        ->select('tm_soli_ofi_equi_traba.*','tm_ofi_trabajador.*')
                                         ->where('tm_ofi_trabajador.id_colaborador',$id)
                                         ->orderBy('tm_ofi_trabajador.id_colaborador', 'ASC')->get();
 

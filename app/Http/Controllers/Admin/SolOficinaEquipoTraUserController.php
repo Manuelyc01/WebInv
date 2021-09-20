@@ -34,8 +34,9 @@ class SolOficinaEquipoTraUserController extends Controller
         
         $User=auth()->user()->id_colaborador;
         //dd($User);
-        $elements= $this->service->recuperarUser($User);
-        
+        //$elements= $this->service->recuperarUser($User);
+        $elements= $this->service->recuperarUserT($User);
+        //DD($elements);
         return view('admin.SolOficinaEquipoTrabUser-adm.index', compact('elements'));
         
     }
@@ -76,8 +77,7 @@ class SolOficinaEquipoTraUserController extends Controller
      */
     public function store(SolOficinaEquipoTrabUserRequest $request)
     {
-        //
-        //dd("entra"); 
+       
         $this->service->registrar($request);
         
         session()->flash('success', '¡Información registrada con éxito!');

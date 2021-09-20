@@ -15,7 +15,7 @@
             {!! Form::stdText('Descripcion', 0, 'descripcion_solicitud', $errors) !!}
         </div>
 
-
+        @if(isset($Usuario))
         <div class="form-group {{ $errors->has('id_solicitud') ? 'has-error' : '' }}">
             <label class="col-sm-2 control-label"><strong>Tipo Solicitud<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
@@ -27,12 +27,13 @@
                 </datalist>
             </div>
         </div>
+        @endif
 
         @if(isset($Trabajador))
-        <div class="form-group {{ $errors->has('id_ofi_trabajador') ? 'has-error' : '' }}">
-            <label class="col-sm-2 control-label"><strong>Trabajador<span class="required"> * </span></strong></label>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"><strong>Tipo Solicitud<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
-            <input class="form-control" list="datalistOptionCol" name="id_ofi_trabajador" id="id_ofi_trabajador" placeholder="Busca trabajador" value="{{@$Trabajador->id_ofi_traba}}" autocomplete="off">
+            <input class="form-control" list="datalistOptionSol" name="id_solicitud" id="id_solicitud" readonly="readonly" placeholder="Busca Solicitud" value="NUEVO EQUIPO" autocomplete="off">
             </div>
         </div>
         @endif
