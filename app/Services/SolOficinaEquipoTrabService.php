@@ -57,7 +57,7 @@ class SolOficinaEquipoTrabService
 
         
     }
-    
+     
     public function editar($id)
     {
         
@@ -74,7 +74,6 @@ class SolOficinaEquipoTrabService
         $element->descripcion_solicitud=$request->get('descripcion_solicitud');
         $element->esta_soli_soli_ofi_equi_traba=$request->get('esta_soli_soli_ofi_equi_traba');
         $element->id_solicitud=$request->get('id_solicitud');
-        $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
         $element->save();
         
         if($request->hasfile('documentos')){
@@ -109,6 +108,39 @@ class SolOficinaEquipoTrabService
         $element->esta_solicitud= 0;
         $element->save();
 	}
+
+    public function mostrarTrabajador($id)
+    {  
+        $element = SolOficinaEquipoTrab::join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
+                                        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador') 
+                                        ->select('tm_soli_ofi_equi_traba.*','tm_colaborador.*')
+                                        ->where('tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra',$id)
+                                        ->first();
+
+        return $element;
+    }
+    public function mostrarEquipoTrajador($id)
+    {  
+        $element = SolOficinaEquipoTrab::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')
+                                        ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+                                        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')                      
+                                        ->select('tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*')
+                                        ->where('tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra',$id)
+                                        ->first();
+
+        return $element;
+    }
+
+    public function mostrarEquipo($id)
+    {  
+        $element = SolOficinaEquipoTrab::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')
+                                        ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                                        ->select('tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_equipos.*')
+                                        ->where('tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra',$id)
+                                        ->first();
+
+        return $element;
+    }
 
 	
 }

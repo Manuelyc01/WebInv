@@ -36,17 +36,23 @@
             {!! Form::stdSelect('Estado de la solicitud', 0, 'esta_soli_soli_ofi_equi_traba', $ddlEstado, null) !!}
         </div>
 
+        @if($element->id_ofi_traba_equipo)
         <div class="form-group {{ $errors->has('id_ofi_traba_equipo') ? 'has-error' : '' }}">
             <label class="col-sm-2 control-label"><strong>Trabajador<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
-            <input class="form-control" list="datalistOptionCol" name="id_ofi_traba_equipo" id="id_ofi_traba_equipo" placeholder="Busca trabajador" value="{{@$element->id_ofi_traba_equipo}}" autocomplete="off">
-                <datalist id="datalistOptionCol">
-                    @foreach($elements_Colaborador as $elements_Colaboradors)
-                        <option value="{{@$elements_Colaboradors->id_ofi_traba_equipo}}">{{@$elements_Colaboradors->co_colaborador}}&nbsp;{{@$elements_Colaboradors->no_colaborador}}&nbsp;{{ $elements_Colaboradors->ap_paterno_colaborador }}&nbsp;{{ $elements_Colaboradors->ap_materno_colaborador }}</option>
-                    @endforeach
-                </datalist>
+            <input class="form-control" placeholder="" type="text" value="{{ $equipotrajador->ap_paterno_colaborador }}&nbsp;{{ $equipotrajador->ap_materno_colaborador }}&nbsp;{{ $equipotrajador->no_colaborador }}&nbsp;{{ $equipo->des_equipo }}&nbsp;{{ $equipotrajador->no_equipo }} " readonly>
             </div>
         </div>
+        @endif
+
+        @if($element->id_ofi_trabajador)
+        <div class="form-group {{ $errors->has('id_ofi_traba_equipo') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label"><strong>Trabajador<span class="required"> * </span></strong></label>
+            <div class="col-sm-8">
+            <input class="form-control" placeholder="" type="text" value="{{ $trabajador->ap_paterno_colaborador }}&nbsp;{{ $trabajador->ap_materno_colaborador }}&nbsp;{{ $trabajador->no_colaborador }}" readonly>
+            </div>
+        </div>
+        @endif
 
        
         @if(!isset($element))

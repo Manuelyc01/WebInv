@@ -43,16 +43,28 @@
             
         </div>
 
+        @if($element->id_ofi_traba_equipo)
         <div class="form-group ">
-        <label class="col-sm-2 control-label"><strong> Trabajador </strong></label>
+        <label class="col-sm-2 control-label"><strong> Trabajador-Equipo     </strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" type="text" value="{{ $element->id_ofi_traba_equipo }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }} " readonly>
+                <input class="form-control" placeholder="" type="text" value="{{ $equipotrajador->ap_paterno_colaborador }}&nbsp;{{ $equipotrajador->ap_materno_colaborador }}&nbsp;{{ $equipotrajador->no_colaborador }}&nbsp;{{ $equipo->des_equipo }}&nbsp;{{ $equipotrajador->no_equipo }} " readonly>
             </div>
         </div>
+        @endif
+
+        @if($element->id_ofi_trabajador)
+        <div class="form-group ">
+        <label class="col-sm-2 control-label"><strong> Trabajador     </strong></label>
+            <div class="col-sm-8">
+                <input class="form-control" placeholder="" type="text" value="{{ $trabajador->ap_paterno_colaborador }}&nbsp;{{ $trabajador->ap_materno_colaborador }}&nbsp;{{ $trabajador->no_colaborador }}" readonly>
+            </div>
+        </div>
+        @endif
+        
         <div>
             <div class="container">
                 <div class="row">
-                    <div class="col s12 center-align">
+                    <div class="col s12 center-align"> 
                         <label >Imagenes</label>
                     </div>
                 </div>

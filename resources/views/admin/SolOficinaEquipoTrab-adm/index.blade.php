@@ -7,7 +7,6 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Solicitudes Equipo Trabajador </h2>
-				<a href="{{ route('SolOficinaEquipoTrab-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir equipo </a>
 			</div>
 				
 			<div class="panel-body">

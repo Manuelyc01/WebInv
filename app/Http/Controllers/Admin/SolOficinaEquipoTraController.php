@@ -76,7 +76,12 @@ class SolOficinaEquipoTraController extends Controller
         //obtener imagenes
         $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
         $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
-        return view('admin.SolOficinaEquipoTrab-adm.show',compact('element','imagenes','documentos'));
+
+        $equipotrajador = $this->service->mostrarEquipoTrajador($id);
+        $trabajador = $this->service->mostrarTrabajador($id);
+        $equipo = $this->service->mostrarEquipo($id);
+
+        return view('admin.SolOficinaEquipoTrab-adm.show',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
     }
 
     /**
@@ -89,11 +94,15 @@ class SolOficinaEquipoTraController extends Controller
     {
         $element = $this->service->editar($id);
         
-        dd($element);
         $elements_solicitud = $this->service2->listar();
         $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
         $elements_Colaborador = $this->servOficina->recuperar();
-        return view('admin.SolOficinaEquipoTrab-adm.edit', compact('element', 'elements_solicitud','documentos','elements_Colaborador'));
+          
+        $equipotrajador = $this->service->mostrarEquipoTrajador($id);
+        $trabajador = $this->service->mostrarTrabajador($id);
+        $equipo = $this->service->mostrarEquipo($id);
+        
+        return view('admin.SolOficinaEquipoTrab-adm.edit', compact('element', 'elements_solicitud','documentos','elements_Colaborador','equipotrajador','trabajador','equipo'));
     }
 
     /**
