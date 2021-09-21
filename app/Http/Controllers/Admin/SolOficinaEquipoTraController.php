@@ -21,7 +21,7 @@ class SolOficinaEquipoTraController extends Controller
     {
         $this->service = $service;
         $this->service2 = $service2;
-        $this->servImg = $servImg;
+        $this->servImg = $servImg; 
         $this->servDoc = $servDoc;
         $this->servOficina = $ofiTrabajador;
     }
@@ -88,7 +88,8 @@ class SolOficinaEquipoTraController extends Controller
     public function edit($id)
     {
         $element = $this->service->editar($id);
-        //dd($element);
+        
+        dd($element);
         $elements_solicitud = $this->service2->listar();
         $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
         $elements_Colaborador = $this->servOficina->recuperar();

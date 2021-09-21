@@ -116,6 +116,38 @@ class SolOficinaEquipoTrabUserService
 
         return $element;
     }
+    public function mostrarTrabajador($id)
+    {  
+        $element = SolOficinaEquipoTrabUser::join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
+                                        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador') 
+                                        ->select('tm_soli_ofi_equi_traba.*','tm_colaborador.*')
+                                        ->where('tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra',$id)
+                                        ->first();
+
+        return $element;
+    }
+    public function mostrarEquipoTrajador($id)
+    {  
+        $element = SolOficinaEquipoTrabUser::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')
+                                        ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+                                        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')                      
+                                        ->select('tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*')
+                                        ->where('tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra',$id)
+                                        ->first();
+
+        return $element;
+    }
+
+    public function mostrarEquipo($id)
+    {  
+        $element = SolOficinaEquipoTrabUser::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')
+                                        ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                                        ->select('tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_equipos.*')
+                                        ->where('tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra',$id)
+                                        ->first();
+
+        return $element;
+    }
 
     public function recuperarUser($id)
     {  

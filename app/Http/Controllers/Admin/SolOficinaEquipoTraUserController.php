@@ -116,10 +116,13 @@ class SolOficinaEquipoTraUserController extends Controller
     public function show($id)
     {
         $element = $this->service->mostrar($id); 
-        //obtener imagenes
         $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
         $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
-        return view('admin.SolOficinaEquipoTrabUser-adm.show',compact('element','imagenes','documentos'));
+
+        $equipotrajador = $this->service->mostrarEquipoTrajador($id);
+        $trabajador = $this->service->mostrarTrabajador($id);
+        $equipo = $this->service->mostrarEquipo($id);
+        return view('admin.SolOficinaEquipoTrabUser-adm.show',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
     }
 
     /**
