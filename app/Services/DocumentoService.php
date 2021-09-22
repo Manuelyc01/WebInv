@@ -33,6 +33,10 @@ class DocumentoService
         $docs=Documento::where('id_ofi_traba_equi_compo','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();
         return $docs;
     }
+    public function getBySolOfiTrabaEqui($id)
+	{
+        $docs=Documento::where('id_soli_ofi_equi_tra','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();
+  }
     public function getByMantenimiento($id)
 	{
         $docs=Documento::where('id_mantenimiento','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();
@@ -50,6 +54,22 @@ class DocumentoService
             $element->nom_documento=$doc->getClientOriginalName();
             $element->url='/uploads/docsEquipos'.'/'.$name;
             $element->id_equipo=$id_equipo;
+            $element->est_documento=1;
+            $element->id_ofi_traba_equipo=null;
+            $element->save();
+        }
+    }
+    public function registrarDocSolicitud($docs,$id_equipo)
+	{
+        foreach($docs as $doc){
+            $name = time().'_'.$doc->getClientOriginalName();
+            $ruta=public_path().'/uploads/docsSolicitud';
+            $doc->move($ruta,$name);
+            
+            $element = new Documento();
+            $element->nom_documento=$doc->getClientOriginalName();
+            $element->url='/uploads/docsSolicitud'.'/'.$name;
+            $element->id_soli_ofi_equi_tra=$id_equipo;
             $element->est_documento=1;
             $element->id_ofi_traba_equipo=null;
             $element->save();

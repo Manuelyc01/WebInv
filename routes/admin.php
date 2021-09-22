@@ -48,6 +48,7 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::resource('imagen-adm', 'ImagenController');
 	Route::get('/deleteImagen/{id}/{type}','ImagenController@destroy');		
 	Route::get('/equipo-doc/{id}/{type}', 'DocumentoController@destroy');
+	Route::get('/deleteDoc/{id}/{type}', 'DocumentoController@destroy');
 
 	Route::resource('ofiTrabajadorEquipo-adm','OfiTrabajadorEquipoController');
 	Route::get('/ofiTrabajadorEquipoAjax-adm/{id}', 'OfiTrabajadorEquipoAjax@VerificarEquipo');
@@ -67,6 +68,13 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	
 
 	Route::resource('solicitudes-adm', 'SolicitudesController');
+	Route::resource('SolOficinaEquipoTrab-adm', 'SolOficinaEquipoTraController');
+	Route::resource('SolOficinaEquipoTrabUser-adm', 'SolOficinaEquipoTraUserController');
+	Route::get('/solOfiTrabEqui-img/{id}','SolOficinaEquipoTraController@img');
+	Route::get('/solOfiTrabEquiUser-img/{id}','SolOficinaEquipoTraUserController@img');
+	Route::get('/ConOfiTraEquipoUser','SolOficinaEquipoTraUserController@ConOfiTraEquipoUser');
+	Route::get('/SinOfiTraEquipoUser','SolOficinaEquipoTraUserController@SinOfiTraEquipoUser');
+	
 
 });
 

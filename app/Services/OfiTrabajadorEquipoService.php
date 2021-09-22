@@ -174,6 +174,16 @@ class OfiTrabajadorEquipoService{
             $element->save();
         }
 	}
+    public function recuperar()//recupera datos del para la tabla solOficinaEquipotrab
+	{
+        $element = OfiTrabajadorEquipo::join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+                    ->join('tm_cargo_laboral','tm_cargo_laboral.id_cargo_laboral','=','tm_ofi_trabajador.id_cargo_laboral')
+                    ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                   // ->select('tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_cargo_laboral.*','tm_colaborador.*')
+                    ->select('tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_cargo_laboral.no_cargo_laboral','tm_colaborador.ap_paterno_colaborador','tm_colaborador.ap_materno_colaborador','tm_colaborador.no_colaborador','tm_colaborador.co_colaborador')
+                    ->orderBy('id_ofi_traba_equipo', 'DESC')->get();
+		return $element;
+	}
 
 	public function eliminar($id)
 	{
@@ -189,6 +199,33 @@ class OfiTrabajadorEquipoService{
             ->get();
         return $element;
 	}
+
+    public function validarOfiTrabajadorEquipo($id)
+    {  
+         $element = OfiTrabajadorEquipo::join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+                                        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                                        ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                                        ->select('tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*')
+                                        ->where('tm_ofi_traba_equipo.esta_ofi_traba_equipo','=',1)
+                                        ->where('tm_ofi_trabajador.id_colaborador',$id)
+                                        ->first();                              
+
+        return $element;
+    }
+
+    public function recuperarOfiTrabajadorEquipo($id)
+    {  
+         $element = OfiTrabajadorEquipo::join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+                                        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                                        ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                                        ->select('tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*')
+                                        ->where('tm_ofi_traba_equipo.esta_ofi_traba_equipo','=',1)
+                                        ->where('tm_ofi_trabajador.id_colaborador',$id)
+                                        ->orderBy('tm_ofi_trabajador.id_colaborador', 'ASC')->get();
+                                                                      
+
+        return $element;
+    }
 
 
 }
