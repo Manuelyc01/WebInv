@@ -33,6 +33,11 @@ class DocumentoService
         $docs=Documento::where('id_ofi_traba_equi_compo','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();
         return $docs;
     }
+    public function getByMantenimiento($id)
+	{
+        $docs=Documento::where('id_mantenimiento','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();
+        return $docs;
+    }
 
 	public function registrar($docs,$id_equipo)
 	{
@@ -93,6 +98,21 @@ class DocumentoService
             $element->nom_documento=$doc->getClientOriginalName();
             $element->url='/uploads/Componentes'.'/'.$name;
             $element->id_componente=$id_componente;
+            $element->est_documento=1;
+            $element->save();
+        }
+    }
+    public function registrarMantenimiento($docs,$id_mantenimiento)
+	{
+        foreach($docs as $doc){
+            $name = time().'_'.$doc->getClientOriginalName();
+            $ruta=public_path().'/uploads/Componentes';
+            $doc->move($ruta,$name);
+            
+            $element = new Documento();
+            $element->nom_documento=$doc->getClientOriginalName();
+            $element->url='/uploads/Componentes'.'/'.$name;
+            $element->id_mantenimiento=$id_mantenimiento;
             $element->est_documento=1;
             $element->save();
         }

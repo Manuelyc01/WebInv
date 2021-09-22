@@ -54,8 +54,18 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::get('/ofiTrabEqui-img/{id}','OfiTrabajadorEquipoController@img');
 	Route::get('/ofiTrabEqui-transf/{id}','OfiTrabajadorEquipoController@transferir');
 	Route::get('/trabEquipos/{id}','OfiTrabajadorEquipoController@equiposTrab');
+	Route::get('/equiposAsignados','OfiTrabajadorEquipoController@equiposAsignados');
+	Route::get('/equiposNoAsignados','OfiTrabajadorEquipoController@equiposNoAsignados');
+	Route::get('/equiposEnMantenimiento','OfiTrabajadorEquipoController@equiposMantenmimiento');
+	
 	Route::post('/ofiTrabajadorEquipo-adm/transf/{id}','OfiTrabajadorEquipoController@transferirRegister');
   
+	Route::resource('mantenimiento-adm', 'MantenimientoController');
+	Route::get('/mantenimiento-adm/crear/{id}/{type}', 'MantenimientoController@create');
+	Route::get('/mantenimientos/{id}', 'MantenimientoController@byEquiTrabaEqui');
+	Route::get('/mantenimiento-img/{id}','MantenimientoController@img');
+	
+
 	Route::resource('solicitudes-adm', 'SolicitudesController');
 
 });

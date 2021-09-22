@@ -37,6 +37,21 @@ class OfiTrabajadorEquipoController extends Controller
         $elements = $this->service->listarByTrabajador($id);
         return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
     }
+    public function equiposAsignados()
+    {   
+        $elements = $this->service->listarAsignados();
+        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+    }
+    public function equiposNoAsignados()
+    {   
+        $elements = $this->service->listarNoAsignados();
+        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+    }
+    public function equiposMantenmimiento()
+    {   
+        $elements = $this->service->listarMantenimiento();
+        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+    }
 
     public function create()
     { 

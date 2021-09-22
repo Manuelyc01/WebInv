@@ -17,5 +17,6 @@ class Documento extends Model
         'id_componente',
         'url',
         'id_ofi_traba_equi_compo',
+        'id_mantenimiento'
     ];    
 }

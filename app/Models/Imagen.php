@@ -17,5 +17,6 @@ class Imagen extends Model
         'id_ofi_traba_equipo',
         'id_ofi_traba_equi_compo',
         'id_componente',
+        'id_mantenimiento'
     ];    
 }
