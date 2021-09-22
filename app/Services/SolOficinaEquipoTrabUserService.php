@@ -33,11 +33,11 @@ class SolOficinaEquipoTrabUserService
 	{
         $element= new SolOficinaEquipoTrabUser();
         
-        
+        $valor=$element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
         $User=auth()->user()->id_colaborador;
         $validacion = $this->servOficina->validarOfiTrabajadorEquipo($User);
         $Trabajador=$this->servTrabajador->recuperarOfiTrabajador($User);//id_ofi_trabajador
-
+        //dd($Trabajador);
         $element->descripcion_solicitud=$request->get('descripcion_solicitud');
         $element->esta_soli_soli_ofi_equi_traba=2;
 
@@ -49,9 +49,18 @@ class SolOficinaEquipoTrabUserService
         }
         else
         {
-            $element->id_solicitud=$request->get('id_solicitud');
-            $element->id_ofi_trabajador=$request->get('id_ofi_trabajador');
-            $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
+            if($valor==null)
+            {
+                $element->id_solicitud=$request->get('id_solicitud');
+                $element->id_ofi_trabajador=$Trabajador->id_ofi_trabajador;
+                $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
+            }
+            else
+            {
+                $element->id_solicitud=$request->get('id_solicitud');
+                $element->id_ofi_trabajador=$request->get('id_ofi_trabajador');
+                $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
+            }
         }
         
         $element->esta_solicitud=1;

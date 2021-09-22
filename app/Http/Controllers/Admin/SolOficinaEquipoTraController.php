@@ -93,7 +93,7 @@ class SolOficinaEquipoTraController extends Controller
     public function edit($id)
     {
         $element = $this->service->editar($id);
-        
+        //dd($element);
         $elements_solicitud = $this->service2->listar();
         $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
         $elements_Colaborador = $this->servOficina->recuperar();

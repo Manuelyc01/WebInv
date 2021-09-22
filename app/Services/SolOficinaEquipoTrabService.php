@@ -61,7 +61,11 @@ class SolOficinaEquipoTrabService
     public function editar($id)
     {
         
-        $element = SolOficinaEquipoTrab::find($id);
+        //$element = SolOficinaEquipoTrab::find($id);
+        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+                                        ->select('tm_soli_ofi_equi_traba.*','tm_solicitudes.*')
+                                        ->where('tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra',$id)
+                                        ->first();
         return $element;
     }
 
@@ -73,7 +77,7 @@ class SolOficinaEquipoTrabService
 
         $element->descripcion_solicitud=$request->get('descripcion_solicitud');
         $element->esta_soli_soli_ofi_equi_traba=$request->get('esta_soli_soli_ofi_equi_traba');
-        $element->id_solicitud=$request->get('id_solicitud');
+        //$element->id_solicitud=$request->get('id_solicitud');
         $element->save();
         
         if($request->hasfile('documentos')){

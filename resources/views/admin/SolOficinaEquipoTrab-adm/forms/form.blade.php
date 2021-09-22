@@ -19,12 +19,7 @@
         <div class="form-group {{ $errors->has('id_solicitud') ? 'has-error' : '' }}">
             <label class="col-sm-2 control-label"><strong>Tipo Solicitud<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
-            <input class="form-control" list="datalistOptionSol" name="id_solicitud" id="id_solicitud" placeholder="Busca Solicitud" value="{{@$element->id_solicitud}}" autocomplete="off">
-                <datalist id="datalistOptionSol">
-                    @foreach($elements_solicitud as $elements_solicituds)
-                        <option value="{{@$elements_solicituds->id_solicitud}}">{{@$elements_solicituds->nom_solicitud}}</option>
-                    @endforeach
-                </datalist>
+            <input class="form-control" type="text" name="id_solicitud" id="id_solicitud" value="{{@$element->nom_solicitud}}" readonly>
             </div>
         </div>
 
@@ -144,6 +139,15 @@
     
     });
 </script>
+
+
+
+
+
+
+
+
+
 @section('jsAdicional')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ asset('vendor/ems/js/main.js') }}"></script>

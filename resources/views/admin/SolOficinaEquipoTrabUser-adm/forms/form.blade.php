@@ -39,7 +39,7 @@
         @endif
 
         @if(isset($Usuario))
-        <div class="form-group {{ $errors->has('id_ofi_traba_equipo') ? 'has-error' : '' }}">
+        <div class="form-group {{ $errors->has('id_ofi_traba_equipo') ? 'has-error' : '' }}" id="MyForm">
             <label class="col-sm-2 control-label"><strong>Trabajador equipo<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
             <input class="form-control" list="datalistOptionOf" name="id_ofi_traba_equipo" id="id_ofi_traba_equipo" value="{{@$validacion->id_ofi_traba_equipo}}" autocomplete="off">
@@ -140,7 +140,29 @@
     
     
     });
+
+
+$("#id_solicitud").on('input', function (){
+    var val = this.value;
+    
+            if(val==="16"){ 
+                $("#MyForm").hide();
+                $("#id_ofi_traba_equipo").val(null);
+            }
+            else
+            { 
+                $("#MyForm").show();
+            }
+        
+    });  
+
 </script>
+
+
+
+
+
+
 @section('jsAdicional')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ asset('vendor/ems/js/main.js') }}"></script>
