@@ -33,9 +33,15 @@ class ImagenService
         $imagenes=Imagen::where('id_ofi_traba_equi_compo','=',$id)->where('esta_imagen','=',1)->orderBy('id', 'ASC')->get();
         return $imagenes;
     }
+
     public function getBySolOfiTrabaEqui($id)
 	{
         $imagenes=Imagen::where('id_soli_ofi_equi_tra','=',$id)->where('esta_imagen','=',1)->orderBy('id', 'ASC')->get();
+  }
+    public function getByMantenimiento($id)
+	{
+        $imagenes=Imagen::where('id_mantenimiento','=',$id)->where('esta_imagen','=',1)->orderBy('id', 'ASC')->get();
+
         return $imagenes;
     }
 
@@ -110,6 +116,21 @@ class ImagenService
             $element->nombre=$imagen->getClientOriginalName();
             $element->url='/uploads/Componentes'.'/'.$name;
             $element->id_componente=$id_componente;
+            $element->esta_imagen=1;
+            $element->save();
+        }
+    }
+    public function registrarMantenimiento($imagenes,$id_mantenimiento)
+	{
+        foreach($imagenes as $imagen){
+            $name = time().'_'.$imagen->getClientOriginalName();
+            $ruta=public_path().'/uploads/Componentes';
+            $imagen->move($ruta,$name);
+            
+            $element = new Imagen();
+            $element->nombre=$imagen->getClientOriginalName();
+            $element->url='/uploads/Componentes'.'/'.$name;
+            $element->id_mantenimiento=$id_mantenimiento;
             $element->esta_imagen=1;
             $element->save();
         }

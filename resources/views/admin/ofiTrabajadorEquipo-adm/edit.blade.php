@@ -26,5 +26,8 @@
         @endisset
         <a class="btn btn-info btn-addon m-b-sm" href="{{ route('oficina-adm.index') }}">
         <i class="glyphicon glyphicon-circle-arrow-left"></i> <b>Volver al listado</b> </a>
+        @if(isset($element) && $element->esta_ofi_traba_equipo==1)
+            <a  class="btn btn-primary btn-addon m-b-sm" href="/web-adm/mantenimiento-adm/crear/{{$element->id_ofi_traba_equipo}}/1" target="_blank"><i class="fa fa-plus"></i> Mantenimiento</a>         
+        @endif
     </div>
 @stop

@@ -43,6 +43,8 @@ class ImagenController extends Controller
                     break;
                 case 2://Imagenes solOficinaequipotra
                     $this->service->registrarFotoSolicitud($imgs,$request->id_soli_ofi_equi_tra);
+                case 3://Imagenes Mantenimiento
+                    $this->service->registrarMantenimiento($imgs,$request->id_mantenimiento);
                     return back()->withInput();
                     break;
             }

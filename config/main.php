@@ -15,7 +15,7 @@ return [
     'compact_menu' => false,
 
     //blue,dark,green,purple,red,white
-    'theme_color' => 'red',
+    'theme_color' => 'blue',
 
     'multilanguage' => true
 ];
