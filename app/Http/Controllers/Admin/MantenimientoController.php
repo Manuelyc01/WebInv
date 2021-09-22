@@ -81,7 +81,7 @@ class MantenimientoController extends Controller
     public function img($id){
         $imagenes= $this->servImg->getByMantenimiento($id);
         $element=$this->service->editar($id);
-        $type=2;
+        $type=3;
         return view('admin.mantenimiento-adm.imgs',compact('imagenes','element','type'));
     }
 }
