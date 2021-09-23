@@ -91,8 +91,9 @@ class ColaboradorService
         $element->nu_documento=$request->get('nu_documento');
         $element->ti_documento=$request->get('ti_documento');
         $element->usuario=$request->get('usuario');
-        //$element->password=$request->get('password');
-        $element->password=Hash::make($request->get('password'));
+        if($request->password !=$element->password){
+            $element->password=Hash::make($request->get('password'));
+        }
         $element->email=$request->get('email');
 
         if($request->hasfile('foto')){

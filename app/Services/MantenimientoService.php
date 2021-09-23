@@ -37,7 +37,7 @@ class MantenimientoService
             ->select('tm_mantenimiento.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*')
             ->where('tm_mantenimiento.id_ofi_traba_equipo','=',$id)
             ->where('tm_mantenimiento.estado','>',-1)    
-            ->orderBy('id_mantenimiento', 'ASC')->get();
+            ->orderBy('id_mantenimiento', 'DESC')->get();
 		return $element;
 	}
 

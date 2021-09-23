@@ -37,7 +37,8 @@ class ImagenService
     public function getBySolOfiTrabaEqui($id)
 	{
         $imagenes=Imagen::where('id_soli_ofi_equi_tra','=',$id)->where('esta_imagen','=',1)->orderBy('id', 'ASC')->get();
-  }
+        return $imagenes;
+    }
     public function getByMantenimiento($id)
 	{
         $imagenes=Imagen::where('id_mantenimiento','=',$id)->where('esta_imagen','=',1)->orderBy('id', 'ASC')->get();

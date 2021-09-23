@@ -29,16 +29,6 @@
             ?>
             {!! Form::stdSelect('Tipo Documento', 0, 'ti_documento', $ddlTipoDocumento, null) !!}
         </div>
-
-       
-
-
-
-
-
-
-
-
         <div class="form-group {{ $errors->has('nu_documento') ? 'has-error' : '' }}">
             {!! Form::stdText('Num. Documento', 0, 'nu_documento', $errors) !!}
         </div>
@@ -46,11 +36,14 @@
         <div class="form-group {{ $errors->has('usuario') ? 'has-error' : '' }}">
             {!! Form::stdText('Usuario', 1, 'usuario', $errors) !!}
         </div>
-
-        {{--<div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-            {!! Form::stdText('Contraseña', 1, 'password', $errors) !!}
-        </div>--}}
-
+        @if(isset($element))
+        <div class="form-group ">
+            <label class="col-sm-2 control-label"><strong> Contraseña<span class="required"> * </span></strong></label>
+            <div class="col-sm-8">
+                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="password" type="password" value="{{ $element->password }}" data-original-title="" title="">
+            </div>
+        </div>
+        @else
         <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
 			<label class="col-sm-2 control-label"><strong> Contraseña <span class="required"> * </span> </strong></label>
 			<div class="col-sm-8">
@@ -58,7 +51,7 @@
 				{!! $errors->first('password', '<span class="help-block"><strong> :message </strong></span>') !!}
 			</div>
 		</div>
-
+        @endif
         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
             {!! Form::stdText('Correo', 1, 'email', $errors) !!}
         </div> 

@@ -7,7 +7,9 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Cargo Laboral </h2>
+				@if(Auth::user()->tipo_usuario==1)
 				<a href="{{ route('oficinaTrabajador-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir nueva </a>
+				@endif
 			</div>
 
 			<div class="panel-body">
@@ -40,8 +42,12 @@
 								<td> <strong> {{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }} </strong> </td>
 								<td> <strong> {{ $element->ti_documento }} </strong> </td>
 								<td class="tbl-action-col">
+								@if(Auth::user()->tipo_usuario==1)
 									<a href="{{ route('oficinaTrabajador-adm.edit' , ['id_ofi_trabajador' => $element->id_ofi_trabajador]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 									<a class="btn btn-primary" href="/web-adm/trabEquipos/{{ $element->id_ofi_trabajador }}"> Equipos Asignados</a>
+								@else
+								<a class="btn btn-primary" href="/web-adm/trabEquipos/{{ $element->id_ofi_trabajador }}"> Equipos Asignados</a>
+								@endif
 								</td>
 							</tr>
 						@endforeach
