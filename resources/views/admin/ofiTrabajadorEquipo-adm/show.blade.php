@@ -59,6 +59,61 @@
                 <input class="form-control" placeholder="" type="text" value="{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }} &nbsp;(Ubicación:{{ $element->no_sede }},{{ $element->no_oficina }} ) " readonly>
             </div>
         </div>
+        <div class="container">
+            <div class="row">
+                <table>
+                    <thead><th>Componentes</th>
+						<th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>             
+                        @foreach ($compos as $compo)
+                        <tr>
+                            <td>
+                            {{ $compo->serie_componente }}
+                            </td>
+                            <td>
+                            {{ $compo->des_componente }}
+                            </td>
+                            @if($compo->esta_ofi_traba_equi_compo==0)
+									<td style="background-color: red;color:white";> <strong> DESACTIVADO </strong> </td>
+								@else
+									<td style="background-color: green;color:white;"> <strong> ACTIVO </strong> </td>
+							@endif
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <table>
+                    <thead>
+                        <th>Mantenimientos</th>
+						<th></th>
+                    </thead>
+                    <tbody>             
+                        @foreach ($mantenimientos as $mantenimiento)
+                        <tr>
+                            <td>
+                             {{ $mantenimiento->descripcion }}
+                            </td>
+                            @if($mantenimiento->estado==0)
+									<td style="background-color: green;color:white";> <strong> Iniciado </strong> </td>
+								@else
+									@if($mantenimiento->estado==1)
+										<td style="background-color: orange;color:white;"> <strong> En Proceso </strong> </td>
+									@else
+										<td style="background-color: red;color:white;"> <strong> Finalizado </strong> </td>
+									@endif
+								@endif
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div>
             <div class="container">
                 <div class="row">

@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\SolicitudesService;
-use App\Http\Requests\SolicitudesRequest; 
+use App\Http\Requests\SolicitudesRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SolicitudesController extends Controller
 {
@@ -21,8 +22,11 @@ class SolicitudesController extends Controller
     public function index()
     {
         //
+        if(Auth::user()->tipo_usuario==1){
         $elements = $this->service->listar();
         return view('admin.solicitudes-adm.index', compact('elements'));
+    }else{
+        return redirect()->route('panel');    }
         
     }
 
@@ -34,7 +38,10 @@ class SolicitudesController extends Controller
     public function create()
     {
         //
+        if(Auth::user()->tipo_usuario==1){
         return view('admin.solicitudes-adm.edit');
+    }else{
+        return redirect()->route('panel');    }
     }
 
     /**
@@ -46,9 +53,13 @@ class SolicitudesController extends Controller
     public function store(SolicitudesRequest $request)
     {
         //
+        if(Auth::user()->tipo_usuario==1){
         $this->service->registrar($request);
         session()->flash('success', '¡Información registrada con éxito!');
         return redirect()->route('solicitudes-adm.index');
+    }else{
+        return redirect()->route('panel');    }
+    
     }
 
     /**
@@ -71,8 +82,12 @@ class SolicitudesController extends Controller
     public function edit($id_cat_equipos)
     {
         //
+        if(Auth::user()->tipo_usuario==1){
         $element = $this->service->editar($id_cat_equipos);
         return view('admin.solicitudes-adm.edit', compact('element'));
+    }else{
+        return redirect()->route('panel');    }
+    
     }
 
     /**
@@ -85,10 +100,14 @@ class SolicitudesController extends Controller
     public function update(SolicitudesRequest $request, $id_oficina)
     {
         //
+        if(Auth::user()->tipo_usuario==1){
         $this->service->actualizar($request, $id_oficina);
         session()->flash('success', '¡Información actualizada con éxito!');
        
         return redirect()->route('solicitudes-adm.index');
+    }else{
+        return redirect()->route('panel');    }
+    
     }
 
     /**
@@ -100,7 +119,11 @@ class SolicitudesController extends Controller
     public function destroy($id)
     {
         //
+        if(Auth::user()->tipo_usuario==1){
         $this->service->eliminar($id);
         return redirect()->route('solicitudes-adm.index');
+    }else{
+        return redirect()->route('panel');    }
+    
     }
 }

@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Services\MantenimientoService;
 use App\Services\OfiTrabajadorEquipoService;
 use App\Services\ImagenService; 
-use App\Services\DocumentoService; 
+use App\Services\DocumentoService;
+use Illuminate\Support\Facades\Auth;
 
 class MantenimientoController extends Controller
 {
@@ -26,17 +27,25 @@ class MantenimientoController extends Controller
 
     public function index()
     {
+        if(Auth::user()->tipo_usuario==1){
         $elements = $this->service->listar();
         return view('admin.mantenimiento-adm.index', compact('elements'));
+        }else{
+            return redirect()->route('panel');    }
+        
     }
     public function byEquiTrabaEqui($id)
     {   
-        $elements = $this->service->listarByEquiTrabaEqui($id);
-        return view('admin.mantenimiento-adm.index', compact('elements','id'));
+        if(Auth::user()->tipo_usuario==1){
+            $elements = $this->service->listarByEquiTrabaEqui($id);
+            return view('admin.mantenimiento-adm.index', compact('elements','id'));
+        }else{
+            return redirect()->route('panel');    }
     }
 
     public function create($id,$val)
     {   
+        if(Auth::user()->tipo_usuario==1){
         if($val==1){//mantenimiento a equipo Asignado
             $equipoAsignado= $this->ofiTrabaEquiService->show($id);
             return view('admin.mantenimiento-adm.edit', compact('equipoAsignado'));
@@ -44,14 +53,21 @@ class MantenimientoController extends Controller
             $elements = $this->service->listar();
             return view('admin.mantenimiento-adm.index', compact('elements'));
         }
+        }else{
+            return redirect()->route('panel');    
+        }
     }
 
     public function store(MantenimientoRequest $request)
     {
-        $this->service->registrar($request);
-        
-        session()->flash('success', '¡Información registrada con éxito!');
-        return redirect('/web-adm/mantenimientos/'.$request->id_ofi_traba_equipo);
+        if(Auth::user()->tipo_usuario==1){
+            $this->service->registrar($request);
+            
+            session()->flash('success', '¡Información registrada con éxito!');
+            return redirect('/web-adm/mantenimientos/'.$request->id_ofi_traba_equipo);
+        }else{
+            return redirect()->route('panel');    
+        }
     }
 
     public function show($id)
@@ -61,27 +77,44 @@ class MantenimientoController extends Controller
 
     public function edit($id_mantenimiento)
     {
-        $element = $this->service->editar($id_mantenimiento);
-        $documentos=$this->servDoc->getByMantenimiento($id_mantenimiento);
-        return view('admin.mantenimiento-adm.edit', compact('element','documentos'));
+        if(Auth::user()->tipo_usuario==1){
+            $element = $this->service->editar($id_mantenimiento);
+            $documentos=$this->servDoc->getByMantenimiento($id_mantenimiento);
+            return view('admin.mantenimiento-adm.edit', compact('element','documentos'));
+        }else{
+            return redirect()->route('panel');    
+        }   
     }
 
     public function update(MantenimientoRequest $request, $id_oficina)
     {
-        $idx=$this->service->actualizar($request, $id_oficina);
-        session()->flash('success', '¡Información actualizada con éxito!');
-        return redirect('/web-adm/mantenimientos/'.$idx->id_ofi_traba_equipo);
+        if(Auth::user()->tipo_usuario==1){
+            $idx=$this->service->actualizar($request, $id_oficina);
+            session()->flash('success', '¡Información actualizada con éxito!');
+            return redirect('/web-adm/mantenimientos/'.$idx->id_ofi_traba_equipo);
+        }else{
+            return redirect()->route('panel');    
+        }
     }
 
     public function destroy($id)
     {
-        $idx=$this->service->eliminar($id);
-        return redirect('/web-adm/mantenimientos/'.$idx->id_ofi_traba_equipo);
+        if(Auth::user()->tipo_usuario==1){
+            $idx=$this->service->eliminar($id);
+            return redirect('/web-adm/mantenimientos/'.$idx->id_ofi_traba_equipo);
+        }else{
+            return redirect()->route('panel');    
+        }
     }
     public function img($id){
-        $imagenes= $this->servImg->getByMantenimiento($id);
-        $element=$this->service->editar($id);
-        $type=3;
-        return view('admin.mantenimiento-adm.imgs',compact('imagenes','element','type'));
+        if(Auth::user()->tipo_usuario==1){
+            $imagenes= $this->servImg->getByMantenimiento($id);
+            $element=$this->service->editar($id);
+            $type=3;
+            return view('admin.mantenimiento-adm.imgs',compact('imagenes','element','type'));
+        
+        }else{
+        return redirect()->route('panel');    
+        }  
     }
 }

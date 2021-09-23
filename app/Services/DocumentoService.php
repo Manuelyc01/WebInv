@@ -36,7 +36,8 @@ class DocumentoService
     public function getBySolOfiTrabaEqui($id)
 	{
         $docs=Documento::where('id_soli_ofi_equi_tra','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();
-  }
+        return $docs;
+    }
     public function getByMantenimiento($id)
 	{
         $docs=Documento::where('id_mantenimiento','=',$id)->where('est_documento','=',1)->orderBy('id_documento', 'ASC')->get();

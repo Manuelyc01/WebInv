@@ -16,6 +16,17 @@ class OficinaTrabajadorService
                         ->orderBy('tm_ofi_trabajador.id_ofi_trabajador', 'ASC')->get();
                         return $element;
 	}
+        public function listarByColaborador($id)
+	{
+                $element = OficinaTrabajador::join('tm_sede', 'tm_sede.id_sede', '=', 'tm_ofi_trabajador.id_sede')
+                        ->join('tm_oficina','tm_oficina.id_oficina','=','tm_ofi_trabajador.id_oficina')
+                        ->join('tm_cargo_laboral','tm_cargo_laboral.id_cargo_laboral','=','tm_ofi_trabajador.id_cargo_laboral')
+                        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                        ->select('tm_ofi_trabajador.*','tm_sede.no_sede','tm_oficina.no_oficina','tm_cargo_laboral.no_cargo_laboral','tm_colaborador.*')
+                        ->where('tm_ofi_trabajador.id_colaborador','=',$id)
+                        ->orderBy('tm_ofi_trabajador.id_ofi_trabajador', 'ASC')->get();
+                        return $element;
+	}
 
         public function registrar($request)
         {

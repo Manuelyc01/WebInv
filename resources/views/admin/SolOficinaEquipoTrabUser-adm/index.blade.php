@@ -7,14 +7,14 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Solicitudes Equipo Trabajador </h2>
-				<a href="{{ route('SolOficinaEquipoTrabUser-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir equipo </a>
+				<a href="{{ route('SolOficinaEquipoTrabUser-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Nueva solicitud </a>
 			</div>
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
 						<div align='center'  >
-								<span><a href="/web-adm/ConOfiTraEquipoUser" class="ulLi">Solicitud - Equipo</a></span> / 
-								<span><a href="/web-adm/SinOfiTraEquipoUser" class="ulLi">Solicitud - Trabajador</a></span>
+								<span><a href="/web-adm/ConOfiTraEquipoUser" class="ulLi">Solicitud mantenimiento</a></span> / 
+								<span><a href="/web-adm/SinOfiTraEquipoUser" class="ulLi">Solicitud de Equipos Nuevos</a></span>
 						</div>	
 					</div>
 					<div class="col-md-4"></div>

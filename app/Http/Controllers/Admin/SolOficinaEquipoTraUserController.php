@@ -9,7 +9,8 @@ use App\Services\SolicitudesService;
 use App\Services\ImagenService;
 use App\Services\DocumentoService;
 use App\Services\OficinaTrabajadorService;
-use App\Http\Requests\SolOficinaEquipoTrabUserRequest; 
+use App\Http\Requests\SolOficinaEquipoTrabUserRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SolOficinaEquipoTraUserController extends Controller
 {
@@ -115,14 +116,35 @@ class SolOficinaEquipoTraUserController extends Controller
      */
     public function show($id)
     {
-        $element = $this->service->mostrar($id); 
-        $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
-        $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
 
-        $equipotrajador = $this->service->mostrarEquipoTrajador($id);
-        $trabajador = $this->service->mostrarTrabajador($id);
-        $equipo = $this->service->mostrarEquipo($id);
-        return view('admin.SolOficinaEquipoTrabUser-adm.show',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
+        $element = $this->service->mostrar($id); 
+        if($element->id_ofi_traba_equipo==null){
+            $x1=$this->servTrabajador->editar($element->id_ofi_trabajador);
+            if($x1->id_colaborador!=Auth::user()->id_colaborador){
+                return redirect()->route('panel'); 
+            }else{
+                $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
+                $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
+
+                $equipotrajador = $this->service->mostrarEquipoTrajador($id);
+                $trabajador = $this->service->mostrarTrabajador($id);
+                $equipo = $this->service->mostrarEquipo($id);
+                return view('admin.SolOficinaEquipoTrabUser-adm.show',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
+            }
+        }else{
+            $x1=$this->servOficina->editar($element->id_ofi_traba_equipo);
+            if($x1->id_colaborador!=Auth::user()->id_colaborador){
+                return redirect()->route('panel'); 
+            }else{
+                $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
+                $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
+
+                $equipotrajador = $this->service->mostrarEquipoTrajador($id);
+                $trabajador = $this->service->mostrarTrabajador($id);
+                $equipo = $this->service->mostrarEquipo($id);
+                return view('admin.SolOficinaEquipoTrabUser-adm.show',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
+            }
+        }
     }
 
     /**

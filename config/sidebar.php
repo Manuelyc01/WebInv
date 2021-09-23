@@ -18,7 +18,7 @@ if ($users_active) {
 
                     [
                       'type' => 'one',
-                      'text' => 'Usuarios',
+                      'text' => 'Colaboradores',
                       'url' => 'colaborador-adm.index',
                     ]
                 ]
@@ -28,108 +28,110 @@ if ($users_active) {
 return[
 
 	'menu' => [
-
-    $menu_array,    
+    $menu_array,
     [
-      'type' => 'simple',
-      'text' => 'Oficina',
-      'slug' => 'oficina',
-      'url'  => 'oficina-adm.index',
-      'ico'  => 'home'
+      'type' => 'tree',
+      'text' => 'Data General',
+      'slug' => 'data-general',
+      'ico'  => 'list',
+      'children' => [
+              [
+                'type' => 'one',
+                'text' => 'Oficina',
+                'url' => 'oficina-adm.index',
+              ],
+
+              [
+                'type' => 'one',
+                'text' => 'Sedes',
+                'url' => 'sede-adm.index',
+              ],
+              [
+                'type' => 'one',
+                'text' => 'Cargos Laborales',
+                'url' => 'cargoLaboral-adm.index',
+              ],
+              [
+                'type' => 'one',
+                'text' => 'Equipos',
+                'url' => 'equipo-adm.index',
+              ],
+              [
+                'type' => 'one',
+                'text' => 'Categoria Equipos',
+                'url' => 'categoriaEquipo-adm.index',
+              ],
+              [
+                'type' => 'one',
+                'text' => 'Componentes',
+                'url' => 'componente-adm.index',
+              ],
+              [
+                'type' => 'one',
+                'text' => 'Categoria Componentes',
+                'url' => 'categoriaComponente-adm.index',
+              ],
+              ]
+    ],
+    [
+      'type' => 'tree',
+      'text' => 'Acciones',
+      'slug' => 'usuario',
+      'ico'  => 'briefcase',
+      'children' => [
+              [
+                'type' => 'one',
+                'text' => 'Asignar Oficina Colaborador',
+                'url' => 'oficinaTrabajador-adm.index',
+              ],
+
+              [
+                'type' => 'one',
+                'text' => 'Asignar Equipo Colaborador',
+                'url' => 'ofiTrabajadorEquipo-adm.index',
+              ]
+              ,
+              [
+                'type' => 'one',
+                'text' => 'Mantenimiento a Equipos',
+                'url' => 'mantenimiento-adm.index',
+              ]
+          ]
+    ], 
+    [
+      'type' => 'tree',
+      'text' => 'Solicitudes',
+      'slug' => 'usuario',
+      'ico'  => 'globe',
+      'children' => [
+              [
+                'type' => 'one',
+                'text' => 'Categorias',
+                'url' => 'solicitudes-adm.index',
+              ],
+
+              [
+                'type' => 'one',
+                'text' => 'Recibidos',
+                'url' => 'SolOficinaEquipoTrab-adm.index',
+              ]
+          ]
     ],
     [
       'type' => 'simple',
       'text' => 'Cargo Laboral',
       'slug' => 'cargo-laboral',
-      'url'  => 'cargoLaboral-adm.index',
-      'ico'  => 'briefcase'
-    ],
-
-    [
-      'type' => 'simple',
-      'text' => 'Sedes',
-      'slug' => 'sede',
-      'url'  => 'sede-adm.index',
-      'ico'  => 'globe'
-    ]  ,
-
-    [
-      'type' => 'simple',
-      'text' => 'Equipos',
-      'slug' => 'equipo',
-      'url'  => 'equipo-adm.index',
-      'ico'  => 'list'
-    ]  ,
-    [
-      'type' => 'simple',
-      'text' => 'Categoria Equipo',
-      'slug' => 'categoria-equipo',
-      'url'  => 'categoriaEquipo-adm.index',
-      'ico'  => 'briefcase'
-    ],
-    [
-      'type' => 'simple',
-      'text' => 'Oficina Trabajador',
-      'slug' => 'oficina-trabajador',
       'url'  => 'oficinaTrabajador-adm.index',
       'ico'  => 'briefcase'
-    ], 
-    [
-      'type' => 'simple',
-      'text' => 'Colaboradores',
-      'slug' => 'usuario',
-      'url'  => 'colaborador-adm.index',
-      'ico'  => 'user'
     ],
     [
       'type' => 'simple',
       'text' => 'Solicitudes',
-      'slug' => 'Solicitudes',
-      'url'  => 'solicitudes-adm.index',
-      'ico'  => 'book'
-    ],
-    [
-      'type' => 'simple',
-      'text' => 'Oficina Trabajador Equipo',
-      'slug' => 'OfiTrabajadorEquipo',
-      'url'  => 'ofiTrabajadorEquipo-adm.index',
-      'ico'  => 'book'
-    ],
-    [
-      'type' => 'simple',
-      'text' => 'Categoria Componetes',
-      'slug' => 'categoria-componete',
-      'url'  => 'categoriaComponente-adm.index',
-      'ico'  => 'book'
-    ],
-    [
-      'type' => 'simple',
-      'text' => 'Solicitud OficinaEquipo Trabajador',
-      'slug' => 'cargo-laboral',
-      'url'  => 'SolOficinaEquipoTrab-adm.index',
-      'ico'  => 'book'
-    ],
-    [
-      'type' => 'simple',
-      'text' => 'Solicitud OficinaEquipoUser Trabajador',
-      'slug' => 'cargo-laboral',
+      'slug' => 'solOfiEquiTrU',
       'url'  => 'SolOficinaEquipoTrabUser-adm.index',
       'ico'  => 'book'
     ],
-    [
-      'type' => 'simple',
-      'text' => 'Componetes',
-      'slug' => 'componetes',
-      'url'  => 'componente-adm.index',
-      'ico'  => 'book'
-    ],
-    [
-      'type' => 'simple',
-      'text' => 'Mantenimientos',
-      'slug' => 'mantenimiento',
-      'url'  => 'mantenimiento-adm.index',
-      'ico'  => 'book'
-    ]
+
 	]
 ]
 ?>

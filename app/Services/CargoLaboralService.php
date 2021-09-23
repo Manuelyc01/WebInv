@@ -11,7 +11,6 @@ class CargoLaboralService
         $element = CargoLaboral::orderBy('id_cargo_laboral', 'ASC')->get();
 		return $element;
 	}
-
 	public function registrar($request)
 	{
         $element= new CargoLaboral();

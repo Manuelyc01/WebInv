@@ -10,12 +10,12 @@
         </div>
     </div>
     <div class="panel-body form-horizontal">
-
         <div class="form-group {{ $errors->has('descripcion_solicitud') ? 'has-error' : '' }}">
-            {!! Form::stdText('Descripcion', 0, 'descripcion_solicitud', $errors) !!}
+            <label class="col-sm-2 control-label"><strong>Descripcion<span class="required"> * </span></strong></label>
+            <div class="col-sm-8">
+            <input class="form-control" type="text" name="descripcion_solicitud" id="descripcion_solicitud" value="{{@$element->descripcion_solicitud}}" readonly>
+            </div>
         </div>
-
-
         <div class="form-group {{ $errors->has('id_solicitud') ? 'has-error' : '' }}">
             <label class="col-sm-2 control-label"><strong>Tipo Solicitud<span class="required"> * </span></strong></label>
             <div class="col-sm-8">

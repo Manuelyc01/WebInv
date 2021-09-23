@@ -8,7 +8,8 @@ use App\Services\SolOficinaEquipoTrabService;
 use App\Services\SolicitudesService;
 use App\Services\ImagenService;
 use App\Services\DocumentoService;
-use App\Http\Requests\SolOficinaEquipoTrabRequest; 
+use App\Http\Requests\SolOficinaEquipoTrabRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SolOficinaEquipoTraController extends Controller
 {
@@ -27,9 +28,11 @@ class SolOficinaEquipoTraController extends Controller
     }
     public function index()
     {
-    
-        $elements = $this->service->listar();
-        return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
+        if(Auth::user()->tipo_usuario==1){
+            $elements = $this->service->listar();
+            return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
+        }else{
+            return redirect()->route('panel');    }
         
     }
 
@@ -43,9 +46,12 @@ class SolOficinaEquipoTraController extends Controller
      */
     public function create()
     {
-        $elements_solicitud = $this->service2->listar();
-        $elements_Colaborador = $this->servOficina->recuperar();
-        return view('admin.SolOficinaEquipoTrab-adm.edit',compact('elements_solicitud','elements_Colaborador'));
+        if(Auth::user()->tipo_usuario==1){
+            $elements_solicitud = $this->service2->listar();
+            $elements_Colaborador = $this->servOficina->recuperar();
+            return view('admin.SolOficinaEquipoTrab-adm.edit',compact('elements_solicitud','elements_Colaborador'));
+        }else{
+            return redirect()->route('panel');    }
     }
 
     /**
@@ -56,12 +62,13 @@ class SolOficinaEquipoTraController extends Controller
      */
     public function store(SolOficinaEquipoTrabRequest $request)
     {
-        //
-        //dd("entra"); 
-        $this->service->registrar($request);
-        
-        session()->flash('success', '¡Información registrada con éxito!');
-        return redirect()->route('SolOficinaEquipoTrab-adm.index');
+        if(Auth::user()->tipo_usuario==1){
+            $this->service->registrar($request);
+            
+            session()->flash('success', '¡Información registrada con éxito!');
+            return redirect()->route('SolOficinaEquipoTrab-adm.index');
+        }else{
+            return redirect()->route('panel');    }
     }
 
     /**
@@ -72,16 +79,20 @@ class SolOficinaEquipoTraController extends Controller
      */
     public function show($id)
     {
-        $element = $this->service->mostrar($id); 
-        //obtener imagenes
-        $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
-        $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
+        if(Auth::user()->tipo_usuario==1){
+            $element = $this->service->mostrar($id); 
+            //obtener imagenes
+            $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
+            $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
 
-        $equipotrajador = $this->service->mostrarEquipoTrajador($id);
-        $trabajador = $this->service->mostrarTrabajador($id);
-        $equipo = $this->service->mostrarEquipo($id);
+            $equipotrajador = $this->service->mostrarEquipoTrajador($id);
+            $trabajador = $this->service->mostrarTrabajador($id);
+            $equipo = $this->service->mostrarEquipo($id);
 
-        return view('admin.SolOficinaEquipoTrab-adm.show',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
+            return view('admin.SolOficinaEquipoTrab-adm.show',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
+        }else{
+            return redirect()->route('panel');    }
+        
     }
 
     /**
@@ -92,17 +103,21 @@ class SolOficinaEquipoTraController extends Controller
      */
     public function edit($id)
     {
-        $element = $this->service->editar($id);
-        //dd($element);
-        $elements_solicitud = $this->service2->listar();
-        $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
-        $elements_Colaborador = $this->servOficina->recuperar();
-          
-        $equipotrajador = $this->service->mostrarEquipoTrajador($id);
-        $trabajador = $this->service->mostrarTrabajador($id);
-        $equipo = $this->service->mostrarEquipo($id);
-        
-        return view('admin.SolOficinaEquipoTrab-adm.edit', compact('element', 'elements_solicitud','documentos','elements_Colaborador','equipotrajador','trabajador','equipo'));
+        if(Auth::user()->tipo_usuario==1){
+            $element = $this->service->editar($id);
+            //dd($element);
+            $elements_solicitud = $this->service2->listar();
+            $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
+            $elements_Colaborador = $this->servOficina->recuperar();
+            
+            $equipotrajador = $this->service->mostrarEquipoTrajador($id);
+            $trabajador = $this->service->mostrarTrabajador($id);
+            $equipo = $this->service->mostrarEquipo($id);
+            
+            return view('admin.SolOficinaEquipoTrab-adm.edit', compact('element', 'elements_solicitud','documentos','elements_Colaborador','equipotrajador','trabajador','equipo'));
+        }else{
+            return redirect()->route('panel');    }
+    
     }
 
     /**
@@ -114,12 +129,14 @@ class SolOficinaEquipoTraController extends Controller
      */
     public function update(SolOficinaEquipoTrabRequest $request, $id_soli_ofi_equi_tra)
     {
+        if(Auth::user()->tipo_usuario==1){
+            //dd("actualizar");
+            $this->service->actualizar($request, $id_soli_ofi_equi_tra);
+            session()->flash('success', '¡Información actualizada con éxito!');
         
-        //dd("actualizar");
-        $this->service->actualizar($request, $id_soli_ofi_equi_tra);
-        session()->flash('success', '¡Información actualizada con éxito!');
-       
-        return redirect()->route('SolOficinaEquipoTrab-adm.index');
+            return redirect()->route('SolOficinaEquipoTrab-adm.index');
+        }else{
+            return redirect()->route('panel');    }
     }
 
     /**
@@ -130,17 +147,24 @@ class SolOficinaEquipoTraController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $this->service->eliminar($id);
-        return redirect()->route('SolOficinaEquipoTrab-adm.index');
+        if(Auth::user()->tipo_usuario==1){
+            //
+            $this->service->eliminar($id);
+            return redirect()->route('SolOficinaEquipoTrab-adm.index');
+        }else{
+            return redirect()->route('panel');    }
     }
 
     public function img($id)
     {
-        $imagenes= $this->servImg->getBySolOfiTrabaEqui($id);
-        $element=$this->service->show($id);
-        //dd($element);
-        $type=2;
-        return view('admin.solOficinaEquipoTrab-adm.imgs',compact('imagenes','element','type'));
+        if(Auth::user()->tipo_usuario==1){
+            $imagenes= $this->servImg->getBySolOfiTrabaEqui($id);
+            $element=$this->service->show($id);
+            //dd($element);
+            $type=2;
+            return view('admin.solOficinaEquipoTrab-adm.imgs',compact('imagenes','element','type'));
+        }else{
+            return redirect()->route('panel');    
+        }
     }
 }
