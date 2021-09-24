@@ -76,8 +76,11 @@ class ComponenteTrabajadorEquipoService{
         }
         $element->save();
         ///////
-        DB::table('tm_componentes')->where('id_componente',$request->get('id_componente'))->update(['esta_componente'=>2]);
-
+        if($request->get('esta_ofi_traba_equi_compo')==0){
+            DB::table('tm_componentes')->where('id_componente',$request->get('id_componente'))->update(['esta_componente'=>1]);
+        }else{
+            DB::table('tm_componentes')->where('id_componente',$request->get('id_componente'))->update(['esta_componente'=>2]);
+        }
 	}
 
 	public function eliminar($id)
