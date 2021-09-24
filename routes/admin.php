@@ -74,6 +74,10 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::get('/solOfiTrabEquiUser-img/{id}','SolOficinaEquipoTraUserController@img');
 	Route::get('/ConOfiTraEquipoUser','SolOficinaEquipoTraUserController@ConOfiTraEquipoUser');
 	Route::get('/SinOfiTraEquipoUser','SolOficinaEquipoTraUserController@SinOfiTraEquipoUser');
+
+	Route::get('/solicitudesRecibidas','SolOficinaEquipoTraController@solRecibidos');
+	Route::get('/solicitudesFinalizadas','SolOficinaEquipoTraController@solFinalizadas');
+	Route::get('/solicitudesEnProceso','SolOficinaEquipoTraController@solProceso');
 	
 
 });

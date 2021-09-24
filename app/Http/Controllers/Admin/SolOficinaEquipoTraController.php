@@ -167,4 +167,31 @@ class SolOficinaEquipoTraController extends Controller
             return redirect()->route('panel');    
         }
     }
+    public function solRecibidos()
+    {
+        if(Auth::user()->tipo_usuario==1){
+           $elements=$this->service->recibidas();
+           return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
+        }else{
+            return redirect()->route('panel');    
+        }
+    }
+    public function solFinalizadas()
+    {
+        if(Auth::user()->tipo_usuario==1){
+            $elements=$this->service->finalizados();
+            return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
+        }else{
+            return redirect()->route('panel');    
+        }
+    }
+    public function solProceso()
+    {
+        if(Auth::user()->tipo_usuario==1){
+            $elements=$this->service->proceso();
+            return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
+        }else{
+            return redirect()->route('panel');    
+        }
+    }
 }

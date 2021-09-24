@@ -22,6 +22,27 @@ class SolOficinaEquipoTrabService
         $element = SolOficinaEquipoTrab::where('esta_solicitud','=',1)->orderBy('updated_at', 'DESC')->get();
 		return $element;
 	}
+    public function recibidas()
+	{
+        $element = SolOficinaEquipoTrab::where('esta_solicitud','=',1)
+            ->where('esta_soli_soli_ofi_equi_traba','=',2)                
+            ->orderBy('updated_at', 'DESC')->get();
+		return $element;
+	}
+    public function finalizados()
+	{
+        $element = SolOficinaEquipoTrab::where('esta_solicitud','=',1)
+            ->where('esta_soli_soli_ofi_equi_traba','=',0)                
+            ->orderBy('updated_at', 'DESC')->get();
+		return $element;
+	}
+    public function proceso()
+	{
+        $element = SolOficinaEquipoTrab::where('esta_solicitud','=',1)
+            ->where('esta_soli_soli_ofi_equi_traba','=',1)                
+            ->orderBy('updated_at', 'DESC')->get();
+		return $element;
+	}
     
 	public function registrar($request)
 	{

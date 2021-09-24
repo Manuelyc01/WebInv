@@ -8,12 +8,26 @@
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Bandeja de Solicitudes </h2>
 			</div>
-				
+			@if(Auth::user()->tipo_usuario==1)
+				<div class="row">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
+						<div align='center'  >
+								<span><a href="/web-adm/SolOficinaEquipoTrab-adm" class="ulLi">Todos</a></span> / 
+								<span><a href="/web-adm/solicitudesRecibidas" class="ulLi">Recibidos</a></span> / 
+								<span><a href="/web-adm/solicitudesFinalizadas" class="ulLi">Finalizados</a></span> / 
+								<span><a href="/web-adm/solicitudesEnProceso" class="ulLi">En Proceso</a></span>
+						</div>	
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+			@endif
 			<div class="panel-body">
 				<table id="table" class="display table table-hover dataTable">
 					<thead>
 						<th> Descripcion Solicitud</th>
 						<th> Estado de la solicitud</th>
+						<th> Fecha Recepción</th>
 						<th class="tbl-action-col"> Acciones </th>
 					</thead>
 
@@ -28,7 +42,9 @@
 								@else
 									<td style="background-color: green;color:white;"> <strong> RECIBIDO </strong> </td>
 								@endif
-								
+								<td>
+								{{ $element->created_at }} 
+								</td>
 								<td class="tbl-action-col">
 									<a href="{{ route('SolOficinaEquipoTrab-adm.edit' , ['id_soli_ofi_equi_tra' => $element->id_soli_ofi_equi_tra]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 									<a href="{{ route('SolOficinaEquipoTrab-adm.show' , ['id_soli_ofi_equi_tra' => $element->id_soli_ofi_equi_tra]) }}" class="btn btn-success"> <i class="fa fa-eye"></i> </a>
