@@ -3,9 +3,10 @@
 namespace App\Services;
 
 use App\Models\Equipo;
+use App\Models\OfiTrabajadorEquipo;
 use App\Services\ImagenService;
 use App\Services\DocumentoService; 
-
+use DB;
 class EquipoService
 {
     private $servImg;
@@ -23,6 +24,21 @@ class EquipoService
             ->where('esta_equipo','=',1)->orderBy('id_equipo', 'ASC')->get();
 		return $element;
 	}
+    public function listarDisponibles()
+	{
+        $element = Equipo::join('tm_categoria_equipos','tm_categoria_equipos.id_cat_equipos','=','tm_equipos.id_cat_equipos')
+            ->select('tm_equipos.*','tm_categoria_equipos.*')    
+            ->where('esta_equipo','=',1)
+            ->whereNotExists(function($query)
+                {
+                    $query->select(DB::raw(1))
+                          ->from('tm_ofi_traba_equipo')
+                          ->whereRaw('tm_equipos.id_equipo = tm_ofi_traba_equipo.id_equipo');
+                })
+            ->orderBy('id_equipo', 'ASC')->get();
+		return $element;
+	}
+    
 
 	public function registrar($request)
 	{   

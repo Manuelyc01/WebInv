@@ -90,7 +90,7 @@ class OfiTrabajadorEquipoController extends Controller
     public function create()
     { 
         if(Auth::user()->tipo_usuario==1){
-            $equipos=$this->servEquipo->listar();
+            $equipos=$this->servEquipo->listarDisponibles();
             $trabajadores=$this->servOfiTra->listar();
             return view('admin.ofiTrabajadorEquipo-adm.edit',compact('equipos','trabajadores'));
         }else{
