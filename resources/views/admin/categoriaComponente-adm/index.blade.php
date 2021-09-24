@@ -26,7 +26,7 @@
 								@if($element->esta_cate_componentes==0)
 									<td style="background-color: red;color:white";> <strong> DESACTIVADO </strong> </td>
 								@else
-									<td style="background-color: green;color:white;"> <strong> NUEVO </strong> </td>
+									<td style="background-color: green;color:white;"> <strong> ACTIVADO </strong> </td>
 								@endif
 								
 								<td class="tbl-action-col">
