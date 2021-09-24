@@ -7,6 +7,9 @@
     </div>
     <div class="panel-body form-horizontal">
         @if(!isset($element))
+        @if(isset($x))
+        <input type="text" name="soli" value="{{$x->id_soli_ofi_equi_tra}}" hidden>
+        @endif
         <input id="id_ofi_traba_equipo" name="id_ofi_traba_equipo" type="hidden" value="{{$equipoAsignado->id_ofi_traba_equipo}}">
         <div class="form-group ">
         <label class="col-sm-2 control-label"><strong> Equipo / Colaborador</strong></label>
@@ -15,6 +18,9 @@
             </div>
         </div>
         @else
+        @if(isset($x))
+        <input type="text" name="soli" value="{{$x->id_soli_ofi_equi_tra}}" hidden>
+        @endif
         <div class="form-group ">
         <label class="col-sm-2 control-label"><strong> Equipo / Colaborador</strong></label>
             <div class="col-sm-8">

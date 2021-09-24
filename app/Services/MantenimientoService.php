@@ -5,6 +5,7 @@ use App\Services\ImagenService;
 use App\Services\DocumentoService; 
 use DB;
 use App\Models\Mantenimiento;
+use App\Models\SolOficinaEquipoTrab;
 
 class MantenimientoService
 {
@@ -48,7 +49,7 @@ class MantenimientoService
         $element->descripcion=$request->get('descripcion');
         $element->estado=$request->get('estado');
         $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
-        $element->id_soli_ofi_equi_tra=$request->get('id_soli_ofi_equi_tra');
+        $element->id_soli_ofi_equi_tra=$request->get('soli');
         $element->save();
         
         if($request->hasfile('imagenes')){
@@ -59,7 +60,11 @@ class MantenimientoService
             $documentos=$request->file('documentos');
             $this->servDoc->registrarMantenimiento($documentos,$element->id_mantenimiento);
         } 
-        
+        if($request->get('soli')!=null){//Actualizar solicitud a En proceso
+            $x1 = SolOficinaEquipoTrab::find($request->get('soli'));
+            $x1->esta_soli_soli_ofi_equi_traba=1;
+            $x1->save();
+        }
     }
     
     public function editar($id_mantenimiento)
@@ -82,7 +87,6 @@ class MantenimientoService
 
         $element->descripcion=$request->get('descripcion');
         $element->estado=$request->get('estado');
-        $element->id_soli_ofi_equi_tra=$request->get('id_soli_ofi_equi_tra');
           
         $element->save();
 
@@ -94,6 +98,11 @@ class MantenimientoService
             $documentos=$request->file('documentos');
             $this->servDoc->registrarMantenimiento($documentos,$id_mantenimiento);
         } 
+        if($request->get('estado')==2 && $request->get('soli')!=null ){//finaliza el mantenimiento y es de solicitud
+            $x1 = SolOficinaEquipoTrab::find($request->get('soli'));
+            $x1->esta_soli_soli_ofi_equi_traba=0;
+            $x1->save();
+        }
         return $element;
 	}
 

@@ -1,7 +1,4 @@
-@section('cssAdicional')
-    <link rel="stylesheet" href="{{ asset('vendor/ems/css/estilos.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"><!--imagenes-->
- @stop
+
 <div class="panel panel-white ui-sortable-handle" style="opacity: 1;">
     <div class="panel-heading">
         <h3 class="panel-title form-title"> Formularios de solicitud </h3>
@@ -33,9 +30,9 @@
 
         @if($element->id_ofi_traba_equipo)
         <div class="form-group {{ $errors->has('id_ofi_traba_equipo') ? 'has-error' : '' }}">
-            <label class="col-sm-2 control-label"><strong>Trabajador<span class="required"> * </span></strong></label>
+            <label class="col-sm-2 control-label"><strong>Equipo / Colaborador<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
-            <input class="form-control" placeholder="" type="text" value="{{ $equipotrajador->ap_paterno_colaborador }}&nbsp;{{ $equipotrajador->ap_materno_colaborador }}&nbsp;{{ $equipotrajador->no_colaborador }}&nbsp;{{ $equipo->des_equipo }}&nbsp;{{ $equipotrajador->no_equipo }} " readonly>
+            <input class="form-control" placeholder="" type="text" value="{{ $equipo->tipoBien }}  /  {{ $equipotrajador->no_colaborador }}&nbsp;{{ $equipotrajador->ap_paterno_colaborador }} " readonly>
             </div>
         </div>
         @endif

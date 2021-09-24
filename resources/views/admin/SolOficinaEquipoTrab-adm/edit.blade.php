@@ -24,5 +24,7 @@
         @endisset
         <a class="btn btn-info btn-addon m-b-sm" href="{{ route('SolOficinaEquipoTrab-adm.index') }}">
         <i class="glyphicon glyphicon-circle-arrow-left"></i> <b>Volver al listado</b> </a>
+        <a class="btn btn-info btn-addon m-b-sm" href="/web-adm/mantenimiento-adm/crear/{{ $element->id_soli_ofi_equi_tra}}/1">
+        <i class="glyphicon glyphicon-circle-arrow-left"></i> <b>Dar Mantenimiento</b> </a>
     </div>
 @stop

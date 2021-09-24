@@ -8,6 +8,7 @@ use App\Services\MantenimientoService;
 use App\Services\OfiTrabajadorEquipoService;
 use App\Services\ImagenService; 
 use App\Services\DocumentoService;
+use App\Services\SolOficinaEquipoTrabService;
 use Illuminate\Support\Facades\Auth;
 
 class MantenimientoController extends Controller
@@ -15,13 +16,14 @@ class MantenimientoController extends Controller
     private $service;
     private $servImg;
     private $servDoc; 
-
-    public function __construct(MantenimientoService $service,OfiTrabajadorEquipoService $ofiTrabaEquiService, ImagenService $servImg, DocumentoService $servDoc)
+    private $servSol;
+    public function __construct(MantenimientoService $service,OfiTrabajadorEquipoService $ofiTrabaEquiService, ImagenService $servImg, DocumentoService $servDoc,SolOficinaEquipoTrabService $servSol)
     {
         $this->service = $service;
         $this->ofiTrabaEquiService = $ofiTrabaEquiService;
         $this->servImg = $servImg;
         $this->servDoc=$servDoc;
+        $this->servSol=$servSol;
         
     }
 
@@ -46,12 +48,13 @@ class MantenimientoController extends Controller
     public function create($id,$val)
     {   
         if(Auth::user()->tipo_usuario==1){
-        if($val==1){//mantenimiento a equipo Asignado
+        if($val==0){//mantenimiento a equipo Asignado
             $equipoAsignado= $this->ofiTrabaEquiService->show($id);
             return view('admin.mantenimiento-adm.edit', compact('equipoAsignado'));
         }else{//mantenimiento a solicitud 
-            $elements = $this->service->listar();
-            return view('admin.mantenimiento-adm.index', compact('elements'));
+            $x=$this->servSol->show($id);
+            $equipoAsignado= $this->ofiTrabaEquiService->show($x->id_ofi_traba_equipo);
+            return view('admin.mantenimiento-adm.edit', compact('equipoAsignado','x'));
         }
         }else{
             return redirect()->route('panel');    
@@ -80,6 +83,10 @@ class MantenimientoController extends Controller
         if(Auth::user()->tipo_usuario==1){
             $element = $this->service->editar($id_mantenimiento);
             $documentos=$this->servDoc->getByMantenimiento($id_mantenimiento);
+            if($element->id_soli_ofi_equi_tra!=null){
+                $x=$element;
+                return view('admin.mantenimiento-adm.edit', compact('element','documentos','x'));
+            }
             return view('admin.mantenimiento-adm.edit', compact('element','documentos'));
         }else{
             return redirect()->route('panel');    
