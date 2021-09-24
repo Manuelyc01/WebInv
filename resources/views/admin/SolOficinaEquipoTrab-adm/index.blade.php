@@ -6,7 +6,7 @@
 
 		<div class="panel panel-white">
 			<div class="panel-heading">
-				<h2 class="panel-title form-title"> Solicitudes Equipo Trabajador </h2>
+				<h2 class="panel-title form-title"> Bandeja de Solicitudes </h2>
 			</div>
 				
 			<div class="panel-body">

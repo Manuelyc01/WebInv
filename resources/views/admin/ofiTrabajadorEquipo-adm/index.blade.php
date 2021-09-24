@@ -18,9 +18,9 @@
 
 		<div class="panel panel-white">
 			<div class="panel-heading">
-				<h2 class="panel-title form-title"> Oficina Trabajador Equipo </h2>
+				<h2 class="panel-title form-title"> Asignaciones de Equipos </h2>
 				@if(Auth::user()->tipo_usuario==1)
-				<a href="{{ route('ofiTrabajadorEquipo-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir equipo </a>
+				<a href="{{ route('ofiTrabajadorEquipo-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir Asignacion </a>
 				@endif
 			</div>
 				@if(Auth::user()->tipo_usuario==1)

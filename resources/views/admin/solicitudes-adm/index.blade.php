@@ -6,7 +6,7 @@
 
 		<div class="panel panel-white">
 			<div class="panel-heading">
-				<h2 class="panel-title form-title"> Solicitudes </h2>
+				<h2 class="panel-title form-title">Categoría Solicitudes </h2>
 				<a href="{{ route('solicitudes-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir nueva </a>
 			</div>
 

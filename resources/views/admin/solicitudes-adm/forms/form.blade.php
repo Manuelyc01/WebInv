@@ -1,6 +1,6 @@
 <div class="panel panel-white ui-sortable-handle" style="opacity: 1;">
     <div class="panel-heading">
-        <h3 class="panel-title form-title"> Crear & Editar - Solicitudes </h3>
+        <h3 class="panel-title form-title"> Crear & Editar - Categoria Solicitudes </h3>
         <div class="panel-control">
             <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" class="panel-collapse" data-original-title="Expand/Collapse"><i class="icon-arrow-down"></i></a>
         </div>
