@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\ColaboradorUbicacion;
 use App\Models\Oficina;
 
 class OficinaService
@@ -11,7 +12,21 @@ class OficinaService
         $element = Oficina::orderBy('id_oficina', 'ASC')->get();
 		return $element;
 	}
-
+    public function listarPorSedes($id_colaborador)
+	{
+        $listado = collect();
+                $col=ColaboradorUbicacion::where('tm_colaborador_ubicacion.id_colaborador','=',$id_colaborador)
+                        ->where('tm_colaborador_ubicacion.estado','=',1)->get();
+        for($i = 0; $i < count($col); $i++){
+            $element = Oficina::join('tm_sede', 'tm_sede.id_sede', '=', 'tm_oficina.id_sede')
+                ->select('tm_sede.*','tm_oficina.*')
+                ->where('tm_oficina.id_sede','=',$col[$i]->id_sede)
+                ->orderBy('tm_oficina.id_oficina', 'ASC')->get();
+                $listado=$listado->merge($element);
+        }
+        
+		return $listado;
+	}
 	public function registrar($request)
 	{
         $element= new Oficina();

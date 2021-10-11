@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services;
+
+use App\Models\ColaboradorUbicacion;
 use App\Services\ImagenService;
 use App\Services\DocumentoService; 
 use DB;
@@ -21,22 +23,59 @@ class MantenimientoService
         $element = Mantenimiento::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_mantenimiento.id_ofi_traba_equipo')
             ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
             ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+            ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
             ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
-            //->join('tm_soli_ofi_equi_traba','tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra','=','tm_mantenmiento.id_soli_ofi_equi_tra')
-            ->select('tm_mantenimiento.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*')
+            ->leftjoin('tm_soli_ofi_equi_traba','tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra','=','tm_mantenimiento.id_soli_ofi_equi_tra')
+            ->select('tm_mantenimiento.*','tm_sede.*','tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*')
             ->where('tm_mantenimiento.estado','>',-1)    
             ->orderBy('id_mantenimiento', 'DESC')->get();
 		return $element;
+	}
+    public function listarBySedeAdmin($id_colaborador)
+	{
+        $listado = collect();
+                $col=ColaboradorUbicacion::where('tm_colaborador_ubicacion.id_colaborador','=',$id_colaborador)
+                        ->where('tm_colaborador_ubicacion.estado','=',1)->get();
+                for($i = 0; $i < count($col); $i++){
+                        $element = Mantenimiento::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_mantenimiento.id_ofi_traba_equipo')
+                        ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+                        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                        ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
+                        ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                        ->leftjoin('tm_soli_ofi_equi_traba','tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra','=','tm_mantenimiento.id_soli_ofi_equi_tra')
+                        ->select('tm_mantenimiento.*','tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*','tm_sede.*')
+                        ->where('tm_mantenimiento.estado','>',-1)    
+                        ->where('tm_sede.id_sede','=',$col[$i]->id_sede)
+                        ->orderBy('id_mantenimiento', 'DESC')->get();
+                        
+                        $listado=$listado->merge($element);
+                }
+                return $listado;
 	}
     public function listarByEquiTrabaEqui($id)
 	{
         $element = Mantenimiento::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_mantenimiento.id_ofi_traba_equipo')
             ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
             ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+            ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
             ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
-            //->join('tm_soli_ofi_equi_traba','tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra','=','tm_mantenmiento.id_soli_ofi_equi_tra')
-            ->select('tm_mantenimiento.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*')
+            ->leftjoin('tm_soli_ofi_equi_traba','tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra','=','tm_mantenimiento.id_soli_ofi_equi_tra')
+            ->select('tm_mantenimiento.*','tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*','tm_sede.*')
             ->where('tm_mantenimiento.id_ofi_traba_equipo','=',$id)
+            ->where('tm_mantenimiento.estado','>',-1)    
+            ->orderBy('id_mantenimiento', 'DESC')->get();
+		return $element;
+	}
+    public function listarBySolicitud($id)
+	{
+        $element = Mantenimiento::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_mantenimiento.id_ofi_traba_equipo')
+            ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+            ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+            ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
+            ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+            ->leftjoin('tm_soli_ofi_equi_traba','tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra','=','tm_mantenimiento.id_soli_ofi_equi_tra')
+            ->select('tm_mantenimiento.*','tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*','tm_sede.*')
+            ->where('tm_mantenimiento.id_soli_ofi_equi_tra','=',$id)
             ->where('tm_mantenimiento.estado','>',-1)    
             ->orderBy('id_mantenimiento', 'DESC')->get();
 		return $element;
@@ -70,13 +109,14 @@ class MantenimientoService
     public function editar($id_mantenimiento)
     {
         $e=Mantenimiento::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_mantenimiento.id_ofi_traba_equipo')
-                        ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
-                        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
-                        ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
-                        //->join('tm_soli_ofi_equi_traba','tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra','=','tm_mantenmiento.id_soli_ofi_equi_tra')
-                        ->select('tm_mantenimiento.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*')
-                        ->where('tm_mantenimiento.id_mantenimiento','=',$id_mantenimiento)
-                        ->first();
+                ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+                ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
+                ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                ->leftjoin('tm_soli_ofi_equi_traba','tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra','=','tm_mantenimiento.id_soli_ofi_equi_tra')
+                ->select('tm_mantenimiento.*','tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*','tm_colaborador.*','tm_equipos.*','tm_sede.*')
+                ->where('tm_mantenimiento.id_mantenimiento','=',$id_mantenimiento)
+                ->first();
         return $e;
     }
 

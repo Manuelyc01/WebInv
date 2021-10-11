@@ -48,9 +48,20 @@
 @stop
 
 @section('scripts')
+	@if(Auth::user()->tipo_usuario==3)
+	<script>
+			$(function(){   
+
+				$(".marcarPermiso").on("click", function(e){
+					alert("No puede ser modificado");
+				});
+				
+			});
+		</script>
+	@else
     <script>
         $(function(){   
-            
+
             $(".marcarPermiso").on("click", function(e){
                 item = $(this);
                 nom = item.val();
@@ -70,4 +81,6 @@
             
         });
     </script>
+	@endif
+	
 @endsection

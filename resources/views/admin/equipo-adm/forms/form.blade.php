@@ -1,7 +1,3 @@
-@section('cssAdicional')
-    <link rel="stylesheet" href="{{ asset('vendor/ems/css/estilos.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"><!--imagenes-->
- @stop
 
 <div class="panel panel-white ui-sortable-handle" style="opacity: 1;">
     <div class="panel-heading">
@@ -80,8 +76,10 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col s12 center-align"><a href="/web-adm/equipo-img/{{ $element->id_equipo }}"target="_blank" class="btn btn-secondary"> Ver imagenes del equipo</a></div>
-        </div>  
+        <br>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4"><a class="btn btn-success btn-addon m-b-sm" href="/web-adm/equipo-img/{{ $element->id_equipo }}"target="_blank" class="btn btn-secondary"> Imagenes</a></div>
+        </div>
         @endif
         
     </div>

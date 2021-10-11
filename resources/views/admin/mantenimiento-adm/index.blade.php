@@ -10,19 +10,23 @@
 				@if(isset($id))
 				<a class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md" href="/web-adm/mantenimiento-adm/crear/{{ $id}}/0"> Nuevo Resgistro</a>
 				@endif
+				@if(isset($idsoli))
+				<a class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md" href="/web-adm/mantenimiento-adm/crear/{{ $idsoli}}/1"> Nuevo Resgistro</a>
+				@endif
 			</div>
-			
 			<div class="panel-body">
 				<table id="table" class="display table table-hover dataTable">
 					<thead>
 						<th> Descripcion</th>
 						<th> Estado </th>
 						<th> Bien Asignado</th>
-						<th class="tbl-action-col"> Solicitud </th>
+						<th> Sede</th>
+						<th> Solicitud Descripcion</th>
+						<th class="tbl-action-col">Acciones</th>
 					</thead>
 
 					<tbody>
-						@foreach ($elements as $element)
+					@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_oficina }}">
 								<td> <strong> {{ $element->descripcion }} </strong></td>
 								@if($element->estado==0)
@@ -35,13 +39,13 @@
 									@endif
 								@endif
 								<td> <strong> {{$element->tipoBien}}  /  {{$element->no_colaborador}}{{$element->ap_paterno_colaborador}} </strong> </td>
-								<td> <strong> {{ $element->id_soli_ofi_equi_tra }} </strong> </td>
+								<td>{{ $element->no_sede }}</td>
+								<td> <strong> {{ $element->descripcion_solicitud }} </strong> </td>
 								<td class="tbl-action-col">
 									<a href="{{ route('mantenimiento-adm.edit' , ['id_mantenimiento' => $element->id_mantenimiento]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 								</td>
 							</tr>
 						@endforeach
-
 					</tbody>
 				</table>
 			</div>
