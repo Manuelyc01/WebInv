@@ -31,7 +31,7 @@ class ColaboradorController extends Controller
     }
     public function colaboradorSedes($id_colaborador)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
         $x = $this->service->editar($id_colaborador);
         $elements = $this->service->listarSedes($id_colaborador);
         $sedes=DB::select('SELECT * FROM tm_sede WHERE tm_sede.id_sede NOT IN (SELECT id_sede FROM tm_colaborador_ubicacion WHERE tm_colaborador_ubicacion.id_colaborador= '.$id_colaborador.' AND tm_colaborador_ubicacion.estado=1 )');

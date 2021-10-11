@@ -8,6 +8,7 @@
 			<div class="panel-heading">
                 <input id="id_colaborador" value="{{ $x->id_colaborador }}" hidden>
 				<h2 class="panel-title form-title"> SEDES ASIGNADAS A {{ $x->no_colaborador }} {{ $x->ap_paterno_colaborador }} </h2>
+                @if(Auth::user()->tipo_usuario==1)
                 <div class="form-group pull-right">
                     <div class="col-sm-4 control-label"> 
                         <button class="btn btn-info" id="subSede"> Agregar Sede </button>
@@ -21,20 +22,24 @@
                         </datalist>
                     </div>
                 </div>
+                @endif
             </div>
 			<div class="panel-body">
 				<table id="table" class="display table table-hover dataTable">
 					<thead>
 						<th> Cod. Sede </th>
 						<th> Nombre </th>
+                        @if(Auth::user()->tipo_usuario==1)
 						<th> Acciones </th>
+                        @endif
 					</thead>
 					<tbody id="sedes">
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_sede }}">
 								<td> <strong> {{ $element->co_sede }} </strong></td>
 								<td> <strong> {{ $element->no_sede  }} </strong> </td>
-								<td >
+								@if(Auth::user()->tipo_usuario==1)
+                                <td >
                                 <div class="col-md-6">
                                     <button type="button" id="btnDelete{{ $element->id_sede }}" onclick="deleteDoc('{{ $element->id_sede }}')">Eliminar</button>
                                     <label id="labDelete{{ $element->id_sede }}" style="color:red" hidden>Eliminar Sede Asignada?</label>
@@ -44,6 +49,7 @@
                                     <button type="button" onclick="dontDelete('{{ $element->id_sede }}')" class="btnConfirm">No</button>
                                 </div>
 								</td>
+                                @endif
 							</tr>
 						@endforeach
 
