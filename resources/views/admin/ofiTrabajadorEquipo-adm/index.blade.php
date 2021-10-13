@@ -19,11 +19,11 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Asignaciones de Equipos </h2>
-				@if(Auth::user()->tipo_usuario==1)
+				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 				<a href="{{ route('ofiTrabajadorEquipo-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir Asignacion </a>
 				@endif
 			</div>
-				@if(Auth::user()->tipo_usuario==1)
+				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
@@ -45,7 +45,7 @@
 						<th> Observaciones Equipo</th>
 						<th> Estado </th>
 						<th> Categoria Equipo</th>
-						@if(Auth::user()->tipo_usuario==1)
+						@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 						<th> Colaborador</th>@endif
 						<th class="tbl-action-col"> Acciones </th>
 					</thead>
@@ -62,11 +62,11 @@
 									<td style="background-color: green;color:white;"> <strong> ASIGNADO </strong> </td>
 								@endif
 								<td> <strong> {{ $element->tipoBien }} </strong> </td>
-								@if(Auth::user()->tipo_usuario==1)
+								@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 								<td> <strong>{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}&nbsp;(SEDE: {{ $element->no_sede }})</strong> </td>
 								@endif
 								<td class="tbl-action-col">
-									@if(Auth::user()->tipo_usuario==1)
+									@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 									<a href="{{ route('ofiTrabajadorEquipo-adm.edit' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 									<a href="{{ route('componenteTrabajadorEquipo-adm.index' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-success"> <i class="fa fa-briefcase"></i> </a>
 										@if($element->esta_ofi_traba_equipo==1)

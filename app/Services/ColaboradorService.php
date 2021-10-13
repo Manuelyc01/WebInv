@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\Colaborador;
+use App\Models\ColaboradorUbicacion;
+use App\Models\Sede;
 use App\Services\ImagenService;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Crypt;
@@ -21,6 +23,45 @@ class ColaboradorService
         $element = Colaborador::where('estado_usuario','=',1)->orderBy('id_colaborador', 'ASC')->get();
 		return $element;
 	}
+    public function listarSedes($id)
+	{
+        $element = ColaboradorUbicacion::join('tm_sede', 'tm_sede.id_sede', '=', 'tm_colaborador_ubicacion.id_sede')
+        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_colaborador_ubicacion.id_colaborador')
+        ->select('tm_sede.*','tm_colaborador.*')
+        ->where('tm_colaborador_ubicacion.id_colaborador','=',$id)
+        ->where('tm_colaborador_ubicacion.estado','=',1)
+        ->orderBy('tm_sede.no_sede', 'ASC')->get();
+		return $element;
+	}
+    public function addColaboradorSede($id_sede,$id_colaborador)
+	{
+        $x=ColaboradorUbicacion::
+        where('tm_colaborador_ubicacion.id_sede','=',$id_sede)
+        ->where('tm_colaborador_ubicacion.id_colaborador','=',$id_colaborador)
+        ->where('tm_colaborador_ubicacion.estado','=',1)->get();
+        if(count($x->toArray())>0){
+            return 2;
+        }else{
+            $element = new ColaboradorUbicacion();
+            $element->id_sede=$id_sede;
+            $element->id_colaborador=$id_colaborador;
+            $element->estado=1;
+            $element->save();
+            return 1;
+        }
+        
+	}
+    public function dropSede($id_sede,$id_colaborador)
+	{
+        $s1 = ColaboradorUbicacion::
+        where('tm_colaborador_ubicacion.id_sede','=',$id_sede)
+        ->where('tm_colaborador_ubicacion.estado','=',1)
+        ->where('tm_colaborador_ubicacion.id_colaborador','=',$id_colaborador)->first();
+		
+        $s1->estado = -1;
+        $s1->save();
+	}
+    
 
 	public function registrar($request)
 	{   

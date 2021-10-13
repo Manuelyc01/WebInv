@@ -2,7 +2,9 @@
 
 @section('content')
 
+@if(Auth::user()->tipo_usuario==1)
 	<a href="{{ route('roles.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Agregar </a>
+@endif
 	<div class="col-md-12">
 		
 		<div class="panel panel-white">
@@ -48,9 +50,20 @@
 @stop
 
 @section('scripts')
+	@if(Auth::user()->tipo_usuario==3)
+	<script>
+			$(function(){   
+
+				$(".marcarPermiso").on("click", function(e){
+					alert("No puede ser modificado");
+				});
+				
+			});
+		</script>
+	@else
     <script>
         $(function(){   
-            
+
             $(".marcarPermiso").on("click", function(e){
                 item = $(this);
                 nom = item.val();
@@ -70,4 +83,6 @@
             
         });
     </script>
+	@endif
+	
 @endsection

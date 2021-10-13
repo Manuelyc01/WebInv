@@ -88,7 +88,7 @@
         <div class="form-group">
             <br>
             <div class="col-sm-2"></div>
-            <div class="col-sm-4"><a class="btn btn-success btn-addon m-b-sm" href="/web-adm/mantenimiento-img/{{ $element->id_mantenimiento }}"target="_blank" class="btn btn-secondary"> Imagenes de Equipo Asignado</a></div>
+            <div class="col-sm-4"><a class="btn btn-success btn-addon m-b-sm" href="/web-adm/mantenimiento-img/{{ $element->id_mantenimiento }}"target="_blank" class="btn btn-secondary"> Imagenes</a></div>
         </div> 
         @endif
     </div>

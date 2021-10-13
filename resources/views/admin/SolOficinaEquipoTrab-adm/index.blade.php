@@ -8,7 +8,7 @@
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Bandeja de Solicitudes </h2>
 			</div>
-			@if(Auth::user()->tipo_usuario==1)
+			@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
@@ -27,11 +27,13 @@
 					<thead>
 						<th> Descripcion Solicitud</th>
 						<th> Estado de la solicitud</th>
+						<th> Sede</th>
 						<th> Fecha Recepción</th>
 						<th class="tbl-action-col"> Acciones </th>
 					</thead>
 
 					<tbody>
+						
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_ofi_traba_equipo }}">
 								<td> <strong> {{ $element->descripcion_solicitud }} </strong></td>
@@ -42,6 +44,9 @@
 								@else
 									<td style="background-color: green;color:white;"> <strong> RECIBIDO </strong> </td>
 								@endif
+								<td>
+								{{ $element->no_sede }}	
+								</td>
 								<td>
 								{{ $element->created_at }} 
 								</td>

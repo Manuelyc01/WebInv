@@ -95,7 +95,10 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col s12 center-align"><a href="/web-adm/solOfiTrabEqui-img/{{ $element->id_soli_ofi_equi_tra }}"target="_blank" class="btn btn-secondary"> Imagenes de Equipo Asignado</a></div>
+        <br>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4"><a class="btn btn-success btn-addon m-b-sm" href="/web-adm/solOfiTrabEqui-img/{{ $element->id_soli_ofi_equi_tra }}"target="_blank" class="btn btn-secondary"> Imagenes</a></div>
+    
         </div>  
         @endif
     </div>

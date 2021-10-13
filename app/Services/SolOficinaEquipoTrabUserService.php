@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\OfiTrabajadorEquipo;
 use App\Models\SolOficinaEquipoTrabUser;
 use App\Services\OfiTrabajadorEquipoService;
 use App\Services\OficinaTrabajadorService;
@@ -33,9 +34,11 @@ class SolOficinaEquipoTrabUserService
 	{
         $element= new SolOficinaEquipoTrabUser();
         
+        
         $valor=$element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
         $User=auth()->user()->id_colaborador;
         $validacion = $this->servOficina->validarOfiTrabajadorEquipo($User);
+        
         $Trabajador=$this->servTrabajador->recuperarOfiTrabajador($User);//id_ofi_trabajador
         //dd($Trabajador);
         $element->descripcion_solicitud=$request->get('descripcion_solicitud');
@@ -57,9 +60,10 @@ class SolOficinaEquipoTrabUserService
             }
             else
             {
+                $x=OfiTrabajadorEquipo::find($request->get('id_ofi_traba_equipo'));//Buscar ofiTraEqui
                 $element->id_solicitud=$request->get('id_solicitud');
-                $element->id_ofi_trabajador=$request->get('id_ofi_trabajador');
-                $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
+                $element->id_ofi_trabajador=$x->id_ofi_trabajador;
+                $element->id_ofi_traba_equipo=$x->id_ofi_traba_equipo;
             }
         }
         
