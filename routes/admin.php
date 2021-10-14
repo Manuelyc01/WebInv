@@ -85,7 +85,8 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::get('/addSedeCol/{idsede}/{idcol}','ColaboradorController@addColaboradorSede');
 	Route::get('/sedesDataList/{idcol}','ColaboradorController@sedesDataList');
 	Route::get('/dropSede/{idsede}/{idcol}','ColaboradorController@dropSede');
-	
+	//////////////////////
+	Route::get('/reporte-solicitudes', 'ReportesExcelController@ReporteSolicitudes');
 });
 
 
