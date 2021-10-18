@@ -1,7 +1,30 @@
 @extends('adminems::panel')
 
 @section('content')
-
+<script>
+$(document).ready(function() {
+    $("#btnExcel").click(function(){
+		$("#btnExcel").html('<i class="fa fa-edit"></i>Generando Excel');
+		$("#btnExcel").attr('disabled', true);
+		$.ajax({
+			type: 'GET', //THIS NEEDS TO BE GET
+			url: 'reporte-mantenimiento',
+			success: function (data) {
+				$("#btnExcel").attr("href", "{{ asset('ReporteMantenimientoEquipos.xlsx') }}");
+				//$("#btnExcel").attr("download", "ReporteSoliOficinaEquipoTrabajar");
+				$("#btnExcel").attr('disabled', false);
+				$("#btnExcel").html('<i class="fa fa-edit"></i> Descargue Excel');
+				//$("#btnExcel")[0].click();	
+				//$('#btnExcel').off('click');
+			},
+			error: function() { 
+				console.log(data);
+			}
+		});
+        
+    }); 
+});
+</script>
 	<div class="col-md-12">
 
 		<div class="panel panel-white">
@@ -13,6 +36,9 @@
 				@if(isset($idsoli))
 				<a class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md" href="/web-adm/mantenimiento-adm/crear/{{ $idsoli}}/1"> Nuevo Resgistro</a>
 				@endif
+			</div>
+			<div class="panel-heading">
+				<a href="#" id="btnExcel" class="btn btn-info"><i class="fa fa-edit"></i>Generar Excel</a>
 			</div>
 			<div class="panel-body">
 				<table id="table" class="display table table-hover dataTable">

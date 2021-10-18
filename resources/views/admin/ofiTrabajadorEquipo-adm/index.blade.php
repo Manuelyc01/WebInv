@@ -13,7 +13,30 @@
   	</style>
 @stop
 @section('content')
-
+<script>
+$(document).ready(function() {
+    $("#btnExcel").click(function(){
+		$("#btnExcel").html('<i class="fa fa-edit"></i>Generando Excel');
+		$("#btnExcel").attr('disabled', true);
+		$.ajax({
+			type: 'GET', //THIS NEEDS TO BE GET
+			url: 'reporte-oficina-traba-equipo',
+			success: function (data) {
+				$("#btnExcel").attr("href", "{{ asset('ReporteOficinaTrabajadorEquipo.xlsx') }}");
+				//$("#btnExcel").attr("download", "ReporteSoliOficinaEquipoTrabajar");
+				$("#btnExcel").attr('disabled', false);
+				$("#btnExcel").html('<i class="fa fa-edit"></i> Descargue Excel');
+				//$("#btnExcel")[0].click();	
+				//$('#btnExcel').off('click');
+			},
+			error: function() { 
+				console.log(data);
+			}
+		});
+        
+    }); 
+});
+</script>
 	<div class="col-md-12">
 
 		<div class="panel panel-white">
@@ -22,6 +45,9 @@
 				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 				<a href="{{ route('ofiTrabajadorEquipo-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir Asignacion </a>
 				@endif
+			</div>
+			<div class="panel-heading">
+				<a href="#" id="btnExcel" class="btn btn-info"><i class="fa fa-edit"></i>Generar Excel</a>
 			</div>
 				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 				<div class="row">
