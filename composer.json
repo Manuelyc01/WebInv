@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "barryvdh/laravel-dompdf": "^0.9.0",
         "dimsav/laravel-translatable": "^9.4",
         "doctrine/dbal": "^2.5",
         "emgs/admin-emgs-laravel": "dev-master",
