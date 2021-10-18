@@ -12,6 +12,7 @@ use App\Http\Requests\SolOficinaEquipoTrabRequest;
 use App\Services\ColaboradorService;
 use App\Services\OficinaTrabajadorService;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class SolOficinaEquipoTraController extends Controller
 {
@@ -267,15 +268,29 @@ class SolOficinaEquipoTraController extends Controller
     public function pdf($id)
     {
             //dd($id);
-            $element = $this->service->mostrar($id); 
-            //obtener imagenes
+
+            $element = $this->service->mostrar($id);
+
+            //dd($element);
             $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
             $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
-
             $equipotrajador = $this->service->mostrarEquipoTrajador($id);
             $trabajador = $this->service->mostrarTrabajador($id);
             $equipo = $this->service->mostrarEquipo($id);
+            //$pdf = PDF::loadView('admin.solOficinaEquipoTrab-adm.pdf',['element'=>$element,'equipotrajador'=>$equipotrajador]);
+            $pdf = PDF::loadView('admin.solOficinaEquipoTrab-adm.pdf',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
+            
+            //['imagenes'=>$imagenes],['documentos'=>$documentos],['equipotrajador'=>$equipotrajador],['trabajador'=>$trabajador],['equipo'=>$equipo]);
+            
+            //$pdf->loadHTML('<h1>Test</h1>');
+            return $pdf->stream();
+            
+            
 
-            return view('admin.solOficinaEquipoTrab-adm.pdf',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
+            //$equipotrajador = $this->service->mostrarEquipoTrajador($id);
+            //$trabajador = $this->service->mostrarTrabajador($id);
+            //$equipo = $this->service->mostrarEquipo($id);
+
+            //return view('admin.solOficinaEquipoTrab-adm.pdf',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
     }
 }

@@ -107,7 +107,7 @@
         @endisset
         <a class="btn btn-info btn-addon m-b-sm" href="{{ route('SolOficinaEquipoTrab-adm.index') }}">
         <i class="glyphicon glyphicon-circle-arrow-left"></i> <b>Volver al listado</b> </a>
-        <a class="btn btn-info btn-addon m-b-sm" type="button" href="/web-adm/generar-pdf/1">
+        <a class="btn btn-info btn-addon m-b-sm" type="button" href="/web-adm/generar-pdf/70">
         <i class="glyphicon glyphicon-circle-arrow-down"></i> <b>PDF</b> </a>
     </div>
 @stop
