@@ -1,14 +1,40 @@
 @extends('adminems::panel')
 
 @section('content')
-
+<script>
+$(document).ready(function() {
+    $("#btnExcel").click(function(){
+		$("#btnExcel").html('<i class="fa fa-edit"></i>Generando Excel');
+		$("#btnExcel").attr('disabled', true);
+		$.ajax({
+			type: 'GET', //THIS NEEDS TO BE GET
+			url: 'reporte-solicitudes',
+			success: function (data) {
+				$("#btnExcel").attr("href", "{{ asset('ReporteSoliOficinaEquipoTrabajar.xlsx') }}");
+				//$("#btnExcel").attr("download", "ReporteSoliOficinaEquipoTrabajar");
+				$("#btnExcel").attr('disabled', false);
+				$("#btnExcel").html('<i class="fa fa-edit"></i> Descargue Excel');
+				//$("#btnExcel")[0].click();	
+				//$('#btnExcel').off('click');
+			},
+			error: function() { 
+				console.log(data);
+			}
+		});
+        
+    }); 
+});
+</script>
 	<div class="col-md-12">
 
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Bandeja de Solicitudes </h2>
 			</div>
-			@if(Auth::user()->tipo_usuario==1)
+			<div class="panel-heading">
+				<a href="#" id="btnExcel" class="btn btn-info"><i class="fa fa-edit"></i>Generar Excel</a>
+			</div>
+			@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
@@ -27,11 +53,13 @@
 					<thead>
 						<th> Descripcion Solicitud</th>
 						<th> Estado de la solicitud</th>
+						<th> Sede</th>
 						<th> Fecha Recepción</th>
 						<th class="tbl-action-col"> Acciones </th>
 					</thead>
 
 					<tbody>
+						
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_ofi_traba_equipo }}">
 								<td> <strong> {{ $element->descripcion_solicitud }} </strong></td>
@@ -42,6 +70,9 @@
 								@else
 									<td style="background-color: green;color:white;"> <strong> RECIBIDO </strong> </td>
 								@endif
+								<td>
+								{{ $element->no_sede }}	
+								</td>
 								<td>
 								{{ $element->created_at }} 
 								</td>

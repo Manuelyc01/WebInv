@@ -17,7 +17,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->tipo_usuario==1){
+
+        if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
         $roles = Role::All();
         return view('adminems::role.index', compact('roles'));
     }else{

@@ -7,7 +7,9 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> COMPONENTES </h2>
+				@if(Auth::user()->tipo_usuario==1)
 				<a href="{{ route('componente-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir componente </a>
+				@endif
 			</div>
 			<div class="panel-body">
 				<table id="table" class="display table table-hover dataTable">
@@ -16,7 +18,9 @@
 						<th> Descripción </th>
 						<th> Estado </th>
 						<th> Categoria </th>
-						<th class="tbl-action-col"> Acciones </th>
+						@if(Auth::user()->tipo_usuario==1)
+						<th class="tbl-action-col"> Acciones </th>v
+						@endif
 					</thead>
 					<tbody>
 						@foreach ($elements as $element)
@@ -33,9 +37,11 @@
 									@endif
 								@endif
 								<td> <strong> {{ $element->des_cate_componentes }} </strong> </td>
+								@if(Auth::user()->tipo_usuario==1)
 								<td class="tbl-action-col">
 									<a href="{{ route('componente-adm.edit' , ['id_componente' => $element->id_componente]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 								</td>
+								@endif
 							</tr>
 						@endforeach
 

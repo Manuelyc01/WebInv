@@ -30,7 +30,7 @@ class ComponenteController extends Controller
     public function index()
     {
         //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
         $elements = $this->service->listar();
         return view('admin.componentes-adm.index', compact('elements'));
     }else{

@@ -31,6 +31,10 @@ class OficinaTrabajadorController extends Controller
     public function index()
     {
         //
+        if(Auth::user()->tipo_usuario==3){
+            $elements = $this->service->listarByAdmin(Auth::user()->id_colaborador);
+            return view('admin.oficinaTrabajador-adm.index', compact('elements'));
+        }
         if(Auth::user()->tipo_usuario==1){
         $elements = $this->service->listar();
         //dd($elements->toArray());
@@ -49,6 +53,16 @@ class OficinaTrabajadorController extends Controller
     public function create()
     {
         //
+        if(Auth::user()->tipo_usuario==3){
+            $id=Auth::user()->id_colaborador;
+            $elements_colaboradores = $this->service1->listar();
+            
+            $elements_sede = $this->service1->listarSedes($id);//sedes asignadas
+            $elements_oficina = $this->service3->listarPorSedes($id);//oficinas por sedes asignadas
+            $elements_cargoLaboral = $this->service4->listar();
+
+            return view('admin.oficinaTrabajador-adm.edit',compact('elements_colaboradores','elements_sede','elements_oficina','elements_cargoLaboral'));
+        }
         if(Auth::user()->tipo_usuario==1){
             $elements_colaboradores = $this->service1->listar();
             
@@ -71,8 +85,19 @@ class OficinaTrabajadorController extends Controller
      */
     public function store(OficinaTrabajadorRequest $request)
     {
-        //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->tipo_usuario==3){
+            $id=Auth::user()->id_colaborador;
+            $elements_sede = $this->service1->listarSedes($id);//sedes asignadas
+            for($i=0;$i<count($elements_sede->toArray());$i++){
+                if($request->co_sede==$elements_sede[$i]->co_sede){
+                    $this->service->registrar($request);
+                    session()->flash('success', '¡Información registrada con éxito!');
+                    return redirect()->route('oficinaTrabajador-adm.index');
+                }
+            };
+            return redirect('web-adm/oficinaTrabajador-adm/crear');
+        }
+        if(Auth::user()->tipo_usuario==1 ){
         $this->service->registrar($request);
         session()->flash('success', '¡Información registrada con éxito!');
         return redirect()->route('oficinaTrabajador-adm.index');
@@ -101,19 +126,33 @@ class OficinaTrabajadorController extends Controller
      */
     public function edit($id_oficina_trabajador)
     {
+        if(Auth::user()->tipo_usuario==3){
+            $id=Auth::user()->id_colaborador;
+            
+            $element = $this->service->editar($id_oficina_trabajador);
+            $elements_sede = $this->service1->listarSedes($id);//sedes asignadas
+            for($i=0;$i<count($elements_sede->toArray());$i++){
+                if($element->id_sede==$elements_sede[$i]->id_sede){
+                    $elements_colaboradores = $this->service1->listar();
+                    $elements_cargoLaboral = $this->service4->listar();
+                    return view('admin.oficinaTrabajador-adm.edit', compact('element','elements_colaboradores','elements_sede','elements_cargoLaboral'));        
+                }
+            };
+            return redirect()->route('oficinaTrabajador-adm.index');
+        }
         if(Auth::user()->tipo_usuario==1){
-        //
-        $element = $this->service->editar($id_oficina_trabajador);
+            //
+            $element = $this->service->editar($id_oficina_trabajador);
 
-        $elements_colaboradores = $this->service1->listar();
-        $elements_sede = $this->service2->listar();
-        $elements_cargoLaboral = $this->service4->listar();
+            $elements_colaboradores = $this->service1->listar();
+            $elements_sede = $this->service2->listar();
+            $elements_cargoLaboral = $this->service4->listar();
 
-        return view('admin.oficinaTrabajador-adm.edit', compact('element','elements_colaboradores','elements_sede','elements_cargoLaboral'));
-    }else{
-        $elements = $this->service->listarByColaborador(Auth::user()->id_colaborador);
-        return view('admin.oficinaTrabajador-adm.index', compact('elements'));
-    }
+            return view('admin.oficinaTrabajador-adm.edit', compact('element','elements_colaboradores','elements_sede','elements_cargoLaboral'));
+        }else{
+            $elements = $this->service->listarByColaborador(Auth::user()->id_colaborador);
+            return view('admin.oficinaTrabajador-adm.index', compact('elements'));
+        }
     }
 
     /**
@@ -125,7 +164,18 @@ class OficinaTrabajadorController extends Controller
      */
     public function update(OficinaTrabajadorRequest $request, $id_oficina_trabajador)
     {
-        //
+        if(Auth::user()->tipo_usuario==3){
+            $id=Auth::user()->id_colaborador;
+            $elements_sede = $this->service1->listarSedes($id);//sedes asignadas
+            for($i=0;$i<count($elements_sede->toArray());$i++){
+                if($request->co_sede==$elements_sede[$i]->co_sede){
+                    $this->service->actualizar($request, $id_oficina_trabajador);
+                    session()->flash('success', '¡Información actualizada con éxito!');
+                    return redirect()->route('oficinaTrabajador-adm.index');
+                }
+            };
+            return redirect('web-adm/oficinaTrabajador-adm');
+        }
         if(Auth::user()->tipo_usuario==1){
         $this->service->actualizar($request, $id_oficina_trabajador);
         session()->flash('success', '¡Información actualizada con éxito!');
@@ -144,8 +194,19 @@ class OficinaTrabajadorController extends Controller
      */
     public function destroy($id)
     {
-        //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->tipo_usuario==3){
+            $idcol=Auth::user()->id_colaborador;
+            $e=$this->service->editar($id);
+            $elements_sede = $this->service1->listarSedes($idcol);//sedes asignadas
+            for($i=0;$i<count($elements_sede->toArray());$i++){
+                if($e->co_sede==$elements_sede[$i]->co_sede){
+                    $this->service->eliminar($id);
+                    return redirect()->route('oficinaTrabajador-adm.index');
+                }
+            };
+            return redirect('web-adm/oficinaTrabajador-adm');
+        }
+        if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
         $this->service->eliminar($id);
         return redirect()->route('oficinaTrabajador-adm.index');
     }else{

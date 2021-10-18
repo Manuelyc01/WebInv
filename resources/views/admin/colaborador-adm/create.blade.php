@@ -122,7 +122,7 @@
             <div class="form-group {{ $errors->has('tipo_usuario') ? 'has-error' : '' }}">
                 <!-- {!! Form::stdText('Tipo', 0, 'tipo_usuario', $errors) !!}-->
                 <?php
-                $ddlTipo=["1"=>"ADMINISTRADOR","2"=>"USUARIO"];
+                $ddlTipo=["2"=>"USUARIO","3"=>"ADMINISTRADOR","1"=>"MASTER"];
                 ?>
                 {!! Form::stdSelect('Tipo', 0, 'tipo_usuario', $ddlTipo, null) !!}
             </div>

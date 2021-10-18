@@ -32,6 +32,7 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
     Route::resource('categoriaEquipo-adm', 'CategoriaEquipoController');
 
 	Route::resource('colaborador-adm', 'ColaboradorController');
+	Route::get('/colaboradorSede/{id}', 'ColaboradorController@colaboradorSedes');
 
 	Route::resource('componente-adm', 'ComponenteController');
     Route::resource('categoriaComponente-adm', 'CategoriaComponenteController');
@@ -64,6 +65,7 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::resource('mantenimiento-adm', 'MantenimientoController');
 	Route::get('/mantenimiento-adm/crear/{id}/{type}', 'MantenimientoController@create');
 	Route::get('/mantenimientos/{id}', 'MantenimientoController@byEquiTrabaEqui');
+	Route::get('/mantenimientosSolicitud/{id}', 'MantenimientoController@bySolicitud');
 	Route::get('/mantenimiento-img/{id}','MantenimientoController@img');
 	
 
@@ -81,7 +83,12 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 
 	Route::get('/generar-pdf/{id}','SolOficinaEquipoTraController@pdf');
 	
-
+	//colaborador ubicacion
+	Route::get('/addSedeCol/{idsede}/{idcol}','ColaboradorController@addColaboradorSede');
+	Route::get('/sedesDataList/{idcol}','ColaboradorController@sedesDataList');
+	Route::get('/dropSede/{idsede}/{idcol}','ColaboradorController@dropSede');
+	//////////////////////
+	Route::get('/reporte-solicitudes', 'ReportesExcelController@ReporteSolicitudes');
 });
 
 
