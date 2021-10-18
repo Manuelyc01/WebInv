@@ -194,4 +194,19 @@ class SolOficinaEquipoTraController extends Controller
             return redirect()->route('panel');    
         }
     }
+
+    public function pdf($id)
+    {
+            //dd($id);
+            $element = $this->service->mostrar($id); 
+            //obtener imagenes
+            $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
+            $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
+
+            $equipotrajador = $this->service->mostrarEquipoTrajador($id);
+            $trabajador = $this->service->mostrarTrabajador($id);
+            $equipo = $this->service->mostrarEquipo($id);
+
+            return view('admin.solOficinaEquipoTrab-adm.pdf',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
+    }
 }
