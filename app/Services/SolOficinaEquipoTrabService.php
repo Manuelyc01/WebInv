@@ -7,7 +7,7 @@ use App\Models\SolOficinaEquipoTrab;
 use App\Services\ImagenService;
 use App\Services\DocumentoService; 
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
 class SolOficinaEquipoTrabService
 {
     private $servImg;
@@ -136,6 +136,7 @@ class SolOficinaEquipoTrabService
     
 	public function registrar($request)
 	{
+        
         $element= new SolOficinaEquipoTrab();
 
 
@@ -163,8 +164,7 @@ class SolOficinaEquipoTrabService
         if($request->hasfile('documentos')){
             $documentos=$request->file('documentos');
             $this->servDoc->registrarDocSolicitud($documentos,$element->id_soli_ofi_equi_tra);
-        }
-             
+        }    
 
         
     }

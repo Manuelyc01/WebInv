@@ -89,6 +89,8 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::get('/dropSede/{idsede}/{idcol}','ColaboradorController@dropSede');
 	//////////////////////
 	Route::get('/reporte-solicitudes', 'ReportesExcelController@ReporteSolicitudes');
+	Route::get('/reporte-mantenimiento', 'ReportesExcelController@ReporteMantenimiento');
+	Route::get('/reporte-oficina-traba-equipo', 'ReportesExcelController@ReporteOficinaTrabajadorEquipo');
 });
 
 

@@ -11,7 +11,8 @@ use App\Services\DocumentoService;
 use App\Services\OficinaTrabajadorService;
 use App\Http\Requests\SolOficinaEquipoTrabUserRequest;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 class SolOficinaEquipoTraUserController extends Controller
 {
     /**
@@ -103,7 +104,6 @@ class SolOficinaEquipoTraUserController extends Controller
     {
        
         $this->service->registrar($request);
-        
         session()->flash('success', '¡Información registrada con éxito!');
         return redirect()->route('SolOficinaEquipoTrabUser-adm.index');
     }

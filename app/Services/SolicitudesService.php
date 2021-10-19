@@ -14,6 +14,7 @@ class SolicitudesService
     
 	public function registrar($request)
 	{
+        
         $element= new Solicitudes();
         
         $element->cod_solicitud=$request->get('cod_solicitud');

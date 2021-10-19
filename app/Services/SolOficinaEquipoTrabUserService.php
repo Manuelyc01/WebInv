@@ -9,7 +9,7 @@ use App\Services\OficinaTrabajadorService;
 use App\Services\ImagenService;
 use App\Services\DocumentoService; 
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
 class SolOficinaEquipoTrabUserService
 {
     private $servImg;
@@ -32,6 +32,7 @@ class SolOficinaEquipoTrabUserService
     
 	public function registrar($request)
 	{
+        
         $element= new SolOficinaEquipoTrabUser();
         
         
@@ -80,9 +81,21 @@ class SolOficinaEquipoTrabUserService
             $documentos=$request->file('documentos');
             $this->servDoc->registrarDocSolicitud($documentos,$element->id_soli_ofi_equi_tra);
         }
-             
 
+        $email=env('CORREO_ADMIN');
         
+        $trabajador=DB::table('tm_ofi_trabajador')
+                ->leftjoin('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                ->where('tm_ofi_trabajador.id_ofi_trabajador',$element['id_ofi_trabajador'])
+                ->first();
+        /*
+        Mail::send('correos.correo',['element'=>$element], function($message) use ($email) {
+            $message->to($email)->subject
+               ('Nueva Solicitud');
+            $message->from('webmasterENACO@webmasterENACO.com');
+           
+             });
+        */     
     }
     
     public function editar($id)
