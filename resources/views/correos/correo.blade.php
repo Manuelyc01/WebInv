@@ -110,7 +110,7 @@
         </tr>
         <tr>
           <td width="5%"  align="right"></td>
-          <td width="95%"  align="left"><span style="font-size: small;">{{@$element['descripcion']}}</span></td>
+          <td width="95%"  align="left"><span style="font-size: small;">{{@$element['descripcion_solicitud']}}</span></td>
         </tr>
         <tr>
           <td width="5%"  align="right"></td>
