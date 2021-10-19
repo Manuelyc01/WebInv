@@ -88,14 +88,13 @@ class SolOficinaEquipoTrabUserService
                 ->leftjoin('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                 ->where('tm_ofi_trabajador.id_ofi_trabajador',$element['id_ofi_trabajador'])
                 ->first();
-        /*
-        Mail::send('correos.correo',['element'=>$element], function($message) use ($email) {
+        
+        \Mail::send('correos.correo',['element'=>$element,'trabajador'=>$trabajador], function($message) use ($email) {
             $message->to($email)->subject
                ('Nueva Solicitud');
             $message->from('webmasterENACO@webmasterENACO.com');
-           
              });
-        */     
+             
     }
     
     public function editar($id)

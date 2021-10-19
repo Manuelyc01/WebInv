@@ -80,7 +80,26 @@
     //dd($parametros['wpforms']['fields']); 
     ?>
 	<section>
-    <table width="100%" class="image">    
+    <table width="100%" class="image">
+        <tr>
+          <td width="5%"  align="right"></td>
+          <td width="95%"  align="left"><strong style="font-size: small;color:black">ID DE SOLICITUD</strong></td>
+        </tr>
+        <tr>
+          <td width="5%"  align="right"></td>
+          <td width="95%"  align="left"><strong style="font-size: small;color:black"></strong></td>
+        </tr>
+        <tr>
+          <td width="5%"  align="right"></td>
+          <td width="95%"  align="left"><span style="font-size: small;">{{@$element['id_soli_ofi_equi_tra']}}</span></td>
+        </tr>
+        <tr>
+          <td width="5%"  align="right"></td>
+          <td width="95%"  align="left"><strong style="font-size: small;color:black"></strong></td>
+        </tr>
+
+
+
          <tr>
           <td width="5%"  align="right"></td>
           <td width="95%"  align="left"><strong style="font-size: small;color:black">DESCRIPCION DE SOLICITUD</strong></td>
@@ -91,7 +110,7 @@
         </tr>
         <tr>
           <td width="5%"  align="right"></td>
-          <td width="95%"  align="left"><span style="font-size: small;">{{@$descripcion}}</span></td>
+          <td width="95%"  align="left"><span style="font-size: small;">{{@$element['descripcion']}}</span></td>
         </tr>
         <tr>
           <td width="5%"  align="right"></td>
