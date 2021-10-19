@@ -32,11 +32,11 @@
             <label class="col-sm-2 control-label"><strong> Estado </strong></label>
             <div class="col-sm-3">
             @if($element->esta_soli_soli_ofi_equi_traba==0)
-			<input style="background-color: red;color:white;" class="form-control" placeholder="" type="text" value="FINALIZADO" readonly>
+			<input style="" class="form-control" placeholder="" type="text" value="FINALIZADO" readonly>
             @elseif($element->esta_soli_soli_ofi_equi_traba==1)
-			<input style="background-color: blue;color:white;" class="form-control" placeholder="" type="text" value="EN PROCESO" readonly>
+			<input style="" class="form-control" placeholder="" type="text" value="EN PROCESO" readonly>
             @else
-            <input style="background-color: green;color:white;" class="form-control" placeholder="" type="text" value="RECIBIDO" readonly>
+            <input style="" class="form-control" placeholder="" type="text" value="RECIBIDO" readonly>
             @endif
             </div>
             
@@ -71,7 +71,7 @@
                 @foreach ($imagenes as $imagen)
                     <div class="col s12 m4 l3">
                         <div class="material-placeholder">
-                            <img src="{{ public_path($imagen->url) }}" alt="" class="responsive-img materialboxed">
+                            <img src="{{ public_path($imagen->url) }}" alt="" class="responsive-img materialboxed"  width="300" height="250">
                         </div>
                     </div>
                 @endforeach
@@ -81,26 +81,16 @@
         <div class="container">
             <div class="row">
                 <table>
-                    <thead><th>Documentos</th>
-						<th></th></thead>
-                    <tbody>             
+                    <div class="form-group ">
+                        <label class="col-sm-2 control-label"><strong> Documentos </strong></label>      
                         @foreach ($documentos as $documento)
-                        <div class="form-group ">
-                        <label class="col-sm-2 control-label"><strong> Trabajador     </strong></label>
+                        
                         <div class="col-sm-8">
                             <input class="form-control" placeholder="" type="text" value="{{ $documento->nom_documento }}" readonly>
                         </div>
-                        </div>
-
-                        <tr>
-                            <td>
-                            <span class="menu-icon glyphicon glyphicon-book" style="float:left; margin-bottom:4px"></span>
-                            <input class="form-control" placeholder="" type="text" value="{{ $documento->nom_documento }}" readonly>
-                            <a href="{{ $documento->url }}" target="_blank">{{ $documento->nom_documento }}</a> 
-                            </td>
-                        </tr>
+                        
                         @endforeach
-                    </tbody>
+                    </div>
                 </table>
             </div>
         </div>
