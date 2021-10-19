@@ -10,12 +10,7 @@
 <body>
     <h2>Datos Solicitud</h2> 
     <div class="panel panel-white ui-sortable-handle" style="opacity: 1;">
-    <div class="panel-heading">
-        <h3 class="panel-title form-title"> Vista solicitud </h3>
-        <div class="panel-control">
-            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" class="panel-collapse" data-original-title="Expand/Collapse"><i class="icon-arrow-down"></i></a>
-        </div>
-    </div>
+    
     <div class="panel-body form-horizontal">
 
         
@@ -76,7 +71,7 @@
                 @foreach ($imagenes as $imagen)
                     <div class="col s12 m4 l3">
                         <div class="material-placeholder">
-                            <img src="{{ $imagen->url }}" alt="" class="responsive-img materialboxed">
+                            <img src="{{ public_path($imagen->url) }}" alt="" class="responsive-img materialboxed">
                         </div>
                     </div>
                 @endforeach
@@ -90,9 +85,17 @@
 						<th></th></thead>
                     <tbody>             
                         @foreach ($documentos as $documento)
+                        <div class="form-group ">
+                        <label class="col-sm-2 control-label"><strong> Trabajador     </strong></label>
+                        <div class="col-sm-8">
+                            <input class="form-control" placeholder="" type="text" value="{{ $documento->nom_documento }}" readonly>
+                        </div>
+                        </div>
+
                         <tr>
                             <td>
                             <span class="menu-icon glyphicon glyphicon-book" style="float:left; margin-bottom:4px"></span>
+                            <input class="form-control" placeholder="" type="text" value="{{ $documento->nom_documento }}" readonly>
                             <a href="{{ $documento->url }}" target="_blank">{{ $documento->nom_documento }}</a> 
                             </td>
                         </tr>
