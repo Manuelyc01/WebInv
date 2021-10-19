@@ -5,6 +5,7 @@
  @stop
 
 @section('content')
+    
     <div class="panel panel-white ui-sortable-handle" style="opacity: 1;">
     <div class="panel-heading">
         <h3 class="panel-title form-title"> Vista solicitud </h3>
@@ -99,15 +100,9 @@
         </div>
     </div>
     <div class="col-md-12">
-        <button id="submit-btn" class="btn btn-success btn-addon m-b-sm"><i class="glyphicon glyphicon-floppy-disk"></i>
-        <b>Guardar cambios</b> </button>
-        @isset($element)
-            <button id="delete-btn" class="btn btn-danger btn-addon m-b-sm" data-toggle="modal" data-target="#delete-modal">
-                <i class="glyphicon glyphicon-trash"></i> Eliminar </button>
-        @endisset
-        <a class="btn btn-info btn-addon m-b-sm" href="{{ route('SolOficinaEquipoTrab-adm.index') }}">
-        <i class="glyphicon glyphicon-circle-arrow-left"></i> <b>Volver al listado</b> </a>
-        <a class="btn btn-info btn-addon m-b-sm" type="button" href="/web-adm/generar-pdf/70">
+        
+        
+        <a class="btn btn-info btn-addon m-b-sm" type="button" target="_blank" href="/web-adm/generar-pdf/{{$element->id_soli_ofi_equi_tra}}" >
         <i class="glyphicon glyphicon-circle-arrow-down"></i> <b>PDF</b> </a>
     </div>
 @stop

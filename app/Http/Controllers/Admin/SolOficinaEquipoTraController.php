@@ -82,9 +82,11 @@ class SolOficinaEquipoTraController extends Controller
      */
     public function show($id)
     {
+
         if(Auth::user()->tipo_usuario==1){
             $element = $this->service->mostrar($id); 
             //obtener imagenes
+            //dd($element);
             $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
             $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
 
@@ -271,6 +273,7 @@ class SolOficinaEquipoTraController extends Controller
 
             $element = $this->service->mostrar($id);
 
+            
             //dd($element);
             $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
             $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
@@ -279,18 +282,10 @@ class SolOficinaEquipoTraController extends Controller
             $equipo = $this->service->mostrarEquipo($id);
             //$pdf = PDF::loadView('admin.solOficinaEquipoTrab-adm.pdf',['element'=>$element,'equipotrajador'=>$equipotrajador]);
             $pdf = PDF::loadView('admin.solOficinaEquipoTrab-adm.pdf',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
-            
-            //['imagenes'=>$imagenes],['documentos'=>$documentos],['equipotrajador'=>$equipotrajador],['trabajador'=>$trabajador],['equipo'=>$equipo]);
-            
-            //$pdf->loadHTML('<h1>Test</h1>');
             return $pdf->stream();
             
             
 
-            //$equipotrajador = $this->service->mostrarEquipoTrajador($id);
-            //$trabajador = $this->service->mostrarTrabajador($id);
-            //$equipo = $this->service->mostrarEquipo($id);
-
-            //return view('admin.solOficinaEquipoTrab-adm.pdf',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
+            
     }
 }

@@ -99,6 +99,12 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12">
+        
+        
+        <a class="btn btn-info btn-addon m-b-sm" type="button" target="_blank" href="/web-adm/generar-pdfU/{{$element->id_soli_ofi_equi_tra}}" >
+        <i class="glyphicon glyphicon-circle-arrow-down"></i> <b>PDF</b> </a>
+    </div>
 @stop
 @section('jsAdicional')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
