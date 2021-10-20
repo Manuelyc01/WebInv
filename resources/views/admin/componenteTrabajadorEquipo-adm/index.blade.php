@@ -17,6 +17,7 @@
 						<th> Descripcion </th>
 						<th> Estado </th>
 						<th> Fecha de Asignacion </th>
+						<th> Ultima Actualizacion </th>
 						<th class="tbl-action-col"> Acciones </th>
 					</thead>
 
@@ -31,7 +32,7 @@
 									<td style="background-color: green;color:white;"> <strong> ACTIVO </strong> </td>
 								@endif
 								<td> <strong> {{ $element->created_at }} </strong> </td>
-								
+								<td> <strong> {{ $element->updated_at }} </strong> </td>
 								<td class="tbl-action-col">
 									<a href="{{ route('componenteTrabajadorEquipo-adm.edit' , ['id_ofi_traba_equi_compo' => $element->id_ofi_traba_equi_compo,'id_ofi_equi_trabajador' => $id_ofi_equi_trabajador]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 								</td>

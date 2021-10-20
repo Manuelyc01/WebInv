@@ -8,7 +8,7 @@ class Mantenimiento extends Model
 {
     protected $table = 'tm_mantenimiento';
     protected $primaryKey = 'id_mantenimiento';
-    public $timestamps = false;
+    
     protected $fillable = [        
         'descripcion',
         'estado',
