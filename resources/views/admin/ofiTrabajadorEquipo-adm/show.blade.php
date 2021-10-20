@@ -14,7 +14,11 @@
     </div>
     <div class="panel-body form-horizontal">
 
-        
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4"><h6><strong>Fecha de creación:</strong>   {{ $element->created_at }}</h6> </div>
+            <div class="col-sm-4"><h6><strong>Fecha de actualización:</strong>   {{ $element->updated_at }}</h6></div>
+        </div>
         <div class="form-group">
 			<label class="col-sm-2 control-label"><strong> HostName</strong></label>
             <div class="col-sm-8">
