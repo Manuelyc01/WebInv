@@ -81,8 +81,9 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::get('/solicitudesFinalizadas','SolOficinaEquipoTraController@solFinalizadas');
 	Route::get('/solicitudesEnProceso','SolOficinaEquipoTraController@solProceso');
 
-	Route::get('/generar-pdf/{id}','SolOficinaEquipoTraController@pdf');
-	Route::get('/generar-pdfU/{id}','SolOficinaEquipoTraUserController@pdf');
+	Route::get('/asignaciongenerar-pdf/{id}','OfiTrabajadorEquipoController@pdf');
+
+	
 	
 	//colaborador ubicacion
 	Route::get('/addSedeCol/{idsede}/{idcol}','ColaboradorController@addColaboradorSede');

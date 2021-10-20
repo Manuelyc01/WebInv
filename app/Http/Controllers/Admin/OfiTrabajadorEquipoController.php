@@ -13,6 +13,7 @@ use App\Services\EquipoService;
 use App\Services\MantenimientoService;
 use App\Services\OficinaTrabajadorService;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class OfiTrabajadorEquipoController extends Controller
 {
@@ -364,6 +365,25 @@ class OfiTrabajadorEquipoController extends Controller
         }else{
             return redirect('web-adm/oficinaTrabajador-adm');
         }
+        }
+    
+        
+        public function pdf($id)
+        {
+            $element = $this->service->show($id); 
+                    //obtener imagenes
+            $imagenes= $this->servImg->getByOfiTrabaEqui($id); 
+            $documentos=$this->servDoc->getByOfiTrabaEqui($id);
+                    //obtener mantenimientos
+            $mantenimientos=$this->mantServ->listarByEquiTrabaEqui($id);
+                    //obtener componentes
+            $compos=$this->compoServ->listar($id);
+            //$pdf = PDF::loadView('admin.solOficinaEquipoTrab-adm.pdf',['element'=>$element,'equipotrajador'=>$equipotrajador]);
+            $pdf = PDF::loadView('admin.ofiTrabajadorEquipo-adm.pdf',compact('element','imagenes','documentos','mantenimientos','compos'));
+            return $pdf->download('Asignacion_Equipo.pdf');
+            
+            //return $pdf->stream();
+
         }
     
 }

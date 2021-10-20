@@ -267,25 +267,5 @@ class SolOficinaEquipoTraController extends Controller
         }
     }
 
-    public function pdf($id)
-    {
-            //dd($id);
-
-            $element = $this->service->mostrar($id);
-
-            
-            //dd($element);
-            $imagenes= $this->servImg->getBySolOfiTrabaEqui($id); 
-            $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
-            $equipotrajador = $this->service->mostrarEquipoTrajador($id);
-            $trabajador = $this->service->mostrarTrabajador($id);
-            $equipo = $this->service->mostrarEquipo($id);
-            //$pdf = PDF::loadView('admin.solOficinaEquipoTrab-adm.pdf',['element'=>$element,'equipotrajador'=>$equipotrajador]);
-            $pdf = PDF::loadView('admin.solOficinaEquipoTrab-adm.pdf',compact('element','imagenes','documentos','equipotrajador','trabajador','equipo'));
-            return $pdf->stream();
-            
-            
-
-            
-    }
+    
 }

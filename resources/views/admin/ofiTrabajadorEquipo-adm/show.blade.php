@@ -155,6 +155,10 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12"> 
+        <a class="btn btn-info btn-addon m-b-sm" type="button" href="/web-adm/asignaciongenerar-pdf/{{$element->id_ofi_traba_equipo}}" >
+        <i class="glyphicon glyphicon-circle-arrow-down"></i> <b>PDF</b> </a>
+    </div>
 @stop
 @section('jsAdicional')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
