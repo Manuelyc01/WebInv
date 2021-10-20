@@ -10,7 +10,7 @@ class OfiTrabajadorEquipo extends Model
     protected $table = 'tm_ofi_traba_equipo';
     protected $primaryKey = 'id_ofi_traba_equipo';
 
-    public $timestamps = false;
+    
 
     protected $fillable = [
         'no_equipo',
