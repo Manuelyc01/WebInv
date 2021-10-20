@@ -48,6 +48,8 @@ $(document).ready(function() {
 						<th> Bien Asignado</th>
 						<th> Sede</th>
 						<th> Solicitud Descripcion</th>
+						<th> Fecha de Creación</th>
+						<th> Fecha de Actualización</th>
 						<th class="tbl-action-col">Acciones</th>
 					</thead>
 
@@ -67,6 +69,8 @@ $(document).ready(function() {
 								<td> <strong> {{$element->tipoBien}}  /  {{$element->no_colaborador}}{{$element->ap_paterno_colaborador}} </strong> </td>
 								<td>{{ $element->no_sede }}</td>
 								<td> <strong> {{ $element->descripcion_solicitud }} </strong> </td>
+								<td>{{ $element->created_at }}</td>
+								<td>{{ $element->updated_at }}</td>
 								<td class="tbl-action-col">
 									<a href="{{ route('mantenimiento-adm.edit' , ['id_mantenimiento' => $element->id_mantenimiento]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 								</td>
