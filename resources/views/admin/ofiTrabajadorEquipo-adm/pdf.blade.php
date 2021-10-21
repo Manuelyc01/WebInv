@@ -108,7 +108,7 @@
                 @foreach ($imagenes as $imagen)
                     <div class="col s12 m4 l3">
                         <div class="material-placeholder">
-                            <img src="{{ public_path($imagen->url) }}" alt="" class="responsive-img materialboxed"  width="300" height="250">
+                            <img src="https://inventario.enaco.com.pe/public/uploads/ofiTrabaEqui/{{$imagen->url}" alt="" class="responsive-img materialboxed"  width="300" height="250">
                         </div>
                     </div>
                 @endforeach
