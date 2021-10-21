@@ -108,7 +108,7 @@
                 @foreach ($imagenes as $imagen)
                     <div class="col s12 m4 l3">
                         <div class="material-placeholder">
-                            <img src="https://quierolaborar.com/wp-content/uploads/2019/05/Vacantes-Disponibles-para-Enaco-S.a-750x450.png" alt="" class="responsive-img materialboxed"  width="300" height="250">
+                            <img src="{{public_path($imagen->url)}}" alt="" class="responsive-img materialboxed"  width="300" height="250">
                         </div>
                     </div>
                 @endforeach
