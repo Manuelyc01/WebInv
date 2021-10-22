@@ -378,11 +378,11 @@ class OfiTrabajadorEquipoController extends Controller
             $mantenimientos=$this->mantServ->listarByEquiTrabaEqui($id);
                     //obtener componentes
             $compos=$this->compoServ->listar($id);
-            //$pdf = PDF::loadView('admin.solOficinaEquipoTrab-adm.pdf',['element'=>$element,'equipotrajador'=>$equipotrajador]);
-            $pdf = PDF::loadView('admin.ofiTrabajadorEquipo-adm.pdf',compact('element','imagenes','documentos','mantenimientos','compos'));
-            return $pdf->download('Asignacion_Equipo.pdf');
             
-            //return $pdf->stream();
+            //$pdf = PDF::loadView('admin.ofiTrabajadorEquipo-adm.pdf',compact('element','imagenes','documentos','mantenimientos','compos'));
+            //return $pdf->download('Asignacion_Equipo.pdf');
+            $pdf = PDF::loadView('admin.ofiTrabajadorEquipo-adm.pdf1',compact('element','imagenes','documentos','mantenimientos','compos'));
+            return $pdf->stream();
 
         }
     
