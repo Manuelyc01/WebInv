@@ -55,6 +55,7 @@ $(document).ready(function() {
 						<th> Estado de la solicitud</th>
 						<th> Sede</th>
 						<th> Fecha Recepción</th>
+						<th> Fecha de Actualización</th>
 						<th class="tbl-action-col"> Acciones </th>
 					</thead>
 
@@ -75,6 +76,9 @@ $(document).ready(function() {
 								</td>
 								<td>
 								{{ $element->created_at }} 
+								</td>
+								<td>
+								{{ $element->updated_at }} 	
 								</td>
 								<td class="tbl-action-col">
 									<a href="{{ route('SolOficinaEquipoTrab-adm.edit' , ['id_soli_ofi_equi_tra' => $element->id_soli_ofi_equi_tra]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
