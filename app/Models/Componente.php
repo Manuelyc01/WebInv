@@ -14,6 +14,7 @@ class Componente extends Model
         'des_componente',
         'esta_componente',
         'fotos_componente',
-        'id_cat_componentes'
+        'id_cat_componentes',
+        'id_ofi_trabajador'
     ];    
 }
