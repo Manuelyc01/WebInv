@@ -371,7 +371,7 @@ class OfiTrabajadorEquipoController extends Controller
         public function pdf($id)
         {
             $element = $this->service->show($id); 
-                    //obtener imagenes
+            //dd($element);        //obtener imagenes
             $imagenes= $this->servImg->getByOfiTrabaEqui($id); 
             $documentos=$this->servDoc->getByOfiTrabaEqui($id);
                     //obtener mantenimientos

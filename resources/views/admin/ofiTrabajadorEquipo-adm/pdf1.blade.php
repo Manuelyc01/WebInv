@@ -10,7 +10,7 @@
 <body>
     <B class="verde">ENACO S.A.</B>
     <p class="Centrar">ASIGNACION DE EQUIPO</p>
-    <p>Unidad Operativa: QUILLABAMBA | 011000</p>
+    <p>Sede: {{ $element->no_sede }} | {{ $element->co_sede }} </p>
     <p>Fecha: <?php echo date("Y-m-d");?></p>
     <hr>
     <table id="tabla1">
@@ -70,6 +70,29 @@
                                          <br>-{{ $mantenimiento->descripcion }}:&nbsp;Finalizado</br>
 									@endif
 								@endif   
+                @endforeach
+                </td>
+            </tr>
+            <tr>
+                <td>Fecha de creación:</td>
+                <td>{{ $element->created_at }}</td>
+            </tr>
+            <tr>
+                <td>Fecha de actualización:</td>
+                <td>{{ $element->updated_at }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-light">
+        <tbody>
+            <tr>
+                <td>
+                @foreach ($imagenes as $imagen)
+                    <div class="col s12 m4 l3">
+                        <div class="material-placeholder">
+                            <img src="{{public_path($imagen->url)}}" alt="" class="responsive-img materialboxed"  width="300" height="250">
+                        </div>
+                    </div>
                 @endforeach
                 </td>
             </tr>
