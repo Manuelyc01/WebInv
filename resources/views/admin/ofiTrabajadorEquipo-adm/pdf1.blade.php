@@ -86,6 +86,9 @@
     <table class="table table-light">
         <tbody>
             <tr>
+                <td>Imagenes:</td>
+            </tr>
+            <tr>
                 <td>
                 @foreach ($imagenes as $imagen)
                     <div class="col s12 m4 l3">
@@ -93,6 +96,19 @@
                             <img src="{{public_path($imagen->url)}}" alt="" class="responsive-img materialboxed"  width="300" height="250">
                         </div>
                     </div>
+                @endforeach
+                </td>
+            </tr>
+            <tr>
+                <td>Documentos:</td>
+            </tr>
+            <tr>
+                <td>
+                @foreach ($documentos as $documento)
+                            
+                    <div class="col-sm-4">-  {{ $documento->nom_documento }} </div>
+                            
+                         
                 @endforeach
                 </td>
             </tr>

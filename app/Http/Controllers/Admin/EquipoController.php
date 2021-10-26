@@ -9,6 +9,7 @@ use App\Services\CategoriaEquipoService;
 use App\Services\ImagenService; 
 use App\Services\DocumentoService;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class EquipoController extends Controller
 {
@@ -110,5 +111,23 @@ class EquipoController extends Controller
         return view('admin.equipo-adm.imgs',compact('imagenes','element','type'));
     }else{
         return redirect()->route('panel');    }
+    }
+    public function pdf($id)
+    {
+        $element = $this->service->show($id); 
+         
+        //dd($mantenimientos);
+        //obtener imagenes
+        $imagenes= $this->servImg->getByEquipo($id); 
+        $documentos=$this->servDoc->getByEquipo($id);
+        //pdf
+        $asignaciones = $this->service->asignaciones($id); 
+        $mantenimientos = $this->service->mantenimientos($id);
+            
+        //$pdf = PDF::loadView('admin.equipo-adm.pdf',compact('element','imagenes','documentos','asignaciones','mantenimientos'));
+        //return $pdf->download('Asignacion_Equipo.pdf');
+        $pdf = PDF::loadView('admin.equipo-adm.pdf',compact('element','imagenes','documentos','asignaciones','mantenimientos'));
+        return $pdf->stream();
+
     }
 }

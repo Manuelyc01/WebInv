@@ -37,6 +37,7 @@
 								<td class="tbl-action-col">
 									<a href="{{ route('equipo-adm.edit' , ['id_equipo' => $element->id_equipo]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 									<a href="{{ route('equipo-adm.show' , ['id_equipo' => $element->id_equipo]) }}" class="btn btn-success"> <i class="fa fa-eye"></i> </a>
+									<a href="/web-adm/pdf/{{$element->id_equipo}}" class="btn btn-danger"> <i class="fa fa-file-pdf-o"></i> </a>
 								</td>
 								@endif
 							</tr>

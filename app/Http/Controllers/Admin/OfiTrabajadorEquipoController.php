@@ -371,12 +371,12 @@ class OfiTrabajadorEquipoController extends Controller
         public function pdf($id)
         {
             $element = $this->service->show($id); 
-            //dd($element);        //obtener imagenes
+            //obtener imagenes
             $imagenes= $this->servImg->getByOfiTrabaEqui($id); 
             $documentos=$this->servDoc->getByOfiTrabaEqui($id);
-                    //obtener mantenimientos
+            //obtener mantenimientos
             $mantenimientos=$this->mantServ->listarByEquiTrabaEqui($id);
-                    //obtener componentes
+            //obtener componentes
             $compos=$this->compoServ->listar($id);
             
             //$pdf = PDF::loadView('admin.ofiTrabajadorEquipo-adm.pdf',compact('element','imagenes','documentos','mantenimientos','compos'));

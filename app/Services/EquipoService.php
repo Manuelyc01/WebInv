@@ -95,6 +95,25 @@ class EquipoService
         $element->esta_equipo= 0;
         $element->save();
 	}
+    //pdf
+    public function asignaciones($id)
+	{
+        $element = Equipo::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_equipo','=','tm_equipos.id_equipo')
+            ->select('tm_equipos.*','tm_ofi_traba_equipo.*')    
+            ->where('tm_equipos.id_equipo',$id)//->orderBy('id_equipo', 'ASC')->get();
+            ->orderBy('tm_equipos.id_equipo', 'ASC')->get();
+		return $element;
+	}  
+
+    public function mantenimientos($id)
+	{
+        $element = Equipo::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_equipo','=','tm_equipos.id_equipo')
+            ->join('tm_mantenimiento','tm_mantenimiento.id_ofi_traba_equipo','=','tm_ofi_traba_equipo.id_ofi_traba_equipo')
+            ->select('tm_equipos.*','tm_ofi_traba_equipo.*','tm_mantenimiento.*')    
+            ->where('tm_equipos.id_equipo',$id)//->orderBy('id_equipo', 'ASC')->get();
+            ->orderBy('tm_equipos.id_equipo', 'ASC')->get();
+		return $element;
+	}  
 
 	
 }
