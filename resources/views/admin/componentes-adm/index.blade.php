@@ -7,7 +7,7 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> COMPONENTES </h2>
-				@if(Auth::user()->tipo_usuario==1)
+				@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
 				<a href="{{ route('componente-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir componente </a>
 				@endif
 			</div>
@@ -18,7 +18,9 @@
 						<th> Descripción </th>
 						<th> Estado </th>
 						<th> Categoria </th>
-						@if(Auth::user()->tipo_usuario==1)
+						<th> Nombre Asignado </th>
+						<th> Sede </th>
+						@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
 						<th class="tbl-action-col"> Acciones </th>v
 						@endif
 					</thead>
@@ -37,7 +39,9 @@
 									@endif
 								@endif
 								<td> <strong> {{ $element->des_cate_componentes }} </strong> </td>
-								@if(Auth::user()->tipo_usuario==1)
+								<td> <strong> {{@$element->no_colaborador}}&nbsp;{{@$element->ap_paterno_colaborador}}&nbsp;{{@$element->ap_materno_colaborador}}<strong> &nbsp;{{@$colaboradore->de_sede}}</strong></td>
+								<td> <strong> {{$element->de_sede }} </strong></td>
+								@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
 								<td class="tbl-action-col">
 									<a href="{{ route('componente-adm.edit' , ['id_componente' => $element->id_componente]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 								</td>

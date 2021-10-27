@@ -16,8 +16,14 @@ class ComponenteService
     }
     public function listar()
 	{
-        $element = Componente::join('tm_categoria_componentes','tm_categoria_componentes.id_cat_componentes','=','tm_componentes.id_cat_componentes')
-                ->select('tm_componentes.*','tm_categoria_componentes.des_cate_componentes')->where('tm_componentes.esta_componente','!=',-1)->get();
+        $element = Componente::leftjoin('tm_categoria_componentes','tm_categoria_componentes.id_cat_componentes','=','tm_componentes.id_cat_componentes')
+                    ->leftjoin('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_componentes.id_ofi_trabajador')
+                    ->leftjoin('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                    ->leftjoin('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
+                    ->select('tm_componentes.*','tm_categoria_componentes.des_cate_componentes','tm_sede.de_sede','tm_colaborador.ap_paterno_colaborador',
+                        'tm_colaborador.ap_materno_colaborador','tm_colaborador.nu_documento','tm_colaborador.no_colaborador')
+                    ->where('tm_componentes.esta_componente','!=',-1)->get();
+
 		return $element;
 	}
 
@@ -28,6 +34,7 @@ class ComponenteService
         $element->des_componente=$request->get('des_componente');
         $element->esta_componente= $request->get('esta_componente');
         $element->id_cat_componentes=$request->get('id_cat_componentes');
+        $element->id_ofi_trabajador=$request->get('id_ofi_trabajador');
         $element->save();
 
         //guardar imagenes si existen
@@ -42,6 +49,7 @@ class ComponenteService
     }
     public function show($id_componente)
     {
+       
         $element = Componente::find($id_componente);
         return $element;
     }
@@ -61,6 +69,7 @@ class ComponenteService
         $element->des_componente=$request->get('des_componente');
         $element->esta_componente= $request->get('esta_componente');
         $element->id_cat_componentes=$request->get('id_cat_componentes');
+        $element->id_ofi_trabajador=$request->get('id_ofi_trabajador');
 
         if($request->hasfile('documentos')){
             $documentos = $request->file('documentos');

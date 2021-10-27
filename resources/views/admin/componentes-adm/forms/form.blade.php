@@ -27,6 +27,20 @@
         <div class="form-group">
             {!! Form::stdSelect('Categoria', 1, 'id_cat_componentes',$catCompo, null) !!}
         </div>
+        @if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
+        <div class="form-group {{ $errors->has('id_colaborador') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label"><strong>Administrador<span class="required"> * </span></strong></label>
+            <div class="col-sm-8">
+            <input class="form-control" list="listColaborador"  name="id_ofi_trabajador" placeholder="Busca Administrador" autocomplete="off" value="{{@$element->id_ofi_trabajador}}" required>
+                <datalist id="listColaborador">
+                    @foreach($colaboradores as $colaboradore)
+                        <option  value="{{@$colaboradore->id_ofi_trabajador}}">{{@$colaboradore->no_colaborador}}&nbsp;{{@$colaboradore->ap_paterno_colaborador}}&nbsp;{{@$colaboradore->ap_materno_colaborador}}<strong> &nbsp;{{@$colaboradore->de_sede}}</strong></option>
+                    @endforeach
+                </datalist>
+                
+            </div>
+        </div>
+        @endif
         @if(isset($imagenes))
             <div class="form-group">
                 <label class="col-sm-2 control-label"><strong> Subir Imagenes de Entrega</strong></label>
@@ -106,7 +120,6 @@
         @endif          
         
     </div>
-
     <div class="panel-footer text-right">
         <strong> <span class="required"> * </span> Campos obligatorios </strong>
     </div>
