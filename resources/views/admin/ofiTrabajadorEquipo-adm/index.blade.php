@@ -73,6 +73,7 @@ $(document).ready(function() {
 						<th> Categoria Equipo</th>
 						@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 						<th> Colaborador</th>@endif
+						<th>Sede</th>
 						<th class="tbl-action-col"> Acciones </th>
 					</thead>
 
@@ -89,8 +90,9 @@ $(document).ready(function() {
 								@endif
 								<td> <strong> {{ $element->tipoBien }} </strong> </td>
 								@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
-								<td> <strong>{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}&nbsp;(SEDE: {{ $element->no_sede }})</strong> </td>
+								<td> <strong>{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}&nbsp;</strong> </td>
 								@endif
+								<td>{{ $element->no_sede }}</td>
 								<td class="tbl-action-col">
 									@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 									<a href="{{ route('ofiTrabajadorEquipo-adm.edit' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
