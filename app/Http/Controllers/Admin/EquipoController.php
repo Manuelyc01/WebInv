@@ -115,18 +115,22 @@ class EquipoController extends Controller
     public function pdf($id)
     {
         $element = $this->service->show($id); 
-         
-        //dd($mantenimientos);
+        
+        
+        //dd($element);
         //obtener imagenes
         $imagenes= $this->servImg->getByEquipo($id); 
         $documentos=$this->servDoc->getByEquipo($id);
         //pdf
         $asignaciones = $this->service->asignaciones($id); 
         $mantenimientos = $this->service->mantenimientos($id);
+        //dd($mantenimientos);
             
         //$pdf = PDF::loadView('admin.equipo-adm.pdf',compact('element','imagenes','documentos','asignaciones','mantenimientos'));
         //return $pdf->download('Asignacion_Equipo.pdf');
+
         $pdf = PDF::loadView('admin.equipo-adm.pdf',compact('element','imagenes','documentos','asignaciones','mantenimientos'));
+        $pdf->setPaper('A4', 'landscape');
         return $pdf->stream();
 
     }
