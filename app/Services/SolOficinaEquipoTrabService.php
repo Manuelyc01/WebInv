@@ -204,6 +204,11 @@ class SolOficinaEquipoTrabService
         //$element->id_solicitud=$request->get('id_solicitud');
         $element->save();
         
+        if($request->hasfile('imagenes')){
+            //dd($element->id_solicitud);
+            $imagenes = $request->file('imagenes');
+            $this->servImg->registrarFotoSolicitud($imagenes,$element->id_soli_ofi_equi_tra);
+        }
         if($request->hasfile('documentos')){
             $documentos=$request->file('documentos');
             $this->servDoc->registrarDocSolicitud($documentos,$element->id_soli_ofi_equi_tra);

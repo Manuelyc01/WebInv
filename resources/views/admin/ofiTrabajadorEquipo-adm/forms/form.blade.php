@@ -1,3 +1,7 @@
+@section('cssAdicional')
+    <link rel="stylesheet" href="{{ asset('vendor/ems/css/estilos.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"><!--imagenes-->
+ @stop
 <div class="panel panel-white ui-sortable-handle" style="opacity: 1;">
     <div class="panel-heading">
         <h3 class="panel-title form-title"> Asignación de Equipos </h3>
@@ -98,6 +102,42 @@
                 <input class="form-control" data-toggle="tooltip" data-placement="right" data-trigger="focus" type="text" value="{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;(UBI.{{ $element->no_sede }}--{{ $element->no_oficina }})"disabled>
             </div>
         </div>
+        <div class="form-group">
+                <label class="col-sm-2 control-label"><strong> Subir Imagenes de Entrega</strong></label>
+                <div class="col-sm-8">
+                    <input type="file" class="form-control-file" name="imagenes[]" id="imagenes[]" multiple accept="image/*">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"><strong> Imagenes de Entrega Cargados</strong></label>
+            </div>
+            <div class="container">
+            <div class="row galeria" id="gal">
+            @foreach($imagenes as $imagen)
+            <div class="col s12 m4 l3">
+                        <div class="material-placeholder">
+                            <img src="{{ $imagen->url }}" alt="" class="responsive-img materialboxed">
+                        </div>
+                        <div class="card-footer">
+                        <div class="col-md-6">
+                            <button id="btnDelete{{ $imagen->id }}" onclick="deleteImg('{{ $imagen->id }}')"type="button">Eliminar</button>
+                            <label id="labDelete{{ $imagen->id }}" style="color:red" hidden >Eliminar Imagen?</label>
+                        </div>
+                        <div class="col-md-6" id="formDelete{{ $imagen->id }}" hidden>
+                            <button onclick="eliminarImagen('{{ $imagen->id }}')"class="btnConfirm" type="button">Si</button>
+                            <button onclick="dontDelete('{{ $imagen->id }}')" class="btnConfirm" type="button">No</button>
+                        </div>
+                        </div>
+                    </div>
+            @endforeach
+            </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"><strong> Subir Archivos de Entrega</strong></label>
+                <div class="col-sm-8">
+                    <input type="file" class="form-control-file" name="documentos[]" id="documentos[]" multiple accept="image/*">
+                </div>
+            </div>
         <div class="container">
             <div class="row" >
                 <table  class="display table table-hover dataTable">
@@ -126,21 +166,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row">   
-                <div class="form-group">
-                <label class="col-sm-2 control-label"><strong> Subir Documentos</strong></label>
-                <input type="file" class="form-control-file" name="documentos[]" id="documentos[]" multiple accept=
-                            "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-                            text/plain, application/pdf,">
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <br>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-4"><a class="btn btn-success btn-addon m-b-sm" href="/web-adm/ofiTrabEqui-img/{{ $element->id_ofi_traba_equipo }}"target="_blank" class="btn btn-secondary"> Imagenes de Equipo Asignado</a></div>
-            <div class="col-sm-2"></div>
-        </div>  
+        </div> 
         @endif
     </div>
 
@@ -225,6 +251,51 @@
                 },
                 error: function() { 
                 alert("No se pudo eliminar registro");
+                }
+            });
+        }
+    </script>
+    <script >
+        function deleteImg(id){
+            document.getElementById('labDelete'+id).hidden = false;
+            document.getElementById('btnDelete'+id).hidden = true;
+            document.getElementById('formDelete'+id).hidden = false;
+        }
+        function dontDelete(id){
+            document.getElementById('labDelete'+id).hidden = true;
+            document.getElementById('btnDelete'+id).hidden = false;
+            document.getElementById('formDelete'+id).hidden = true;
+        }
+        function eliminarImagen(id){
+            $(".btnConfirm").prop('disabled', true);
+            $.ajax({
+                type: 'GET', 
+                url: '/web-adm/deleteImagen/'+id+'/1',
+                success: function (data) {
+                    const galeria = document.querySelector('#gal');
+                    galeria.innerHTML=``;
+                    for(let i=0;i<data.length;i++){
+                        galeria.innerHTML+=`
+                    <div class="col s12 m4 l3">
+                        <div class="material-placeholder">
+                            <img src="${data[i].url}" alt="" class="responsive-img materialboxed">
+                        </div>
+                        <div class="card-footer">
+                        <div class="col-md-6">
+                            <button id="btnDelete${data[i].id}" onclick="deleteImg('${data[i].id}')">Eliminar</button>
+                            <label id="labDelete${data[i].id}" style="color:red" hidden>Eliminar Registro?</label>
+                        </div>
+                        <div class="col-md-6" id="formDelete${data[i].id}" hidden>
+                            <button onclick="eliminarImagen(${data[i].id})" class="btnConfirm">Si</button>
+                            <button onclick="dontDelete(${data[i].id})" class="btnConfirm">No</button>
+                        </div>
+                        </div>
+                    </div>
+                    `;
+                    }
+                },
+                error: function() { 
+                console.log("No se pudo eliminar");
                 }
             });
         }

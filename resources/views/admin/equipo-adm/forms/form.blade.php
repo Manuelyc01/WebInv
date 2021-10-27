@@ -1,4 +1,7 @@
-
+@section('cssAdicional')
+    <link rel="stylesheet" href="{{ asset('vendor/ems/css/estilos.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"><!--imagenes-->
+ @stop
 <div class="panel panel-white ui-sortable-handle" style="opacity: 1;">
     <div class="panel-heading">
         <h3 class="panel-title form-title"> Crear & Editar - EQUIPOS </h3>
@@ -27,21 +30,53 @@
         <div class="form-group">
             {!! Form::stdSelect('Categoria', 1, 'id_cat_equipos',$catEqui, null) !!}
         </div>
-        @if(!isset($element))
+        @if(isset($imagenes))
         <div class="form-group">
             <label class="col-sm-2 control-label"><strong> Subir Imagenes</strong></label>
             <input type="file" class="form-control-file" name="imagenes[]" id="imagenes[]" multiple accept="image/*">
         </div>
         <div class="form-group">
+                <label class="col-sm-2 control-label"><strong> Imagenes de Entrega Cargados</strong></label>
+            </div>
+        <div class="container">
+            <div class="row galeria" id="gal">
+            @foreach ($imagenes as $imagen)
+                    <div class="col s12 m4 l3">
+                        <div class="material-placeholder">
+                            <img src="{{ $imagen->url }}" alt="" class="responsive-img materialboxed">
+                        </div>
+                        <div class="card-footer">
+                        <div class="col-md-6">
+                            <button id="btnDelete{{ $imagen->id }}" onclick="deleteImg('{{ $imagen->id }}')" type="button">Eliminar</button>
+                            <label id="labDelete{{ $imagen->id }}" style="color:red" hidden>Eliminar Imagen?</label>
+                        </div>
+                        <div class="col-md-6" id="formDelete{{ $imagen->id }}" hidden>
+                            <button onclick="eliminarImagen('{{ $imagen->id }}')"class="btnConfirm" type="button">Si</button>
+                            <button onclick="dontDelete('{{ $imagen->id }}')" class="btnConfirm" type="button">No</button>
+                        </div>
+                        </div>
+                    </div>
+            @endforeach
+            </div>
+        </div>
+        @else
+            <div class="form-group">
+                <label class="col-sm-2 control-label"><strong> Subir Imagenes de Entrega</strong></label>
+                <div class="col-sm-8">
+                    <input type="file" class="form-control-file" name="imagenes[]" id="imagenes[]" multiple accept="image/*">
+                </div>
+            </div>
+        @endif
+        @if(isset($documentos))
+        <div class="form-group">
             <label class="col-sm-2 control-label"><strong> Subir Documentos</strong></label>
             <input type="file" class="form-control-file" name="documentos[]" id="documentos[]" multiple accept=".pdf,.doc,.docx,.xlsx">
         </div> 
-        @else
         <div class="container">
             <div class="row" >
                 <table class="display table table-hover dataTable">
                     <thead>
-						<th>Documentos</th>
+						<th>Documentos Entregados</th>
 						<th></th>
                     </thead>
                     <tbody id="docs">
@@ -66,19 +101,11 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row">   
-                <div class="form-group">
-                <label class="col-sm-2 control-label"><strong> Subir Documentos</strong></label>
-                <input type="file" class="form-control-file" name="documentos[]" id="documentos[]" multiple accept=
-                            "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-                            text/plain, application/pdf,">
-                </div>
-            </div>
         </div>
+        @else
         <div class="form-group">
-        <br>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-4"><a class="btn btn-success btn-addon m-b-sm" href="/web-adm/equipo-img/{{ $element->id_equipo }}"target="_blank" class="btn btn-secondary"> Imagenes</a></div>
+            <label class="col-sm-2 control-label"><strong> Subir Documentos</strong></label>
+            <input type="file" class="form-control-file" name="documentos[]" id="documentos[]" multiple accept=".pdf,.doc,.docx,.xlsx">
         </div>
         @endif
         
@@ -133,6 +160,51 @@
                 },
                 error: function() { 
                 alert("No se pudo eliminar registro");
+                }
+            });
+        }
+    </script>
+    <script >
+        function deleteImg(id){
+            document.getElementById('labDelete'+id).hidden = false;
+            document.getElementById('btnDelete'+id).hidden = true;
+            document.getElementById('formDelete'+id).hidden = false;
+        }
+        function dontDelete(id){
+            document.getElementById('labDelete'+id).hidden = true;
+            document.getElementById('btnDelete'+id).hidden = false;
+            document.getElementById('formDelete'+id).hidden = true;
+        }
+        function eliminarImagen(id){
+            $(".btnConfirm").prop('disabled', true);
+            $.ajax({
+                type: 'GET', 
+                url: '/web-adm/deleteImagen/'+id+'/0',
+                success: function (data) {
+                    const galeria = document.querySelector('#gal');
+                    galeria.innerHTML=``;
+                    for(let i=0;i<data.length;i++){
+                        galeria.innerHTML+=`
+                    <div class="col s12 m4 l3">
+                        <div class="material-placeholder">
+                            <img src="${data[i].url}" alt="" class="responsive-img materialboxed">
+                        </div>
+                        <div class="card-footer">
+                        <div class="col-md-6">
+                            <button id="btnDelete${data[i].id}" onclick="deleteImg('${data[i].id}')">Eliminar</button>
+                            <label id="labDelete${data[i].id}" style="color:red" hidden>Eliminar Registro?</label>
+                        </div>
+                        <div class="col-md-6" id="formDelete${data[i].id}" hidden>
+                            <button onclick="eliminarImagen(${data[i].id})" class="btnConfirm">Si</button>
+                            <button onclick="dontDelete(${data[i].id})" class="btnConfirm">No</button>
+                        </div>
+                        </div>
+                    </div>
+                    `;
+                    }
+                },
+                error: function() { 
+                console.log("No se pudo eliminar");
                 }
             });
         }
