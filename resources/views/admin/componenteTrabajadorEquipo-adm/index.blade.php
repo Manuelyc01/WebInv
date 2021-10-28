@@ -7,7 +7,7 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> TRABAJADOR-EQUIPOS-COMPONENTES </h2>
-				<a href="{{ route('componenteTrabajadorEquipo-adm.create',['id_ofi_equi_trabajador' => $id_ofi_equi_trabajador]) }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir equipo </a>
+				<a href="{{ route('componenteTrabajadorEquipo-adm.create',['id_ofi_equi_trabajador' => $id_ofi_equi_trabajador]) }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir Componente </a>
 			</div>
 
 			<div class="panel-body">

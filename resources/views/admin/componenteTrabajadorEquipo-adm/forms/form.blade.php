@@ -16,12 +16,13 @@
             <label class="col-sm-2 control-label"><strong>Componentes<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
             <input class="form-control" list="datalistOptionsComponente"  name="id_componente" placeholder="Busca Componente" autocomplete="off" value="{{@$elementsCoEquiTraba->id_componente}}">
+               
                 <datalist id="datalistOptionsComponente">
                     @foreach($elements as $element)
-                        <option  value="{{@$element->id_componente}}">{{@$element->serie_componete}}&nbsp;{{@$element->des_componete}}</option>
+                    
+                        <option  value="{{$element->id_componente}}">{{$element->serie_componente}}&nbsp;{{$element->des_componente}}</option>
                     @endforeach
                 </datalist>
-                
             </div>
         </div>
         <div class="form-group {{ $errors->has('esta_ofi_traba_equi_compo') ? 'has-error' : '' }}">

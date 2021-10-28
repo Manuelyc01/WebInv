@@ -39,8 +39,9 @@ class ComponenteTrabajadorEquipoService{
         $element->updated_at=date("Y-m-d H:i:s");
         $element->save();
 
-        DB::table('tm_componentes')->where('id_componente',$request->get('id_componente'))->update(['esta_componente'=>2]);
 
+        $recup_ofi_traba=DB::table('tm_ofi_traba_equipo')->where('id_ofi_traba_equipo',$request->get('id_ofi_traba_equipo'))->first();
+        DB::table('tm_componentes')->where('id_componente',$request->get('id_componente'))->update(['esta_componente'=>2,'id_ofi_trabajador'=>$recup_ofi_traba->id_ofi_trabajador]);
         if($request->hasfile('imagenes')){
             $imagenes = $request->file('imagenes');
             $this->servImg->registrarCompoEquiTrabajador($imagenes,$element->id_ofi_traba_equi_compo);
@@ -77,9 +78,11 @@ class ComponenteTrabajadorEquipoService{
         $element->save();
         ///////
         if($request->get('esta_ofi_traba_equi_compo')==0){
-            DB::table('tm_componentes')->where('id_componente',$request->get('id_componente'))->update(['esta_componente'=>1]);
+            $recup_ofi_traba=DB::table('tm_ofi_traba_equipo')->where('id_ofi_traba_equipo',$request->get('id_ofi_traba_equipo'))->first();
+            DB::table('tm_componentes')->where('id_componente',$request->get('id_componente'))->update(['esta_componente'=>1,'id_ofi_trabajador'=>$recup_ofi_traba->id_ofi_trabajador]);
         }else{
-            DB::table('tm_componentes')->where('id_componente',$request->get('id_componente'))->update(['esta_componente'=>2]);
+            $recup_ofi_traba=DB::table('tm_ofi_traba_equipo')->where('id_ofi_traba_equipo',$request->get('id_ofi_traba_equipo'))->first();
+            DB::table('tm_componentes')->where('id_componente',$request->get('id_componente'))->update(['esta_componente'=>2,'id_ofi_trabajador'=>$recup_ofi_traba->id_ofi_trabajador]);
         }
 	}
 
