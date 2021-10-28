@@ -10,7 +10,6 @@
 <body>
     <B class="verde">ENACO S.A.</B>
     <p class="Centrar">SEGUIMIENTO DE EQUIPO</p>
-    <p>Sede: {{ $element->no_sede }} | {{ $element->co_sede }} </p>
     <p>Fecha: <?php echo date("Y-m-d");?></p>
     <hr>
     <p>DATOS EQUIPO</p>

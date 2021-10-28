@@ -131,7 +131,8 @@ class EquipoController extends Controller
 
         $pdf = PDF::loadView('admin.equipo-adm.pdf',compact('element','imagenes','documentos','asignaciones','mantenimientos'));
         $pdf->setPaper('A4', 'landscape');
-        return $pdf->stream();
+        return $pdf->download('Datos_Equipo.pdf');
+        //return $pdf->stream();
 
     }
 }

@@ -382,7 +382,8 @@ class OfiTrabajadorEquipoController extends Controller
             //$pdf = PDF::loadView('admin.ofiTrabajadorEquipo-adm.pdf',compact('element','imagenes','documentos','mantenimientos','compos'));
             //return $pdf->download('Asignacion_Equipo.pdf');
             $pdf = PDF::loadView('admin.ofiTrabajadorEquipo-adm.pdf1',compact('element','imagenes','documentos','mantenimientos','compos'));
-            return $pdf->stream();
+            //return $pdf->stream();
+            return $pdf->download('Asignacion_Equipo.pdf');
 
         }
     
