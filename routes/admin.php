@@ -80,8 +80,10 @@ Route::group(['prefix' => 'web-adm', 'namespace' => 'Admin' , 'middleware' => 'a
 	Route::get('/solicitudesRecibidas','SolOficinaEquipoTraController@solRecibidos');
 	Route::get('/solicitudesFinalizadas','SolOficinaEquipoTraController@solFinalizadas');
 	Route::get('/solicitudesEnProceso','SolOficinaEquipoTraController@solProceso');
-
+	
+	//pdf
 	Route::get('/asignaciongenerar-pdf/{id}','OfiTrabajadorEquipoController@pdf');
+	Route::get('/pdf/{id}', 'EquipoController@pdf');
 
 	
 	

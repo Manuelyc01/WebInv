@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Equipo;
 use App\Models\OfiTrabajadorEquipo;
+use App\Models\MantenimientoService;
 use App\Services\ImagenService;
 use App\Services\DocumentoService; 
 use DB;
@@ -11,6 +12,7 @@ class EquipoService
 {
     private $servImg;
     private $servDoc;
+    
     public function __construct(ImagenService $servImg, DocumentoService $servDoc)
     {
         $this->servImg = $servImg;
@@ -99,6 +101,29 @@ class EquipoService
         $element->esta_equipo= 0;
         $element->save();
 	}
+    //pdf
+    public function asignaciones($id)
+	{
+        $element = Equipo::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_equipo','=','tm_equipos.id_equipo')
+            ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+            ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+            ->select('tm_equipos.*','tm_ofi_traba_equipo.*','tm_colaborador.*')    
+            ->where('tm_equipos.id_equipo',$id)//->orderBy('id_equipo', 'ASC')->get();
+            ->orderBy('tm_ofi_traba_equipo.created_at', 'desc')->get();
+		return $element;
+	}  
+
+    public function mantenimientos($id)
+	{
+        $element = Equipo::join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_equipo','=','tm_equipos.id_equipo')
+            ->join('tm_mantenimiento','tm_mantenimiento.id_ofi_traba_equipo','=','tm_ofi_traba_equipo.id_ofi_traba_equipo')
+            ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
+            ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+            ->select('tm_equipos.*','tm_ofi_traba_equipo.*','tm_mantenimiento.*','tm_colaborador.*')    
+            ->where('tm_equipos.id_equipo',$id)//->orderBy('id_equipo', 'ASC')->get();
+            ->orderBy('tm_equipos.id_equipo', 'desc')->get();
+		return $element;
+	}  
 
 	
 }

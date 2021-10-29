@@ -23,3 +23,44 @@
 .galeria .col {
      margin-bottom: 20px;
 }
+
+.Centrar{
+     text-align: center;
+}
+.verde{
+     color: #289610;
+}
+table#tabla1{
+     text-align: left;
+     border: 1px solid black;
+     border-collapse: collapse;
+}
+table#tabla2{
+     text-align: left;
+     border: 1px solid black;
+     border-collapse: collapse;
+}
+table#tabla3{
+     text-align: left;
+     border: 1px solid black;
+     border-collapse: collapse;
+}
+th#A{
+     padding: 15px;
+     border: 1px solid black;
+     border-collapse: collapse;
+}
+td#A{
+     padding: 15px;
+     border: 1px solid black;
+     border-collapse: collapse;
+}
+th{
+     padding: 15px;
+     
+}
+td{
+     padding: 5px;
+     
+
+}
