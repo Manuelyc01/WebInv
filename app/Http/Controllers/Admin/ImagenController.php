@@ -86,6 +86,14 @@ class ImagenController extends Controller
                 return response()->json($imgs);
                 break;
             case 3://Imagenes componentes
+                $element=$this->service->getById($id);
+                $imgs=$this->service->getByComponente($element->id_componente);
+                return response()->json($imgs);
+                break;
+            case 4://Imagenes componentes de equipo
+                $element=$this->service->getById($id);
+                $imgs=$this->service->getByOfiTrabaEquiCompo($element->id_ofi_traba_equi_compo);
+                return response()->json($imgs);
                 break;
         }
         

@@ -219,20 +219,22 @@ class OfiTrabajadorEquipoController extends Controller
             $elements_sede = $this->service1->listarSedes($colid);//sedes asignadas
             for($i=0;$i<count($elements_sede->toArray());$i++){
                 if($element->id_sede==$elements_sede[$i]->id_sede){
+                    $imagenes= $this->servImg->getByOfiTrabaEqui($id_oficina);
                     $documentos=$this->servDoc->getByOfiTrabaEqui($id_oficina);
                     $equipos=$this->servEquipo->listar();
                     $trabajadores=$this->servOfiTra->listar();
-                    return view('admin.ofiTrabajadorEquipo-adm.edit',compact('element','documentos','equipos','trabajadores'));                         
+                    return view('admin.ofiTrabajadorEquipo-adm.edit',compact('imagenes','element','documentos','equipos','trabajadores'));                         
                 }
             };
             return redirect()->route('ofiTrabajadorEquipo-adm.index');
         }
         if(Auth::user()->tipo_usuario==1){
+            $imagenes= $this->servImg->getByOfiTrabaEqui($id_oficina);
             $element = $this->service->editar($id_oficina); 
             $documentos=$this->servDoc->getByOfiTrabaEqui($id_oficina);
             $equipos=$this->servEquipo->listar();
             $trabajadores=$this->servOfiTra->listar();
-            return view('admin.ofiTrabajadorEquipo-adm.edit',compact('element','documentos','equipos','trabajadores'));   
+            return view('admin.ofiTrabajadorEquipo-adm.edit',compact('imagenes','element','documentos','equipos','trabajadores'));   
         }else{
             return redirect('web-adm/oficinaTrabajador-adm');
         }

@@ -119,6 +119,7 @@ class SolOficinaEquipoTraController extends Controller
             for($i=0;$i<count($elements_sede->toArray());$i++){
                 if($ofi_traba->id_sede==$elements_sede[$i]->id_sede){
                     $elements_solicitud = $this->service2->listar();
+                    $imagenes= $this->servImg->getBySolOfiTrabaEqui($id);
                     $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
                     $elements_Colaborador = $this->servOficina->recuperar();
                     
@@ -126,7 +127,7 @@ class SolOficinaEquipoTraController extends Controller
                     $trabajador = $this->service->mostrarTrabajador($id);
                     $equipo = $this->service->mostrarEquipo($id);
                     
-                    return view('admin.SolOficinaEquipoTrab-adm.edit', compact('element', 'elements_solicitud','documentos','elements_Colaborador','equipotrajador','trabajador','equipo'));                               
+                    return view('admin.SolOficinaEquipoTrab-adm.edit', compact('imagenes','element', 'elements_solicitud','documentos','elements_Colaborador','equipotrajador','trabajador','equipo'));                               
                 }
             };
             return redirect()->route('panel');
@@ -135,6 +136,7 @@ class SolOficinaEquipoTraController extends Controller
             $element = $this->service->editar($id);
             //dd($element);
             $elements_solicitud = $this->service2->listar();
+            $imagenes= $this->servImg->getBySolOfiTrabaEqui($id);
             $documentos=$this->servDoc->getBySolOfiTrabaEqui($id);
             $elements_Colaborador = $this->servOficina->recuperar();
             
@@ -142,7 +144,7 @@ class SolOficinaEquipoTraController extends Controller
             $trabajador = $this->service->mostrarTrabajador($id);
             $equipo = $this->service->mostrarEquipo($id);
             
-            return view('admin.SolOficinaEquipoTrab-adm.edit', compact('element', 'elements_solicitud','documentos','elements_Colaborador','equipotrajador','trabajador','equipo'));
+            return view('admin.SolOficinaEquipoTrab-adm.edit', compact('imagenes','element', 'elements_solicitud','documentos','elements_Colaborador','equipotrajador','trabajador','equipo'));
         }else{
             return redirect()->route('panel');    }
     

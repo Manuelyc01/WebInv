@@ -81,6 +81,10 @@ class EquipoService
         $element->des_equipo=$request->get('des_equipo');
         $element->tipoBien=$request->get('tipoBien');
         $element->id_cat_equipos=$request->get('id_cat_equipos');
+        if($request->hasfile('imagenes')){
+            $imagenes = $request->file('imagenes');
+            $this->servImg->registrar($imagenes,$element->id_equipo);
+        }
         if($request->hasfile('documentos')){
             $documentos = $request->file('documentos');
             $this->servDoc->registrar($documentos,$id_equipo);

@@ -74,9 +74,10 @@ class EquipoController extends Controller
         if(Auth::user()->tipo_usuario==1){
 
         $element = $this->service->editar($id_oficina); 
+        $imagenes=$this->servImg->getByEquipo($id_oficina);
         $documentos=$this->servDoc->getByEquipo($id_oficina);
         $catEqui= $this->catEquiServ->listar()->pluck('des_cate_equipo','id_cat_equipos');   
-        return view('admin.equipo-adm.edit',compact('element','documentos','catEqui'));
+        return view('admin.equipo-adm.edit',compact('element','imagenes','documentos','catEqui'));
     }else{
         return redirect()->route('panel');    }
     }
