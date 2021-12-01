@@ -25,9 +25,9 @@
 					<tbody>
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_sede }}">
-								<td> <strong> {{ $element->co_sede }} </strong></td>
-								<td> <strong> {{ $element->no_sede }} </strong> </td>
-								<td> <strong> {{ $element->de_sede }} </strong> </td>
+								<td>  {{ $element->co_sede }} </td>
+								<td>  {{ $element->no_sede }}  </td>
+								<td>  {{ $element->de_sede }}  </td>
 								@if(Auth::user()->tipo_usuario==1)
 								<td class="tbl-action-col">
 									<a href="{{ route('sede-adm.edit' , ['id_sede' => $element->id_sede]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>

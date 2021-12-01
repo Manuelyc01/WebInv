@@ -25,13 +25,13 @@
 					<tbody>
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_solicitud }}">
-								<td> <strong> {{ $element->cod_solicitud }} </strong></td>
-								<td> <strong> {{ $element->nom_solicitud }} </strong></td>
+								<td>  {{ $element->cod_solicitud }} </td>
+								<td>  {{ $element->nom_solicitud }} </td>
 								
 								@if($element->esta_solicitud==0)
-									<td style="background-color: red;color:white";> <strong> FINALIZADO </strong> </td>
+									<td style="background-color: red;color:white";>  FINALIZADO  </td>
 								@else
-									<td style="background-color: green;color:white;"> <strong> EN PROCESO </strong> </td>
+									<td style="background-color: green;color:white;">  EN PROCESO  </td>
 								@endif
 								@if(Auth::user()->tipo_usuario==1)
 								<td class="tbl-action-col">

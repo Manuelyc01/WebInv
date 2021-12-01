@@ -26,12 +26,12 @@
 					<tbody>
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_sede }}">
-								<td> <strong> {{ $element->co_colaborador }} </strong></td>
-								<td> <strong> {{ $element->ap_paterno_colaborador  }} </strong> </td>
-								<td> <strong> {{ $element->ap_materno_colaborador }} </strong> </td>
-								<td> <strong> {{ $element->no_colaborador }} </strong> </td>
-								<td> <strong> {{ $element->usuario }} </strong> </td>
-								<td> <strong> {{ $element->email }} </strong> </td>
+								<td>  {{ $element->co_colaborador }} </td>
+								<td>  {{ $element->ap_paterno_colaborador  }}  </td>
+								<td>  {{ $element->ap_materno_colaborador }}  </td>
+								<td>  {{ $element->no_colaborador }}  </td>
+								<td>  {{ $element->usuario }}  </td>
+								<td>  {{ $element->email }}  </td>
 								@if(Auth::user()->tipo_usuario==1)
 								<td class="tbl-action-col">
 									<a href="{{ route('colaborador-adm.edit' , ['id_colaborador' => $element->id_colaborador]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>

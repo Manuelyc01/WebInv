@@ -27,20 +27,20 @@
 					<tbody>
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_componente}}">
-								<td> <strong> {{ $element->serie_componente }} </strong></td>
-								<td> <strong> {{ $element->des_componente }} </strong> </td>
+								<td>  {{ $element->serie_componente }} </td>
+								<td>  {{ $element->des_componente }}  </td>
 								@if($element->esta_componente==0)
-									<td style="background-color: red;color:white";> <strong> DESACTIVADO </strong> </td>
+									<td style="background-color: red;color:white";>  DESACTIVADO  </td>
 								@else
 									@if($element->esta_componente==1)
-										<td style="background-color: green;color:white;"> <strong> ACTIVO </strong> </td>
+										<td style="background-color: green;color:white;">  ACTIVO  </td>
 									@else
-										<td style="background-color: orange;color:white;"> <strong> ASIGNADO </strong> </td>
+										<td style="background-color: orange;color:white;">  ASIGNADO  </td>
 									@endif
 								@endif
-								<td> <strong> {{ $element->des_cate_componentes }} </strong> </td>
-								<td> <strong> {{@$element->no_colaborador}}&nbsp;{{@$element->ap_paterno_colaborador}}&nbsp;{{@$element->ap_materno_colaborador}}<strong> &nbsp;{{@$colaboradore->de_sede}}</strong></td>
-								<td> <strong> {{$element->de_sede }} </strong></td>
+								<td>  {{ $element->des_cate_componentes }}  </td>
+								<td>  {{@$element->no_colaborador}}&nbsp;{{@$element->ap_paterno_colaborador}}&nbsp;{{@$element->ap_materno_colaborador}} &nbsp;{{@$colaboradore->de_sede}}</td>
+								<td>  {{$element->de_sede }} </td>
 								@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
 								<td class="tbl-action-col">
 									<a href="{{ route('componente-adm.edit' , ['id_componente' => $element->id_componente]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>

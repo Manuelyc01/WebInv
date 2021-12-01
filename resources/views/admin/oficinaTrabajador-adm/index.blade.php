@@ -28,19 +28,19 @@
 					<tbody>
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_ofi_trabajador }}">
-								<td> <strong> {{ $element->id_ofi_trabajador }} </strong></td>
-								<td> <strong> {{ $element->no_sede }} </strong></td>
-								<td> <strong> {{ $element->no_oficina }} </strong> </td>
-								<td> <strong> {{ $element->no_cargo_laboral }} </strong> </td>
-								<td> <strong> {{ $element->co_colaborador }} </strong> </td>
+								<td> {{ $element->id_ofi_trabajador }} </td>
+								<td> {{ $element->no_sede }} </td>
+								<td> {{ $element->no_oficina }}  </td>
+								<td> {{ $element->no_cargo_laboral }}  </td>
+								<td> {{ $element->co_colaborador }}  </td>
 
 								@if($element->est_trabajador==0)
-									<td style="background-color: red;color:white";> <strong> DESACTIVADO </strong> </td>
+									<td style="background-color: red;color:white";> DESACTIVADO  </td>
 								@else
-									<td style="background-color: green;color:white;"> <strong> ACTIVO </strong> </td>
+									<td style="background-color: green;color:white;"> ACTIVO  </td>
 								@endif
-								<td> <strong> {{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }} </strong> </td>
-								<td> <strong> {{ $element->ti_documento }} </strong> </td>
+								<td> {{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}  </td>
+								<td> {{ $element->ti_documento }}  </td>
 								<td class="tbl-action-col">
 								@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
 									<a href="{{ route('oficinaTrabajador-adm.edit' , ['id_ofi_trabajador' => $element->id_ofi_trabajador]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>

@@ -24,7 +24,7 @@
             <button id="delete-btn" class="btn btn-danger btn-addon m-b-sm" data-toggle="modal" data-target="#delete-modal">
                 <i class="glyphicon glyphicon-trash"></i> Eliminar </button>
         @endisset
-        <a class="btn btn-info btn-addon m-b-sm" href="{{ route('oficina-adm.index') }}">
+        <a class="btn btn-info btn-addon m-b-sm" href="{{ route('ofiTrabajadorEquipo-adm.index') }}">
         <i class="glyphicon glyphicon-circle-arrow-left"></i> <b>Volver al listado</b> </a>
     </div>
 @stop

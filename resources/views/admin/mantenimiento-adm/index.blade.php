@@ -56,19 +56,19 @@ $(document).ready(function() {
 					<tbody>
 					@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_oficina }}">
-								<td> <strong> {{ $element->descripcion }} </strong></td>
+								<td>  {{ $element->descripcion }} </td>
 								@if($element->estado==0)
-									<td style="background-color: green;color:white";> <strong> Iniciado </strong> </td>
+									<td style="background-color: green;color:white";>  Iniciado  </td>
 								@else
 									@if($element->estado==1)
-										<td style="background-color: orange;color:white;"> <strong> En Proceso </strong> </td>
+										<td style="background-color: orange;color:white;">  En Proceso  </td>
 									@else
-										<td style="background-color: red;color:white;"> <strong> Finalizado </strong> </td>
+										<td style="background-color: red;color:white;">  Finalizado  </td>
 									@endif
 								@endif
-								<td> <strong> {{$element->tipoBien}}  /  {{$element->no_colaborador}}{{$element->ap_paterno_colaborador}} </strong> </td>
+								<td>  {{$element->tipoBien}}  /  {{$element->no_colaborador}}{{$element->ap_paterno_colaborador}}  </td>
 								<td>{{ $element->no_sede }}</td>
-								<td> <strong> {{ $element->descripcion_solicitud }} </strong> </td>
+								<td>  {{ $element->descripcion_solicitud }}  </td>
 								<td>{{ $element->created_at }}</td>
 								<td>{{ $element->updated_at }}</td>
 								<td class="tbl-action-col">

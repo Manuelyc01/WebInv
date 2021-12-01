@@ -28,11 +28,11 @@
 					<tbody>
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_equipo }}">
-								<td> <strong> {{ $element->serie_equipo }} </strong></td>
-								<td> <strong> {{ $element->cod_opatrimonial }} </strong> </td>
-								<td> <strong> {{ $element->des_equipo }} </strong> </td>
-								<td> <strong> {{ $element->tipoBien }} </strong> </td>
-								<td> <strong> {{ $element->des_cate_equipo }} </strong> </td>
+								<td>  {{ $element->serie_equipo }} </td>
+								<td>  {{ $element->cod_opatrimonial }}  </td>
+								<td>  {{ $element->des_equipo }}  </td>
+								<td>  {{ $element->tipoBien }}  </td>
+								<td>  {{ $element->des_cate_equipo }}  </td>
 								@if(Auth::user()->tipo_usuario==1)
 								<td class="tbl-action-col">
 									<a href="{{ route('equipo-adm.edit' , ['id_equipo' => $element->id_equipo]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>

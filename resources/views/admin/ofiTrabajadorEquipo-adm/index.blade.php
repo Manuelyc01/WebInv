@@ -67,7 +67,7 @@ $(document).ready(function() {
 				<table id="table" class="display table table-hover dataTable">
 					<thead>
 						<th> HostName </th>
-						<th> Sistema Operativo </th>
+						
 						<th> Observaciones Equipo</th>
 						<th> Estado </th>
 						<th> Categoria Equipo</th>
@@ -81,7 +81,6 @@ $(document).ready(function() {
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_ofi_traba_equipo }}">
 								<td> <strong> {{ $element->no_equipo }} </strong></td>
-								<td> <strong> {{ $element->sis_operativo }} </strong> </td>
 								<td> <strong> {{ $element->estado_equipo }} </strong> </td>
 									@if($element->esta_ofi_traba_equipo==0)
 									<td style="background-color: red;color:white";> <strong> SIN ASIGNAR </strong> </td>

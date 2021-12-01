@@ -25,12 +25,12 @@
 					<tbody>
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_cat_componentes }}">
-								<td> <strong> {{ $element->id_cat_componentes }} </strong></td>
-								<td> <strong> {{ $element->des_cate_componentes }} </strong> </td>
+								<td>  {{ $element->id_cat_componentes }} </td>
+								<td>  {{ $element->des_cate_componentes }}  </td>
 								@if($element->esta_cate_componentes==0)
-									<td style="background-color: red;color:white";> <strong> DESACTIVADO </strong> </td>
+									<td style="background-color: red;color:white";>  DESACTIVADO  </td>
 								@else
-									<td style="background-color: green;color:white;"> <strong> ACTIVADO </strong> </td>
+									<td style="background-color: green;color:white;">  ACTIVADO  </td>
 								@endif
 								@if(Auth::user()->tipo_usuario==1)
 								<td class="tbl-action-col">
