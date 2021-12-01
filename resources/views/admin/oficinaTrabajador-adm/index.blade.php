@@ -8,7 +8,7 @@
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Cargo Laboral </h2>
 				@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
-				<a href="{{ route('oficinaTrabajador-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir nueva </a>
+				<a href="{{ route('oficinaTrabajador-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir </a>
 				@endif
 			</div>
 

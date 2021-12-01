@@ -43,7 +43,7 @@ $(document).ready(function() {
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Asignaciones de Equipos </h2>
 				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
-				<a href="{{ route('ofiTrabajadorEquipo-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir Asignacion </a>
+				<a href="{{ route('ofiTrabajadorEquipo-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir </a>
 				@endif
 			</div>
 			<div class="panel-heading">
@@ -68,11 +68,11 @@ $(document).ready(function() {
 					<thead>
 						<th> HostName </th>
 						<th> Observaciones Equipo</th>
-						<th> Estado </th>
 						<th> Categoria Equipo</th>
 						@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 						<th> Colaborador</th>@endif
 						<th>Sede</th>
+						<th> Estado </th>
 						<th class="tbl-action-col"> Acciones </th>
 					</thead>
 
@@ -81,16 +81,16 @@ $(document).ready(function() {
 							<tr data-id="{{ $element->id_ofi_traba_equipo }}">
 								<td> {{ $element->no_equipo }}</td>
 								<td> {{ $element->estado_equipo }} </td>
-									@if($element->esta_ofi_traba_equipo==0)
-									<td style="background-color: red;color:white";> SIN ASIGNAR </td>
-								@else
-									<td style="background-color: green;color:white;"> ASIGNADO </td>
-								@endif
 								<td> {{ $element->tipoBien }} </td>
 								@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 								<td> {{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}&nbsp; </td>
 								@endif
 								<td>{{ $element->no_sede }}</td>
+								@if($element->esta_ofi_traba_equipo==0)
+									<td style="color: red";> <strong> SIN ASIGNAR </strong> </td>
+								@else
+									<td style="color: green;"><strong> ASIGNADO </strong></td>
+								@endif
 								<td class="tbl-action-col">
 									@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 									<a href="{{ route('ofiTrabajadorEquipo-adm.edit' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
