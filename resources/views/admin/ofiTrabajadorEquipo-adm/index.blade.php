@@ -67,7 +67,6 @@ $(document).ready(function() {
 				<table id="table" class="display table table-hover dataTable">
 					<thead>
 						<th> HostName </th>
-						
 						<th> Observaciones Equipo</th>
 						<th> Estado </th>
 						<th> Categoria Equipo</th>
@@ -80,16 +79,16 @@ $(document).ready(function() {
 					<tbody>
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_ofi_traba_equipo }}">
-								<td> <strong> {{ $element->no_equipo }} </strong></td>
-								<td> <strong> {{ $element->estado_equipo }} </strong> </td>
+								<td> {{ $element->no_equipo }}</td>
+								<td> {{ $element->estado_equipo }} </td>
 									@if($element->esta_ofi_traba_equipo==0)
-									<td style="background-color: red;color:white";> <strong> SIN ASIGNAR </strong> </td>
+									<td style="background-color: red;color:white";> SIN ASIGNAR </td>
 								@else
-									<td style="background-color: green;color:white;"> <strong> ASIGNADO </strong> </td>
+									<td style="background-color: green;color:white;"> ASIGNADO </td>
 								@endif
-								<td> <strong> {{ $element->tipoBien }} </strong> </td>
+								<td> {{ $element->tipoBien }} </td>
 								@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
-								<td> <strong>{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}&nbsp;</strong> </td>
+								<td> {{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}&nbsp; </td>
 								@endif
 								<td>{{ $element->no_sede }}</td>
 								<td class="tbl-action-col">
