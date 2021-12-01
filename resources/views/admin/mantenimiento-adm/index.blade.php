@@ -58,12 +58,12 @@ $(document).ready(function() {
 							<tr data-id="{{ $element->id_oficina }}">
 								<td>  {{ $element->descripcion }} </td>
 								@if($element->estado==0)
-									<td style="background-color: green;color:white";>  Iniciado  </td>
+									<td style="color:green";><strong>   Iniciado  </strong></td>
 								@else
 									@if($element->estado==1)
-										<td style="background-color: orange;color:white;">  En Proceso  </td>
+										<td style="color:orange;"> <strong> En Proceso </strong> </td>
 									@else
-										<td style="background-color: red;color:white;">  Finalizado  </td>
+										<td style="color:red;"> <strong> Finalizado </strong> </td>
 									@endif
 								@endif
 								<td>  {{$element->tipoBien}}  /  {{$element->no_colaborador}}{{$element->ap_paterno_colaborador}}  </td>
