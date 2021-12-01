@@ -51,9 +51,15 @@ class SolOficinaEquipoTrabService
 	}
     public function recibidas()
 	{
-        $element = SolOficinaEquipoTrab::where('esta_solicitud','=',1)
-            ->where('esta_soli_soli_ofi_equi_traba','=',2)                
-            ->orderBy('updated_at', 'DESC')->get();
+        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+                        ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
+                        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                        ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
+                        ->leftjoin('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')                        
+                        ->select('tm_soli_ofi_equi_traba.*','tm_sede.no_sede')
+                        ->where('tm_soli_ofi_equi_traba.esta_solicitud','=',1)
+                        ->where('tm_soli_ofi_equi_traba.esta_soli_soli_ofi_equi_traba','=',2)                
+                        ->orderBy('tm_soli_ofi_equi_traba.updated_at', 'DESC')->get();
 		return $element;
 	}
     public function recibidasAdmin($id_colaborador)
@@ -79,9 +85,15 @@ class SolOficinaEquipoTrabService
 	}
     public function finalizados()
 	{
-        $element = SolOficinaEquipoTrab::where('esta_solicitud','=',1)
-            ->where('esta_soli_soli_ofi_equi_traba','=',0)                
-            ->orderBy('updated_at', 'DESC')->get();
+        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+            ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
+            ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+            ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
+            ->leftjoin('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')                        
+            ->select('tm_soli_ofi_equi_traba.*','tm_sede.no_sede')
+            ->where('tm_soli_ofi_equi_traba.esta_solicitud','=',1)
+            ->where('tm_soli_ofi_equi_traba.esta_soli_soli_ofi_equi_traba','=',0)   
+            ->orderBy('tm_soli_ofi_equi_traba.updated_at', 'DESC')->get();
 		return $element;
 	}
     public function finalizadosAdmin($id_colaborador)
@@ -107,9 +119,15 @@ class SolOficinaEquipoTrabService
 	}
     public function proceso()
 	{
-        $element = SolOficinaEquipoTrab::where('esta_solicitud','=',1)
-            ->where('esta_soli_soli_ofi_equi_traba','=',1)                
-            ->orderBy('updated_at', 'DESC')->get();
+        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+                        ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
+                        ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                        ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
+                        ->leftjoin('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')                        
+                        ->select('tm_soli_ofi_equi_traba.*','tm_sede.no_sede')
+                        ->where('tm_soli_ofi_equi_traba.esta_solicitud','=',1)
+                        ->where('tm_soli_ofi_equi_traba.esta_soli_soli_ofi_equi_traba','=',1)                
+                        ->orderBy('tm_soli_ofi_equi_traba.updated_at', 'DESC')->get();
 		return $element;
 	}
     public function procesoAdmin($id_colaborador)

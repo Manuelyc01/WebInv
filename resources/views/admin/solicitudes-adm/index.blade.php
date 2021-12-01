@@ -17,7 +17,6 @@
 					<thead>
 						<th> Cod.Solicitud </th>
 						<th> Nombre </th>
-						<th> Estado </th>
 						@if(Auth::user()->tipo_usuario==1)
 						<th class="tbl-action-col"> Acciones </th>
 						@endif
@@ -29,9 +28,9 @@
 								<td>  {{ $element->nom_solicitud }} </td>
 								
 								@if($element->esta_solicitud==0)
-									<td style="background-color: red;color:white";>  FINALIZADO  </td>
+									<td style="color:red";> <strong>  Activo  </strong></td>
 								@else
-									<td style="background-color: green;color:white;">  EN PROCESO  </td>
+									<td style="color:green;"><strong>  Desactivado </strong></td>
 								@endif
 								@if(Auth::user()->tipo_usuario==1)
 								<td class="tbl-action-col">

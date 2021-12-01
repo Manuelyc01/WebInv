@@ -52,8 +52,8 @@ $(document).ready(function() {
 				<table id="table" class="display table table-hover dataTable">
 					<thead>
 						<th> Descripcion Solicitud</th>
-						<th> Estado de la solicitud</th>
 						<th> Sede</th>
+						<th> Estado de la solicitud</th>
 						<th> Fecha Recepción</th>
 						<th> Fecha de Actualización</th>
 						<th class="tbl-action-col"> Acciones </th>
@@ -64,22 +64,16 @@ $(document).ready(function() {
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_ofi_traba_equipo }}">
 								<td>  {{ $element->descripcion_solicitud }} </td>
+								<td>{{ $element->no_sede }}</td>
 								@if($element->esta_soli_soli_ofi_equi_traba==0)
-									<td style="background-color: red;color:white";>  FINALIZADO  </td>
+									<td style="color:red";><strong>  FINALIZADO  </strong></td>
 								@elseif($element->esta_soli_soli_ofi_equi_traba==1)
-									<td style="background-color: blue;color:white;">  EN PROCESO  </td>
+									<td style="color:blue;"><strong>  EN PROCESO  </strong></td>
 								@else
-									<td style="background-color: green;color:white;">  RECIBIDO  </td>
+									<td style="color:green;"><strong>  RECIBIDO  </strong></td>
 								@endif
-								<td>
-								{{ $element->no_sede }}	
-								</td>
-								<td>
-								{{ $element->created_at }} 
-								</td>
-								<td>
-								{{ $element->updated_at }} 	
-								</td>
+								<td>{{ $element->created_at }}</td>
+								<td>{{ $element->updated_at }}</td>
 								<td class="tbl-action-col">
 									<a href="{{ route('SolOficinaEquipoTrab-adm.edit' , ['id_soli_ofi_equi_tra' => $element->id_soli_ofi_equi_tra]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 									<a href="{{ route('SolOficinaEquipoTrab-adm.show' , ['id_soli_ofi_equi_tra' => $element->id_soli_ofi_equi_tra]) }}" class="btn btn-success"> <i class="fa fa-eye"></i> </a>

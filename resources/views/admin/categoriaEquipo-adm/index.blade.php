@@ -28,9 +28,9 @@
 								<td>  {{ $element->id_cat_equipos }} </td>
 								<td>  {{ $element->des_cate_equipo }}  </td>
 								@if($element->esta_cate_equipo==0)
-									<td style="background-color: red;color:white";>  DESACTIVADO  </td>
+									<td style="color:red";><strong>  DESACTIVADO  </strong></td>
 								@else
-									<td style="background-color: green;color:white;">  ACTIVO  </td>
+									<td style="color:green;"><strong>  ACTIVO </strong> </td>
 								@endif
 								@if(Auth::user()->tipo_usuario==1)
 								<td class="tbl-action-col">

@@ -20,9 +20,9 @@
 						<th> OFICINA </th>
 						<th> CARGO LABORAL </th>
 						<th> COD.TRABAJADOR </th>
-						<th> ESTADO</th>
 						<th> NOMBRES</th>
 						<th> DNI</th>
+						<th> ESTADO</th>
 						<th class="tbl-action-col"> Acciones </th>
 					</thead>
 					<tbody>
@@ -33,14 +33,13 @@
 								<td> {{ $element->no_oficina }}  </td>
 								<td> {{ $element->no_cargo_laboral }}  </td>
 								<td> {{ $element->co_colaborador }}  </td>
-
-								@if($element->est_trabajador==0)
-									<td style="background-color: red;color:white";> DESACTIVADO  </td>
-								@else
-									<td style="background-color: green;color:white;"> ACTIVO  </td>
-								@endif
 								<td> {{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}  </td>
 								<td> {{ $element->ti_documento }}  </td>
+								@if($element->est_trabajador==0)
+									<td style="color:red";> <strong> DESACTIVADO  </strong></td>
+								@else
+									<td style="color:green;"> <strong>ACTIVO  </strong></td>
+								@endif
 								<td class="tbl-action-col">
 								@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
 									<a href="{{ route('oficinaTrabajador-adm.edit' , ['id_ofi_trabajador' => $element->id_ofi_trabajador]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>

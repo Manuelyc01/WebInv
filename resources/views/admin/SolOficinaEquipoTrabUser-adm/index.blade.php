@@ -32,11 +32,11 @@
 							<tr data-id="{{ $element->id_ofi_traba_equipo }}">
 								<td>  {{ $element->descripcion_solicitud }} </td>
 								@if($element->esta_soli_soli_ofi_equi_traba==0)
-									<td style="background-color: red;color:white";>  FINALIZADO  </td>
+									<td style="color:red";><strong>  FINALIZADO  </strong></td>
 								@elseif($element->esta_soli_soli_ofi_equi_traba==1)
-									<td style="background-color: blue;color:white;">  EN PROCESO  </td>
+									<td style="color:blue;"> <strong> EN PROCESO  </strong></td>
 								@else
-									<td style="background-color: green;color:white;">  RECIBIDO  </td>
+									<td style="color:green;">  <strong>RECIBIDO  </strong></td>
 								@endif
 								
 								<td class="tbl-action-col">

@@ -18,7 +18,7 @@
         <div class="form-group {{ $errors->has('esta_solicitud') ? 'has-error' : '' }}">
             <!-- {!! Form::stdText('Estado', 1, 'esta_solicitud', $errors) !!}-->
             <?php
-            $ddlDepartamento=["1"=>"EN PROCESO","0"=>"FINALIZADO"];
+            $ddlDepartamento=["1"=>"Activo","0"=>"Inactivo"];
             ?>
             {!! Form::stdSelect('Estado', 1, 'esta_solicitud', $ddlDepartamento, null) !!}
         </div>
