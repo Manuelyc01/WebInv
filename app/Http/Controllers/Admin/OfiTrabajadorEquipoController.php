@@ -58,7 +58,7 @@ class OfiTrabajadorEquipoController extends Controller
     {   
         if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
         $elements = $this->service->listarByTrabajador($id);
-        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','noList'));
         }else{
             $x1=$this->servOfiTra->editar($id);
             if($x1->id_colaborador!=Auth::user()->id_colaborador){
