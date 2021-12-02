@@ -27,7 +27,7 @@
 								<td>  {{ $element->cod_solicitud }} </td>
 								<td>  {{ $element->nom_solicitud }} </td>
 								
-								@if($element->esta_solicitud==0)
+								@if($element->esta_solicitud==1)
 									<td style="color:green";> <strong>  Activo  </strong></td>
 								@else
 									<td style="color:red;"><strong>  Desactivado </strong></td>
