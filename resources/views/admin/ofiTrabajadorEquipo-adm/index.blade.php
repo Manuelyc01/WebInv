@@ -43,7 +43,7 @@ $(document).ready(function() {
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Asignaciones de Equipos </h2>
 				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)	
-					@if(isset($noList))
+					@if(!isset($noList))
 					<a href="{{ route('ofiTrabajadorEquipo-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir </a>	
 					@endif
 				@endif
@@ -52,7 +52,7 @@ $(document).ready(function() {
 				<a href="#" id="btnExcel" class="btn btn-info"><i class="fa fa-edit"></i>Generar Excel</a>
 			</div>
 				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
-					@if(isset($noList))
+					@if(!isset($noList))
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
