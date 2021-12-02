@@ -52,7 +52,7 @@ $(document).ready(function() {
 				<a href="#" id="btnExcel" class="btn btn-info"><i class="fa fa-edit"></i>Generar Excel</a>
 			</div>
 				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
-					@if(isset($yList))
+					@if(isset($ylist))
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
