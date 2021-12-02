@@ -41,14 +41,15 @@ class OfiTrabajadorEquipoController extends Controller
     public function index()
     {
         $id=Auth::user()->id_colaborador;
+        $ylist="";
         if(Auth::user()->tipo_usuario==3){
-            $elements = $this->service->listarBySedeAdmin($id);
-            return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+            $elements = $this->service->listarBySedeAdmin($id);   
+            return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','ylist'));
         }
         if(Auth::user()->tipo_usuario==1){
             
         $elements = $this->service->listar();
-        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','ylist'));
     
         }else{
             return redirect('/web-adm/trabEquipos/'.$id);
@@ -58,8 +59,7 @@ class OfiTrabajadorEquipoController extends Controller
     {   
         if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
         $elements = $this->service->listarByTrabajador($id);
-        $nolist="";
-        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','noList'));
+        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
         }else{
             $x1=$this->servOfiTra->editar($id);
             if($x1->id_colaborador!=Auth::user()->id_colaborador){
