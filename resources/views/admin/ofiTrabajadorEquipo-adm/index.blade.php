@@ -44,7 +44,7 @@ $(document).ready(function() {
 				<h2 class="panel-title form-title"> Asignaciones de Equipos </h2>
 				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 					@if(isset($noList))
-					<a href="{{ route('ofiTrabajadorEquipo-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir </a>
+					<a href="{{ route('ofiTrabajadorEquipo-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> X </a>
 					@endif
 				@endif
 			</div>
