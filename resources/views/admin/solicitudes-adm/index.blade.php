@@ -28,9 +28,9 @@
 								<td>  {{ $element->nom_solicitud }} </td>
 								
 								@if($element->esta_solicitud==0)
-									<td style="color:red";> <strong>  Activo  </strong></td>
+									<td style="color:green";> <strong>  Activo  </strong></td>
 								@else
-									<td style="color:green;"><strong>  Desactivado </strong></td>
+									<td style="color:red;"><strong>  Desactivado </strong></td>
 								@endif
 								@if(Auth::user()->tipo_usuario==1)
 								<td class="tbl-action-col">
