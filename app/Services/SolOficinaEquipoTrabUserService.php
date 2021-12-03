@@ -44,9 +44,9 @@ class SolOficinaEquipoTrabUserService
         $element->descripcion_solicitud=$request->get('descripcion_solicitud');
         $element->esta_soli_soli_ofi_equi_traba=2;
 
-        if($validacion==null)
+        if($request->get('id_solicitud')==null)
         {
-            $element->id_solicitud=16;
+            $element->id_solicitud=0;
             $element->id_ofi_trabajador=$Trabajador->id_ofi_trabajador;
             $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
         }

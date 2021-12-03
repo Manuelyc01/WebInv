@@ -16,13 +16,22 @@
             <input class="form-control" type="text" name="descripcion_solicitud" id="descripcion_solicitud" value="{{@$element->descripcion_solicitud}}" readonly>
             </div>
         </div>
+        @if(@$element->id_solicitud==0)
+        <div class="form-group {{ $errors->has('id_solicitud') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label"><strong>Tipo Solicitud<span class="required"> * </span></strong></label>
+            <div class="col-sm-8">
+            <input class="form-control" type="text" name="id_solicitud" id="id_solicitud" value="NUEVO EQUIPO" readonly>
+            </div>
+        </div>
+        @else
         <div class="form-group {{ $errors->has('id_solicitud') ? 'has-error' : '' }}">
             <label class="col-sm-2 control-label"><strong>Tipo Solicitud<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
             <input class="form-control" type="text" name="id_solicitud" id="id_solicitud" value="{{@$element->nom_solicitud}}" readonly>
             </div>
         </div>
-
+        @endif
+        
         <div class="form-group {{ $errors->has('esta_soli_soli_ofi_equi_traba') ? 'has-error' : '' }}">
             <!-- {!! Form::stdText('Estado de la solicitud', 0, 'esta_soli_soli_ofi_equi_traba', $errors) !!}-->
             <?php

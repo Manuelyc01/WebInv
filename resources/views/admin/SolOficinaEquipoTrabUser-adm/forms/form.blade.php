@@ -30,7 +30,7 @@
         @endif
 
         @if(isset($Trabajador))
-        <div class="form-group">
+        <div class="form-group" id="typeSol">
             <label class="col-sm-2 control-label"><strong>Tipo Solicitud<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
             <input class="form-control" list="datalistOptionSol" name="id_solicitud" id="id_solicitud" readonly="readonly" placeholder="Busca Solicitud" value="NUEVO EQUIPO" autocomplete="off">
@@ -117,7 +117,9 @@
         });
         $("#nve").on('click', function (){
                 $("#MyForm").hide();
+                $("#typeSol").hide();
                 $("#id_ofi_traba_equipo").val(null);
+                $("#id_solicitud").val(null);
         });  
     });
     $("#id_equipo").on('input', function () {

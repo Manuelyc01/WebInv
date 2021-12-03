@@ -103,7 +103,6 @@ class SolOficinaEquipoTraUserController extends Controller
      */
     public function store(SolOficinaEquipoTrabUserRequest $request)
     {
-        dd($request);
         $this->service->registrar($request);
         session()->flash('success', '¡Información registrada con éxito!');
         return redirect()->route('SolOficinaEquipoTrabUser-adm.index');
