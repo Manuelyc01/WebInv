@@ -118,7 +118,7 @@ class SolOficinaEquipoTraUserController extends Controller
     {
 
         $element = $this->service->mostrar($id); 
-        dd($element->toArray());
+        dd($element);
         if($element->id_ofi_traba_equipo==null){
             $x1=$this->servTrabajador->editar($element->id_ofi_trabajador);
             if($x1->id_colaborador!=Auth::user()->id_colaborador){
