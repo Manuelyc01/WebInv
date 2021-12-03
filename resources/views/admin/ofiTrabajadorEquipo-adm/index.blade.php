@@ -48,9 +48,11 @@ $(document).ready(function() {
 					@endif
 				@endif
 			</div>
+			@if(isset($ylist))
 			<div class="panel-heading">
 				<a href="#" id="btnExcel" class="btn btn-info"><i class="fa fa-edit"></i>Generar Excel</a>
 			</div>
+			@endif
 				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
 					@if(isset($ylist))
 				<div class="row">
