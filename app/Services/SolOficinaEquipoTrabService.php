@@ -20,7 +20,7 @@ class SolOficinaEquipoTrabService
     }
     public function listar()
 	{
-        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+        $element = SolOficinaEquipoTrab::leftjoin('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
         ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
         ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
         ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
@@ -36,7 +36,7 @@ class SolOficinaEquipoTrabService
                 $col=ColaboradorUbicacion::where('tm_colaborador_ubicacion.id_colaborador','=',$id_colaborador)
                         ->where('tm_colaborador_ubicacion.estado','=',1)->get();
                 for($i = 0; $i < count($col); $i++){
-                        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+                        $element = SolOficinaEquipoTrab::leftjoin('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
                         ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
                         ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                         ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
@@ -51,7 +51,7 @@ class SolOficinaEquipoTrabService
 	}
     public function recibidas()
 	{
-        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+        $element = SolOficinaEquipoTrab::leftjoin('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
                         ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
                         ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                         ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
@@ -68,7 +68,7 @@ class SolOficinaEquipoTrabService
                 $col=ColaboradorUbicacion::where('tm_colaborador_ubicacion.id_colaborador','=',$id_colaborador)
                         ->where('tm_colaborador_ubicacion.estado','=',1)->get();
                 for($i = 0; $i < count($col); $i++){
-                        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+                        $element = SolOficinaEquipoTrab::leftjoin('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
                         ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
                         ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                         ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
@@ -85,7 +85,7 @@ class SolOficinaEquipoTrabService
 	}
     public function finalizados()
 	{
-        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+        $element = SolOficinaEquipoTrab::leftjoin('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
             ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
             ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
             ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
@@ -102,7 +102,7 @@ class SolOficinaEquipoTrabService
                 $col=ColaboradorUbicacion::where('tm_colaborador_ubicacion.id_colaborador','=',$id_colaborador)
                         ->where('tm_colaborador_ubicacion.estado','=',1)->get();
                 for($i = 0; $i < count($col); $i++){
-                        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+                        $element = SolOficinaEquipoTrab::leftjoin('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
                         ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
                         ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                         ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
@@ -119,7 +119,7 @@ class SolOficinaEquipoTrabService
 	}
     public function proceso()
 	{
-        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+        $element = SolOficinaEquipoTrab::leftjoin('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
                         ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
                         ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                         ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
@@ -136,7 +136,7 @@ class SolOficinaEquipoTrabService
                 $col=ColaboradorUbicacion::where('tm_colaborador_ubicacion.id_colaborador','=',$id_colaborador)
                         ->where('tm_colaborador_ubicacion.estado','=',1)->get();
                 for($i = 0; $i < count($col); $i++){
-                        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+                        $element = SolOficinaEquipoTrab::leftjoin('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
                         ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
                         ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                         ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
@@ -191,7 +191,7 @@ class SolOficinaEquipoTrabService
     {
         $x1 = SolOficinaEquipoTrab::find($id);
         if($x1->id_ofi_traba_equipo==null){
-            $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+            $element = SolOficinaEquipoTrab::leftjoin('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
                     ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')    
                     ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')                            
                     ->select('tm_soli_ofi_equi_traba.*','tm_solicitudes.*','tm_sede.id_sede')
@@ -199,7 +199,7 @@ class SolOficinaEquipoTrabService
                     ->first();
             return $element;
         }else{
-            $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+            $element = SolOficinaEquipoTrab::leftjoin('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
                     ->join('tm_ofi_traba_equipo','tm_ofi_traba_equipo.id_ofi_traba_equipo','=','tm_soli_ofi_equi_traba.id_ofi_traba_equipo')    
                     ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')    
                     ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')                            
@@ -245,7 +245,7 @@ class SolOficinaEquipoTrabService
 
     public function mostrar($id)
     {  
-        $element = SolOficinaEquipoTrab::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
+        $element = SolOficinaEquipoTrab::leftjoin('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
                                         ->select('tm_soli_ofi_equi_traba.*','tm_solicitudes.*')
                                         ->where('tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra',$id)
                                         ->first();
