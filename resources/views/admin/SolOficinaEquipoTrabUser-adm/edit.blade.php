@@ -25,7 +25,7 @@
         <a class="btn btn-info btn-addon m-b-sm" href="{{ route('SolOficinaEquipoTrabUser-adm.index') }}">
         <i class="glyphicon glyphicon-circle-arrow-left"></i> <b>Volver al listado</b> </a>
 
-        <a class="btn btn-info btn-addon m-b-sm" id="nve">
-        <b>Solicitar Nuevo equipo</b> </a>
+        <button type="button" class="btn btn-info btn-addon m-b-sm" id="nve">
+        <b>Solicitar Nuevo equipo</b> </button>
     </div>
 @stop
