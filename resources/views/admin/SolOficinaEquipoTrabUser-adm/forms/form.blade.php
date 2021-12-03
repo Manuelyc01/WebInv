@@ -142,17 +142,11 @@
     });
 
 
-$("#id_solicitud").on('input', function (){
-    var val = this.value;
+$("#nve").on('input', function (){
     
-            if(val==="16"){ 
                 $("#MyForm").hide();
                 $("#id_ofi_traba_equipo").val(null);
-            }
-            else
-            { 
-                $("#MyForm").show();
-            }
+            
         
     });  
 

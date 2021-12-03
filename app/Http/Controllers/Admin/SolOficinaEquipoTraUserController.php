@@ -74,6 +74,7 @@ class SolOficinaEquipoTraUserController extends Controller
      */
     public function create()
     {
+        dd("hola");
         $elements_solicitud = $this->service2->listar();
       
         $User=auth()->user()->id_colaborador;
@@ -103,7 +104,7 @@ class SolOficinaEquipoTraUserController extends Controller
      */
     public function store(SolOficinaEquipoTrabUserRequest $request)
     {
-       
+        dd($request);
         $this->service->registrar($request);
         session()->flash('success', '¡Información registrada con éxito!');
         return redirect()->route('SolOficinaEquipoTrabUser-adm.index');

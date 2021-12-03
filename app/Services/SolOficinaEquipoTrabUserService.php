@@ -32,7 +32,6 @@ class SolOficinaEquipoTrabUserService
     
 	public function registrar($request)
 	{
-        
         $element= new SolOficinaEquipoTrabUser();
         
         
