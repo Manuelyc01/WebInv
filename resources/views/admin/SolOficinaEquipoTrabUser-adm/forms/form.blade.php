@@ -115,6 +115,10 @@
         $("#id_equipo").on("click", function(event) {
             $("#id_equipo").val("");
         });
+        $("#nve").on('click', function (){
+                $("#MyForm").hide();
+                $("#id_ofi_traba_equipo").val(null);
+        });  
     });
     $("#id_equipo").on('input', function () {
     var id_equipo = this.value;
@@ -142,13 +146,6 @@
     });
 
 
-$("#nve").on('input', function (){
-    
-                $("#MyForm").hide();
-                $("#id_ofi_traba_equipo").val(null);
-            
-        
-    });  
 
 </script>
 
