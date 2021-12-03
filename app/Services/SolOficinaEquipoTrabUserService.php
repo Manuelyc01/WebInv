@@ -135,7 +135,7 @@ class SolOficinaEquipoTrabUserService
     {  
         $element = SolOficinaEquipoTrabUser::join('tm_solicitudes','tm_solicitudes.id_solicitud','=','tm_soli_ofi_equi_traba.id_solicitud')
                                         ->select('tm_soli_ofi_equi_traba.*','tm_solicitudes.*')
-                                        ->where('tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra',100)
+                                        ->where('tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra',$id)
                                         ->first();
         dd($element);
         return $element;
