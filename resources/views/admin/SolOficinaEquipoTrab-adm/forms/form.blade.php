@@ -16,7 +16,7 @@
             <input class="form-control" type="text" name="descripcion_solicitud" id="descripcion_solicitud" value="{{@$element->descripcion_solicitud}}" readonly>
             </div>
         </div>
-        @if(@$element->id_solicitud==0)
+        @if(@$element->id_solicitud==null)
         <div class="form-group {{ $errors->has('id_solicitud') ? 'has-error' : '' }}">
             <label class="col-sm-2 control-label"><strong>Tipo Solicitud<span class="required"> * </span></strong></label>
             <div class="col-sm-8">

@@ -46,7 +46,7 @@ class SolOficinaEquipoTrabUserService
 
         if($request->get('id_solicitud')==null)
         {
-            $element->id_solicitud=0;
+            $element->id_solicitud=null;
             $element->id_ofi_trabajador=$Trabajador->id_ofi_trabajador;
             $element->id_ofi_traba_equipo=$request->get('id_ofi_traba_equipo');
         }

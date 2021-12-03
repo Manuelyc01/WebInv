@@ -21,13 +21,21 @@
                 <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="descripcion_solicitud" type="text" value="{{$element->descripcion_solicitud}}"readonly>
             </div>
 		</div>
-
+        @if($element->id_solicitud==null)
+        <div class="form-group ">
+            <label class="col-sm-2 control-label"><strong> Tipo solicitud</strong></label>
+            <div class="col-sm-8">
+                <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="nom_solicitud" type="text" value="NUEVO EQUIPO" readonly>
+            </div>
+        </div>
+        @else
         <div class="form-group ">
             <label class="col-sm-2 control-label"><strong> Tipo solicitud</strong></label>
             <div class="col-sm-8">
                 <input class="form-control" placeholder="" data-toggle="tooltip" data-placement="right" data-trigger="focus" name="nom_solicitud" type="text" value="{{$element->nom_solicitud}}" readonly>
             </div>
         </div>
+        @endif
 
         <div class="form-group ">
             <label class="col-sm-2 control-label"><strong> Estado </strong></label>
