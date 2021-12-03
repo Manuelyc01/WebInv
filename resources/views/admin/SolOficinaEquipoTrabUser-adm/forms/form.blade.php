@@ -16,7 +16,7 @@
         </div>
 
         @if(isset($Usuario))
-        <div class="form-group {{ $errors->has('id_solicitud') ? 'has-error' : '' }}">
+        <div class="form-group {{ $errors->has('id_solicitud') ? 'has-error' : '' }}" id="typeSol">
             <label class="col-sm-2 control-label"><strong>Tipo Solicitud<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
             <input class="form-control" list="datalistOptionSol" name="id_solicitud" id="id_solicitud" placeholder="Busca Solicitud" value="{{@$element->id_solicitud}}" autocomplete="off">
