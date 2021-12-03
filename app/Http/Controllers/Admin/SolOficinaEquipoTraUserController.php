@@ -74,7 +74,6 @@ class SolOficinaEquipoTraUserController extends Controller
      */
     public function create()
     {
-        dd("hola");
         $elements_solicitud = $this->service2->listar();
       
         $User=auth()->user()->id_colaborador;
