@@ -8,7 +8,9 @@ class CategoriaComponenteService
 {
     public function listar()
 	{
-        $element = CategoriaComponente::orderBy('id_cat_componentes', 'ASC')->get();
+        $element = CategoriaComponente::orderBy('id_cat_componentes', 'ASC')
+        ->where('esta_cate_componentes','>',-1)
+        ->get();
 		return $element;
 	}
 
@@ -41,7 +43,9 @@ class CategoriaComponenteService
 
 	public function eliminar($id)
 	{
-        CategoriaComponente::destroy($id);
+        $element = CategoriaComponente::find($id);
+        $element->esta_cate_componentes=-1;
+        $element->save();
 	}
 
 	
