@@ -8,7 +8,10 @@ class CategoriaEquipoService
 {
     public function listar()
 	{
-        $element = CategoriaEquipo::orderBy('id_cat_equipos', 'ASC')->get();
+        $element = CategoriaEquipo::orderBy('id_cat_equipos', 'ASC')
+        ->where('esta_cate_equipo','>',-1)
+                        
+        ->get();
 		return $element;
 	}
 
@@ -44,7 +47,11 @@ class CategoriaEquipoService
 
 	public function eliminar($id)
 	{
-        CategoriaEquipo::destroy($id);
+        $element = CategoriaEquipo::find($id);
+
+        $element->esta_cate_equipo=-1;
+        
+        $element->save();
 	}
 
 	
