@@ -20,10 +20,11 @@ class OfiTrabajadorEquipoService{
     public function listar()
 	{
         $element = OfiTrabajadorEquipo::join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                    ->join('tm_categoria_equipos','tm_categoria_equipos.id_cat_equipos','=','tm_equipos.id_cat_equipos')
                     ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                     ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                     ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
-                    ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*')
+                    ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*','tm_categoria_equipos.*')
                     ->where('tm_ofi_traba_equipo.esta_ofi_traba_equipo','>',-1)
                     ->orderBy('id_ofi_traba_equipo', 'DESC')->get();
 		return $element;
@@ -35,10 +36,11 @@ class OfiTrabajadorEquipoService{
                         ->where('tm_colaborador_ubicacion.estado','=',1)->get();
                 for($i = 0; $i < count($col); $i++){
                         $element = OfiTrabajadorEquipo::join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                        ->join('tm_categoria_equipos','tm_categoria_equipos.id_cat_equipos','=','tm_equipos.id_cat_equipos')
                         ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                         ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                         ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
-                        ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*')
+                        ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*','tm_categoria_equipos.*')
                         ->where('tm_ofi_traba_equipo.esta_ofi_traba_equipo','>',-1)
                         ->where('tm_sede.id_sede','=',$col[$i]->id_sede)
                         ->orderBy('id_ofi_traba_equipo', 'DESC')->get();
@@ -50,10 +52,11 @@ class OfiTrabajadorEquipoService{
     public function listarByTrabajador($trabajador)
 	{
         $element = OfiTrabajadorEquipo::join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                    ->join('tm_categoria_equipos','tm_categoria_equipos.id_cat_equipos','=','tm_equipos.id_cat_equipos')
                     ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                     ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                     ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
-                    ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*')
+                    ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*','tm_categoria_equipos.*')
                     ->where('tm_ofi_traba_equipo.esta_ofi_traba_equipo','>',-1)
                     ->where('tm_ofi_traba_equipo.id_ofi_trabajador','=',$trabajador)
                     ->orderBy('id_ofi_traba_equipo', 'DESC')->get();
@@ -62,10 +65,11 @@ class OfiTrabajadorEquipoService{
     public function listarAsignados()
 	{
         $element = OfiTrabajadorEquipo::join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                    ->join('tm_categoria_equipos','tm_categoria_equipos.id_cat_equipos','=','tm_equipos.id_cat_equipos')
                     ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                     ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                     ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
-                    ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*')
+                    ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*','tm_categoria_equipos.*')
                     ->where('tm_ofi_traba_equipo.esta_ofi_traba_equipo','=',1)
                     ->orderBy('id_ofi_traba_equipo', 'DESC')->get();
 		return $element;
@@ -77,10 +81,11 @@ class OfiTrabajadorEquipoService{
                 ->where('tm_colaborador_ubicacion.estado','=',1)->get();
         for($i = 0; $i < count($col); $i++){
                 $element = OfiTrabajadorEquipo::join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                ->join('tm_categoria_equipos','tm_categoria_equipos.id_cat_equipos','=','tm_equipos.id_cat_equipos')
                 ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                 ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                 ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
-                ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*')
+                ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*','tm_categoria_equipos.*')
                 ->where('tm_ofi_traba_equipo.esta_ofi_traba_equipo','=',1)
                 ->where('tm_sede.id_sede','=',$col[$i]->id_sede)
                 ->orderBy('id_ofi_traba_equipo', 'DESC')->get();
@@ -92,10 +97,11 @@ class OfiTrabajadorEquipoService{
     public function listarNoAsignados()
 	{
         $element = OfiTrabajadorEquipo::join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                    ->join('tm_categoria_equipos','tm_categoria_equipos.id_cat_equipos','=','tm_equipos.id_cat_equipos')
                     ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                     ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                     ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
-                    ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*')
+                    ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*','tm_categoria_equipos.*')
                     ->where('tm_ofi_traba_equipo.esta_ofi_traba_equipo','=',0)
                     ->orderBy('id_ofi_traba_equipo', 'DESC')->get();
 		return $element;
@@ -107,10 +113,11 @@ class OfiTrabajadorEquipoService{
                 ->where('tm_colaborador_ubicacion.estado','=',1)->get();
         for($i = 0; $i < count($col); $i++){
                 $element = OfiTrabajadorEquipo::join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                ->join('tm_categoria_equipos','tm_categoria_equipos.id_cat_equipos','=','tm_equipos.id_cat_equipos')
                 ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                 ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                 ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
-                ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*')
+                ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*','tm_categoria_equipos.*')
                 ->where('tm_ofi_traba_equipo.esta_ofi_traba_equipo','=',0)
                 ->where('tm_sede.id_sede','=',$col[$i]->id_sede)
                 ->orderBy('id_ofi_traba_equipo', 'DESC')->get();
@@ -123,10 +130,11 @@ class OfiTrabajadorEquipoService{
 	{
         $element = OfiTrabajadorEquipo::leftJoin('tm_mantenimiento','tm_mantenimiento.id_ofi_traba_equipo','=','tm_ofi_traba_equipo.id_ofi_traba_equipo')
                     ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                    ->join('tm_categoria_equipos','tm_categoria_equipos.id_cat_equipos','=','tm_equipos.id_cat_equipos')
                     ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                     ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                     ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
-                    ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*')
+                    ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*','tm_categoria_equipos.*')
                     ->whereIn('tm_mantenimiento.estado',[0, 1])
                     ->orderBy('id_ofi_traba_equipo', 'DESC')
                     ->get();
@@ -140,10 +148,11 @@ class OfiTrabajadorEquipoService{
         for($i = 0; $i < count($col); $i++){
                 $element = OfiTrabajadorEquipo::leftJoin('tm_mantenimiento','tm_mantenimiento.id_ofi_traba_equipo','=','tm_ofi_traba_equipo.id_ofi_traba_equipo')
                 ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
+                ->join('tm_categoria_equipos','tm_categoria_equipos.id_cat_equipos','=','tm_equipos.id_cat_equipos')
                 ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                 ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                 ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
-                ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*')
+                ->select('tm_ofi_traba_equipo.*','tm_equipos.*','tm_colaborador.*','tm_sede.*','tm_categoria_equipos.*')
                 ->where('tm_ofi_trabajador.id_sede','=',$col[$i]->id_sede)
                 ->whereIn('tm_mantenimiento.estado',[0, 1])
                 ->orderBy('id_ofi_traba_equipo', 'DESC')

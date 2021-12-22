@@ -82,7 +82,7 @@ class ColaboradorService
         //$element->password=Crypt::encrypt($request->get('password')); 
         $element->password=Hash::make($request->get('password'));
         $element->email=$request->get('email');
-        $element->tipo_usuario=$request->get('tipo_usuario');
+        $element->id_roles=$request->get('id_roles');
         $element->estado_usuario= 1;
        
         if($request->hasfile('foto')){
@@ -154,7 +154,7 @@ class ColaboradorService
          }
         
 
-        $element->tipo_usuario=$request->get('tipo_usuario');
+        $element->id_roles=$request->get('id_roles');
                
         $element->save();
         

@@ -22,7 +22,7 @@ class CategoriaComponenteController extends Controller
     public function index()
     {
         //
-        if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3){
         $elements = $this->service->listar();
         return view('admin.categoriaComponente-adm.index', compact('elements'));
     }else{
@@ -37,7 +37,7 @@ class CategoriaComponenteController extends Controller
     public function create()
     {
         //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         return view('admin.categoriaComponente-adm.edit');
     }else{
         return redirect()->route('panel');    }
@@ -52,7 +52,7 @@ class CategoriaComponenteController extends Controller
     public function store(CategoriaComponenteRequest $request)
     {
         //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->registrar($request);
         session()->flash('success', '¡Información registrada con éxito!');
         return redirect()->route('categoriaComponente-adm.index');
@@ -80,7 +80,7 @@ class CategoriaComponenteController extends Controller
     public function edit($id_cat_componentes)
     {
         //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $element = $this->service->editar($id_cat_componentes);
         return view('admin.categoriaComponente-adm.edit', compact('element'));
     }else{
@@ -97,7 +97,7 @@ class CategoriaComponenteController extends Controller
     public function update(CategoriaComponenteRequest $request, $id_cat_componentes)
     {
         //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->actualizar($request, $id_cat_componentes);
         session()->flash('success', '¡Información actualizada con éxito!');
        
@@ -115,7 +115,7 @@ class CategoriaComponenteController extends Controller
     public function destroy($id)
     {
         //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->eliminar($id);
         return redirect()->route('categoriaComponente-adm.index');
     }else{

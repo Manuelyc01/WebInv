@@ -8,7 +8,7 @@
 			<div class="panel-heading">
                 <input id="id_colaborador" value="{{ $x->id_colaborador }}" hidden>
 				<h2 class="panel-title form-title"> SEDES ASIGNADAS A {{ $x->no_colaborador }} {{ $x->ap_paterno_colaborador }} </h2>
-                @if(Auth::user()->tipo_usuario==1)
+                @if(Auth::user()->id_roles==1)
                 <div class="form-group pull-right">
                     <div class="col-sm-4 control-label"> 
                         <button class="btn btn-info" id="subSede"> Agregar Sede </button>
@@ -29,7 +29,7 @@
 					<thead>
 						<th> Cod. Sede </th>
 						<th> Nombre </th>
-                        @if(Auth::user()->tipo_usuario==1)
+                        @if(Auth::user()->id_roles==1)
 						<th> Acciones </th>
                         @endif
 					</thead>
@@ -38,7 +38,7 @@
 							<tr data-id="{{ $element->id_sede }}">
 								<td> <strong> {{ $element->co_sede }} </strong></td>
 								<td> <strong> {{ $element->no_sede  }} </strong> </td>
-								@if(Auth::user()->tipo_usuario==1)
+								@if(Auth::user()->id_roles==1)
                                 <td >
                                 <div class="col-md-6">
                                     <button type="button" id="btnDelete{{ $element->id_sede }}" onclick="deleteDoc('{{ $element->id_sede }}')">Eliminar</button>

@@ -33,7 +33,7 @@ class CompoTrabaEquipoAdicionalController extends Controller
     public function ListarEquiCompoEqTrab($id_ofi_equi_trabajador)
     {
         $id=Auth::user()->id_colaborador;
-        $tipo=Auth::user()->tipo_usuario;
+        $tipo=Auth::user()->id_roles;
         switch($tipo){
             case 1:
                 $elements = $this->service->listar($id_ofi_equi_trabajador);
@@ -56,7 +56,7 @@ class CompoTrabaEquipoAdicionalController extends Controller
     public function CrearEquiCompoEqTrab($id_ofi_equi_trabajador)
     {
         $id=Auth::user()->id_colaborador;
-        $tipo=Auth::user()->tipo_usuario;
+        $tipo=Auth::user()->id_roles;
         switch($tipo){
             case 1:
                 $elements = Componente::where('esta_componente',1)->get();
@@ -80,7 +80,7 @@ class CompoTrabaEquipoAdicionalController extends Controller
     {
         $id_ofi_equi_trabajador=$request->get('id_ofi_traba_equipo');
         $id=Auth::user()->id_colaborador;
-        $tipo=Auth::user()->tipo_usuario;
+        $tipo=Auth::user()->id_roles;
         switch($tipo){
             case 1:
                 $this->service->registrar($request);        
@@ -105,7 +105,7 @@ class CompoTrabaEquipoAdicionalController extends Controller
     public function EditarEquiCompoEqTrab($id_ofi_traba_equi_compo,$id_ofi_equi_trabajador)
     {
         $id=Auth::user()->id_colaborador;
-        $tipo=Auth::user()->tipo_usuario;
+        $tipo=Auth::user()->id_roles;
         switch($tipo){
             case 1:
                 $elementsCoEquiTraba = $this->service->editar($id_ofi_traba_equi_compo);
@@ -135,7 +135,7 @@ class CompoTrabaEquipoAdicionalController extends Controller
     {
         $id_ofi_equi_trabajador=$request->get('id_ofi_traba_equipo');
         $id=Auth::user()->id_colaborador;
-        $tipo=Auth::user()->tipo_usuario;
+        $tipo=Auth::user()->id_roles;
         switch($tipo){
             case 1:
                     $this->service->actualizar($request, $id_ofi_traba_equi_compo);        
@@ -160,7 +160,7 @@ class CompoTrabaEquipoAdicionalController extends Controller
     public function DestroyEquiCompoEqTrab($id_ofi_traba_equi_compo)
     {
         $id=Auth::user()->id_colaborador;
-        $tipo=Auth::user()->tipo_usuario;
+        $tipo=Auth::user()->id_roles;
         switch($tipo){
             case 1:
                 $this->service->eliminar($id_ofi_traba_equi_compo);

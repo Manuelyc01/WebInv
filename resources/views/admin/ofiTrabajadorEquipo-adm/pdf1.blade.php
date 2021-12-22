@@ -33,7 +33,11 @@
             </tr>
             <tr>
                 <td>Equipo:</td>
-                <td>{{$element->tipoBien}}</td>
+                <td>{{$element->des_equipo}}</td>
+            </tr>
+            <tr>
+                <td>Cod. Patrimonial / SN:</td>
+                <td>{{@$element->cod_opatrimonial}} / {{@$element->serie_equipo}}</td>
             </tr>
             <tr>
                 <td>Observaciones:</td>

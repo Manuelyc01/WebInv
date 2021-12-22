@@ -7,7 +7,7 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Categoría Equipos </h2>
-				@if(Auth::user()->tipo_usuario==1)
+				@if(Auth::user()->id_roles==1)
 				<a href="{{ route('categoriaEquipo-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir nueva </a>
 				@endif
 			</div>
@@ -18,7 +18,7 @@
 						<th> Id.Categoria Equipo </th>
 						<th> Descripcion </th>
 						<th> Estado </th>
-						@if(Auth::user()->tipo_usuario==1)
+						@if(Auth::user()->id_roles==1)
 						<th class="tbl-action-col"> Acciones </th>
 						@endif
 					</thead>
@@ -32,7 +32,7 @@
 								@else
 									<td style="color:green;"><strong>  ACTIVO </strong> </td>
 								@endif
-								@if(Auth::user()->tipo_usuario==1)
+								@if(Auth::user()->id_roles==1)
 								<td class="tbl-action-col">
 									<a href="{{ route('categoriaEquipo-adm.edit' , ['id_cat_equipos' => $element->id_cat_equipos]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 								</td>

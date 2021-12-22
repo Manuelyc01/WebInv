@@ -7,7 +7,7 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Colaboradores </h2>
-				@if(Auth::user()->tipo_usuario==1)
+				@if(Auth::user()->id_roles==1)
 				<a href="{{ route('colaborador-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir nuevo </a>
 				@endif
 			</div>
@@ -32,16 +32,16 @@
 								<td>  {{ $element->no_colaborador }}  </td>
 								<td>  {{ $element->usuario }}  </td>
 								<td>  {{ $element->email }}  </td>
-								@if(Auth::user()->tipo_usuario==1)
+								@if(Auth::user()->id_roles==1)
 								<td class="tbl-action-col">
 									<a href="{{ route('colaborador-adm.edit' , ['id_colaborador' => $element->id_colaborador]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
-									@if($element->tipo_usuario==3)
+									@if($element->id_roles==3)
 									<a class="btn btn-primary" href="/web-adm/colaboradorSede/{{ $element->id_colaborador }}"> Asignar Sedes</a>
 									@endif
 								</td>
 								@else
 									<td class="tbl-action-col">
-									@if($element->tipo_usuario==3)
+									@if($element->id_roles==3)
 									<a class="btn btn-primary" href="/web-adm/colaboradorSede/{{ $element->id_colaborador }}"> Asignar Sedes</a>
 									@endif
 								</td>

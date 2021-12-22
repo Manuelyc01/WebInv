@@ -7,7 +7,7 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> COMPONENTES </h2>
-				@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
+				@if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3)
 				<a href="{{ route('componente-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir componente </a>
 				@endif
 			</div>
@@ -20,7 +20,7 @@
 						<th> Nombre Asignado </th>
 						<th> Sede </th>
 						<th> Estado </th>
-						@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
+						@if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3)
 						<th class="tbl-action-col"> Acciones </th>v
 						@endif
 					</thead>
@@ -41,7 +41,7 @@
 										<td style="color:orange;"><strong>  ASIGNADO </strong> </td>
 									@endif
 								@endif
-								@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
+								@if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3)
 								<td class="tbl-action-col">
 									<a href="{{ route('componente-adm.edit' , ['id_componente' => $element->id_componente]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 								</td>

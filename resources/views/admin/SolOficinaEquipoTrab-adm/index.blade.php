@@ -34,7 +34,7 @@ $(document).ready(function() {
 			<div class="panel-heading">
 				<a href="#" id="btnExcel" class="btn btn-info"><i class="fa fa-edit"></i>Generar Excel</a>
 			</div>
-			@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
+			@if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3)
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">

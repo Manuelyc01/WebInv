@@ -27,7 +27,7 @@
         <div class="form-group">
             {!! Form::stdSelect('Categoria', 1, 'id_cat_componentes',$catCompo, null) !!}
         </div>
-        @if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
+        @if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3)
         <div class="form-group {{ $errors->has('id_colaborador') ? 'has-error' : '' }}">
             <label class="col-sm-2 control-label"><strong>Administrador<span class="required"> * </span></strong></label>
             <div class="col-sm-8">

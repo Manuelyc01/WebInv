@@ -42,11 +42,11 @@ class OfiTrabajadorEquipoController extends Controller
     {
         $id=Auth::user()->id_colaborador;
         $ylist="";
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $elements = $this->service->listarBySedeAdmin($id);   
             return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','ylist'));
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             
         $elements = $this->service->listar();
         return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','ylist'));
@@ -57,7 +57,7 @@ class OfiTrabajadorEquipoController extends Controller
     }
     public function equiposTrab($id)
     {   
-        if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3){
         $elements = $this->service->listarByTrabajador($id);
         return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
         }else{
@@ -73,13 +73,14 @@ class OfiTrabajadorEquipoController extends Controller
     public function equiposAsignados()
     {   
         $id=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        $ylist="";
+        if(Auth::user()->id_roles==3){
             $elements = $this->service->listarAsignadosAdmin($id);
-            return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+            return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','ylist'));
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $elements = $this->service->listarAsignados();
-        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','ylist'));
         }else{
             return redirect()->route('panel');    
     }
@@ -87,13 +88,14 @@ class OfiTrabajadorEquipoController extends Controller
     public function equiposNoAsignados()
     {   
         $id=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        $ylist="";
+        if(Auth::user()->id_roles==3){
             $elements = $this->service->listarNoAsignadosAdmin($id);
-            return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+            return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','ylist'));
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $elements = $this->service->listarNoAsignados();
-            return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+            return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','ylist'));
         }else{
             return redirect()->route('panel');    
         }
@@ -101,13 +103,14 @@ class OfiTrabajadorEquipoController extends Controller
     public function equiposMantenmimiento()
     {   
         $id=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        $ylist="";
+        if(Auth::user()->id_roles==3){
             $elements = $this->service->listarMantenimientoAdmin($id);
-            return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+            return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','ylist'));
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $elements = $this->service->listarMantenimiento();
-        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements'));
+        return view('admin.ofiTrabajadorEquipo-adm.index', compact('elements','ylist'));
     }else{
         return redirect()->route('panel');    
 }
@@ -115,12 +118,12 @@ class OfiTrabajadorEquipoController extends Controller
     public function create()
     { 
         $id=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $equipos=$this->servEquipo->listarDisponibles();
             $trabajadores=$this->servOfiTra->listarByAdmin($id);//trabajadores por sedes asignadas
             return view('admin.ofiTrabajadorEquipo-adm.edit',compact('equipos','trabajadores'));
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $equipos=$this->servEquipo->listarDisponibles();
             $trabajadores=$this->servOfiTra->listar();
             return view('admin.ofiTrabajadorEquipo-adm.edit',compact('equipos','trabajadores'));
@@ -130,7 +133,7 @@ class OfiTrabajadorEquipoController extends Controller
     }
     public function store(OfiTrabajadorEquipo $request)
     {
-    if(Auth::user()->tipo_usuario==3){
+    if(Auth::user()->id_roles==3){
             $colid=Auth::user()->id_colaborador;
             $x1=$this->servOfiTra->editar($request->id_ofi_trabajador);
             $elements_sede = $this->service1->listarSedes($colid);//sedes asignadas
@@ -149,7 +152,7 @@ class OfiTrabajadorEquipoController extends Controller
             }
             return redirect()->route('ofiTrabajadorEquipo-adm.index');
     }
-    if(Auth::user()->tipo_usuario==1){
+    if(Auth::user()->id_roles==1){
         $stp=$this->service->registrar($request);
         if(isset($stp[0]->FALSE)){
             session()->flash('unsuccess', 'Fallo en registro!');//como enviar alerta
@@ -166,7 +169,7 @@ class OfiTrabajadorEquipoController extends Controller
     public function show($id)
     {
         $colid=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $x1=$this->service->show($id);
             $elements_sede = $this->service1->listarSedes($colid);//sedes asignadas
             for($i=0;$i<count($elements_sede->toArray());$i++){
@@ -184,7 +187,7 @@ class OfiTrabajadorEquipoController extends Controller
             };
             return redirect()->route('ofiTrabajadorEquipo-adm.index');
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $element = $this->service->show($id); 
             //obtener imagenes
             $imagenes= $this->servImg->getByOfiTrabaEqui($id); 
@@ -215,7 +218,7 @@ class OfiTrabajadorEquipoController extends Controller
     public function edit($id_oficina)
     {
         $colid=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $element = $this->service->editar($id_oficina);
             $elements_sede = $this->service1->listarSedes($colid);//sedes asignadas
             for($i=0;$i<count($elements_sede->toArray());$i++){
@@ -229,7 +232,7 @@ class OfiTrabajadorEquipoController extends Controller
             };
             return redirect()->route('ofiTrabajadorEquipo-adm.index');
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $imagenes= $this->servImg->getByOfiTrabaEqui($id_oficina);
             $element = $this->service->editar($id_oficina); 
             $documentos=$this->servDoc->getByOfiTrabaEqui($id_oficina);
@@ -243,7 +246,7 @@ class OfiTrabajadorEquipoController extends Controller
 
     public function update(OfiTrabajadorEquipo $request, $id_equipo)
     {
-    if(Auth::user()->tipo_usuario==3){
+    if(Auth::user()->id_roles==3){
             $colid=Auth::user()->id_colaborador;
             $x1=$this->service->editar($id_equipo);
             $elements_sede = $this->service1->listarSedes($colid);//sedes asignadas
@@ -256,7 +259,7 @@ class OfiTrabajadorEquipoController extends Controller
             }
             return redirect()->route('ofiTrabajadorEquipo-adm.index');
     }
-    if(Auth::user()->tipo_usuario==1){
+    if(Auth::user()->id_roles==1){
         $this->service->actualizar($request, $id_equipo);
         session()->flash('success', '¡Información actualizada con éxito!');
         return redirect()->route('ofiTrabajadorEquipo-adm.index');
@@ -267,7 +270,7 @@ class OfiTrabajadorEquipoController extends Controller
 
     public function destroy($id)
     {
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $colid=Auth::user()->id_colaborador;
             $x1=$this->service->editar($id);
             $elements_sede = $this->service1->listarSedes($colid);//sedes asignadas
@@ -279,7 +282,7 @@ class OfiTrabajadorEquipoController extends Controller
             }
             return redirect()->route('ofiTrabajadorEquipo-adm.index');
     }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->eliminar($id);
         return redirect()->route('ofiTrabajadorEquipo-adm.index');
         }else{
@@ -288,7 +291,7 @@ class OfiTrabajadorEquipoController extends Controller
     }
     public function transferir($id){
         $colid=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $element = $this->service->editar($id);
             $elements_sede = $this->service1->listarSedes($colid);//sedes asignadas
             for($i=0;$i<count($elements_sede->toArray());$i++){
@@ -298,7 +301,7 @@ class OfiTrabajadorEquipoController extends Controller
             };
             return redirect()->route('ofiTrabajadorEquipo-adm.index');
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $element = $this->service->editar($id); 
             $trabajadores=$this->servOfiTra->listar();
             return view('admin.ofiTrabajadorEquipo-adm.transf',compact('element','trabajadores'));
@@ -308,7 +311,7 @@ class OfiTrabajadorEquipoController extends Controller
     }
     public function transferirRegister(OfiTrabajadorEquipo $request, $id){
         $colid=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $e1 = $this->service->editar($id);
             $elements_sede = $this->service1->listarSedes($colid);//sedes asignadas
             for($i=0;$i<count($elements_sede->toArray());$i++){
@@ -335,7 +338,7 @@ class OfiTrabajadorEquipoController extends Controller
             };
             return redirect()->route('ofiTrabajadorEquipo-adm.index');
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $e1 = $this->service->show($id); 
             if($request->id_ofi_trabajador==$e1->id_ofi_trabajador){//mismo colaborador
                 return back()->withInput();  
@@ -360,7 +363,7 @@ class OfiTrabajadorEquipoController extends Controller
         }
     }
     public function img($id){
-        if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3){
             $imagenes= $this->servImg->getByOfiTrabaEqui($id);
             $element=$this->service->show($id);
             $type=1;

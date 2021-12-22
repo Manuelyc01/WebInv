@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if(Auth::user()->tipo_usuario==1)
+@if(Auth::user()->id_roles==1)
 	<a href="{{ route('roles.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Agregar </a>
 @endif
 	<div class="col-md-12">
@@ -50,7 +50,7 @@
 @stop
 
 @section('scripts')
-	@if(Auth::user()->tipo_usuario==3)
+	@if(Auth::user()->id_roles==3)
 	<script>
 			$(function(){   
 

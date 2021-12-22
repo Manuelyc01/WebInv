@@ -55,9 +55,25 @@
         <div class="form-group ">
         <label class="col-sm-2 control-label"><strong> Equipo </strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" type="text" value="{{$element->tipoBien}}" readonly>
+                <input class="form-control" placeholder="" type="text" value="{{$element->des_equipo}}" readonly>
             </div>
         </div>
+        @if($element->cod_opatrimonial!=null)
+        <div class="form-group ">
+        <label class="col-sm-2 control-label"><strong> Cod. Patrimonial </strong></label>
+            <div class="col-sm-8">
+                <input class="form-control" placeholder="" type="text" value="{{$element->cod_opatrimonial}}" readonly>
+            </div>
+        </div>
+        @endif
+        @if($element->serie_equipo!=null)
+        <div class="form-group ">
+        <label class="col-sm-2 control-label"><strong> Num. Serie </strong></label>
+            <div class="col-sm-8">
+                <input class="form-control" placeholder="" type="text" value="{{$element->serie_equipo}}" readonly>
+            </div>
+        </div>
+        @endif
         <div class="form-group ">
         <label class="col-sm-2 control-label"><strong> Colaborador </strong></label>
             <div class="col-sm-8">

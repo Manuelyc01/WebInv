@@ -20,7 +20,7 @@ class OficinaController extends Controller
 
     public function index()
     {
-        if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3){
         $elements = $this->service->listar();
         return view('admin.oficina-adm.index', compact('elements'));
         }else{
@@ -29,7 +29,7 @@ class OficinaController extends Controller
 
     public function create()
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $sede= $this->sedeServ->listar()->pluck('no_sede','id_sede');
         return view('admin.oficina-adm.edit', compact('sede'));
         }else{
@@ -38,7 +38,7 @@ class OficinaController extends Controller
 
     public function store(OficinaRequest $request)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->registrar($request);  
         session()->flash('success', '¡Información registrada con éxito!');
         return redirect()->route('oficina-adm.index');
@@ -53,7 +53,7 @@ class OficinaController extends Controller
 
     public function edit($id_oficina)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $element = $this->service->editar($id_oficina);
         $sede= $this->sedeServ->listar()->pluck('no_sede','id_sede');
         return view('admin.oficina-adm.edit', compact('element','sede'));
@@ -63,7 +63,7 @@ class OficinaController extends Controller
 
     public function update(OficinaRequest $request, $id_oficina)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->actualizar($request, $id_oficina);
         session()->flash('success', '¡Información actualizada con éxito!');
         return redirect()->route('oficina-adm.index');
@@ -73,7 +73,7 @@ class OficinaController extends Controller
 
     public function destroy($id)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->eliminar($id);
         return redirect()->route('oficina-adm.index');
         }else{

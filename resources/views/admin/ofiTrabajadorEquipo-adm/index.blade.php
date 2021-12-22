@@ -42,7 +42,7 @@ $(document).ready(function() {
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Asignaciones de Equipos </h2>
-				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)	
+				@if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3)	
 					@if(isset($ylist))
 					<a href="{{ route('ofiTrabajadorEquipo-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir </a>	
 					@endif
@@ -53,7 +53,7 @@ $(document).ready(function() {
 				<a href="#" id="btnExcel" class="btn btn-info"><i class="fa fa-edit"></i>Generar Excel</a>
 			</div>
 			@endif
-				@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
+				@if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3)
 					@if(isset($ylist))
 				<div class="row">
 					<div class="col-md-4"></div>
@@ -72,10 +72,10 @@ $(document).ready(function() {
 			<div class="panel-body">
 				<table id="table" class="display table table-hover dataTable">
 					<thead>
-						<th> HostName </th>
+						<th> Des. Equipo </th>
 						<th> Observaciones Equipo</th>
 						<th> Categoria Equipo</th>
-						@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
+						@if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3)
 						<th> Colaborador</th>@endif
 						<th>Sede</th>
 						<th> Estado </th>
@@ -85,10 +85,10 @@ $(document).ready(function() {
 					<tbody>
 						@foreach ($elements as $element)
 							<tr data-id="{{ $element->id_ofi_traba_equipo }}">
-								<td> {{ $element->no_equipo }}</td>
+								<td> {{ $element->des_equipo }}</td>
 								<td> {{ $element->estado_equipo }} </td>
-								<td> {{ $element->tipoBien }} </td>
-								@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
+								<td> {{ $element->des_cate_equipo }} </td>
+								@if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3)
 								<td> {{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;{{ $element->ap_materno_colaborador }}&nbsp; </td>
 								@endif
 								<td>{{ $element->no_sede }}</td>
@@ -98,7 +98,7 @@ $(document).ready(function() {
 									<td style="color: green;"><strong> ASIGNADO </strong></td>
 								@endif
 								<td class="tbl-action-col">
-									@if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3)
+									@if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3)
 									<a href="{{ route('ofiTrabajadorEquipo-adm.edit' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 									<a href="{{ route('componenteTrabajadorEquipo-adm.index' , ['id_ofi_traba_equipo' => $element->id_ofi_traba_equipo]) }}" class="btn btn-success"> <i class="fa fa-briefcase"></i> </a>
 										@if($element->esta_ofi_traba_equipo==1)

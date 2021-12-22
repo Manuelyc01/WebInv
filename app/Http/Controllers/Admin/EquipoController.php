@@ -27,7 +27,7 @@ class EquipoController extends Controller
 
     public function index()
     {
-        if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3){
 
         $elements = $this->service->listar();
         return view('admin.equipo-adm.index', compact('elements'));
@@ -37,7 +37,7 @@ class EquipoController extends Controller
 
     public function create()
     { 
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
 
         $catEqui= $this->catEquiServ->listar()->pluck('des_cate_equipo','id_cat_equipos');
         return view('admin.equipo-adm.edit',compact('catEqui'));
@@ -47,7 +47,7 @@ class EquipoController extends Controller
 
     public function store(EquipoRequest $request)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
 
         $this->service->registrar($request);
         session()->flash('success', '¡Información registrada con éxito!');
@@ -58,7 +58,7 @@ class EquipoController extends Controller
 
     public function show($id)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
 
         $element = $this->service->show($id); 
         //obtener imagenes
@@ -72,7 +72,7 @@ class EquipoController extends Controller
     }
     public function edit($id_oficina)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
 
         $element = $this->service->editar($id_oficina); 
         $imagenes=$this->servImg->getByEquipo($id_oficina);
@@ -85,7 +85,7 @@ class EquipoController extends Controller
 
     public function update(EquipoRequest $request, $id_equipo)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
 
         $this->service->actualizar($request, $id_equipo);
         session()->flash('success', '¡Información actualizada con éxito!');
@@ -96,7 +96,7 @@ class EquipoController extends Controller
 
     public function destroy($id)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
 
         $this->service->eliminar($id);
         return redirect()->route('equipo-adm.index');
@@ -104,7 +104,7 @@ class EquipoController extends Controller
         return redirect()->route('panel');    }
     }
     public function img($id){
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
 
         $imagenes= $this->servImg->getByEquipo($id);
         $element=$this->service->show($id);

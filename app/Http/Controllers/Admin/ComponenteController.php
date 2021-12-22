@@ -30,7 +30,7 @@ class ComponenteController extends Controller
     public function index()
     {
         //
-        if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3){
             $elements = $this->service->listar();
             return view('admin.componentes-adm.index', compact('elements'));
     }else{
@@ -46,10 +46,10 @@ class ComponenteController extends Controller
     {
         //
         $colaboradores=null;
-        if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3){
             $colaboradores =null;
-            if(Auth::user()->tipo_usuario==3){
-                $colaboradores = DB::table('tm_colaborador')->where('tm_colaborador.tipo_usuario',3)
+            if(Auth::user()->id_roles==3){
+                $colaboradores = DB::table('tm_colaborador')->where('tm_colaborador.id_roles',3)
                 ->where('tm_colaborador.nu_documento',Auth::user()->nu_documento)
                 ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_colaborador','=','tm_colaborador.id_colaborador')
                 ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
@@ -57,7 +57,7 @@ class ComponenteController extends Controller
                 ->get();
             }
             else{
-                $colaboradores = DB::table('tm_colaborador')->where('tipo_usuario',3)
+                $colaboradores = DB::table('tm_colaborador')->where('id_roles',3)
                 ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_colaborador','=','tm_colaborador.id_colaborador')
                 ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
                 ->select('tm_colaborador.*','tm_sede.de_sede','tm_ofi_trabajador.id_ofi_trabajador')
@@ -78,7 +78,7 @@ class ComponenteController extends Controller
      */
     public function store(ComponenteRequest $request)
     {
-        if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3){
         $this->service->registrar($request);
         session()->flash('success', '¡Información registrada con éxito!');
         return redirect()->route('componente-adm.index');
@@ -108,9 +108,9 @@ class ComponenteController extends Controller
     {
         //
         $colaboradores=null;
-        if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3){
-            if(Auth::user()->tipo_usuario==3){
-                $colaboradores = DB::table('tm_colaborador')->where('tm_colaborador.tipo_usuario',3)
+        if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3){
+            if(Auth::user()->id_roles==3){
+                $colaboradores = DB::table('tm_colaborador')->where('tm_colaborador.id_roles',3)
                 ->where('tm_colaborador.nu_documento',Auth::user()->nu_documento)
                 ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_colaborador','=','tm_colaborador.id_colaborador')
                 ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
@@ -118,7 +118,7 @@ class ComponenteController extends Controller
                 ->get();
             }
             else{
-                $colaboradores = DB::table('tm_colaborador')->where('tipo_usuario',3)
+                $colaboradores = DB::table('tm_colaborador')->where('id_roles',3)
                 ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_colaborador','=','tm_colaborador.id_colaborador')
                 ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
                 ->select('tm_colaborador.*','tm_sede.de_sede','tm_ofi_trabajador.id_ofi_trabajador')
@@ -143,7 +143,7 @@ class ComponenteController extends Controller
     public function update(ComponenteRequest $request, $id_componente)
     {
         //
-        if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3){
         $this->service->actualizar($request, $id_componente);
         session()->flash('success', '¡Información actualizada con éxito!');
         return redirect()->route('componente-adm.index');
@@ -161,7 +161,7 @@ class ComponenteController extends Controller
     public function destroy($id)
     {
         //
-        if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3){
         $this->service->eliminar($id);
         return redirect()->route('componente-adm.index');
     }else{

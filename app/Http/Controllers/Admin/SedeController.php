@@ -18,7 +18,7 @@ class SedeController extends Controller
 
     public function index()
     {
-        if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3){
         $elements = $this->service->listar();
         return view('admin.sede-adm.index', compact('elements'));
         }else{
@@ -27,7 +27,7 @@ class SedeController extends Controller
 
     public function create()
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         return view('admin.sede-adm.edit');
     }else{
         return redirect()->route('panel');    }
@@ -35,7 +35,7 @@ class SedeController extends Controller
 
     public function store(SedeRequest $request)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->registrar($request);
         session()->flash('success', '¡Información registrada con éxito!');
         return redirect()->route('sede-adm.index');
@@ -50,7 +50,7 @@ class SedeController extends Controller
 
     public function edit($id_sede)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $element = $this->service->editar($id_sede);
         return view('admin.sede-adm.edit', compact('element'));
     }else{
@@ -59,7 +59,7 @@ class SedeController extends Controller
 
     public function update(SedeRequest $request, $id_sede)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->actualizar($request, $id_sede);
         session()->flash('success', '¡Información actualizada con éxito!');
         return redirect()->route('sede-adm.index');
@@ -69,7 +69,7 @@ class SedeController extends Controller
 
     public function destroy($id)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->eliminar($id);
         return redirect()->route('sede-adm.index');
     }else{

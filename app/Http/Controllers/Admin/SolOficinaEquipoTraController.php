@@ -33,11 +33,11 @@ class SolOficinaEquipoTraController extends Controller
     }
     public function index()
     {
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $elements = $this->service->listarBySedeAdmin(Auth::user()->id_colaborador);
             return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $elements = $this->service->listar();
             return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
         }else{
@@ -52,7 +52,7 @@ class SolOficinaEquipoTraController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             return redirect()->route('panel');//sin uso
         }else{
             return redirect()->route('panel');    
@@ -67,7 +67,7 @@ class SolOficinaEquipoTraController extends Controller
      */
     public function store(SolOficinaEquipoTrabRequest $request)
     {
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             return redirect()->route('panel');// sin uso
         }else{
             return redirect()->route('panel');    
@@ -83,7 +83,7 @@ class SolOficinaEquipoTraController extends Controller
     public function show($id)
     {
 
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $element = $this->service->mostrar($id); 
             //obtener imagenes
             //dd($element);
@@ -109,7 +109,7 @@ class SolOficinaEquipoTraController extends Controller
     public function edit($id)
     {
 
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             
             $element = $this->service->editar($id);
             $ofi_traba=$this->servOfiTra->editar($element->id_ofi_trabajador);
@@ -132,7 +132,7 @@ class SolOficinaEquipoTraController extends Controller
             };
             return redirect()->route('panel');
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $element = $this->service->editar($id);
             //dd($element);
             $elements_solicitud = $this->service2->listar();
@@ -159,7 +159,7 @@ class SolOficinaEquipoTraController extends Controller
      */
     public function update(SolOficinaEquipoTrabRequest $request, $id_soli_ofi_equi_tra)
     {
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $element = $this->service->editar($id_soli_ofi_equi_tra);
             $ofi_traba=$this->servOfiTra->editar($element->id_ofi_trabajador);
             $colid=Auth::user()->id_colaborador;
@@ -174,7 +174,7 @@ class SolOficinaEquipoTraController extends Controller
             };
             return redirect()->route('panel');
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             //dd("actualizar");
             $this->service->actualizar($request, $id_soli_ofi_equi_tra);
             session()->flash('success', '¡Información actualizada con éxito!');
@@ -192,7 +192,7 @@ class SolOficinaEquipoTraController extends Controller
      */
     public function destroy($id)
     {
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $element = $this->service->editar($id);
             $ofi_traba=$this->servOfiTra->editar($element->id_ofi_trabajador);
             $colid=Auth::user()->id_colaborador;
@@ -206,7 +206,7 @@ class SolOficinaEquipoTraController extends Controller
             };
             return redirect()->route('panel');
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             //
             $this->service->eliminar($id);
             return redirect()->route('SolOficinaEquipoTrab-adm.index');
@@ -216,7 +216,7 @@ class SolOficinaEquipoTraController extends Controller
 
     public function img($id)
     {
-        if(Auth::user()->tipo_usuario==1|| Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1|| Auth::user()->id_roles==3){
             $imagenes= $this->servImg->getBySolOfiTrabaEqui($id);
             $element=$this->service->show($id);
             //dd($element);
@@ -229,11 +229,11 @@ class SolOficinaEquipoTraController extends Controller
     public function solRecibidos()
     {
         $id=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $elements=$this->service->recibidasAdmin($id);
            return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
            $elements=$this->service->recibidas();
            return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
         }else{
@@ -243,11 +243,11 @@ class SolOficinaEquipoTraController extends Controller
     public function solFinalizadas()
     {
         $id=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $elements=$this->service->finalizadosAdmin($id);
             return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $elements=$this->service->finalizados();
             return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
         }else{
@@ -257,11 +257,11 @@ class SolOficinaEquipoTraController extends Controller
     public function solProceso()
     {
         $id=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $elements=$this->service->procesoAdmin($id);
             return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $elements=$this->service->proceso();
             return view('admin.SolOficinaEquipoTrab-adm.index', compact('elements'));
         }else{

@@ -33,11 +33,11 @@ class MantenimientoController extends Controller
     public function index()
     {
         $id=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $elements = $this->service->listarBySedeAdmin($id);
             return view('admin.mantenimiento-adm.index', compact('elements'));
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $elements = $this->service->listar();
         return view('admin.mantenimiento-adm.index', compact('elements'));
         }else{
@@ -47,7 +47,7 @@ class MantenimientoController extends Controller
     public function byEquiTrabaEqui($id)
     {   
         $idcol=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $x1=$this->ofiTrabaEquiService->show($id);
             $elements_sede = $this->service1->listarSedes($idcol);//sedes asignadas
             for($i=0;$i<count($elements_sede->toArray());$i++){
@@ -58,7 +58,7 @@ class MantenimientoController extends Controller
             };
             return redirect()->route('panel');
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $elements = $this->service->listarByEquiTrabaEqui($id);
             return view('admin.mantenimiento-adm.index', compact('elements','id'));
         }else{
@@ -67,7 +67,7 @@ class MantenimientoController extends Controller
     public function bySolicitud($idsoli)
     {   
         $idcol=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $x1=$this->servSol->editar($idsoli);
             $elements_sede = $this->service1->listarSedes($idcol);//sedes asignadas
             for($i=0;$i<count($elements_sede->toArray());$i++){
@@ -78,7 +78,7 @@ class MantenimientoController extends Controller
             };
             return redirect()->route('panel');
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $elements = $this->service->listarBySolicitud($idsoli);
             return view('admin.mantenimiento-adm.index', compact('elements','idsoli'));
         }else{
@@ -88,7 +88,7 @@ class MantenimientoController extends Controller
     public function create($id,$val)
     {   
         $idcol=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             if($val==0){//mantenimiento a equipo Asignado
                 $equipoAsignado= $this->ofiTrabaEquiService->show($id);
                 $elements_sede = $this->service1->listarSedes($idcol);//sedes asignadas
@@ -110,7 +110,7 @@ class MantenimientoController extends Controller
                 return redirect()->route('panel');
             }
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         if($val==0){//mantenimiento a equipo Asignado
             $equipoAsignado= $this->ofiTrabaEquiService->show($id);
             return view('admin.mantenimiento-adm.edit', compact('equipoAsignado'));
@@ -128,7 +128,7 @@ class MantenimientoController extends Controller
     {
         
         $idcol=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             if($request->soli==null){
                 $equipoAsignado= $this->ofiTrabaEquiService->show($request->id_ofi_traba_equipo);
                 $elements_sede = $this->service1->listarSedes($idcol);//sedes asignadas
@@ -154,7 +154,7 @@ class MantenimientoController extends Controller
                 return redirect()->route('panel');
             }
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $this->service->registrar($request);
             
             session()->flash('success', '¡Información registrada con éxito!');
@@ -172,7 +172,7 @@ class MantenimientoController extends Controller
     public function edit($id_mantenimiento)
     {
         $colid=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $element = $this->service->editar($id_mantenimiento);
             $elements_sede = $this->service1->listarSedes($colid);//sedes asignadas
             for($i=0;$i<count($elements_sede->toArray());$i++){
@@ -187,7 +187,7 @@ class MantenimientoController extends Controller
             };
             return redirect()->route('panel'); 
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
             $element = $this->service->editar($id_mantenimiento);
             $documentos=$this->servDoc->getByMantenimiento($id_mantenimiento);
             if($element->id_soli_ofi_equi_tra!=null){
@@ -203,7 +203,7 @@ class MantenimientoController extends Controller
     public function update(MantenimientoRequest $request, $id_oficina)
     {
         $idcol=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $x1=$this->service->editar($id_oficina);//mantenimiento a editar
             if($x1->id_soli_ofi_equi_tra==null){
                 $equipoAsignado= $this->ofiTrabaEquiService->show($x1->id_ofi_traba_equipo);
@@ -230,7 +230,7 @@ class MantenimientoController extends Controller
                 return redirect()->route('panel');
             }
         }
-        if(Auth::user()->tipo_usuario==1 ){
+        if(Auth::user()->id_roles==1 ){
             $idx=$this->service->actualizar($request, $id_oficina);
             session()->flash('success', '¡Información actualizada con éxito!');
             return redirect('/web-adm/mantenimientos/'.$idx->id_ofi_traba_equipo);
@@ -242,7 +242,7 @@ class MantenimientoController extends Controller
     public function destroy($id)
     {
         $idcol=Auth::user()->id_colaborador;
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $x1=$this->service->editar($id);//mantenimiento a editar
             if($x1->id_soli_ofi_equi_tra==null){
                 $equipoAsignado= $this->ofiTrabaEquiService->show($x1->id_ofi_traba_equipo);
@@ -267,7 +267,7 @@ class MantenimientoController extends Controller
                 return redirect()->route('panel');
             }
         }
-        if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3){
             $idx=$this->service->eliminar($id);
             return redirect('/web-adm/mantenimientos/'.$idx->id_ofi_traba_equipo);
         }else{
@@ -275,7 +275,7 @@ class MantenimientoController extends Controller
         }
     }
     public function img($id){
-        if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3){
             $imagenes= $this->servImg->getByMantenimiento($id);
             $element=$this->service->editar($id);
             $type=3;

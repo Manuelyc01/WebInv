@@ -76,12 +76,12 @@
 
         </div>  
 
-        <div class="form-group {{ $errors->has('tipo_usuario') ? 'has-error' : '' }}">
-            <!-- {!! Form::stdText('Tipo', 0, 'tipo_usuario', $errors) !!}-->
+        <div class="form-group {{ $errors->has('id_roles') ? 'has-error' : '' }}">
+            <!-- {!! Form::stdText('Tipo', 0, 'id_roles', $errors) !!}-->
             <?php
             $ddlTipo=["1"=>"MASTER","2"=>"USUARIO","3"=>"ADMINISTRADOR"];
             ?>
-            {!! Form::stdSelect('Tipo', 0, 'tipo_usuario', $ddlTipo, null) !!}
+            {!! Form::stdSelect('Tipo', 0, 'id_roles', $ddlTipo, null) !!}
         </div>
 
 

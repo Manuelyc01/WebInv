@@ -23,7 +23,7 @@ class Colaborador extends Authenticatable
         'password',
         'email',
         'foto',
-        'tipo_usuario',
+        'id_roles',
         'estado_usuario'
     ];    
 }

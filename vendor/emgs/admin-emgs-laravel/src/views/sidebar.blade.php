@@ -3,7 +3,7 @@
     $url = Route::currentRouteName();
     $prefix = explode('.' , $url);
 
-    $id_rol_usuario = \Auth::user()->tipo_usuario;
+    $id_rol_usuario = \Auth::user()->id_roles;
     $array_permisos = App\Role::where('id', $id_rol_usuario)->first();
     //dd($array_permisos->permiso);
     

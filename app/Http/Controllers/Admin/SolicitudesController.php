@@ -21,11 +21,11 @@ class SolicitudesController extends Controller
     }
     public function index()
     {
-        if(Auth::user()->tipo_usuario==3){
+        if(Auth::user()->id_roles==3){
             $elements = $this->service->listar();
             return view('admin.solicitudes-adm.index', compact('elements'));
         }
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $elements = $this->service->listar();
         return view('admin.solicitudes-adm.index', compact('elements'));
     }else{
@@ -41,7 +41,7 @@ class SolicitudesController extends Controller
     public function create()
     {
         //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         return view('admin.solicitudes-adm.edit');
     }else{
         return redirect()->route('panel');    }
@@ -56,7 +56,7 @@ class SolicitudesController extends Controller
     public function store(SolicitudesRequest $request)
     {
         //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->registrar($request);
         session()->flash('success', '¡Información registrada con éxito!');
         return redirect()->route('solicitudes-adm.index');
@@ -85,7 +85,7 @@ class SolicitudesController extends Controller
     public function edit($id_cat_equipos)
     {
         //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $element = $this->service->editar($id_cat_equipos);
         return view('admin.solicitudes-adm.edit', compact('element'));
     }else{
@@ -103,7 +103,7 @@ class SolicitudesController extends Controller
     public function update(SolicitudesRequest $request, $id_oficina)
     {
         //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->actualizar($request, $id_oficina);
         session()->flash('success', '¡Información actualizada con éxito!');
        
@@ -122,7 +122,7 @@ class SolicitudesController extends Controller
     public function destroy($id)
     {
         //
-        if(Auth::user()->tipo_usuario==1){
+        if(Auth::user()->id_roles==1){
         $this->service->eliminar($id);
         return redirect()->route('solicitudes-adm.index');
     }else{

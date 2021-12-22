@@ -7,7 +7,7 @@
 		<div class="panel panel-white">
 			<div class="panel-heading">
 				<h2 class="panel-title form-title"> Cargo Laboral </h2>
-				@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
+				@if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3)
 				<a href="{{ route('oficinaTrabajador-adm.create') }}" type="a" class="btn btn-success pull-right btn-addon m-b-sm btn-rounded btn-md"><i class="fa fa-plus"></i> Añadir </a>
 				@endif
 			</div>
@@ -41,7 +41,7 @@
 									<td style="color:green;"> <strong>ACTIVO  </strong></td>
 								@endif
 								<td class="tbl-action-col">
-								@if(Auth::user()->tipo_usuario==1 || Auth::user()->tipo_usuario==3)
+								@if(Auth::user()->id_roles==1 || Auth::user()->id_roles==3)
 									<a href="{{ route('oficinaTrabajador-adm.edit' , ['id_ofi_trabajador' => $element->id_ofi_trabajador]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 									<a class="btn btn-primary" href="/web-adm/trabEquipos/{{ $element->id_ofi_trabajador }}"> Equipos Asignados</a>
 								@else

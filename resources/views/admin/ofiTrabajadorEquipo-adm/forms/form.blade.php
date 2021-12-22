@@ -36,7 +36,7 @@
             <input class="form-control" list="datalistOptionsEquipo" name="id_equipo" id="id_equipo" placeholder="Buscar Equipo" value="{{@$element->id_equipo}}" autocomplete="off">
                 <datalist id="datalistOptionsEquipo">
                     @foreach($equipos as $equipo)
-                        <option value="{{@$equipo->id_equipo}}">{{@$equipo->tipoBien}}</option>
+                        <option value="{{@$equipo->id_equipo}}">{{@$equipo->des_equipo}} ({{@$equipo->cod_opatrimonial}}) </option>
                     @endforeach
                 </datalist>
             </div>
@@ -95,13 +95,22 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-3">
 			    <label><strong> Equipo</strong></label>
-                <input class="form-control" data-toggle="tooltip" data-placement="right" data-trigger="focus" type="text" value="{{$element->tipoBien}}"disabled>
+                <input class="form-control" data-toggle="tooltip" data-placement="right" data-trigger="focus" type="text" value="{{$element->des_equipo}}"disabled>
             </div>
             <div class="col-sm-5">
                 <label><strong> Colaborador</strong></label>
                 <input class="form-control" data-toggle="tooltip" data-placement="right" data-trigger="focus" type="text" value="{{ $element->no_colaborador }}&nbsp;{{ $element->ap_paterno_colaborador }}&nbsp;(UBI.{{ $element->no_sede }}--{{ $element->no_oficina }})"disabled>
             </div>
         </div>
+        @if($element->cod_opatrimonial!=null)
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3">
+			    <label><strong> Cod. Patrimonial</strong></label>
+                <input class="form-control" data-toggle="tooltip" data-placement="right" data-trigger="focus" type="text" value="{{$element->cod_opatrimonial}}"disabled>
+            </div>
+        </div>
+        @endif
         <div class="form-group">
                 <label class="col-sm-2 control-label"><strong> Subir Imagenes de Entrega</strong></label>
                 <div class="col-sm-8">
@@ -181,7 +190,7 @@
             $("#id_equipo").val("");
         });
     });
-    $("#id_equipo").on('input', function () {
+    $("#submit-btn").on('click', function () {
     var id_equipo = this.value;
     $("#submit-btn").prop('disabled', true);
     $.ajax({
