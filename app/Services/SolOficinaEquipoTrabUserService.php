@@ -188,6 +188,8 @@ class SolOficinaEquipoTrabUserService
         $element = SolOficinaEquipoTrabUser::join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_soli_ofi_equi_traba.id_ofi_trabajador')
                                         ->select('tm_soli_ofi_equi_traba.*','tm_ofi_trabajador.*')
                                         ->where('tm_ofi_trabajador.id_colaborador',$id)
+                                        ->where('tm_soli_ofi_equi_traba.id_solicitud',null)
+                                        ->where('tm_soli_ofi_equi_traba.id_ofi_traba_equipo',null)
                                         ->orderBy('tm_ofi_trabajador.id_colaborador', 'ASC')->get();
 
         return $element;
