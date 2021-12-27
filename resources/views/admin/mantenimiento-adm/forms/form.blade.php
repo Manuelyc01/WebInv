@@ -24,7 +24,7 @@
         <div class="form-group ">
         <label class="col-sm-2 control-label"><strong> Equipo / Colaborador</strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" type="text" value="{{$element->des_equipo}} ({{ @$equipo->cod_opatrimonial }} / {{ @$equipo->serie_equipo}})  /  {{$element->no_colaborador}}{{$element->ap_paterno_colaborador}}" disabled>
+                <input class="form-control" placeholder="" type="text" value="{{$element->des_equipo}} ({{ @$element->cod_opatrimonial }} / {{ @$element->serie_equipo}})  /  {{$element->no_colaborador}}{{$element->ap_paterno_colaborador}}" disabled>
             </div>
         </div>
         @endif
