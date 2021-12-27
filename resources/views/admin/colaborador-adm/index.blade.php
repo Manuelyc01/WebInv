@@ -21,6 +21,7 @@
 						<th> Nombre </th>
 						<th> Usuario </th>
 						<th> Correo </th>
+						<th> Tipo Usuario </th>
 						<th class="tbl-action-col"> Acciones </th>
 					</thead>
 					<tbody>
@@ -32,6 +33,13 @@
 								<td>  {{ $element->no_colaborador }}  </td>
 								<td>  {{ $element->usuario }}  </td>
 								<td>  {{ $element->email }}  </td>
+								@if($element->id_roles==3)
+								<td>  ADMIN  </td>
+								@elseif($element->id_roles==2)
+								<td>  USER  </td>
+								@else
+								<td>  MASTER </td>
+								@endif
 								@if(Auth::user()->id_roles==1)
 								<td class="tbl-action-col">
 									<a href="{{ route('colaborador-adm.edit' , ['id_colaborador' => $element->id_colaborador]) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
