@@ -84,7 +84,7 @@ class SolOficinaEquipoTrabUserService
         $email=env('CORREO_ADMIN');
         
         $trabajador=DB::table('tm_ofi_trabajador')
-                ->leftjoin('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
+                ->join('tm_colaborador','tm_colaborador.id_colaborador','=','tm_ofi_trabajador.id_colaborador')
                 ->where('tm_ofi_trabajador.id_ofi_trabajador',$element['id_ofi_trabajador'])
                 ->first();
         
