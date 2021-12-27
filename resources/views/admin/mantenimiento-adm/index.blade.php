@@ -66,7 +66,7 @@ $(document).ready(function() {
 										<td style="color:red;"> <strong> Finalizado </strong> </td>
 									@endif
 								@endif
-								<td>  {{$element->tipoBien}}  /  {{$element->no_colaborador}}{{$element->ap_paterno_colaborador}}  </td>
+								<td>  {{$element->des_equipo}}  /  {{$element->no_colaborador}}{{$element->ap_paterno_colaborador}}  </td>
 								<td>{{ $element->no_sede }}</td>
 								<td>  {{ $element->descripcion_solicitud }}  </td>
 								<td>{{ $element->created_at }}</td>
