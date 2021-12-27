@@ -45,7 +45,7 @@
             <input class="form-control" list="datalistOptionOf" name="id_ofi_traba_equipo" id="id_ofi_traba_equipo" value="{{@$validacion->id_ofi_traba_equipo}}" autocomplete="off">
             <datalist id="datalistOptionOf">
                     @foreach($Usuario as $Usuarios)
-                        <option value="{{@$Usuarios->id_ofi_traba_equipo}}">{{@$Usuarios->ap_materno_colaborador}}&nbsp;{{@$Usuarios->ap_paterno_colaborador}}&nbsp;{{@$Usuarios->no_colaborador}}&nbsp;{{@$Usuarios->serie_equipo}}&nbsp;{{@$Usuarios->des_equipo}}</option>
+                        <option value="{{@$Usuarios->id_ofi_traba_equipo}}">{{@$Usuarios->des_equipo}}&nbsp;({{@$Usuarios->no_sede}})&nbsp;</option>
                     @endforeach
                 </datalist>
             </div>
