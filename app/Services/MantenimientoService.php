@@ -60,7 +60,7 @@ class MantenimientoService
             ->join('tm_sede','tm_sede.id_sede','=','tm_ofi_trabajador.id_sede')
             ->join('tm_equipos','tm_equipos.id_equipo','=','tm_ofi_traba_equipo.id_equipo')
             ->leftjoin('tm_soli_ofi_equi_traba','tm_soli_ofi_equi_traba.id_soli_ofi_equi_tra','=','tm_mantenimiento.id_soli_ofi_equi_tra')
-            ->select('tm_mantenimiento.*','tm_soli_ofi_equi_traba.descripcion_solicitud','tm_colaborador.no_colaborador','tm_colaborador.ap_paterno_colaborador','tm_equipos.tipoBien','tm_sede.no_sede')
+            ->select('tm_mantenimiento.*','tm_soli_ofi_equi_traba.descripcion_solicitud','tm_colaborador.no_colaborador','tm_colaborador.ap_paterno_colaborador','tm_equipos.*','tm_sede.no_sede')
             ->where('tm_mantenimiento.id_ofi_traba_equipo','=',$id)
             ->where('tm_mantenimiento.estado','>',-1)    
             ->orderBy('id_mantenimiento', 'DESC')->get();
