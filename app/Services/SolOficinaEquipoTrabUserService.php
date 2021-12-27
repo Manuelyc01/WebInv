@@ -91,7 +91,7 @@ class SolOficinaEquipoTrabUserService
         \Mail::send('correos.correo',['element'=>$element,'trabajador'=>$trabajador], function($message) use ($email) {
             $message->to($email)->subject
                ('Nueva Solicitud');
-            $message->from('webmasterENACO@webmasterENACO.com');
+            $message->from('webmasterENACO@enaco.com.pe');
              });
              
     }
