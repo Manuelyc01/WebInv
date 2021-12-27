@@ -178,6 +178,7 @@ class SolOficinaEquipoTrabUserService
                                         ->join('tm_ofi_trabajador','tm_ofi_trabajador.id_ofi_trabajador','=','tm_ofi_traba_equipo.id_ofi_trabajador')
                                         ->select('tm_soli_ofi_equi_traba.*','tm_ofi_traba_equipo.*','tm_ofi_trabajador.*')
                                         ->where('tm_ofi_trabajador.id_colaborador',$id)
+                                        ->where('tm_soli_ofi_equi_traba.esta_solicitud','=',1)    
                                         ->orderBy('tm_ofi_trabajador.id_colaborador', 'ASC')->get();
 
         return $element;
@@ -190,6 +191,7 @@ class SolOficinaEquipoTrabUserService
                                         ->where('tm_ofi_trabajador.id_colaborador',$id)
                                         ->where('tm_soli_ofi_equi_traba.id_solicitud',null)
                                         ->where('tm_soli_ofi_equi_traba.id_ofi_traba_equipo',null)
+                                        ->where('tm_soli_ofi_equi_traba.esta_solicitud','=',1)    
                                         ->orderBy('tm_ofi_trabajador.id_colaborador', 'ASC')->get();
 
         return $element;
