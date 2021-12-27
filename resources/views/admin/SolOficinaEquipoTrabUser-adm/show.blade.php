@@ -52,9 +52,9 @@
         </div>
          @if($element->id_ofi_traba_equipo)
         <div class="form-group ">
-        <label class="col-sm-2 control-label"><strong> Trabajador-Equipo     </strong></label>
+        <label class="col-sm-2 control-label"><strong> Equipo     </strong></label>
             <div class="col-sm-8">
-                <input class="form-control" placeholder="" type="text" value="{{ $equipotrajador->ap_paterno_colaborador }}&nbsp;{{ $equipotrajador->ap_materno_colaborador }}&nbsp;{{ $equipotrajador->no_colaborador }}&nbsp;{{ $equipo->des_equipo }}&nbsp;{{ $equipotrajador->no_equipo }} " readonly>
+                <input class="form-control" placeholder="" type="text" value="{{ $equipo->des_equipo }}&nbsp;({{ @$equipo->cod_opatrimonial }}/ {{ @$equipo->serie_equipo }})" readonly>
             </div>
         </div>
         @endif
