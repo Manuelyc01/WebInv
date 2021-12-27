@@ -129,7 +129,7 @@
         </tr>
         <tr>
           <td width="5%"  align="right"></td>
-          <td width="95%"  align="left"><span style="font-size: small;">{{@$trabajador->co_colaborador}}:&nbsp;{{@$trabajador->$no_colaborador}}&nbsp;{{@$trabajador->ap_paterno_colaborador}}&nbsp;{{@$trabajador->ap_materno_colaborador}}</span></td>
+          <td width="95%"  align="left"><span style="font-size: small;">{{@$trabajador->co_colaborador}}:&nbsp;{{@$trabajador->no_colaborador}}&nbsp;{{@$trabajador->ap_paterno_colaborador}}&nbsp;{{@$trabajador->ap_materno_colaborador}}</span></td>
         </tr>
         <tr>
           <td width="5%"  align="right"></td>
