@@ -42,9 +42,9 @@
 
         @if($element->id_ofi_traba_equipo)
         <div class="form-group {{ $errors->has('id_ofi_traba_equipo') ? 'has-error' : '' }}">
-            <label class="col-sm-2 control-label"><strong>Equipo / Colaborador<span class="required"> * </span></strong></label>
+            <label class="col-sm-2 control-label"><strong>Equipo<span class="required"> * </span></strong></label>
             <div class="col-sm-8">
-            <input class="form-control" placeholder="" type="text" value="{{ $equipo->des_equipo }} ({{ @$equipo->cod_opatrimonial }} / {{ @$equipo->serie_equipo}})  /  {{ $equipotrajador->no_colaborador }}&nbsp;{{ $equipotrajador->ap_paterno_colaborador }} " readonly>
+            <input class="form-control" placeholder="" type="text" value="{{ $equipo->des_equipo }} ({{ @$equipo->cod_opatrimonial }} / {{ @$equipo->serie_equipo}}) " readonly>
             </div>
         </div>
         @endif
